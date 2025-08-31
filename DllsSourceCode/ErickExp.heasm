@@ -1,0 +1,524 @@
+/**
+* ErickExp.heasm
+*
+* el codigo fuente de ErickExp.dll
+*
+* esta es una dependencia adicional para el bootloader para no hacer una system_call para el parseo de ErickExp
+*
+* Documentacion
+*
+*   String = DllIO.Params[0]
+*   Evaluador = DllIO.Params[1]
+*
+*   usos del evaluador:
+*       D: Matchear un caracter numerico
+*       [XXX]: Cosas avanzadas
+*           [C91]: comparar el caracter del corchete abierto
+*           [C93]: comparar el caracter del corchete cerrado
+*           [C:D]: comparar el caracter de la D mayuscula
+*           [X-Y]: comparar si esta en el rango de X caracter y de Y caracter
+*           [Any]: cualquier caracter pasara
+*       cualquier otro caracter sera comparado normalmente
+*
+*   Ejemplos:
+*   
+*   Formato de fecha y hora:
+*       Caso 1:
+*           String = "10:43:00 20/10/2023"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Resultado = 1
+*       Caso 2:
+*           String = "01:24:50 10/03/2010"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Resultado = 1
+*       Caso 3:
+*           String = "Hola"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Resultado = 0
+*           
+*/
+
+_Use ASCII
+
+//
+// indicar que es un 'MyPackage' y compilarlo en vez de con el encabezado EA compilarlo con el encabezado MP
+//
+_Use EbfDLLSpec
+
+%include
+    lib/ebf.heasm
+
+/**
+* _AdvancedAction_
+*
+* los [YYY]
+* para verificar si es un [ o ] literal
+*
+*   C92 para [
+*   C93 para ]
+*/
+Array _AdvancedAction_ AllocatePool->3
+
+/**
+* _OpenAdAcChCodeInsert_
+*
+* [C91]
+*/
+Array _OpenAdAcChCodeInsert_ AllocatePool->3
+
+/**
+* _CloseAdAcChCodeInsert_
+*
+* [C93]
+*/
+Array _CloseAdAcChCodeInsert_ AllocatePool->3
+
+/**
+* _EscapeForInsertUpperD_
+*
+* [C:D]
+*/
+Array _EscapeForInsertUpperD_ AllocatePool->3
+
+/**
+* _EscapeForAnyCharacter_
+*
+* [Any]
+*/
+Array _EscapeForAnyCharacter_ AllocatePool->3
+
+/**
+* _String_
+*
+* el string a matchear
+*/
+Array _String_ _YaLeTocaraXd_
+
+/**
+* _Pattern_
+*
+* el criterio de evaluacion del string
+*/
+Array _Pattern_ _YaLeTocaraXd_
+
+/**
+* _StringIndexParse_
+*
+* el caracter a parsear
+*/
+LET _StringIndexParse_
+
+/**
+* _PatterngIndexParse_
+*
+* el index que va a parsear
+*/
+LET _PatterngIndexParse_
+
+/**
+* _CharacterToParseValue_
+*
+* el caracter que se va a parsear acutalmente
+*/
+LET _CharacterToParseValue_
+
+/**
+* _PatternCharacterToCheck_
+* 
+* el criterio del dia de hoy
+*/
+LET _PatternCharacterToCheck_
+
+/**
+* _Parse_
+*
+* parsear el string
+*/
+FUNCTION _Parse_
+    _IProto()
+
+/**
+* _CompareCharacterRange_
+*
+* acepta cualquier caracter
+*/
+FUNCTION _CompareCharacterRange_
+    _IProto()
+
+/**
+* _CompareCharacterRangeEnd_
+*
+* el final de la comparacion de caracter en rango
+*/
+FUNCTION _CompareCharacterRangeEnd_
+    _IProto()
+
+/**
+* _CompareCharacter_
+*
+* comparar dos caracteres
+*/
+FUNCTION _CompareCharacter_
+    _IProto()
+
+/**
+* _Compare92Character_
+*
+* comparar el caracter 92
+*/
+FUNCTION _Compare92Character_
+    _IProto()
+
+/**
+* _Compare93Character_
+*
+* comparar el caracter 93
+*/
+FUNCTION _Compare93Character_
+    _IProto()
+
+/**
+* _CompareDCharacter_
+*
+* compara el caracter de la D mayuscula que estaba reservado para comparar un digito de 0-9
+*/
+FUNCTION _CompareDCharacter_
+    _IProto()
+
+/**
+* _AdvanceTest_
+*
+* prueba avanzada
+*/
+FUNCTION _AdvanceTest_
+    _IProto()
+
+/**
+* _TryParseDecimalDigit_
+*
+* intentar parsear el caracter actual con el numero 0 a 9
+*/
+FUNCTION _TryParseDecimalDigit_
+    _IProto()
+
+/**
+* _CanMatch_
+*
+* que el string aprobo la evaluacion
+*/
+FUNCTION _CanMatch_
+    _IProto()
+
+/**
+* _CantMatch_
+*
+* que el string reprobo la evaluacion
+*/
+FUNCTION _CantMatch_
+    _IProto()
+
+/**
+* _InitializeDll_
+*
+* inizializa la libreria dll
+*/
+FUNCTION _InitializeDll_
+    _IProto()
+
+/**
+* GetChPParse
+*
+* obtiene el caracter actual a parsear
+*
+* @param Str el string que intentara aprovar
+* @param Match la prueba que tendra que aprovar
+*
+* @returns _CharacterToParseValue_ el caracter a examinar
+* @returns _PatternCharacterToCheck_ el caracter que o el statment con el cual aprobaran o no a _Str_
+*/
+tapot GetChPParse (_Str_,_Match_)
+    call_tapot GetArrayItem _Str_ _StringIndexParse_ _CharacterToParseValue_
+    call_tapot GetArrayItem _Match_ _PatterngIndexParse_ _PatternCharacterToCheck_
+END tapot
+
+call _InitializeDll_
+
+//
+// iniciar el parseo
+//
+
+_StringIndexParse_ = 0
+_PatterngIndexParse_ = 0
+call _Parse_
+
+FUNCTION _Parse_
+
+    call_tapot GetChPParse _String_ _Pattern_
+
+    //
+    // [YYY]
+    //
+    // Prueba de hoy:
+    //  depende de la operacion pero es muy avanzada
+    //
+    (LET*)1 = *_PatternCharacterToCheck_
+    (LET*)2 = 91
+
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _AdvanceTest_ 0
+
+    //
+    // D
+    //
+    // Prueba de hoy:
+    //   ser un digito de 0-9 si no lo eres digamos que, algo malo sucede
+    //
+    (LET*)1 = *_PatternCharacterToCheck_
+    (LET*)2 = 68
+
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _TryParseDecimalDigit_ 0
+
+    //
+    // Si no es compatible con todas las pruebas
+    //
+    // la prueba de hoy sera:
+    //  ser matcheado con su duo en _String_ si no lo es digamos que, algo malo sucede
+    //
+    (LET*)1 = *_PatternCharacterToCheck_
+    (LET*)2 = *_CharacterToParseValue_
+
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _CompareCharacterRange_
+
+    SetVar 2 0
+    call_tapot GetArrayItem _AdvancedAction_ 2 8
+    __asm decrement 8
+    SetVar 2 2
+    call_tapot GetArrayItem _AdvancedAction_ 2 9
+    __asm increment 9
+
+    call_tapot CmpAndJump _CharacterToParseValue_ 8 _ComparatorType_IfGreater_ _CompareCharacterRangeEnd_ 0
+
+    call _CantMatch_
+
+FUNCTION _CompareCharacterRangeEnd_
+
+    call_tapot CmpAndJump _CharacterToParseValue_ 9 _ComparatorType_IfNotGreater_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _CompareCharacter_
+
+    call_tapot CmpAndJump _CharacterToParseValue_ _PatternCharacterToCheck_ _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _Compare91Character_
+
+    (LET*)4 = 91
+    call_tapot CmpAndJump _CharacterToParseValue_ 4 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _Compare93Character_
+
+    (LET*)4 = 93
+    call_tapot CmpAndJump _CharacterToParseValue_ 4 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _CompareDCharacter_
+
+    (LET*)4 = 'D'
+    call_tapot CmpAndJump _CharacterToParseValue_ 4 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _AdvanceTest_
+
+    //
+    // parsear la prueba
+    //
+
+    __asm increment _PatterngIndexParse_
+
+    (LET*)4 = *_PatterngIndexParse_
+    call_tapot CoppyToArray _Pattern_ _AdvancedAction_ 4 0
+    (LET*)4 = *_PatterngIndexParse_
+    __asm increment 4
+    call_tapot CoppyToArray _Pattern_ _AdvancedAction_ 4 1
+    (LET*)4 = *_PatterngIndexParse_
+    __asm increment 4
+    __asm increment 4
+    call_tapot CoppyToArray _Pattern_ _AdvancedAction_ 4 2
+
+    (LET*)1 = 3
+    _Math _PatterngIndexParse_ + 1
+
+    //
+    // insertar el caracter 92
+    //
+
+    call_tapot BufferCmp _AdvancedAction_ _OpenAdAcChCodeInsert_
+    call_tapot IFManual _Compare91Character_ 0
+
+    call_tapot BufferCmp _AdvancedAction_ _CloseAdAcChCodeInsert_
+    call_tapot IFManual _Compare93Character_ 0
+
+    call_tapot BufferCmp _AdvancedAction_ _EscapeForInsertUpperD_
+    call_tapot IFManual _CompareDCharacter_ 0
+
+    call_tapot BufferCmp _AdvancedAction_ _EscapeForAnyCharacter_
+    call_tapot IFManual _CanMatch_ 0
+
+    //
+    // [*-*]
+    //
+    SetVar 2 1
+    call_tapot GetArrayItem _AdvancedAction_ 2 8
+    SetVar 9 45
+    call_tapot CmpAndJump 8 9 _ComparatorType_IfEqual_ _CompareCharacterRange_ 0
+
+    call _CantMatch_
+
+FUNCTION _TryParseDecimalDigit_
+
+    //
+    // 0
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 48
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 1
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 49
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 2
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 50
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 3
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 51
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 4
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 52
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 5
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 53
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 6
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 54
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 7
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 55
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 8
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 56
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    //
+    // 9
+    //
+    (LET*)1 = *_CharacterToParseValue_
+    (LET*)2 = 57
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
+
+    call _CantMatch_
+
+FUNCTION _CanMatch_
+
+    DllIO.ReturnValue = 1
+
+    __asm increment _StringIndexParse_
+    __asm increment _PatterngIndexParse_
+
+    //
+    // revisar si no se paso
+    //
+
+    (LET*)7 = *_StringIndexParse_
+    call_tapot GetArrayLength _String_ 8
+
+    _CallOut 39 7
+
+    //
+    // revisar si el string no se ha terminado
+    //
+
+    (LET*)4 = 2
+    (LET*)5 = _Parse_
+    (LET*)6 = 0
+
+    _CallOut 40 4
+
+    _CallOut 0 0
+
+FUNCTION _CantMatch_
+
+    DllIO.ReturnValue = 0
+
+    _CallOut 0 0
+
+FUNCTION _InitializeDll_
+    //
+    // [
+    //
+        _OpenAdAcChCodeInsert_ [0] 'C'
+        _OpenAdAcChCodeInsert_ [1] '9'
+        _OpenAdAcChCodeInsert_ [2] '1'
+    //
+    // ]
+    //
+        _CloseAdAcChCodeInsert_ [0] 'C'
+        _CloseAdAcChCodeInsert_ [1] '9'
+        _CloseAdAcChCodeInsert_ [2] '3'
+
+    _EscapeForInsertUpperD_ [0] 'C'
+    _EscapeForInsertUpperD_ [1] ':'
+    _EscapeForInsertUpperD_ [2] 'D'
+
+    _EscapeForAnyCharacter_ [0] 'A'
+    _EscapeForAnyCharacter_ [1] 'n'
+    _EscapeForAnyCharacter_ [2] 'y'
+    //
+    // extraer los dos parametros de la dll
+    //
+
+    (LET*)2 = 0
+    call_tapot GetArrayItem DllIO.Params 2 _String_
+    (LET*)2 = 1
+    call_tapot GetArrayItem DllIO.Params 2 _Pattern_
+
+    __asm ret

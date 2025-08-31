@@ -1,0 +1,145 @@
+/**
+* Gfx.heasm
+*
+* fua que buenos los graficos
+*
+* ./Gfx.ebf [[RR][GG][BB]] [PX] [PY] [SX] [SY]
+*
+* parametros de shell:
+*
+*   Sintaxis                tipo                descripcion
+*
+*   [[RR:u8][GG:u8][BB:u8]] CustomColor         el color en formato hex html sin el `#`
+*   [PX]                    Number              la posicion x en pixeles
+*   [PY]                    Number              la posicion y en pixeles
+*   [SX]                    Number              el tamaño en X
+*   [SX]                    Number              el tamaño en Y
+*
+*/
+
+//
+// incluir la libreria
+//
+
+%include
+    lib/ebf.heasm
+
+autopbus Color::swinc CustomColor
+
+//
+// canales individuales
+//
+
+Array RR AllocatePool->2
+Array GG AllocatePool->2
+Array BB AllocatePool->2
+
+//
+// Color
+//
+
+Array HtmlColor _YaLeTocaraXd_
+
+//
+// posicion
+//
+
+Array PX _YaLeTocaraXd_
+LET RectanglePosX
+Array PY _YaLeTocaraXd_
+LET RectanglePosY
+
+//
+// tamaño
+//
+
+Array SX _YaLeTocaraXd_
+LET RectangleSizeX
+Array SY _YaLeTocaraXd_
+LET RectangleSizeY
+
+//
+// llamar a la funcion de inicio
+//
+
+call _Init_
+
+/**
+* _ParseColor_
+*
+* parsea el color
+*/
+FUNCTION _ParseColor_
+
+    SetVar 9 0
+    call_tapot CoppyToArray HtmlColor RR 9 0
+
+    SetVar 9 1
+    call_tapot CoppyToArray HtmlColor RR 9 1
+
+    SetVar 9 2
+    call_tapot CoppyToArray HtmlColor GG 9 0
+
+    SetVar 9 3
+    call_tapot CoppyToArray HtmlColor GG 9 1
+
+    SetVar 9 4
+    call_tapot CoppyToArray HtmlColor BB 9 0
+        
+    SetVar 9 5
+    call_tapot CoppyToArray HtmlColor BB 9 1
+
+    __asm ret
+
+/**
+* _Init_
+*
+* funcion principal
+*/
+FUNCTION _Init_
+
+    call_tapot GetParam 0 HtmlColor
+    //call_tapot PrintPool HtmlColor
+
+    call_tapot GetParam 1 PX
+    call_tapot GetParam 2 PY
+    call_tapot GetParam 3 SX
+    call_tapot GetParam 4 SY
+
+    call _ParseColor_
+
+    call_tapot Xtoi RR Color.Red
+    call_tapot Xtoi GG Color.Green
+    call_tapot Xtoi BB Color.Blue
+
+    call_tapot Atoi PX RectanglePosX
+    call_tapot Atoi PY RectanglePosY
+
+    call_tapot Atoi SX RectangleSizeX
+    call_tapot Atoi SY RectangleSizeY
+
+    //_CallOut 19 Color.Red
+    //Print "\n"
+    //_CallOut 19 Color.Green
+    //Print "\n"
+    //_CallOut 19 Color.Blue
+    //Print "\n"
+
+    call_tapot DrawRectangle RectanglePosX RectanglePosY RectangleSizeX RectangleSizeY Color.Red Color.Green Color.Blue
+
+    call _CleanUp_
+
+    _CallOut 0 0
+
+/**
+* _CleanUp_
+*
+* limpia los pool creados
+*/
+FUNCTION _CleanUp_
+
+    FreePool RR
+    FreePool GG
+    FreePool BB
+
+    __asm ret

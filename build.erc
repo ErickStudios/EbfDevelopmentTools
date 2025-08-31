@@ -1,0 +1,87 @@
+# build.erc para los ejemplos de utilidades
+
+function Main
+
+    compile
+
+        [_Entry]
+            # el nombre del archivo original
+            build "lib/ebf.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/LibxEBF.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "ParamsAppStrange1.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ParamsAppStrange1.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+        
+        [_Entry]
+            # el nombre del archivo original
+            build "GetTime.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/GetTime.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Gfx.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Gfx.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "DllsSourceCode/ErickExp.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/kelly/ErickExp.dll"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "ErickExpTest.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ErickExpTest.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+        
+        # no hablemos de EtmReader.heasm, no funciona, si alguien quiere arreglarlo pues descarga una copia y intenta arreglarlo
+
+        #[_Entry]
+        #    # el nombre del archivo original
+        #    build "EtmReader.heasm"
+        #
+        #    # el nombre del archivo del resultado
+        #    As "build/EtmReader.ebf"
+        #
+        #    # compilarlo con el HLVC
+        #    With "EASM_Hlvc"
+        #[end _Entry]
+    end
+
+stopScript()

@@ -1,0 +1,50 @@
+/**
+* ebfdllspc.heasm
+*
+* la especificacion para dll de HLVC
+*/
+
+/**
+* DllParams
+*
+* parametros que necesita una dll para cargar su maximo esplendor
+*/
+swinc DllParams
+{
+    /**
+    * ReasonForCall
+    *
+    * la rason para llamar a la dll
+    *
+    * aqui no puedo establecer un standart por que cada dll tiene su propia manera de usar el ReasonForCall
+    * tendras que leer la documentacion de la libreria que usaras si es que tiene :(
+    */
+    autv ReasonForCall::LET;
+
+    /**
+    * Params
+    *
+    * el puntero a los parametros que necesita la dll
+    */
+    autv Params::Array;
+
+    /**
+    * ReturnValue
+    *
+    * lo pongo como let por que no se que retornara cada dll, si es un valor normal pues que bien, si es un array
+    * pues como let y array se comportan internamente de la misma manera por que depende solo de como lo use el usuario
+    * array solo es una convension de let para que sea mas entendible y comodo para la logica y la comprension del programador
+    *
+    * si let tiene un valor literal funciona y si apunta a un array pues automaticamente `array [Index] NewValue` lo sabe y lo maneja bien
+    * no te preocupes esta bien
+    */
+    autv ReturnValue::LET;
+}
+
+/**
+* DllIO
+*
+* tendran que compartir tanto las llamadas a la dll como el codigo de la dll la misma estructura
+* primero para que los datos sean cuerentes
+*/
+autopbus DllIO::swinc DllParams

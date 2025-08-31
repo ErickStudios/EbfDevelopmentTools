@@ -1,0 +1,74 @@
+/**
+* ebf.heasm
+*
+* archivo principal de ErickBinaryFormat para KellyBootloader
+*/
+
+_Use ASCII
+
+//
+// saltarse todas las funciones
+//
+
+call __Entry__
+
+// --------------------------------
+//
+// librerias del direccionamiento
+// automatico de lets y su control
+//
+// --------------------------------
+
+%include
+    lib/ebfptrs.heasm
+
+// --------------------------------
+//
+// librerias para interactuar 
+// con el entorno
+//
+// --------------------------------
+
+%include
+    lib/ebfargs.heasm
+
+%include
+    lib/ebffs.heasm
+
+// --------------------------------
+//
+// librerias para manejar arrays y
+// codigos en la ram
+//
+// --------------------------------
+
+%include
+    lib/ebfarrays.heasm
+
+%include
+    lib/ebfcall.heasm
+
+// --------------------------------
+//
+// librerias para ayudar a los 
+// usuarios principiantes
+//
+// --------------------------------
+
+%include
+    lib/ebfclass.heasm
+
+%include
+    lib/ebfbegimmers.heasm
+
+// --------------------------------
+//
+// librerias para la creacion de 
+// dlls
+//
+// --------------------------------
+
+%include
+    lib/ebfdllspc.heasm
+
+FUNCTION __Entry__

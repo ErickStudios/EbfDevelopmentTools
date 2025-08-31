@@ -1,0 +1,1142 @@
+/**
+* EtmReader.heasm
+*
+* intentando portear el navegador de etm
+*/
+
+//
+// usamos CHAR8
+//
+
+_Use ASCII
+
+%include
+    lib/ebf.heasm
+
+/**
+* Splitters
+*
+* los separadores importantes
+*/
+swinc Splitters
+{
+    autv LineReturnSplitter::Array;
+    autv TagSeparator::Array;
+}
+
+autopbus Splitters::swinc Splitters
+
+/// [bool_t InMenu;]
+LET _InMenu_
+
+/// [u64 MenuTabulator;]
+LET _MenuTabulator_
+
+/// [u64 Tabulator;]
+LET _Tabulator_
+
+/**
+* TagType
+*
+* las tags posibles
+*/
+ENUM TagType
+
+    /**
+    * _TagType_TITLE_ (tit)
+    *
+    * titulo
+    */
+    _EnumMember _TagType_TITLE_ 0
+
+    /**
+    * _TagType_SUBTITLE_ (sut)
+    *
+    * subtitulo
+    */
+    _EnumMember _TagType_SUBTITLE_ 1
+
+    /**
+    * _TagType_TEXT_ (txt)
+    *
+    * texto
+    */
+    _EnumMember _TagType_TEXT_ 2
+
+    /**
+    * _TagType_SMALL_TEXT_ (sxt)
+    *
+    * texto pequeño
+    */
+    _EnumMember _TagType_SMALL_TEXT_ 3
+
+    /**
+    * _TagType_LINK_ (lnk)
+    *
+    * un link
+    */
+    _EnumMember _TagType_LINK_ 4
+
+    /**
+    * _TagType_MENU_LINK_ (mlk)
+    *
+    * un link en el menu
+    */
+    _EnumMember _TagType_MENU_LINK_ 5
+
+    /**
+    * _TagType_MENU_TEXT_ (bxt)
+    *
+    * un texto en el menu
+    */
+    _EnumMember _TagType_MENU_TEXT_ 6
+
+    /**
+    * _TagType_LINE_SEPARATOR_ (nli)
+    *
+    * un salto de linea en el cuerpo de la pagina
+    */
+    _EnumMember _TagType_LINE_SEPARATOR_ 7
+
+END ENUM
+
+/**
+* LinkDirection
+*
+* representa una direccion de link etm
+*/
+swinc LinkDirection
+{
+    /**
+    * ToHPage
+    *
+    * si cambia la pagina
+    */
+    autv ToHPage::LET;
+
+    /**
+    * Page
+    *
+    * la pagina a la que dirije
+    */
+    autv Page::Array;
+
+    /**
+    * ToATab
+    *
+    * si redirije a un tabulador
+    */
+    autv ToATab::LET;
+
+    /**
+    * Tab
+    *
+    * el tabulador que redirije
+    */
+    autv Tab::LET;
+}
+
+swinc DocElement
+{
+    /**
+    * ItemType
+    *
+    * el tipo de elemento
+    */
+    autv ItemType::LET;
+
+    /**
+    * DisplayText
+    *
+    * el texto que muestra
+    */
+    autv DisplayText::Array;
+
+    /**
+    * Link
+    *
+    * si es un tipo de link esto sera usado
+    */
+    autv Link::Array;
+
+    /**
+    * Tabulator
+    *
+    * el tabulador que le corresponde
+    */
+    autv Tabulator::LET;
+
+    /**
+    * page
+    *
+    * la pagina en la que esta
+    */
+    autv page::Array;
+}
+
+/**
+* Documment
+*
+* representa un documento
+*/
+swinc Documment
+{
+    /**
+    * Documment
+    *
+    * el contenido del documento sin modificar
+    */
+    autv Documment::Array;
+    
+    /**
+    * Lines
+    *
+    * el documento dividido en lineas
+    */
+    autv Lines::Array;
+
+    /**
+    * TagsCount
+    *
+    * la cantidad de elementos
+    */
+    autv TagsCount::LET;
+
+    /**
+    * Items
+    *
+    * esto no esta en el programa original pero esto apunta a los items y como son del documento pues
+    */
+    autv Items::Array;
+}
+
+/**
+* _PageUri_
+*
+* la pagina actual
+*/
+Array _PageUri_ _YaLeTocaraXd_
+
+/**
+* _CurrentItem_
+*
+* el item que se esta procesando
+*/
+autopbus CurrentItem::swinc DocElement
+
+/**
+* _ConvertorToTag_
+*
+* el str que se convertira en tag
+*/
+Array _ConvertorToTag_ _YaLeTocaraXd_
+
+/**
+* _TagConverted_
+*
+* la tag convertida
+*/
+LET _TagConverted_
+
+/**
+* _CurrentTag_
+*
+* una tag de 3 digitos de texto
+*/
+Array _CurrentTag_ AllocatePool->3
+
+/**
+* _PageToEdit_
+*
+* la pagina a editar
+*/
+Array _PageToEdit_ _YaLeTocaraXd_
+
+/**
+* _DisplayTextOrParams_
+*
+* el texto que mostrara o si necesita, tambien los parametros
+*/
+Array _DisplayTextOrParams_ _YaLeTocaraXd_
+
+/**
+* _Index_
+*
+* el famoso `size_t i` pero en ebf
+*/
+LET _Index_
+
+/**
+* _LineIndex_
+*
+* otro index paralelo
+*/
+LET _LineIndex_
+
+/**
+* _LineToProcess_
+*
+* la linea que esta procesando
+*/
+Array _LineToProcess_ _YaLeTocaraXd_
+
+/**
+* _Firstchar_
+*
+* el primer caracter
+*/
+LET _Firstchar_
+
+/**
+* _EliminateAll_
+*
+* recordemos que 13 es el numero de mala suerte y que conveniente que windows nos deje ((CHAR8/CHAR16)13)
+*
+* estos solo estorban y invalidan el documento
+*/
+Array _EliminateAll_ AllocatePool->1
+
+/**
+* _PageKeyWord_
+*
+* p: [Nombre]
+*
+* representa la palabra para editar otra pagina
+*/
+Array _PageKeyWord_ AllocatePool->3
+
+/**
+* _EliminateAllNew_
+*
+* 13 menos mal que se expande a (CHAR16)10
+*/
+Array _EliminateAllNew_ AllocatePool->1
+
+/**
+* _TagDefine_
+*
+* :etq [Parametros/Texto]
+*
+* como definir una tag
+*/
+Array _TagDefine_ AllocatePool->1
+
+/**
+* _TagTypeIdentifier_TITLE_
+*
+* el identificador del titulo
+*/
+Array _TagTypeIdentifier_TITLE_ AllocatePool->3
+
+/**
+* _TagTypeIdentifier_SUBTITLE_
+*
+* el identificador del subtitulo
+*/
+Array _TagTypeIdentifier_SUBTITLE_ AllocatePool->3
+
+/**
+* _TagTypeIdentifier_TEXT_
+*
+* el identificador del texto
+*/
+Array _TagTypeIdentifier_TEXT_ AllocatePool->3
+
+/**
+* _TagTypeIdentifier_SMALL_TEXT_
+*
+* el identificador del texto pequeño
+*/
+Array _TagTypeIdentifier_SMALL_TEXT_ AllocatePool->3
+
+/**
+* _TagTypeIdentifier_LINE_SEPARATOR_
+*
+* el identificador del salto de linea
+*/
+Array _TagTypeIdentifier_LINE_SEPARATOR_ AllocatePool->3
+
+/**
+* _TagTypeIdentifier_LINK_
+*
+* el identificador del link
+*/
+Array _TagTypeIdentifier_LINK_ AllocatePool->3
+
+/**
+* _MainPageKey_
+*
+* el nombre de la pagina de inicio
+*/
+Array _MainPageKey_ AllocatePool->5
+
+//
+// llamar a que vayan a iniciar todo
+//
+
+call _InicializarTodo_
+
+/**
+* ItemToProcess
+*
+* el item que esta procesando para dibujar
+*/
+autopbus ItemToProcess::swinc DocElement
+
+/**
+* Documment
+*
+* yo soy ... swinc Documment
+*
+* representa el documento actual
+*/
+autopbus Documment::swinc Documment
+
+//
+// obtener el archivo
+//
+
+call_tapot GetParam 0 Documment.Documment
+call_tapot LoadFileToMem Documment.Documment
+
+//
+// eliminar todos los retornos de linea
+//
+
+call_tapot StrReplace Documment.Documment _EliminateAll_ _EliminateAllNew_ Documment.Documment
+
+//
+// separar el documento
+//
+
+call_tapot SplitStr Documment.Documment Splitters.LineReturnSplitter Documment.Lines
+
+//
+// contar las etiquetas
+//
+
+//Print "Counting\stags...\n"
+
+SetVar _Index_ 0
+call _CountTags_
+//Print "Tags\scounted\n"
+
+//
+// crear el pool al que apuntan todas las direcciones de todos los buffers de todos los `swinc DocElement`
+//
+
+SetVar 1 0
+SetVarWithValue 2 Documment.TagsCount
+_CallOut 14 1
+SetVarWithValue Documment.Items 1
+
+//
+// pasear todas las tag
+//
+
+//Print "Parsing\stags...\n"
+
+SetVar _LineIndex_ 0
+SetVar _Index_ 0
+SetVar CurrentItem.Tabulator 0
+call _ParseTags_
+//Print "Tags\sparsed\n"
+
+call_tapot WaitKeyAndRead ReadedKey.ScanCode
+
+//
+// vamos a alla
+//
+
+call _Main_
+
+_CallOut 0 0
+
+/**
+* _ParseTags_
+*
+* parsea todas las tags
+*/
+FUNCTION _ParseTags_
+
+    SetVar 6 1
+
+    //
+    // obtener la linea actual
+    //
+
+    call_tapot GetArrayItem Documment.Lines _LineIndex_ _LineToProcess_
+
+    //call_tapot PrintPool _LineToProcess_
+    //Print "\n"
+
+    // es un cambio de pagina
+    IF BufferNCmp<_LineToProcess_,_PageKeyWord_,3> THEN _PageChange_
+    // si se puede parsear
+    IF BufferNCmp<_LineToProcess_,_TagDefine_,1> THEN _ParseCurrentTag_
+
+    IF BufferCmp<_CurrentTag_,_TagTypeIdentifier_LINK_> THEN _IncrementTabulator_
+
+    __asm increment _LineIndex_
+
+    //
+    // cancelar el parseo si no es posible parsearla
+    //
+
+    SetVarWithValue 7 6
+    SetVar 8 1
+    _CallOut 39 7
+    SetVar 4 0
+    SetVar 5 _NextTagOrNot_
+    SetVar 6 0
+    _CallOut 40 4
+
+    //
+    // recordemos que para los pool/arrays/strs tenemos de las casillas 2001 hasta la 10,000 de los 4 mbs
+    //
+
+    FreePool _LineToProcess_
+
+/**
+* _IncrementTabulator_
+*
+* incrementa el tabulador actual
+*/
+FUNCTION _IncrementTabulator_
+
+    __asm increment CurrentItem.Tabulator
+
+    __asm ret
+
+/**
+* _NextTagOrNot_
+*
+* si ira a la siguiente tag o no
+*/
+FUNCTION _NextTagOrNot_
+    //
+    // revisar si no se paso
+    //
+
+    SetVarWithValue 7 _LineIndex_
+    call_tapot GetArrayLength Documment.Lines 8
+
+    _CallOut 39 7
+
+    //
+    // ver si hay mas tags
+    //
+
+    SetVar 4 2
+    SetVar 5 _ParseTags_
+    SetVar 6 0
+
+    _CallOut 40 4
+
+    //
+    // regresar si no hay mas tags
+    //
+
+    __asm ret
+
+/**
+* _PageChange_
+*
+* cambiar de pagina a editar
+*/
+FUNCTION _PageChange_
+
+    SetVarWithValue _PageToEdit_ _LineToProcess_
+
+    SetVarWithValue 1 _PageToEdit_
+    SetVar 2 3
+
+    _CallOut 33 1
+
+    SetVarWithValue _PageToEdit_ 1
+
+    _CallOut 51 _PageToEdit_
+
+    SetVar 6 1
+
+    __asm ret
+
+/**
+* _LineCantParseAsTag_
+*
+* cuando la linea no se puede convertir a tag
+*/
+FUNCTION _LineCantParseAsTag_
+
+    SetVar 6 1
+
+    __asm ret
+
+/**
+* _ParseCurrentTag_
+*
+* cuando es valida
+*/
+FUNCTION _ParseCurrentTag_
+
+    //
+    // parsear la tag
+    //
+
+    SetVar 9 1
+    call_tapot CoppyToArray _LineToProcess_ _CurrentTag_ 9 0
+
+    SetVar 9 2
+    call_tapot CoppyToArray _LineToProcess_ _CurrentTag_ 9 1
+
+    SetVar 9 3
+    call_tapot CoppyToArray _LineToProcess_ _CurrentTag_ 9 2
+
+    //
+    // parsear el texto y/o parametros
+    //
+
+    SetVarWithValue _DisplayTextOrParams_ _LineToProcess_
+
+    SetVarWithValue 1 _DisplayTextOrParams_
+    SetVar 2 5
+
+    _CallOut 33 1
+
+    SetVarWithValue _DisplayTextOrParams_ 1
+
+    SetVar 6 1
+
+    Print "tag:\s"
+    call_tapot PrintPool _CurrentTag_
+    Print "\n"
+
+    Print "text:\s"
+    call_tapot PrintPool _DisplayTextOrParams_
+    Print "\n"
+
+    Print "page:\s"
+    call_tapot PrintPool _PageToEdit_
+    Print "\n"
+
+    //
+    // crear el nuevo item
+    //
+
+    Array _NewItem_ _YaLeTocaraXd_
+
+    // donde estara la direccion al buffer de la tag creada
+    SetVar 1 0
+    // segun yo un `swinc DocElement` mide 5 casillas
+    SetVar 2 5
+    // crear el buffer
+    _CallOut 14 1
+
+    //
+    // copiar la direccion al nuevo item
+    //
+
+    SetVarWithValue _NewItem_ 1
+
+    //
+    // modificar los parametros
+    //
+
+    SetVarWithValue 3 _DisplayTextOrParams_
+    _CallOut 51 3
+    //call_tapot PrintPool 4
+    //_CallOut 18 1
+    //Print "\s"
+
+    SetVar 2 OffsetOf(DocElement).With(DisplayText)
+    call_tapot PtrSetArrayItem _NewItem_ 2 3
+    
+    SetVarWithValue _ConvertorToTag_ _CurrentTag_
+
+    call _ConvertTagToNumber_
+
+    SetVar 2 OffsetOf(DocElement).With(ItemType)
+    call_tapot PtrSetArrayItem _NewItem_ 2 _TagConverted_
+
+    SetVar 2 OffsetOf(DocElement).With(Tabulator)
+    call_tapot PtrSetArrayItem _NewItem_ 2 CurrentItem.Tabulator
+
+    _CallOut 51 _PageToEdit_
+    //_CallOut 18 1
+    //Print "\s"
+
+    SetVar 2 OffsetOf(DocElement).With(page)
+    call_tapot PtrSetArrayItem _NewItem_ 2 _PageToEdit_
+
+    //
+    // agregar el nuevo item a la lista
+    //
+
+    SetVarWithValue 4 _NewItem_
+    _CallOut 51 4
+
+    call_tapot PtrSetArrayItem Documment.Items _Index_ 4
+
+    _CallOut 18 4
+    Print "\n"
+    
+    __asm increment _Index_
+
+    __asm ret
+
+/**
+* _CountTags_
+*
+* cuenta las tags
+*/
+FUNCTION _CountTags_
+
+    //
+    // obtener la linea actual
+    //
+
+    call_tapot GetArrayItem Documment.Lines _Index_ _LineToProcess_
+    
+    //
+    // obtener el caracter 1 de la linea acutal
+    //
+
+    SetVar 2 0
+    call_tapot GetArrayItem _LineToProcess_ 2 _Firstchar_
+
+    // este debug ya no es necesario: call_tapot PrintPool _LineToProcess_
+    // este debug ya no es necesario: Print "\n"
+
+    //
+    // revisar si es una etiqueta
+    //
+
+    SetVar 5 58
+    IF _Firstchar_|==|5 THEN _OtherTagFounded_
+
+    //
+    // siguiente linea
+    //
+
+    __asm increment _Index_
+
+    //
+    // recordemos que para los pool/arrays/strs tenemos de las casillas 2001 hasta la 10,000 de los 4 mbs
+    //
+
+    //FreePool _LineToProcess_
+
+    //
+    // le puedes parar? (comparar)
+    //
+
+    SetVarWithValue 7 _Index_
+    call_tapot GetArrayLength Documment.Lines 8
+
+    _CallOut 39 7
+
+    //
+    // le puedes parar? por favor, depende de si ya no hay mas lineas
+    //
+
+    SetVar 4 2
+    SetVar 5 _CountTags_
+    SetVar 6 0
+
+    _CallOut 40 4
+
+    //
+    // regresar si no hay mas lineas
+    //
+
+    __asm ret
+
+/**
+* _OtherTagFounded_
+*
+* NO MANCHES WEY, ENCONTRASTE OTRA TAG MI EBF? bueno, agreguemosla
+*/
+FUNCTION _OtherTagFounded_
+
+    Print "Other\stag\sfounded!\n"
+    __asm increment Documment.TagsCount
+
+    __asm ret
+
+/**
+* _InicializarTodo_
+*
+* no puede faltar esto en ningun programa, todos tienen que inicializar strs y pools
+*/
+FUNCTION _InicializarTodo_
+
+    ManualAllocation Splitters.LineReturnSplitter 1
+    ManualAllocation Splitters.TagSeparator 1
+
+    Splitters.LineReturnSplitter [0] '\n'
+    Splitters.TagSeparator [0] '\s'
+
+    _TagDefine_ [0] ':'
+
+    _PageKeyWord_ [0] 'p'
+    _PageKeyWord_ [1] ':'
+    _PageKeyWord_ [2] '\s'
+
+    _EliminateAll_ [0] 13
+    _EliminateAllNew_ [0] '\n'
+
+    _TagTypeIdentifier_TITLE_ [0] 't'
+    _TagTypeIdentifier_TITLE_ [1] 'i'
+    _TagTypeIdentifier_TITLE_ [2] 't'
+
+    _TagTypeIdentifier_SUBTITLE_ [0] 's'
+    _TagTypeIdentifier_SUBTITLE_ [1] 'u'
+    _TagTypeIdentifier_SUBTITLE_ [2] 't'
+
+    _TagTypeIdentifier_TEXT_ [0] 't'
+    _TagTypeIdentifier_TEXT_ [1] 'x'
+    _TagTypeIdentifier_TEXT_ [2] 't'
+    
+    _TagTypeIdentifier_SMALL_TEXT_ [0] 's'
+    _TagTypeIdentifier_SMALL_TEXT_ [1] 'x'
+    _TagTypeIdentifier_SMALL_TEXT_ [2] 't'
+        
+    _TagTypeIdentifier_LINE_SEPARATOR_ [0] 'n'
+    _TagTypeIdentifier_LINE_SEPARATOR_ [1] 'l'
+    _TagTypeIdentifier_LINE_SEPARATOR_ [2] 'i'
+
+    _TagTypeIdentifier_LINK_ [0] 'l'
+    _TagTypeIdentifier_LINK_ [1] 'n'
+    _TagTypeIdentifier_LINK_ [2] 'k'
+
+    SetVarWithValue _PageUri_ _MainPageKey_
+
+    _MainPageKey_ [0] 'm'
+    _MainPageKey_ [1] 'a'
+    _MainPageKey_ [2] 'i'
+    _MainPageKey_ [3] 'n'
+    
+    __asm ret
+
+/**
+* _Stop_
+*
+* detiene el programa
+*/
+FUNCTION _Stop_
+
+    _CallOut 0 0
+
+/**
+* _DrawDocummentContent_
+*
+* dibuja el contenido del documento
+*/
+FUNCTION _DrawDocummentContent_
+
+    Array _CurrentItemPtr_ _YaLeTocaraXd_
+
+    //_CallOut 18 Documment.Items
+    //Print "\n"
+
+    call_tapot GetArrayItem Documment.Items _Index_ _CurrentItemPtr_
+
+    SetVar 2 OffsetOf(DocElement).With(Tabulator)
+    call_tapot GetArrayItem _CurrentItemPtr_ 2 CurrentItem.Tabulator
+
+    SetVar 2 OffsetOf(DocElement).With(page)
+    call_tapot GetArrayItem _CurrentItemPtr_ 2 CurrentItem.page
+
+    //Print ":"
+    SetVar 2 OffsetOf(DocElement).With(ItemType)
+    call_tapot GetArrayItem _CurrentItemPtr_ 2 CurrentItem.ItemType
+
+    IF BufferCmp<_PageUri_,CurrentItem.page> THEN _ParseColors_
+
+    //_CallOut 18 CurrentItem.ItemType
+    //Print "\s"
+
+    SetVar 2 OffsetOf(DocElement).With(DisplayText)
+    call_tapot GetArrayItem _CurrentItemPtr_ 2 CurrentItem.DisplayText
+
+    SetVar 5 _TagType_LINE_SEPARATOR_
+    IF CurrentItem.ItemType|==|5 THEN _DrawDocummentContentContinue_
+    
+    IF BufferCmp<_PageUri_,CurrentItem.page> THEN _DrawItemDisplayText_
+
+    //Print "\n"
+
+    //_CallOut 18 _CurrentItemPtr_
+
+FUNCTION _DrawDocummentContentContinue_
+
+    __asm increment _Index_
+
+    //
+    // revisar si no se paso
+    //
+
+    SetVarWithValue 7 _Index_
+    SetVarWithValue 8 Documment.TagsCount
+
+    _CallOut 39 7
+
+    //
+    // ver si hay mas tags
+    //
+
+    SetVar 4 2
+    SetVar 5 _DrawDocummentContent_
+    SetVar 6 0
+
+    _CallOut 40 4
+
+    //
+    // regresar si no hay mas tags
+    //
+
+    __asm ret
+
+/**
+* _DrawItemDisplayText_
+*
+* dibuja el texto que muestra el item
+*/
+FUNCTION _DrawItemDisplayText_
+    call_tapot PrintPool CurrentItem.DisplayText
+
+    __asm ret
+
+/**
+* _Main_
+*
+* la funcion de inicio
+*/
+FUNCTION _Main_
+
+    _CallOut 2 0
+
+    Print "tags-count:\s"
+
+    _CallOut 18 Documment.TagsCount
+
+    Print "\n"
+
+    //
+    // dibujar el contenido
+    //
+
+    SetVar _Index_ 0
+    call _DrawDocummentContent_
+
+    //
+    // definir variables del loop
+    //
+
+    SetVar 9 1
+    autopbus ReadedKey::swinc EfiKey
+
+    _CallOut 9 0
+
+    call_tapot WaitKeyAndRead ReadedKey.ScanCode
+
+    SetVar 5 _SCAN_ESC_
+    IF ReadedKey.ScanCode|==|5 THEN _Stop_
+    SetVar 5 _SCAN_LEFT_
+    IF ReadedKey.ScanCode|==|5 THEN _IncrementTab_
+    SetVar 5 _SCAN_RIGHT_
+    IF ReadedKey.ScanCode|==|5 THEN _DecrementTab_
+    SetVar 5 _SCAN_F10_
+    IF ReadedKey.ScanCode|==|5 THEN _AlternateMenu_
+
+    call_tapot While 9 _Main_
+
+/**
+* _ConvertTagToNumber_
+*
+* convierte un identificador de tag a una tag
+*/
+FUNCTION _ConvertTagToNumber_
+
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_TITLE_> THEN _ConvertTagToNumberTitle_
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_SUBTITLE_> THEN _ConvertTagToNumberSubtitle_
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_TEXT_> THEN _ConvertTagToNumberText_
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_SMALL_TEXT_> THEN _ConvertTagToNumberSmallText_
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_LINE_SEPARATOR_> THEN _ConvertTagToNumberNewLine_
+    IF BufferCmp<_ConvertorToTag_,_TagTypeIdentifier_LINK_> THEN _ConvertTagToNumberLink_
+
+    __asm ret
+
+FUNCTION _ParseColors_
+
+    SetVar 8 _TagType_TITLE_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToTitle_
+
+    SetVar 8 _TagType_SUBTITLE_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToSubtitle_
+
+    SetVar 8 _TagType_TEXT_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToText_
+
+    SetVar 8 _TagType_SMALL_TEXT_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToSmallText_
+
+    SetVar 8 _TagType_LINE_SEPARATOR_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToNewLine_
+
+    SetVar 8 _TagType_LINK_
+    IF CurrentItem.ItemType|==|8 THEN _SetColorToLink_
+
+    __asm ret
+
+/// [titulo]
+FUNCTION _ConvertTagToNumberTitle_
+    _TagConverted_ = _TagType_TITLE_
+    __asm ret
+/// [subtitulo]
+FUNCTION _ConvertTagToNumberSubtitle_
+    _TagConverted_ = _TagType_SUBTITLE_
+    __asm ret
+/// [texto]
+FUNCTION _ConvertTagToNumberText_
+    _TagConverted_ = _TagType_TEXT_
+    __asm ret
+/// [texto pequeño]
+FUNCTION _ConvertTagToNumberSmallText_
+    _TagConverted_ = _TagType_SMALL_TEXT_
+    __asm ret
+/// [salto de linea]
+FUNCTION _ConvertTagToNumberNewLine_
+    _TagConverted_ = _TagType_LINE_SEPARATOR_
+    __asm ret
+/// [enlaze]
+FUNCTION _ConvertTagToNumberLink_
+    _TagConverted_ = _TagType_LINK_
+    __asm ret
+
+/// [titulo]
+FUNCTION _SetColorToTitle_
+    SetVar 1 _ConsoleColor_brightblue_
+    _CallOut 3 1
+    __asm ret
+/// [subtitulo]
+FUNCTION _SetColorToSubtitle_
+    SetVar 1 _ConsoleColor_brightgreen_
+    _CallOut 3 1
+    __asm ret
+/// [texto]
+FUNCTION _SetColorToText_
+    SetVar 1 _ConsoleColor_gray_
+    _CallOut 3 1
+    __asm ret
+/// [texto pequeño]
+FUNCTION _SetColorToSmallText_
+    SetVar 1 _ConsoleColor_darkgray_
+    _CallOut 3 1
+    __asm ret
+/// [salto de linea]
+FUNCTION _SetColorToNewLine_
+    Print "\n"
+    __asm ret
+// [link?]
+FUNCTION _SetColorToLink_
+    call _SetColorToULink_
+    IF CurrentItem.Tabulator|==|_Tabulator_ THEN _SetColorToSLink_
+    __asm ret
+/// [link no seleccionado]
+FUNCTION _SetColorToULink_
+    SetVar 1 _ConsoleColor_blue_
+    _CallOut 3 1
+    __asm ret
+/// [link seleccionado]
+FUNCTION _SetColorToSLink_
+    SetVar 1 _ConsoleColor_brightblue_
+    _CallOut 3 1
+    __asm ret
+
+/**
+* _IncrementTab_
+*
+* incrementa el tabulador
+*/
+FUNCTION _IncrementTab_
+    SetVar 4 0
+    IF _InMenu_|==|4 THEN _IncrementBodyTab_
+    SetVar 4 1
+    IF _InMenu_|==|4 THEN _IncrementMenuTab_
+    __asm ret
+FUNCTION _IncrementBodyTab_
+    __asm increment _Tabulator_
+    __asm ret
+FUNCTION _IncrementMenuTab_
+    __asm increment _MenuTabulator_
+    __asm ret
+
+/**
+* _DecrementTab_
+*
+* decrementa el tabulador
+*/
+FUNCTION _DecrementTab_
+
+    SetVar 4 0
+    IF _InMenu_|==|4 THEN _DecrementBodyTab_
+    SetVar 4 1
+    IF _InMenu_|==|4 THEN _DecrementMenuTab_
+
+    __asm ret
+FUNCTION _DecrementBodyTab_
+    __asm decrement _Tabulator_
+    __asm ret
+FUNCTION _DecrementMenuTab_
+    __asm decrement _MenuTabulator_
+    __asm ret
+
+/**
+* _AlternateMenu_
+*
+* alterna el menu
+*/
+FUNCTION _AlternateMenu_
+
+    //
+    // activar el menu
+    //
+
+    SetVarWithValue 7 _InMenu_
+    SetVar 8 0
+    _CallOut 39 7
+    SetVar 4 0
+    SetVar 5 _ActivateMenu_
+    SetVar 6 0
+    _CallOut 40 4
+
+    //
+    // desactivar el menu
+    //
+
+    SetVarWithValue 7 _InMenu_
+    SetVar 8 1
+    _CallOut 39 7
+    SetVar 4 0
+    SetVar 5 _UnactivateMenu_
+    SetVar 6 0
+    _CallOut 40 4
+
+    // funcion para activar el menu
+    FUNCTION _ActivateMenu_
+        SetVar _InMenu_ 1
+        SetVar 4 3
+        SetVar 5 _AlternateMenuFinish_
+        SetVar 6 0
+        _CallOut 40 4
+    // funcion para desactivar el menu
+    FUNCTION _UnactivateMenu_
+        SetVar _InMenu_ 0
+        SetVar 4 3
+        SetVar 5 _AlternateMenuFinish_
+        SetVar 6 0
+        _CallOut 40 4
+    FUNCTION _AlternateMenuFinish_
+
+    __asm ret

@@ -1,0 +1,81 @@
+/**
+* ErickExpTest.heasm
+*
+* usa FS0:/kelly/ErickExp.dll
+*/
+
+_Use ASCII
+
+%include
+    lib/ebf.heasm
+
+//
+// la dll solo necesita 2 parametros para funcionar
+//
+
+SetVar 1 0
+SetVar 2 2
+_CallOut 14 1
+SetVarWithValue DllIO.Params 1
+
+/**
+* _String_
+*
+* el string a evaluar
+*/
+Array _String_ _YaLeTocaraXd_
+
+/**
+* _Pattern_
+*
+* el criterio de evaluacion
+*/
+Array _Pattern_ _YaLeTocaraXd_
+
+/**
+* _ErickExpDllFile_
+*
+* el archivo adjunto de la dll
+*
+* como EBF no tiene enlazador entonces tenemos que crearlo manualmente
+*/
+Array _ErickExpDllFile_ AllocatePool->StrLen\s"kelly/ErickExp.dll"
+
+//
+// inicializar el archivo adjunto
+//
+
+_ErickExpDllFile_ [0] 'k'
+_ErickExpDllFile_ [1] 'e'
+_ErickExpDllFile_ [2] 'l'
+_ErickExpDllFile_ [3] 'l'
+_ErickExpDllFile_ [4] 'y'
+_ErickExpDllFile_ [5] 92
+_ErickExpDllFile_ [6] 'E'
+_ErickExpDllFile_ [7] 'r'
+_ErickExpDllFile_ [8] 'i'
+_ErickExpDllFile_ [9] 'c'
+_ErickExpDllFile_ [10] 'k'
+_ErickExpDllFile_ [11] 'E'
+_ErickExpDllFile_ [12] 'x'
+_ErickExpDllFile_ [13] 'p'
+_ErickExpDllFile_ [14] '.'
+_ErickExpDllFile_ [15] 'd'
+_ErickExpDllFile_ [16] 'l'
+_ErickExpDllFile_ [17] 'l'
+
+call_tapot GetParam 0 _String_
+call_tapot GetParam 1 _Pattern_
+
+call_tapot SetArrayItem DllIO.Params 0 _String_
+call_tapot SetArrayItem DllIO.Params 1 _Pattern_
+
+call_tapot ExecuteFile _ErickExpDllFile_
+
+_CallOut 18 DllIO.ReturnValue
+
+//
+// liberar todo
+//
+
+FreePool DllIO.Params

@@ -1,0 +1,132 @@
+/**
+* GetTime.heasm
+*
+* imprime el tiempo actual
+*
+* outpud esperado:
+*
+*   parametros que tener en cuenta de este apartado
+*       - la fecha es 10 de enero del 2025
+*       - la hora es a las 20 horas con 50 minutos con 20 segundos
+*   
+*   por cierto esta no es la hora actual en la que escribo este programa , es algo inventado
+*
+* de uso:
+*   ```KellyBootloaderOutpud
+*
+*   KellyBootloader> ./GetTime.ebf --time
+*   The time is: 20:50:20
+*   
+*   KellyBootloader> ./GetTime.ebf --date
+*   The date is: 10/1/2025
+*   
+*   KellyBootloader>
+*
+*   ```
+*/
+
+//
+// activar el modo de superar las limitaciones de CHAR8
+//
+
+_Use ASCII
+
+%include
+    lib/ebf.heasm
+
+//
+// variables del programa
+//
+
+LET _Comando_
+
+autopbus _ElTiempo_::swinc EfiTime
+
+Array _ComandoParaObtenerLaHora_ AllocatePool->6
+Array _ComandoParaObtenerLaFecha_ AllocatePool->6
+
+//
+// llamar a la funcion principal
+//
+
+call __principal
+
+FUNCTION __inizializarTodo
+
+    //
+    // comando de la fecha
+    //
+
+    _ComandoParaObtenerLaFecha_ [0] '-'
+    _ComandoParaObtenerLaFecha_ [1] '-'
+    _ComandoParaObtenerLaFecha_ [2] 'd'
+    _ComandoParaObtenerLaFecha_ [3] 'a'
+    _ComandoParaObtenerLaFecha_ [4] 't'
+    _ComandoParaObtenerLaFecha_ [5] 'e'
+
+    //
+    // comando de la hora
+    //
+
+    _ComandoParaObtenerLaHora_ [0] '-'
+    _ComandoParaObtenerLaHora_ [1] '-'
+    _ComandoParaObtenerLaHora_ [2] 't'
+    _ComandoParaObtenerLaHora_ [3] 'i'
+    _ComandoParaObtenerLaHora_ [4] 'm'
+    _ComandoParaObtenerLaHora_ [5] 'e'
+
+    //
+    // obtener el tiempo
+    //
+
+    _CallOut 13 _ElTiempo_.Second
+
+    __asm ret
+
+FUNCTION __ImprimirFecha
+
+    Print "The\sdate\sis:\s"
+
+    _CallOut 18 _ElTiempo_.Day
+    Print "/"
+    _CallOut 18 _ElTiempo_.Month
+    Print "/"
+    _CallOut 18 _ElTiempo_.Year
+
+    __asm ret
+
+FUNCTION __ImprimirHora
+
+    Print "The\stime\sis:\s"
+
+    _CallOut 18 _ElTiempo_.Hour
+    Print ":"
+    _CallOut 18 _ElTiempo_.Minute
+    Print ":"
+    _CallOut 18 _ElTiempo_.Second
+
+    __asm ret
+
+FUNCTION __principal
+
+    call __inizializarTodo
+
+    call_tapot GetParam 0 _Comando_
+
+    IF BufferCmp<_Comando_,_ComandoParaObtenerLaFecha_> THEN __ImprimirFecha
+    IF BufferCmp<_Comando_,_ComandoParaObtenerLaHora_> THEN __ImprimirHora
+
+    call __LiberarTodo
+
+    _CallOut 0 0
+
+FUNCTION __LiberarTodo
+
+    //
+    // liberar los comando
+    //
+
+    FreePool _ComandoParaObtenerLaFecha_
+    FreePool _ComandoParaObtenerLaHora_
+
+    __asm ret

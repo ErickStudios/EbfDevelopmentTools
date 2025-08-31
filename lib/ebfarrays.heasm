@@ -1,0 +1,163 @@
+/**
+* ebfarrays.heasm
+*
+* manejar arrays de forma facil
+*/
+
+/**
+* GetArrayLength
+*
+* obtener la longitud de un array
+*
+* @param Array el array
+* @param GetOn donde lo retornara
+*
+* @returns GetOn como lo prometi antes
+*/
+tapot GetArrayLength (Array,GetOn)
+
+    __asm set_value_with_value_of_value GetOn,Array
+
+END tapot
+
+/**
+* GetArrayItem
+*
+* esto lo iba a implementar en las instrucciones oficiales de HLVC pero, como ya se puede con los tapot entonces aqui esta
+* aparte no pasa nada por que aparte de que se podra ver el codigo y a que se expande tambien no pasa nada con call_tapot, por que
+* si algo que no se construyo como una funcion oficial pero lo construyo el mismo que hace las funciones oficiales no se notara la diferencia
+*
+* obtiene un item de un array
+*
+* @param PtrTo el puntero al array
+* @param Item el item
+*
+* @returns ReturnOn como el item extraido
+*/
+tapot GetArrayItem (_PtrTo_,_Item_,_ReturnOn_)
+    
+    SetVarWithValue 1 _PtrTo_
+    SetVarWithValue 2 _Item_
+
+    _CallOut 17 1
+
+    SetVarWithValue _ReturnOn_ 3
+
+END tapot
+
+/**
+* SetArrayItem
+*
+* cambia el valor de un item de un array
+*
+* @param PtrTo el puntero al array
+* @param Item el item
+* @param NewValue el nuevo valor
+*/
+tapot SetArrayItem (PtrTo,_Item_,_NewValue_)
+    
+    SetVarWithValue 1 PtrTo
+    SetVar 2 _Item_
+    SetVarWithValue 3 _NewValue_
+
+    _CallOut 16 1
+
+END tapot
+
+/**
+* PtrSetArrayItem
+*
+* cambia el valor de un item de un array
+*
+* @param PtrTo el puntero al array
+* @param Item el puntero item
+* @param NewValue el nuevo valor
+*/
+tapot PtrSetArrayItem (PtrTo,_Item_,_NewValue_)
+    
+    SetVarWithValue 1 PtrTo
+    SetVarWithValue 2 _Item_
+    SetVarWithValue 3 _NewValue_
+
+    _CallOut 16 1
+
+END tapot
+
+/**
+* CoppyToArray
+*
+* copia un item de un array a otro con un elemento
+*
+* @param PtrTo1 el puntero al array 1
+* @param PtrTo2 el puntero al array 2
+* @param Item1 el item 1
+* @param Item2 el item 2
+*/
+tapot CoppyToArray (_PtrTo1_,_PtrTo2_,_Item1_,_Item2_)
+
+    call_tapot GetArrayItem _PtrTo1_ _Item1_ 3
+    call_tapot SetArrayItem _PtrTo2_ _Item2_ 3
+
+END tapot
+
+/**
+* BufferCmp
+*
+* una comparacion manual de BufferCmp sin el IF
+*
+* @param Array1 puntero al array 1
+* @param Array2 puntero al array 2
+*
+* @returns (LET*)256 aunque ya lo maneja if_equal
+*/
+tapot BufferCmp (_Array1_,Array2_)
+
+    (LET*)1 = *_Array1_
+    (LET*)2 = *Array2_
+
+    _CallOut 24 1
+
+END tapot
+
+/**
+* BufferNCmp
+*
+* una comparacion manual de BufferNCmp sin el IF
+*
+* @param Array1 puntero al array 1
+* @param Array2 puntero al array 2
+* @param Len la longitud que compara
+*
+* @returns (LET*)256 aunque ya lo maneja if_equal
+*/
+tapot BufferNCmp (_Array1_,Array2_,_Len_)
+
+    (LET*)1 = *_Array1_
+    (LET*)2 = *Array2_
+    (LET*)3 = _Len_
+
+    _CallOut 32 1
+
+END tapot
+
+
+/**
+* PtrLenBufferNCmp
+*
+* una comparacion manual de BufferNCmp sin el IF y con len como puntero
+*
+* @param Array1 puntero al array 1
+* @param Array2 puntero al array 2
+* @param Len puntero a la longitud que compara
+*
+* @returns (LET*)256 aunque ya lo maneja if_equal
+*/
+tapot PtrLenBufferNCmp (_Array1_,Array2_,_Len_)
+
+    (LET*)1 = *_Array1_
+    (LET*)2 = *Array2_
+    (LET*)3 = *_Len_
+
+    _CallOut 32 1
+
+END tapot

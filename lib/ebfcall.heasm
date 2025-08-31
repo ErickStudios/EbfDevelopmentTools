@@ -1,0 +1,32 @@
+/**
+* ebfcall.heasm
+*
+* funciones para llamar a codigo en la ram
+*/
+
+/**
+* ExecuteCodeFromRam
+*
+* executa un codigo guardado en la ram como un string
+*
+* @param PtrToCode el puntero al archivo
+*/
+tapot ExecuteCodeFromRam (PtrToCode)
+
+    _CallOut 43 PtrToCode
+
+END tapot
+
+/**
+* SaveMeInRam
+*
+* guarda el codigo actual en la ram
+*
+* @param SavePtrIn donde se guardara la direccion al codigo
+* @returns SavePtrIn como el puntero al codigo
+*/
+tapot SaveMeInRam (SavePtrIn)
+
+    _CallOut 42 SavePtrIn
+
+__asm ret

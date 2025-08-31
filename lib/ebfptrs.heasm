@@ -1,0 +1,82 @@
+/**
+* ebfptrs.heasm
+*
+* las direcciones en las cuales POR NADA DEL MUNDO el compilador debe alojar variables en estas direcciones
+*/
+
+/**
+* NullPtr
+*
+* representa el puntero nulo
+*/
+ref NullPtr 1
+
+/**
+* PrincipalRegister
+*
+* registro principal
+*/
+ref PrincipalRegister 1
+
+/**
+* PrincipalRegisterParameter1
+*
+* el parametro 1 del registro principal
+*/
+ref PrincipalRegisterParameter1 2
+
+/**
+* PrincipalRegisterParameter2
+*
+* el parametro 2 del registro principal
+*/
+ref PrincipalRegisterParameter2 3
+
+/**
+* ConditionalJumpRegister
+*
+* el registro usado para la condicion que debe tener (LET*)256 para saltar a algo
+*/
+ref ConditionalJumpRegister 4
+
+/**
+* JumpLabelIdRegister
+*
+* el registro que contiene el id del label al cual se va a ir
+*/
+ref JumpLabelIdRegister 5
+
+/**
+* JumpSaveStackFlag
+*
+* la flag que indica si se guardara el stack en el salto personalizado
+*/
+ref JumpSaveStackFlag 6
+
+/**
+* TemporalyVariable1
+*
+* la variable temporal 1
+*/
+ref TemporalyVariable1 7
+
+/**
+* TemporalyVariable2
+*
+* la variable temporal 2
+*/
+ref TemporalyVariable2 8
+
+/**
+* TemporalyVariable3
+*
+* la variable temporal 3
+*/
+ref TemporalyVariable3 9
+
+/**
+* ProgramCounter
+*
+* el contador de instruccion
+*/
+ref ProgramCounter 10

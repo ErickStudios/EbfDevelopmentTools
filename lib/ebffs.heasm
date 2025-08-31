@@ -1,0 +1,32 @@
+/**
+* ebffs.heasm
+*
+* acceso al sistema de archivos
+*/
+
+/**
+* ExecuteFile
+*
+* ejecuta un archivo desde el fs
+*
+* @param FileNamePool el nombre del archivo
+*/
+tapot ExecuteFile (FileNamePool)
+
+    _CallOut 21 FileNamePool
+
+END tapot
+
+/**
+* LoadFileToMem
+*
+* cargar un archivo en la ram
+*
+* @param FileNamePool el nombre del archivo
+* @returns FileNamePool como el contenido
+*/
+tapot LoadFileToMem (FileNamePool)
+
+    _CallOut 45 FileNamePool
+
+END tapot

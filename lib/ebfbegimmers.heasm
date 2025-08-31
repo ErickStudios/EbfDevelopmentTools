@@ -1,0 +1,600 @@
+/**
+* ebfbegimmers.heasm
+*
+* funciones que les facilita a los que no saben las llamadas del sistema
+*
+* algo que aclarar es que no es solo para principiantes de hlvc si no para ahorrarse tiempo
+* de escribir codigo, si, los uso tambien aunque yo me se todo el hlvc, las llamadas del bootloader
+* aunque eso ya se me escapa un poco, y tambien las estructuras, pero uso funciones de esta libreria
+* para ahorrarme escribir codigo
+*/
+
+/**
+* ComparatorType
+*
+* el tipo de comparador
+*/
+ENUM ComparatorType
+
+    /**
+    * _ComparatorType_IfEqual_
+    *
+    * devuelve true si son iguales
+    */
+    _EnumMember _ComparatorType_IfEqual_ 0
+
+    /**
+    * _ComparatorType_IfGreater_
+    *
+    * devuelve true si son el operador 1 es mayor que el 2
+    */
+    _EnumMember _ComparatorType_IfGreater_ 1
+
+    /**
+    * _ComparatorType_IfNotGreater_
+    *
+    * devuelve true si son el operador 1 es menor que el 2
+    */
+    _EnumMember _ComparatorType_IfNotGreater_ 2
+
+    /**
+    * _ComparatorType_JumpsAnyWays_
+    * 
+    * no le importa si son verdadero o falso, siempre saltara
+    */
+    _EnumMember _ComparatorType_JumpsAnyWays_ 3
+
+END ENUM
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_NULL_ 0
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_UP_ 1
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_DOWN_ 2
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_RIGHT_ 3
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_LEFT_ 4
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_HOME_ 5
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_END_ 6
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_INSERT_ 7
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_DELETE_ 8
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_PAGE_UP_ 9
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_PAGE_DOWN_ 10
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F1_ 11
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F2_ 12
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F3_ 13
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F4_ 14
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F5_ 15
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F6_ 16
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F7_ 17
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F8_ 18
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F9_ 19
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F10_ 20
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F11_ 21
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_F12_ 22
+
+/// [extraido de: gnu-efi eficon.h]
+#define _SCAN_ESC_ 23
+
+/**
+* _StdoutColors_
+*
+* representa los colores estandart del conout de KellyBootloader
+*/
+ENUM _StdoutColors_
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_black_ 1
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_lightblack_ 2
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkgray_ 3
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_gray_ 4
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_lightgray_ 5
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_white_ 6
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkred_ 7
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_red_ 8
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightred_ 9
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkorange_ 10
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_orange_ 11
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightorange_ 12
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkyellow_ 13
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_yellow_ 14
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightyellow_ 15
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkgreen_ 16
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_green_ 17
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightgreen_ 18
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkcyan_ 19
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_cyan_ 20
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightcyan_ 21
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkteal_ 22
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_teal_ 23
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightteal_ 24
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_darkblue_ 25
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_blue_ 26
+
+    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    _EnumMember _ConsoleColor_brightblue_ 27
+
+END ENUM
+
+/**
+* SetForegroundColor
+*
+* cambia el color del texto de la consola
+*
+* @param Color el color
+*/
+tapot SetForegroundColor (Color)
+
+    _CallOut 3 Color
+
+END tapot
+
+/**
+* SetBackgroundColor
+*
+* cambia el color del fondo de la consola
+*
+* @param Color el color
+*/
+tapot SetBackgroundColor (Color)
+
+    _CallOut 4 Color
+
+END tapot
+
+/**
+* SetCursorPos
+*
+* cambia la posicion del cursor de la consola
+*
+* @param X la nueva posicion en x
+* @param Y la nueva posicion en y
+*/
+tapot SetCursorPos (X,Y)
+
+    SetVar 1 X
+    SetVar 2 Y
+    _CallOut 5 1
+    _CallOut 7 2
+
+END tapot
+
+/**
+* WaitMicroseconds
+*
+* espera una cantidad de microsegudos
+*
+* @param Ms los microsegundos a esperar
+*/
+tapot WaitMicroseconds (Ms)
+
+    SetVar 1 Ms
+
+    _CallOut 10 1
+
+END tapot
+
+/**
+* WaitKeyAndRead
+*
+* epsera una tecla y la lee
+*
+* @returns EfiKeyStructPtr como la tecla, lee EfiKey para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
+*/
+tapot WaitKeyAndRead (EfiKeyStructPtr)
+
+    _CallOut 11 0
+
+    _CallOut 12 EfiKeyStructPtr
+
+END tapot
+
+/**
+* GetTime
+*
+* obtiene la fecha y hora
+*
+* @returns EfiTimeStructPtr como la fecha y hora, lee EfiTime para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
+*/
+tapot GetTime (EfiTimeStructPtr)
+
+    _CallOut 13 EfiTimeStructPtr
+
+END tapot
+
+/**
+* PrintNumber
+*
+* imprime un numero en la consola
+*
+* @param Number el numero, no hay version de puntero asi que usa `_CallOut 18 {PunteroATuNumero}`
+*/
+tapot PrintNumber (Number)
+
+    SetVar 1 Number
+
+    _CallOut 18 1
+
+END tapot
+
+/**
+* PrintHexNumber
+*
+* imprime un numero hexadecimal en la consola sin el `0x`
+*
+* @param Number el numero, no hay version de puntero asi que usa `_CallOut 19 {PunteroATuNumero}`
+*/
+tapot PrintHexNumber (Number)
+
+    SetVar 1 Number
+
+    _CallOut 19 1
+
+END tapot
+
+/**
+* Atoi
+*
+* convierte un texto a numero
+*
+* @param Str el puntero al string
+* @returns NumberCout como salida
+*/
+tapot Atoi (Str,NumberCout)
+
+    1 = NumberCout
+    2 = *Str
+
+    // intentar convertir el string a numero
+    _CallOut 41 1
+
+END tapot
+
+/**
+* Xtoi
+*
+* convierte un texto hexadecimal a numero
+*
+* @param Str el puntero al string
+* @returns NumberCout como salida
+*/
+tapot Xtoi (Str,NumberCout)
+
+    1 = NumberCout
+    2 = *Str
+
+    // intentar convertir el string a numero
+    _CallOut 47 1
+
+END tapot
+
+/**
+* DrawImage
+*
+* dibuja una imagen
+*
+* @param DrawImageOperation como la operacion, usa la estructura ImageDrawOperation
+*/
+tapot DrawImage (DrawImageOperation)
+
+    _CallOut 46 DrawImageOperation
+
+END tapot
+
+/**
+* Shutdown
+*
+* apaga la pc
+*/
+FUNCTION Shutdown
+
+    _CallOut 27 0
+
+__asm ret
+
+/**
+* Reset
+*
+* reinicia la pc
+*/
+FUNCTION Reset
+
+    _CallOut 28 0
+
+__asm ret
+
+/**
+* PrintPool
+*
+* imprimir un pool
+*/
+tapot PrintPool (Str)
+
+    _CallOut 22 Str
+
+END tapot
+
+/**
+* While
+*
+* hace algo mientras una variable es true (vease (LET)1)
+*
+* la funcion debe tener una instruction `__asm ret` y usa `FUNCTION` por que tapot es una macro y no una funcion a la que se puede llamar en tiempo de ejecucion
+* @param Var la variable
+* @param Function la funcion
+*/
+tapot While (Var,Function)
+
+    SetVarWithValue 7 Var
+    SetVar 8 1
+
+    _CallOut 39 7
+
+    SetVar 4 0
+    SetVar 5 Function
+    SetVar 6 0
+
+    _CallOut 40 4
+
+END tapot
+
+/**
+* DrawRectangle
+*
+* dibuja un rectangulo
+*
+* @param PosX la posicion en X
+* @param PosY la posicion en Y
+* @param SizeX el tamaño en X
+* @param SizeY el tamaño en Y
+* @param Red el color rojo
+* @param Green el color verde
+* @param Blue el color azul
+*/
+tapot DrawRectangle (PosX,PosY,SizeX,SizeY,Red,Green,Blue)
+    // rojo
+    SetVarWithValue 1 Red
+    // verde
+    SetVarWithValue 2 Green
+    // azul
+    SetVarWithValue 3 Blue
+    // posicion x
+    SetVarWithValue 4 PosX
+    // posicion y
+    SetVarWithValue 5 PosY
+    // tamanio x
+    SetVarWithValue 6 SizeX
+    // tamanio y
+    SetVarWithValue 7 SizeY
+
+    // dibujarlo
+    _CallOut 48 1
+END tapot
+
+/**
+* SplitStr
+*
+* recuerda, tenga a mano una copia de respañdo del original por que no se liberara solo de la memoria
+* y al perder la direccion del original nunca podra liberarlo y se acomularan en la memoria
+*
+* separa un string
+*
+* @param StrToSplitPtr el puntero al string a separar
+* @param Splitter el puntero al string separador
+* @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
+*/
+tapot SplitStr (StrToSplitPtr,Splitter,ReturnOn)
+
+    SetVarWithValue 1 StrToSplitPtr
+    SetVarWithValue 2 Splitter
+
+    _CallOut 49 1
+
+    SetVarWithValue ReturnOn 1
+
+END tapot
+
+/**
+* StrReplace
+*
+* recuerda, tenga a mano una copia de respañdo del original por que no se liberara solo de la memoria
+* y al perder la direccion del original nunca podra liberarlo y se acomularan en la memoria
+*
+* remplaza un por otro
+*
+* @param StrPtr el puntero al string a renplazar
+* @param OldStr el puntero al string original
+* @param NewStr el puntero al string que remplazara a OldStr
+* @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
+*/
+tapot StrReplace (_StrPtr,_OldStr,_NewStr,ReturnOn)
+
+    SetVarWithValue 1 _StrPtr
+    SetVarWithValue 2 _OldStr
+    SetVarWithValue 3 _NewStr
+
+    _CallOut 50 1
+
+    SetVarWithValue ReturnOn 1
+
+END tapot
+
+/**
+* CmpAndJump
+*
+* compara y salta
+* 
+* @param Value1 el operador 1 en una variable (no se aceptan valores literales)
+* @param Value2 el operador 2 en una variable (no se aceptan valores literales)
+* @param JumpIf saltar si retorno especificamente un estado de ComparatorType
+* @param JumpTo la etiqueta a la que saltara (un function, no se aceptan tapots, no se aceptan punteros a funciones)
+* @param SaveProgramCounter 1 si se quiere guardar el puntero de instrucciones para usar ret para volver al mismo lugar y seguir, si es 0 no se guardara
+*/
+tapot CmpAndJump (_Value1_,_Value2_,_JumpIf_,_JumpTo_,_SaveProgramCounter_)
+
+    SetVarWithValue 1 _Value1_
+    SetVarWithValue 2 _Value2_
+
+    _CallOut 39 1
+
+    SetVar 1 _JumpIf_
+    SetVar 2 _JumpTo_
+    SetVar 3 _SaveProgramCounter_
+
+    _CallOut 40 1
+
+END tapot
+
+/**
+* IFManual
+*
+* un if manual
+*
+* @param JumpTo la etiqueta a la que se saltara
+* @param SaveProgramCounter la posibilidad de hacer ret para continuar, 0 si no, 1 si se desea
+*/
+tapot IFManual (_JumpTo_,_SaveProgramCounter_)
+
+    (LET*)4 = 1
+    (LET*)5 = _JumpTo_
+    (LET*)6 = _SaveProgramCounter_
+
+    _CallOut 40 4
+
+END tapot
+
+/**
+* BitwiseOR
+*
+* 1 o 2 o los dos
+* @param Variable la variable que se comparara
+* @param Value el valor con el cual se comparara la variable, no se permiten valores literales solo otras variables
+*
+* @returns Variable ni yo se como funciona or de bits por dentro pero retornara en C (Variable | Value), aunque Variable se sobreescribe
+*/
+tapot BitwiseOR (_Variable_,_Value_)
+
+    __asm or _Variable_,_Value_
+
+END tapot
+
+/**
+* BitwiseNASK
+*
+* 1 y 2
+* @param Variable la variable que se comparara
+* @param Value el valor con el cual se comparara la variable, no se permiten valores literales solo otras variables
+*
+* @returns Variable ni yo se como funciona and de bits por dentro pero retornara en C (Variable & Value), aunque Variable se sobreescribe
+*/
+tapot BitwiseNASK (_Variable_,_Value_)
+
+    __asm and _Variable_,_Value_
+
+END tapot
+
+/**
+* BitwiseXOR
+*
+* 1 o 2 pero nunca los 2
+* @param Variable la variable que se comparara
+* @param Value el valor con el cual se comparara la variable, no se permiten valores literales solo otras variables
+*
+* @returns Variable ni yo se como funciona xor de bits por dentro pero retornara en C (Variable ^ Value), aunque Variable se sobreescribe
+*/
+tapot BitwiseXOR (_Variable_,_Value_)
+
+    __asm xor _Variable_,_Value_
+
+END tapot

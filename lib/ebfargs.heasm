@@ -1,0 +1,49 @@
+/**
+* ebfargs.heasm
+*
+* parametros de la shell
+*/
+
+/**
+* GetParam
+*
+* obtener el numero de parametro
+* @param Number el parametro a obtener , empieza con 0 como el primero
+*
+* @returns Cout el puntero al array
+*/
+tapot GetParam (Number,Cout)
+
+    SetVar 3 Number
+
+    //_CallOut 18 3
+    //Print "\n"
+
+    // llegar a 3001 donde se ubica el puntero al primer parametro
+
+    5 = 30
+    4 = 10
+    _Math 5 * 4
+    //_CallOut 18 5
+    //Print "\s"
+
+    _Math 5 * 4
+    //_CallOut 18 5
+    //Print "\s"
+
+    __asm increment 5
+    //_CallOut 18 5
+    //Print "\s"
+
+    // sumarle el numero de parametro
+    4 = Number
+    _Math 5 + 4
+    //_CallOut 18 5
+
+    5 = **5
+
+    Cout = *5
+
+    //Print "\n"
+
+END tapot

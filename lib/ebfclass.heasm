@@ -1,0 +1,260 @@
+/**
+* ebfclass.heasm
+*
+* define las estructuras que retornan o se pasan como argumentos a una llamada del bootloader
+*/
+
+/**
+* EfiKey
+*
+* retornado por la llamada 12
+*/
+swinc EfiKey
+{
+    /// [memory_acces[p2] = Key.ScanCode;]
+    autv ScanCode::LET;
+    /// [memory_acces[p2 + 1] = Key.UnicodeChar;]
+    autv UnicodeChar::LET;
+}
+
+/**
+* EfiTime
+*
+* retornado por la llamada 13, espera no no lo digas
+*/
+swinc EfiTime
+{
+    /// [memory_acces[p2] = Time.Second;]
+    autv Second::LET;
+    /// [memory_acces[p2 + 1] = Time.Minute;]
+    autv Minute::LET;
+    /// [memory_acces[p2 + 2] = Time.Hour;]
+    autv Hour::LET;
+    /// [memory_acces[p2 + 3] = Time.Day;]
+    autv Day::LET;
+    /// [memory_acces[p2 + 4] = Time.Month;]
+    autv Month::LET;
+    /// [memory_acces[p2 + 5] = Time.Year;]
+    autv Year::LET;
+}
+
+/**
+* ArrayAllocationMethod
+*
+* pasado como argumento por la llamada 14
+*/
+swinc ArrayAllocationMethod
+{
+    /// [memory_acces[p2] = AllocateMemory(size);]
+    autv PtrTo::LET;
+    /// [u16 size = (u16)memory_acces[p2 + 1];]
+    autv Size::LET;
+}
+
+/**
+* ArrayItemManipulation
+*
+* pasado como argumento por la llamada 16 y 17, en la 16 Value es usado como el valor a escribir y en la 17 es usado como el valor obtenido
+* @note esta en desuso para la 16 por que ya se puede modificar elementos manualmente con `[Array] [[Elemento]] [Nuevo valor]` aunque no hay metodo para la 17 asi que para la 17 se tendra que hacer manualmente con _CallOut
+*/
+swinc ArrayItemManipulation
+{
+    /// [t16 BufferToManipule = memory_acces[p2];]
+    autv BufferToManipule::LET;
+    /// [t16 BufferItem = memory_acces[p2 + 1];]
+    autv Index::LET;
+	/// 16:[t16 ValueToWrite = memory_acces[p2 + 2];] 17:[u16 RedirectTo = p2 + 2;]
+    autv Value::LET;
+}
+
+/**
+* PoolSimpleComparate
+*
+* pasado como argumento por la llamada 24
+*/
+swinc PoolSimpleComparate
+{
+    /// [memory_acces[256] = (t16)(StrCmp(LocateMemory(memory_acces[p2]), LocateMemory(memory_acces[p2 + 1])) == 0);]
+   
+    autv Pool1::Array;
+    autv Pool2::Array;
+}
+
+/**
+* CmpComparation
+*
+* pasado como argumento por la llamada 25 , 26 y 39
+*/
+swinc CmpComparation
+{
+    /// [memory_acces[256] = (t16)(memory_acces[p2] != memory_acces[p2 + 1]);]
+    
+    autv Value1::LET;
+    autv Value2::LET;
+}
+
+/**
+* CustomColor
+*
+* pasado como argumento por la llamada 29 y 30
+*/
+swinc CustomColor
+{
+    /// [Color.Red = ((u8)memory_acces[p2]);]
+    autv Red::LET;
+
+    /// [Color.Green = ((u8)memory_acces[p2 + 1]);]
+    autv Green::LET;
+
+    /// [Color.Blue = ((u8)memory_acces[p2 + 2]);]
+    autv Blue::LET;
+}
+
+/**
+* PoolAdvancedComparate
+*
+* pasado como argumento por la llamada 32
+*/
+swinc PoolAdvancedComparate
+{
+    /// [memory_acces[256] = (t16)(StrnCmp(LocateMemory(memory_acces[p2]), LocateMemory(memory_acces[p2 + 1]), memory_acces[p2 + 2]) == 0);]
+
+    autv Pool1::Array;
+    autv Pool2::Array;
+    autv Length::LET;
+}
+
+/**
+* BltOperation
+*
+* pasado como argumento por la llamada 34
+*/
+swinc BltOperation
+{
+    /// PIXELCOL Color = { 
+    /// memory_acces[p2 + 2],
+    /// memory_acces[p2 + 1],memory_acces[p2], 0 
+    ///};
+    /// draw_pixel(
+    ///    gop, memory_acces[p2 + 3],
+    ///     memory_acces[p2 + 4], 
+    ///     Color
+    ///     );
+
+    autv Red::LET;
+    autv Green::LET;
+    autv Blue::LET;
+
+    autv X::LET;
+    autv Y::LET;
+}
+
+/**
+* AdvancedIfEqualJump
+*
+* pasado como argumento por la llamada 40
+*/
+swinc AdvancedIfEqualJump
+{
+    /// [t16 ConditionNum = memory_acces[p2];]
+    autv ConditionToValidate::LET;
+
+    /// [t16 JumpTo = memory_acces[p2 + 1];]
+    autv FunctionId::LET;
+
+    /// [t16 SaveProgramCounter = memory_acces[p2 + 2];]
+    autv SaveProgramCounter::LET;
+}
+
+/**
+* StrToNumberOperation
+*
+* pasado como argumento por la llamada 41
+*/
+swinc StrToNumberOperation
+{
+    /// [t16 RetOnNumber = memory_acces[p2];]
+    autv ReturnOn::LET;
+
+    ///[t16 StrPos = memory_acces[p2 + 1];]
+    autv Str::Array;
+}
+
+/**
+* ConsoleSize
+*
+* pasado como argumento y devuelto por la llamada 44
+*/
+swinc ConsoleSize
+{
+    /// [memory_acces[p2] = GET_MAX_COL;]
+    autv Colummns::LET;
+
+    /// [memory_acces[p2 + 1] = GET_MAX_ROWS;]
+    autv Rows::LET;
+}
+
+/**
+* ImageDrawOperation
+*
+* pasado como argumento por la llamada 46
+*/
+swinc ImageDrawOperation
+{
+    /// [t16 X = memory_acces[p2];]
+    autv X::LET;
+
+    /// [t16 Y = memory_acces[p2 + 1];]
+    autv Y::LET;
+
+    /// [t16 Width = memory_acces[p2 + 2];]
+    autv Width::LET;
+
+	/// [t16 Heigth = memory_acces[p2 + 3];]
+    autv Heigth::LET;
+
+	/// [t16 Image = memory_acces[p2 + 4];]
+    autv Image::Array;
+}
+
+/**
+* DrawRectangleOperation
+*
+* pasado como argumento por la llamada 48
+*/
+swinc DrawRectangleOperation
+{
+    /// [PIXELCOL Color = { memory_acces[p2 + 2],memory_acces[p2 + 1],memory_acces[p2] , 0 };]
+	autv Red::LET;
+    autv Green::LET;
+    autv Blue::LET;
+
+    /// [t16 CurrX = 0;]
+    autv X::LET;
+
+    /// [t16 CurrY = 0;]
+    autv Y::LET;
+
+    /// [t16 SizeX = memory_acces[p2 + 5];]
+    autv SizeX::LET;
+
+    /// [t16 SizeY = memory_acces[p2 + 6];]
+    autv SizeY::LET;
+}
+
+/**
+* SplitStrOperation
+*
+* pasado como argumento por la llamada 49 y retorna el array que contiene las direcciones a los str en el mismo Str
+*
+* ten cuidado por que si pones esto en un string cuando termine la operacion apuntara a otra direccion y el original se perdera
+* para siempre y nunca lo podras soltar por que no sabes donde estaba
+*/
+swinc SplitStrOperation
+{
+    /// [ch16* original_str = LocateMemory(memory_acces[p2]);]
+    autv Str::Array;
+    
+    /// [ch16* split = LocateMemory(memory_acces[p2 + 1]);]
+    autv Split::Array;
+}
