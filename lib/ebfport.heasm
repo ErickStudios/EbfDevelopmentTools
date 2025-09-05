@@ -1,0 +1,38 @@
+/**
+* ebfport.heasm
+*
+* acceso a los puertos E/S
+*/
+
+/**
+* In
+*
+* obtener un dato de un puerto
+* @param Port es ese puerto
+* @returns ReturnOn donde retornara el dato
+*/
+tapot In (_Port_,_ReturnOn_)
+
+    (LET*)1 = _Port_
+
+    _CallOut 52 1
+
+    _ReturnOn_ = *2
+
+END tapot
+
+/**
+* Out
+*
+* escribir un dato en un puerto
+* @param Port es ese puerto
+* @param Data es la direccion de la variable que contiene el dato para luego copiar el valor a el parametro 2 y escribirlo
+*/
+tapot Out (_Port_,_Data_)
+
+    (LET*)1 = _Port_
+    (LET*)2 = *_Data_
+
+    _CallOut 53 1
+
+END tapot

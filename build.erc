@@ -28,6 +28,17 @@ function Main
         
         [_Entry]
             # el nombre del archivo original
+            build "DefaultApps/cat.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/cat.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
             build "GetTime.heasm"
 
             # el nombre del archivo del resultado
@@ -43,6 +54,17 @@ function Main
 
             # el nombre del archivo del resultado
             As "build/Gfx.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/OptimizationTest.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/OptimizationTest.ebf"
 
             # compilarlo con el HLVC
             With "EASM_Hlvc"

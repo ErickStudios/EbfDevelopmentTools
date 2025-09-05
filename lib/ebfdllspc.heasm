@@ -5,6 +5,29 @@
 */
 
 /**
+* _IDllReturn
+*
+* funcion interna para el retorno de la dll
+*/
+tapot _IDllReturn (_ReturnValue_)
+
+    DllIO.Return = _ReturnValue_
+    _CallOut 0 0
+
+END tapot
+
+/**
+* _IDllIOExit
+*
+* sale de la DLL
+*/
+tapot _IDllIOExit ()
+
+    _CallOut 0 0
+
+END tapot
+
+/**
 * DllParams
 *
 * parametros que necesita una dll para cargar su maximo esplendor
@@ -39,6 +62,20 @@ swinc DllParams
     * no te preocupes esta bien
     */
     autv ReturnValue::LET;
+
+    /**
+    * Return
+    *
+    * hace que la dll retorne algo
+    */
+    autv Return::(Method)_IDllReturn<_Val_>;
+
+    /**
+    * Exit
+    *
+    * salir de la dll
+    */
+    autv Exit::(Method)_IDllIOExit<>;
 }
 
 /**

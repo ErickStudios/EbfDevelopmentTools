@@ -247,6 +247,10 @@ call _InitializeDll_
 // iniciar el parseo
 //
 
+call_tapot PrintPool _String_
+Print "\n"
+call_tapot PrintPool _Pattern_
+
 _StringIndexParse_ = 0
 _PatterngIndexParse_ = 0
 call _Parse_
@@ -459,8 +463,6 @@ FUNCTION _TryParseDecimalDigit_
 
 FUNCTION _CanMatch_
 
-    DllIO.ReturnValue = 1
-
     __asm increment _StringIndexParse_
     __asm increment _PatterngIndexParse_
 
@@ -483,13 +485,11 @@ FUNCTION _CanMatch_
 
     _CallOut 40 4
 
-    _CallOut 0 0
+    call_tapot DllIO.Return 0
 
 FUNCTION _CantMatch_
 
-    DllIO.ReturnValue = 0
-
-    _CallOut 0 0
+    call_tapot DllIO.Return 0
 
 FUNCTION _InitializeDll_
     //

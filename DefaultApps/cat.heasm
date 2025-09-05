@@ -1,0 +1,96 @@
+/**
+* cat.heasm
+*
+* comando cat para KellyBootloader
+*/
+
+%include
+    lib/ebf.heasm
+
+/**
+* _File_
+*
+* el archivo
+*/
+Array _File_ _YaLeTocaraXd_
+
+/**
+* _CatPrint_
+*
+* lo que imprimira cat
+*/
+Array _CatPrint_ _YaLeTocaraXd_
+
+/**
+* _ParseParams_
+*
+* parsea los parametros
+*/
+FUNCTION _ParseParams_
+    _IProto()
+
+/**
+* _FileExtract_
+*
+* extrae el contenido del archivo
+*/
+FUNCTION _FileExtract_
+    _IProto()
+
+/**
+* _CleanUp_
+*
+* limpia todo los arrays que hizo el comando
+*/
+FUNCTION _CleanUp_
+    _IProto()
+
+//
+// main
+//
+
+call _ParseParams_
+call _FileExtract_
+
+call_tapot PrintPool _CatPrint_
+
+call _CleanUp_
+
+FUNCTION _ParseParams_
+    
+    //
+    // obtener el archivo
+    //
+
+    call_tapot GetParam 0 _File_
+
+    __asm ret
+
+FUNCTION _FileExtract_
+
+    //
+    // hacer una copia para no perder el archivo
+    //
+
+    (LET*)1 = *_File_
+
+    //
+    // extraer el archivo
+    //
+
+    call_tapot LoadFileToMem 1
+    
+    //
+    // copiar el array al contenido
+    //
+
+    _CatPrint_ = *1
+    
+    __asm ret
+
+FUNCTION _CleanUp_
+
+    // liberar el contenido que imprimio
+    FreePool _CatPrint_
+
+    __asm ret

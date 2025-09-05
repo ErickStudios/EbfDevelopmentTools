@@ -20,6 +20,9 @@ call __Entry__
 // --------------------------------
 
 %include
+    lib/ebfoptimization.heasm
+    
+%include
     lib/ebfptrs.heasm
 
 // --------------------------------
@@ -28,6 +31,9 @@ call __Entry__
 // con el entorno
 //
 // --------------------------------
+
+%include
+    lib/ebfport.heasm
 
 %include
     lib/ebfargs.heasm
@@ -72,3 +78,7 @@ call __Entry__
     lib/ebfdllspc.heasm
 
 FUNCTION __Entry__
+
+    // para evitar bugs
+
+    (LET*)0 = 0

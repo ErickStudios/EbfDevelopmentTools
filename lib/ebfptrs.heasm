@@ -1,7 +1,8 @@
 /**
 * ebfptrs.heasm
 *
-* las direcciones en las cuales POR NADA DEL MUNDO el compilador debe alojar variables en estas direcciones
+* las direcciones en las cuales POR NADA DEL MUNDO ni por un perrito todo panzon 
+* el compilador debe alojar variables en estas direcciones
 */
 
 /**

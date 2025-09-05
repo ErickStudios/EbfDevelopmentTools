@@ -1,0 +1,132 @@
+/**
+* ebfoptimization.heasm
+*
+* optimizar el consumo de ram
+*/
+
+/**
+* EditHighPartVar
+*
+* edita la parte alta de una variable
+*
+* @param VarToEdit la variable que edita
+* @param NewValue el nuevo valor de la parte alta
+*/
+tapot EditHighPartVar (_VarToEdit_,_NewValue_)
+    // codigo en el que se baso:
+	//  return (Origin & 0x00FF) | (New << 8);
+
+    (LET*)1 = 80
+    (LET*)7 = 46
+    _Math 1 + 7
+    __asm increment 1
+    (LET*)2 = 2
+    _Math 1 * 2
+    __asm increment 1
+    //__asm decrement 1
+
+    // (Origin & 0x00FF)
+    __asm and _VarToEdit_,1
+
+    (LET*)1 = *_NewValue_
+    (LET*)2 = 8
+
+    // (_NewValue_ << 8)
+    __asm slft 1,2
+
+    // (N) | ((LET*)1)
+    __asm or _VarToEdit_,1
+END tapot
+
+/**
+* EditLowPartVar
+*
+* edita la parte baja de una variable
+*
+* @param VarToEdit la variable que edita
+* @param NewValue el nuevo valor de la parte baja
+*/
+tapot EditLowPartVar (_VarToEdit_,_NewValue_)
+    // codigo en el que se baso:
+	//  return (Origin & 0xFF00) | New;
+    
+    // 65280
+    (LET*)1 = 65
+    (LET*)2 = 10
+    _Math 1 * 2
+    (LET*)2 = 2
+    _Math 1 + 2
+    (LET*)2 = 10
+    _Math 1 * 2
+    (LET*)2 = 8
+    _Math 1 + 2
+    (LET*)2 = 10
+    _Math 1 * 2
+
+    // (Origin & 0xFF00)
+    __asm and _VarToEdit_,1
+
+    // VarToEdit | New
+    __asm or _VarToEdit_,_NewValue_
+END tapot
+
+/**
+* ReadHighPartVar
+*
+* lee la parte alta de una variable
+*
+* @param VarToRead la variable a leer
+* @returns ReturnOn como resultado
+*/
+tapot ReadHighPartVar (_VarToRead_,_ReturnOn_)
+	// codigo en el que se baso:
+    //  return (Value >> 8) & 0x00FF;
+
+    (LET*)1 = *_VarToRead_
+    (LET*)2 = 8
+
+    // (Value >> 8)
+    __asm srght 1,2
+
+    (LET*)2 = 80
+    (LET*)7 = 46
+    _Math 2 + 7
+    __asm increment 2
+    (LET*)3 = 2
+    _Math 2 * 3
+    __asm increment 2
+
+    // X & Y
+    __asm and 1,2
+
+    _ReturnOn_ = *1
+END tapot
+
+/**
+* ReadLowPartVar
+*
+* lee la parte baja de una variable
+*
+* @param VarToRead la variable a leer
+* @returns ReturnOn como resultado
+*/
+tapot ReadLowPartVar (_VarToRead_,_ReturnOn_)
+	// codigo en el que se baso:
+    //  return Value & 0x00FF;
+
+    (LET*)1 = 80
+    (LET*)7 = 46
+    _Math 1 + 7
+    __asm increment 1
+    (LET*)2 = 2
+    _Math 1 * 2
+    __asm increment 1
+
+    (LET*)1 = *_VarToRead_
+    (LET*)2 = *1
+
+    // X & Y
+    __asm and 1,2
+
+    _ReturnOn_ = *1
+END tapot

@@ -1,0 +1,43 @@
+/**
+* OptimizationTest.heasm
+*
+* una prueba de optimizacion de ram
+*
+* Var1 = 0xF
+* Var2 = 0xF
+*
+* deberia verse como 0F0F en el editor de ram
+*/
+
+_Use ASCII
+
+%include
+    lib/ebf.heasm
+
+/**
+* _Var1_
+*
+* la parte alta
+*/
+LET _Var1_
+
+/**
+* _Var2_
+*
+* la parte baja
+*/
+LET _Var2_
+
+/**
+* _CompleteVar_
+*
+* la variable completa
+*/
+LET _CompleteVar_
+
+_Var1_ = 15
+
+_Var2_ = 15
+
+call_tapot EditHighPartVar _CompleteVar_ _Var1_
+call_tapot EditLowPartVar _CompleteVar_ _Var2_
