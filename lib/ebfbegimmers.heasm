@@ -399,9 +399,9 @@ __asm ret
 *
 * imprimir un pool
 */
-tapot PrintPool (Str)
+tapot PrintPool (_Str_)
 
-    _CallOut 22 Str
+    _CallOut 22 _Str_
 
 END tapot
 

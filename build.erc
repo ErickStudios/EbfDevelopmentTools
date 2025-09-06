@@ -25,6 +25,17 @@ function Main
             # compilarlo con el HLVC
             With "EASM_Hlvc"
         [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/Carro.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Carro.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
         
         [_Entry]
             # el nombre del archivo original

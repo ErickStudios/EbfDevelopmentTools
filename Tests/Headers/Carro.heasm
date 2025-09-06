@@ -1,0 +1,15 @@
+/**
+* Carro.heasm
+*
+* sacado del ejemplo de Skale01 en https://foro.linuxchad.org/t/06-structs-en-go/2326
+*/
+
+swinc Carro 
+{
+    autv Motor::Array;
+    autv Velocidad::LET;
+    autv Modelo::Array;
+    autv Suspencion::LET;
+    autv Anio::LET;
+    autv Precio::LET;
+}

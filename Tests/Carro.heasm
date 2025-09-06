@@ -1,0 +1,145 @@
+/**
+* Carro.heasm
+*
+* implementacion de headers/Carro.heasm tambien desde https://foro.linuxchad.org/t/06-structs-en-go/2326
+*
+* solo recreare el primer ejemplo por que uff estar reorriendo array uno por uno letra por letra es cansado
+*/
+
+%include
+    lib/ebf.heasm
+
+%include
+    Tests/Headers/Carro.heasm
+
+//  Aqui, declaramos la variable BMW I8, pero, como "tipo de dato" indicamos swinc Carro (estructura Carro)
+autopbus BMWi8::swinc Carro
+
+FUNCTION _Main_
+
+    (LET*)1 = 0
+    (LET*)2 = 15
+    _CallOut 14 1
+    BMWi8.Motor = *1
+
+    BMWi8.Motor [0] '1'
+    BMWi8.Motor [1] '4'
+    BMWi8.Motor [2] '9'
+    BMWi8.Motor [3] '9'
+    BMWi8.Motor [4] 'c'
+    BMWi8.Motor [5] 'c'
+    BMWi8.Motor [6] '\s'
+    BMWi8.Motor [7] 'I'
+    BMWi8.Motor [8] '3'
+    BMWi8.Motor [9] '\s'
+    BMWi8.Motor [10] 't'
+    BMWi8.Motor [11] 'u'
+    BMWi8.Motor [12] 'r'
+    BMWi8.Motor [13] 'b'
+    BMWi8.Motor [14] 'o'
+
+    BMWi8.Velocidad = 250
+
+    (LET*)1 = 0
+    (LET*)2 = 6
+    _CallOut 14 1
+    BMWi8.Modelo = *1
+
+    BMWi8.Modelo [0] 'B'
+    BMWi8.Modelo [1] 'M'
+    BMWi8.Modelo [2] 'W'
+    BMWi8.Modelo [3] '\s'
+    BMWi8.Modelo [4] 'I'
+    BMWi8.Modelo [5] '8'
+    // dato inventado
+    BMWi8.Suspencion = 2
+
+    BMWi8.Anio = 20
+    (LET*)1 = 10
+
+    _Math BMWi8.Anio * 1
+    _Math BMWi8.Anio * 1
+    (LET*)1 = 14
+    _Math BMWi8.Anio + 1
+
+    // 640 mil, segun google :P
+    BMWi8.Precio = 64
+    (LET*)1 = 10
+
+    _Math BMWi8.Precio * 1
+
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar del tipo
+    Print "Tu\scarro\ses\sun\s"
+    // imprimir el string del tipo
+    (LET*)8 = _ConsoleColor_brightblue_
+    call_tapot SetForegroundColor 8
+
+    call_tapot PrintPool BMWi8.Modelo
+
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar del motor
+    Print "\scon\sun\smotor\s"
+    // imprimir el string del motor
+    (LET*)8 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 8
+
+    call_tapot PrintPool BMWi8.Motor
+    
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar de la velocidad
+    Print "\sy\suna\svelocidad\sde\s"
+    // imprimir la velocidad
+    (LET*)8 = _ConsoleColor_brightyellow_
+    call_tapot SetForegroundColor 8
+
+    _CallOut 18 BMWi8.Velocidad
+    
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar de la suspencion
+    Print ",\n\stiene\suna\ssuspension\sde\s"
+    // imprimir la suspencion
+    (LET*)8 = _ConsoleColor_brightcyan_
+    call_tapot SetForegroundColor 8
+
+    _CallOut 18 BMWi8.Suspencion
+    
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar del anio del lanzamiento
+    Print ",\n\ssalio\sen\sel\sanio\s"
+    // imprimir el anio de lanzamiento
+    (LET*)8 = _ConsoleColor_brightteal_
+    call_tapot SetForegroundColor 8
+
+    _CallOut 18 BMWi8.Anio
+        
+    (LET*)8 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 8
+
+    // informar del precio
+    Print "\sy\scuesta\sun\stotal\sde\s"
+    // imprimir (Pecion),000
+    (LET*)8 = _ConsoleColor_blue_
+    call_tapot SetForegroundColor 8
+
+    _CallOut 18 BMWi8.Precio
+    Print ",000\n"
+
+    //
+    // liberar los string
+    //
+
+    FreePool BMWi8.Modelo
+    FreePool BMWi8.Motor
+
+    _CallOut 0 0

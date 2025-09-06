@@ -1,0 +1,29 @@
+/**
+* Persona.heasm
+*
+* ejemplo de persona
+*/
+
+swinc Persona
+{
+    /**
+    * Nombre
+    *
+    * el nombre
+    */
+    autv Nombre::Array;
+
+    /**
+    * Trabajo
+    *
+    * no se todos los trabajos tienen diferentes cosas, yo lo pondre como puntero a algo
+    */
+    autv Trabajo::LET;
+
+    /**
+    * Edad
+    *
+    * la edad
+    */
+    autv Edad::LET;
+}

@@ -25,15 +25,15 @@
 *   Formato de fecha y hora:
 *       Caso 1:
 *           String = "10:43:00 20/10/2023"
-*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]D/DDDD"
 *           Resultado = 1
 *       Caso 2:
 *           String = "01:24:50 10/03/2010"
-*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]D/DDDD"
 *           Resultado = 1
 *       Caso 3:
 *           String = "Hola"
-*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]/DDDD"
+*           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]D/DDDD"
 *           Resultado = 0
 *           
 */
