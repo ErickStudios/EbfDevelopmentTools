@@ -2,6 +2,7 @@
 * ebf.heasm
 *
 * archivo principal de ErickBinaryFormat para KellyBootloader
+* [Manual de uso](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#bienvenido-a-la-documentacion-de-ebfdevelopmenttools)
 */
 
 _Use ASCII
