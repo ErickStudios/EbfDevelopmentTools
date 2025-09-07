@@ -158,6 +158,17 @@ function CompileDlls
             With "%Compiler%"
         [end _Entry]
 
+        [_Entry]
+            # el nombre del archivo original
+            build "DllsSourceCode/ErickExp.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/kelly/ErickExp.dll"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
     end
 
 stopScript()
@@ -188,10 +199,10 @@ stopScript()
 #
 function Main
 
-    if "%ps%"=="--apps" then CompileApps
-    if "%ps%"=="--dlls" then CompileDlls
-    if "%ps%"=="--tests" then CompileTests
-    if "%ps%"=="--h" then HelpMessage
+    if ("%ps%"=="--apps") then CompileApps
+    if ("%ps%"=="--dlls") then CompileDlls
+    if ("%ps%"=="--tests") then CompileTests
+    if ("%ps%"=="--h") then HelpMessage
 
     echo "parece que ingreso un comando invalido."
     echo "Usa --h para mostrar una guia de los comandos que si son validos"

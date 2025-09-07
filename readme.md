@@ -5,7 +5,12 @@ Bienvenido a EBFDevelopmentTools, esto contiene la libreria STD oficial de Kelly
 puedes ver la [documentacion](./LibDoc.md) de uso de la libreria
 tambien puedes ver la [especificacion de dlls](./DllSpecification.md) para crear una o saber como se manejan
 
-no todo son librerias .heasm, tambien incluye codigo fuente de dlls
+no todo son librerias .heasm, tambien incluye codigo fuente de dlls, 
+
+## Dependencias externas
+* para las dependencias externas cuando pruebe su proyecto para usar las dlls, puede encontrarlas en la carpeta `lib/Dlls/` y copiarlas o descargarlas a su unidad de almacenamiento donde este instalado KellyBootloader y donde pruebas tu programa 
+* asegurate de que tu programa este en la misma unidad de almacenamiento que el bootx64.efi de KellyBootloader ponga su programa en la carpeta root
+* pongalas en la carpeta `kelly` de la unidad de almacenamiento donde pruebe su proyecto compilado, asegurate de no romper las dependencias de otros programas, asi que use siempre las .dll en la carpeta `kelly` en su almacenamiento donde tenga KellyBootloader instalado para poder ejecutar su programa o su sistema y pueda vincular el programa a la dll cargando el archivo desde el codigo de su programa
 
 # Libreria
 
