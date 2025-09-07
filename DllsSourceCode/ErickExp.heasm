@@ -247,10 +247,6 @@ call _InitializeDll_
 // iniciar el parseo
 //
 
-call_tapot PrintPool _String_
-Print "\n"
-call_tapot PrintPool _Pattern_
-
 _StringIndexParse_ = 0
 _PatterngIndexParse_ = 0
 call _Parse_
@@ -267,6 +263,8 @@ FUNCTION _Parse_
     //
     (LET*)1 = *_PatternCharacterToCheck_
     (LET*)2 = 91
+    //_CallOut 1 1
+    //_CallOut 1 2
 
     call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _AdvanceTest_ 0
 
@@ -278,6 +276,8 @@ FUNCTION _Parse_
     //
     (LET*)1 = *_PatternCharacterToCheck_
     (LET*)2 = 68
+    //_CallOut 1 1
+    //_CallOut 1 2
 
     call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _TryParseDecimalDigit_ 0
 
@@ -286,10 +286,14 @@ FUNCTION _Parse_
     //
     // la prueba de hoy sera:
     //  ser matcheado con su duo en _String_ si no lo es digamos que, algo malo sucede
+    //  _String_: entonces reprueba?
+    //  ErickExp: (mente: hijo de tu madre le arruinaste el chiste >:()) si :)
     //
     (LET*)1 = *_PatternCharacterToCheck_
     (LET*)2 = *_CharacterToParseValue_
 
+    //_CallOut 1 1
+    //_CallOut 1 2
     call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _CanMatch_ 0
 
     call _CantMatch_
@@ -484,14 +488,23 @@ FUNCTION _CanMatch_
     (LET*)6 = 0
 
     _CallOut 40 4
-
-    call_tapot DllIO.Return 0
+    
+    DllIO.ReturnValue = 1
+    _CallOut 0 0
 
 FUNCTION _CantMatch_
 
-    call_tapot DllIO.Return 0
-
+    FreePool _CloseAdAcChCodeInsert_
+    FreePool _EscapeForInsertUpperD_
+    FreePool _AdvancedAction_
+    FreePool _OpenAdAcChCodeInsert_
+    FreePool _EscapeForAnyCharacter_
+    
+    DllIO.ReturnValue = 0
+    _CallOut 0 0
+    
 FUNCTION _InitializeDll_
+
     //
     // [
     //
@@ -518,6 +531,7 @@ FUNCTION _InitializeDll_
 
     (LET*)2 = 0
     call_tapot GetArrayItem DllIO.Params 2 _String_
+
     (LET*)2 = 1
     call_tapot GetArrayItem DllIO.Params 2 _Pattern_
 

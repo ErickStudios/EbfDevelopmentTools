@@ -13,10 +13,10 @@ _Use ASCII
 // la dll solo necesita 2 parametros para funcionar
 //
 
-SetVar 1 0
-SetVar 2 2
+(LET*)1 = 0
+(LET*)2 = 2
 _CallOut 14 1
-SetVarWithValue DllIO.Params 1
+DllIO.Params = *1
 
 /**
 * _String_
@@ -64,18 +64,34 @@ _ErickExpDllFile_ [15] 'd'
 _ErickExpDllFile_ [16] 'l'
 _ErickExpDllFile_ [17] 'l'
 
+// obtener el str
 call_tapot GetParam 0 _String_
+// obtener el examinador
 call_tapot GetParam 1 _Pattern_
 
+// copiar la direccion del str
 call_tapot SetArrayItem DllIO.Params 0 _String_
+// copiar la direccion del examinador
 call_tapot SetArrayItem DllIO.Params 1 _Pattern_
 
+// ejecutar la dll
 call_tapot ExecuteFile _ErickExpDllFile_
 
-_CallOut 18 DllIO.ReturnValue
+// crear un array para el string del boolean convertido
+LET _BooleanConverted_
+
+// imprimir si combinan
+Print "Strs\sMatch?:\s"
+// convertir el bool a string
+call_tapot BooleanToString DllIO.ReturnValue _BooleanConverted_
+// imprimir el resultado
+call_tapot PrintPool _BooleanConverted_
 
 //
 // liberar todo
 //
 
+// liberar el string del boolean
+FreePool _BooleanConverted_
+// liberar los parametros de la dll
 FreePool DllIO.Params

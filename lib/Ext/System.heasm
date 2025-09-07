@@ -1,0 +1,122 @@
+/**
+* System.heasm
+*
+* informacion del sistema
+*/
+
+/**
+* _SystemInfo_
+*
+* les doy el array directo a la informacion del sistema para que no tengan que sacar donde esta
+* desde el repositorio en el archivo .c de KellyBootloader
+*/
+Array _SystemInfo_ _YaLeTocaraXd_
+
+/**
+* _SystemInfoGet_
+*
+* un enum con todos los indexes del array de la informacion del sistema
+*/
+ENUM _SystemInfoGet_
+
+    /**
+    * _SystemInfoGet_EmulatorFlag_
+    *
+    * obtener si es un emulador, 1 si no lo es y 2 si es un emulador
+    */
+    _EnumMember _SystemInfoGet_EmulatorFlag_ 0
+
+    /**
+    * _SystemInfoGet_FirmwareVendor_
+    *
+    * el puntero al string del nombre del distribuidor de la uefi actual
+    */
+    _EnumMember _SystemInfoGet_FirmwareVendor_ 1
+
+    /**
+    * _SystemInfoGet_GetMainVersion_
+    *
+    * la version principal de EBF
+    */
+    _EnumMember _SystemInfoGet_GetMainVersion_ 2
+
+    /**
+    * _SystemInfoGet_GetSecondaryVersion_
+    *
+    * la version secundaria/beta actual de EBF
+    */
+    _EnumMember _SystemInfoGet_GetSecondaryVersion_ 3
+
+    /**
+    * _SystemInfoGet_GeSnapshotVersion_
+    *
+    * la snapshot actual de EBF
+    */
+    _EnumMember _SystemInfoGet_GeSnapshotVersion_ 4
+
+    /**
+    * _SystemInfoGet_GetConfigurationTableVendorGuid_
+    *
+    * el elemento que contiene el puntero al distribuidor de guid de la tabla de configuracion
+    *
+    * para que sepan como esta estructurada esta asi
+    * VendorGuid = [
+    *   0: data1,
+    *   1: data2,
+    *   2: data3,
+    *   3: data4 = [ 0:Item1, 1:Item2, 2:Item3, 3:Item4, 4:Item5, 5:Item6, 6:Item7, 7:Item8]
+    *   ]
+    */
+    _EnumMember _SystemInfoGet_GetConfigurationTableVendorGuid_ 5
+
+    /**
+    * _SystemInfoGet_GetLanguaje_
+    *
+    * el elemento que contiene el puntero al string lenguaje del firmware
+    */
+    _EnumMember _SystemInfoGet_GetLanguaje_ 6
+
+END ENUM
+
+/**
+* _IExitBS_
+*
+* adios arranque hola sistema operativo
+* total todo eso consumia solo memoria, solo habra espacio para lo que quieras
+* asegurate de crear copias de respaldo de los datos que necesites y estar seguro de cuales por que esto eliminara toda
+* comunicacion con el bootloader
+*/
+FUNCTION _IExitBS_
+
+    // liberar el distribuidor del firmware
+    (LET*)2 = _SystemInfoGet_FirmwareVendor_
+    call_tapot GetArrayItem _SystemInfo_ 2 3
+    FreePool 3
+
+    // liberar el string del lenguaje
+    (LET*)2 = _SystemInfoGet_GetLanguaje_
+    call_tapot GetArrayItem _SystemInfo_ 2 3
+    FreePool 3
+
+    // liberar el guid de la tabla de configuracion
+    (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
+    call_tapot GetArrayItem _SystemInfo_ 2 3
+    FreePool 3
+
+    // liberar la tabla de servicios de arranque
+    FreePool _SystemInfo_
+
+    __asm ret
+
+/**
+* ExitBootservices
+*
+* sale de los servicios de arranque
+* @param AreYouSure? si estas seguro de hacerlo
+*/
+tapot ExitBootservices (_AreYouSure?_)
+
+    (LET*)1 = 1
+    IF _AreYouSure?_|==|1 THEN _IExitBS_
+
+END tapot

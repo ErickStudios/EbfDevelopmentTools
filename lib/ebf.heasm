@@ -77,8 +77,31 @@ call __Entry__
 %include
     lib/ebfdllspc.heasm
 
+
+// --------------------------------
+//
+// librerias de alto nivel
+//
+// --------------------------------
+
+%include
+    lib/Ext/Boolean.heasm
+
+%include
+    lib/Ext/System.heasm
+
 FUNCTION __Entry__
 
     // para evitar bugs
+    _EbfNullPtr_ = 0
 
-    (LET*)0 = 0
+    // obtener la direccion que es 2999
+    (LET*)_SystemInfo_ = 29
+    (LET*)1 = 10
+    _Math _SystemInfo_ * 1
+    (LET*)1 = 9
+    _Math _SystemInfo_ + 1
+    (LET*)1 = 10
+    _Math _SystemInfo_ * 1
+    (LET*)1 = 9
+    _Math _SystemInfo_ + 1

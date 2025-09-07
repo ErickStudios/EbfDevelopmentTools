@@ -15,13 +15,23 @@
 //  Aqui, declaramos la variable BMW I8, pero, como "tipo de dato" indicamos swinc Carro (estructura Carro)
 autopbus BMWi8::swinc Carro
 
+/**
+* _Main_
+*
+* funcion principal
+*/
 FUNCTION _Main_
 
+    // crear el nombre
     (LET*)1 = 0
     (LET*)2 = 15
     _CallOut 14 1
+    // copiar la direccion a la que apunta 1 a la direccion a la que apunta el motor
     BMWi8.Motor = *1
 
+    //
+    // una vez lo tenemos encendido podemos asignarle con mucha pero mucha paciencia el nombre
+    //
     BMWi8.Motor [0] '1'
     BMWi8.Motor [1] '4'
     BMWi8.Motor [2] '9'
@@ -38,34 +48,53 @@ FUNCTION _Main_
     BMWi8.Motor [13] 'b'
     BMWi8.Motor [14] 'o'
 
+    // ajustar la velocidad
     BMWi8.Velocidad = 250
 
+    // crear el modelo
     (LET*)1 = 0
     (LET*)2 = 6
     _CallOut 14 1
+    // copiar la direccion
     BMWi8.Modelo = *1
 
+    //
+    // indicar el modelo
+    //
     BMWi8.Modelo [0] 'B'
     BMWi8.Modelo [1] 'M'
     BMWi8.Modelo [2] 'W'
     BMWi8.Modelo [3] '\s'
     BMWi8.Modelo [4] 'I'
     BMWi8.Modelo [5] '8'
+
+    // la suspencion
     // dato inventado
     BMWi8.Suspencion = 2
 
-    BMWi8.Anio = 20
-    (LET*)1 = 10
+    //
+    // el año
+    //
 
+    BMWi8.Anio = 20
+
+    // multiplicarlo por 100 para que de 2000
+    (LET*)1 = 10
     _Math BMWi8.Anio * 1
     _Math BMWi8.Anio * 1
+
+    // sumarle 14
     (LET*)1 = 14
     _Math BMWi8.Anio + 1
 
-    // 640 mil, segun google :P
+    //
+    // precio en mil
+    //
+    
     BMWi8.Precio = 64
-    (LET*)1 = 10
 
+    // multiplicarle 10
+    (LET*)1 = 10
     _Math BMWi8.Precio * 1
 
     (LET*)8 = _ConsoleColor_gray_

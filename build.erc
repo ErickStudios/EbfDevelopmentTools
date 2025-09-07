@@ -36,6 +36,17 @@ function Main
             # compilarlo con el HLVC
             With "EASM_Hlvc"
         [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/Persona.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Persona.ebf"
+
+            # compilarlo con el HLVC
+            With "EASM_Hlvc"
+        [end _Entry]
         
         [_Entry]
             # el nombre del archivo original

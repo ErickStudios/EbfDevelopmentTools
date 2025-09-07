@@ -16,9 +16,9 @@ swinc Persona
     /**
     * Trabajo
     *
-    * no se todos los trabajos tienen diferentes cosas, yo lo pondre como puntero a algo
+    * su trabajo
     */
-    autv Trabajo::LET;
+    autv Trabajo::Array;
 
     /**
     * Edad
@@ -27,3 +27,67 @@ swinc Persona
     */
     autv Edad::LET;
 }
+
+/**
+* KillPerson
+*
+* adios
+* solo es para darle lore, que? no todo el tiempo tenemos que ser serios en nuestros proyectos
+*/
+tapot KillPerson (_Persona_)
+
+    // naturalmente _Persona_ al no tener dinero por no tener trabajo se morira de hambre literalmente
+    // por que no puede conseguir uno por que su mundo se quedo parado (el programa) asi que se va a morir de hambre
+    // que el juan que aparece no es el mismo, es un clon
+    //
+    // no enserio que triste
+
+    // liberar el nombre
+    FreePool _Persona_.Nombre
+    // desemplearlo
+    FreePool _Persona_.Trabajo
+
+    // para que no sufra al hacer que otro programa lo aplaste le damos 999 años y asi se morira por causas naturales
+    _Persona_.Edad = 9
+    (LET*)1 = 10
+    _Math _Persona_.Edad * 1
+    (LET*)1 = 9
+    _Math _Persona_.Edad + 1
+    (LET*)1 = 10
+    _Math _Persona_.Edad * 1
+    (LET*)1 = 9
+    _Math _Persona_.Edad + 1
+
+    // finalmente enterrarlo, siempre te recordaremos _Persona_
+    _Persona_.Nombre = _EbfNullPtr_
+    _Persona_.Trabajo = _EbfNullPtr_
+    _Persona_.Edad = 0
+
+END tapot
+
+/**
+* PrintPersonInfo
+*
+* imprime informacion de una persona
+*
+* @param Persona la estructura de la persona
+*/
+tapot PrintPersonInfo (_Persona_)
+
+    // imprimir el nombre
+    call_tapot PrintPool _Persona_.Nombre
+
+    // informar de la edad
+    Print "\stiene\s"
+    // imprimir la edad
+    _CallOut 18 _Persona_.Edad
+
+    // informar del trabajo
+    Print "\sy\strabaja\scomo\s"
+    // imprimir el trabajo
+    call_tapot PrintPool _Persona_.Trabajo
+
+    // salto de lineaa
+    Print "\n"
+
+END tapot

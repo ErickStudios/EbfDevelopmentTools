@@ -1,0 +1,51 @@
+/**
+* Boolean.heasm
+*
+* funciones de booleanos
+*/
+
+/**
+* BooleanToString
+*
+* convierte un boolean a string
+* @param BooleanPtr es el puntero al boolean
+* @param Cout es el pool que retornara
+*/
+tapot BooleanToString (_BooleanPtr_,_Cout_)
+
+    // crear true
+    (LET*)5 = 0
+    (LET*)6 = 4
+    _CallOut 14 5
+
+    // asignar todo
+    5 [0] 'T'
+    5 [1] 'r'
+    5 [2] 'u'
+    5 [3] 'e'
+
+    (LET*)2 = 0
+    IF _BooleanPtr_|==|2 THEN _IBooleanStrTrue_
+
+    _Cout_ = *5
+
+END tapot
+
+FUNCTION _IBooleanStrTrue_
+
+    // liberar el true anterior por que no se necesita
+    FreePool 5
+
+    // crear otro pool
+    (LET*)5 = 0
+    (LET*)6 = 5
+    _CallOut 14 5
+
+    // asignar las letras
+    5 [0] 'F'
+    5 [1] 'a'
+    5 [2] 'l'
+    5 [3] 's'
+    5 [4] 'e'
+
+    __asm ret

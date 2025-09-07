@@ -1,0 +1,46 @@
+/**
+* Persona.heasm
+*
+* implementacion de persona
+*/
+
+%include
+    lib/ebf.heasm
+
+%include
+    Tests/Headers/Persona.heasm
+
+autopbus Juan::swinc Persona
+
+// para que el sistema de advertencias deje de estar chillando
+Juan.Nombre = _EbfNullPtr_
+Juan.Edad = _EbfNullPtr_
+Juan.Trabajo = _EbfNullPtr_
+
+// asignarle nombre a Juan
+ManualAllocation Juan.Nombre 4
+Juan.Nombre [0] 'J'
+Juan.Nombre [1] 'u'
+Juan.Nombre [2] 'a'
+Juan.Nombre [3] 'n'
+
+// asignarle edad a juan, no puede tener edad nula, si no *Crasheo cerebral*
+Juan.Edad = 23
+
+// asignarle trabajo, si no de que va a vivir
+ManualAllocation Juan.Trabajo 9
+Juan.Trabajo [0] 'i'
+Juan.Trabajo [1] 'n'
+Juan.Trabajo [2] 'g'
+Juan.Trabajo [3] 'e'
+Juan.Trabajo [4] 'n'
+Juan.Trabajo [5] 'i'
+Juan.Trabajo [6] 'e'
+Juan.Trabajo [7] 'r'
+Juan.Trabajo [8] 'o'
+
+// describir a juan
+call_tapot PrintPersonInfo Juan
+
+// bueno, hora de ma*ar a juan xd
+call_tapot KillPerson Juan

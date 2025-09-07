@@ -10,6 +10,13 @@
 */
 
 /**
+* _EbfNullPtr_
+*
+* representa un puntero nulo
+*/
+#define _EbfNullPtr_ 0
+
+/**
 * ComparatorType
 *
 * el tipo de comparador
@@ -442,21 +449,21 @@ END tapot
 * @param Green el color verde
 * @param Blue el color azul
 */
-tapot DrawRectangle (PosX,PosY,SizeX,SizeY,Red,Green,Blue)
+tapot DrawRectangle (_PosX_,_PosY_,_SizeX_,_SizeY_,_Red_,_Green_,_Blue_)
     // rojo
-    SetVarWithValue 1 Red
+    SetVarWithValue 1 _Red_
     // verde
-    SetVarWithValue 2 Green
+    SetVarWithValue 2 _Green_
     // azul
-    SetVarWithValue 3 Blue
+    SetVarWithValue 3 _Blue_
     // posicion x
-    SetVarWithValue 4 PosX
+    SetVarWithValue 4 _PosX_
     // posicion y
-    SetVarWithValue 5 PosY
+    SetVarWithValue 5 _PosY_
     // tamanio x
-    SetVarWithValue 6 SizeX
+    SetVarWithValue 6 _SizeX_
     // tamanio y
-    SetVarWithValue 7 SizeY
+    SetVarWithValue 7 _SizeY_
 
     // dibujarlo
     _CallOut 48 1
