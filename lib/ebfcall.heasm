@@ -10,6 +10,7 @@
 * executa un codigo guardado en la ram como un string
 *
 * @param PtrToCode el puntero al archivo
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#executecodefromram)
 */
 tapot ExecuteCodeFromRam (PtrToCode)
 
@@ -24,6 +25,7 @@ END tapot
 *
 * @param SavePtrIn donde se guardara la direccion al codigo
 * @returns SavePtrIn como el puntero al codigo
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#savemeinram)
 */
 tapot SaveMeInRam (SavePtrIn)
 

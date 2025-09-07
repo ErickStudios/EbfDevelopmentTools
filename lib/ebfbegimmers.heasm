@@ -20,6 +20,7 @@
 * ComparatorType
 *
 * el tipo de comparador
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#comparaciones-avanzadas)
 */
 ENUM ComparatorType
 
@@ -53,163 +54,266 @@ ENUM ComparatorType
 
 END ENUM
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_NULL_ 0
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_UP_ 1
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_DOWN_ 2
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_RIGHT_ 3
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_LEFT_ 4
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_HOME_ 5
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_END_ 6
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_INSERT_ 7
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_DELETE_ 8
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_PAGE_UP_ 9
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_PAGE_DOWN_ 10
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F1_ 11
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F2_ 12
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F3_ 13
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F4_ 14
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F5_ 15
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F6_ 16
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F7_ 17
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F8_ 18
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F9_ 19
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F10_ 20
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F11_ 21
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_F12_ 22
 
-/// [extraido de: gnu-efi eficon.h]
+/**
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#codigos-de-escaneo-de-teclas)
+*/
 #define _SCAN_ESC_ 23
 
 /**
 * _StdoutColors_
 *
 * representa los colores estandart del conout de KellyBootloader
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
 */
 ENUM _StdoutColors_
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_black_ 1
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_lightblack_ 2
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkgray_ 3
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_gray_ 4
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_lightgray_ 5
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_white_ 6
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkred_ 7
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_red_ 8
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightred_ 9
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkorange_ 10
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_orange_ 11
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightorange_ 12
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkyellow_ 13
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_yellow_ 14
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightyellow_ 15
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkgreen_ 16
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_green_ 17
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightgreen_ 18
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkcyan_ 19
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_cyan_ 20
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightcyan_ 21
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkteal_ 22
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_teal_ 23
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightteal_ 24
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_darkblue_ 25
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_blue_ 26
 
-    /// [extraido de: ErickBinaryFormat.h llamada 3 y 4]
+    /**
+    * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#colores-de-consola)
+    */
     _EnumMember _ConsoleColor_brightblue_ 27
 
 END ENUM
@@ -220,6 +324,7 @@ END ENUM
 * cambia el color del texto de la consola
 *
 * @param Color el color
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setforegroundcolor)
 */
 tapot SetForegroundColor (Color)
 
@@ -233,6 +338,7 @@ END tapot
 * cambia el color del fondo de la consola
 *
 * @param Color el color
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setbackgroundcolor)
 */
 tapot SetBackgroundColor (Color)
 
@@ -247,6 +353,7 @@ END tapot
 *
 * @param X la nueva posicion en x
 * @param Y la nueva posicion en y
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setcursorpos)
 */
 tapot SetCursorPos (X,Y)
 
@@ -263,6 +370,7 @@ END tapot
 * espera una cantidad de microsegudos
 *
 * @param Ms los microsegundos a esperar
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#waitmicroseconds)
 */
 tapot WaitMicroseconds (Ms)
 
@@ -278,6 +386,7 @@ END tapot
 * epsera una tecla y la lee
 *
 * @returns EfiKeyStructPtr como la tecla, lee EfiKey para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#waitkeyandread)
 */
 tapot WaitKeyAndRead (EfiKeyStructPtr)
 
@@ -293,6 +402,7 @@ END tapot
 * obtiene la fecha y hora
 *
 * @returns EfiTimeStructPtr como la fecha y hora, lee EfiTime para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#gettime)
 */
 tapot GetTime (EfiTimeStructPtr)
 
@@ -306,6 +416,7 @@ END tapot
 * imprime un numero en la consola
 *
 * @param Number el numero, no hay version de puntero asi que usa `_CallOut 18 {PunteroATuNumero}`
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printnumber)
 */
 tapot PrintNumber (Number)
 
@@ -321,6 +432,7 @@ END tapot
 * imprime un numero hexadecimal en la consola sin el `0x`
 *
 * @param Number el numero, no hay version de puntero asi que usa `_CallOut 19 {PunteroATuNumero}`
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printhexnumber)
 */
 tapot PrintHexNumber (Number)
 
@@ -337,6 +449,7 @@ END tapot
 *
 * @param Str el puntero al string
 * @returns NumberCout como salida
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#atoi)
 */
 tapot Atoi (Str,NumberCout)
 
@@ -355,6 +468,7 @@ END tapot
 *
 * @param Str el puntero al string
 * @returns NumberCout como salida
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#xtoi)
 */
 tapot Xtoi (Str,NumberCout)
 
@@ -383,6 +497,7 @@ END tapot
 * Shutdown
 *
 * apaga la pc
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#shutdown)
 */
 FUNCTION Shutdown
 
@@ -394,6 +509,7 @@ __asm ret
 * Reset
 *
 * reinicia la pc
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#reset)
 */
 FUNCTION Reset
 
@@ -405,6 +521,7 @@ __asm ret
 * PrintPool
 *
 * imprimir un pool
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printpool)
 */
 tapot PrintPool (_Str_)
 
@@ -420,6 +537,7 @@ END tapot
 * la funcion debe tener una instruction `__asm ret` y usa `FUNCTION` por que tapot es una macro y no una funcion a la que se puede llamar en tiempo de ejecucion
 * @param Var la variable
 * @param Function la funcion
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#while)
 */
 tapot While (Var,Function)
 
@@ -448,6 +566,7 @@ END tapot
 * @param Red el color rojo
 * @param Green el color verde
 * @param Blue el color azul
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#drawrectangle)
 */
 tapot DrawRectangle (_PosX_,_PosY_,_SizeX_,_SizeY_,_Red_,_Green_,_Blue_)
     // rojo
@@ -480,6 +599,7 @@ END tapot
 * @param StrToSplitPtr el puntero al string a separar
 * @param Splitter el puntero al string separador
 * @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#splitstr)
 */
 tapot SplitStr (StrToSplitPtr,Splitter,ReturnOn)
 
@@ -504,6 +624,7 @@ END tapot
 * @param OldStr el puntero al string original
 * @param NewStr el puntero al string que remplazara a OldStr
 * @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#strreplace)
 */
 tapot StrReplace (_StrPtr,_OldStr,_NewStr,ReturnOn)
 
@@ -527,6 +648,7 @@ END tapot
 * @param JumpIf saltar si retorno especificamente un estado de ComparatorType
 * @param JumpTo la etiqueta a la que saltara (un function, no se aceptan tapots, no se aceptan punteros a funciones)
 * @param SaveProgramCounter 1 si se quiere guardar el puntero de instrucciones para usar ret para volver al mismo lugar y seguir, si es 0 no se guardara
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#cmpandjump)
 */
 tapot CmpAndJump (_Value1_,_Value2_,_JumpIf_,_JumpTo_,_SaveProgramCounter_)
 
@@ -550,6 +672,7 @@ END tapot
 *
 * @param JumpTo la etiqueta a la que se saltara
 * @param SaveProgramCounter la posibilidad de hacer ret para continuar, 0 si no, 1 si se desea
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ifmanual)
 */
 tapot IFManual (_JumpTo_,_SaveProgramCounter_)
 

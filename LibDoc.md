@@ -341,7 +341,7 @@ Funciones/tapots:
 * parametros
     * `VarToEdit` la variable que edita
     * `NewValue` el nuevo valor, no se permiten valores literales
-* ReadHighPartVar
+## ReadHighPartVar
 * lee la parte alta de una variable
 * parametros
     * `VarToEdit` la variable que leera

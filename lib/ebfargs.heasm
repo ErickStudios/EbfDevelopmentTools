@@ -11,7 +11,7 @@
 * @param Number el parametro a obtener , empieza con 0 como el primero
 *
 * @returns Cout el puntero al array
-* [lease](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#argumentos)
+* [lease](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getparam)
 */
 tapot GetParam (Number,Cout)
 

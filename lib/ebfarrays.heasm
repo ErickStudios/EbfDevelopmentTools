@@ -13,6 +13,7 @@
 * @param GetOn donde lo retornara
 *
 * @returns GetOn como lo prometi antes
+* [[EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getarraylength)
 */
 tapot GetArrayLength (Array,GetOn)
 
@@ -33,6 +34,7 @@ END tapot
 * @param Item el item
 *
 * @returns ReturnOn como el item extraido
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getarrayitem)
 */
 tapot GetArrayItem (_PtrTo_,_Item_,_ReturnOn_)
     
@@ -53,6 +55,7 @@ END tapot
 * @param PtrTo el puntero al array
 * @param Item el item
 * @param NewValue el nuevo valor
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setarrayitem)
 */
 tapot SetArrayItem (PtrTo,_Item_,_NewValue_)
     
@@ -72,6 +75,7 @@ END tapot
 * @param PtrTo el puntero al array
 * @param Item el puntero item
 * @param NewValue el nuevo valor
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ptrsetarrayitem)
 */
 tapot PtrSetArrayItem (PtrTo,_Item_,_NewValue_)
     
@@ -92,6 +96,7 @@ END tapot
 * @param PtrTo2 el puntero al array 2
 * @param Item1 el item 1
 * @param Item2 el item 2
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#coppytoarray)
 */
 tapot CoppyToArray (_PtrTo1_,_PtrTo2_,_Item1_,_Item2_)
 
@@ -109,6 +114,7 @@ END tapot
 * @param Array2 puntero al array 2
 *
 * @returns (LET*)256 aunque ya lo maneja if_equal
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#buffercmp)
 */
 tapot BufferCmp (_Array1_,Array2_)
 
@@ -129,6 +135,7 @@ END tapot
 * @param Len la longitud que compara
 *
 * @returns (LET*)256 aunque ya lo maneja if_equal
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#bufferncmp)
 */
 tapot BufferNCmp (_Array1_,Array2_,_Len_)
 
@@ -151,6 +158,7 @@ END tapot
 * @param Len puntero a la longitud que compara
 *
 * @returns (LET*)256 aunque ya lo maneja if_equal
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ptrlenbufferncmp)
 */
 tapot PtrLenBufferNCmp (_Array1_,Array2_,_Len_)
 

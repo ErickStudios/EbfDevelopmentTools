@@ -31,6 +31,8 @@ END tapot
 * DllParams
 *
 * parametros que necesita una dll para cargar su maximo esplendor
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#dllparams)
+* [EbfDevelopmentTools-DllSpecification](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/DllSpecification.md)
 */
 swinc DllParams
 {
@@ -83,5 +85,7 @@ swinc DllParams
 *
 * tendran que compartir tanto las llamadas a la dll como el codigo de la dll la misma estructura
 * primero para que los datos sean cuerentes
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#dllio)
+* [EbfDevelopmentTools-DllSpecification](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/DllSpecification.md)
 */
 autopbus DllIO::swinc DllParams

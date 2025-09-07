@@ -10,6 +10,7 @@
 * ejecuta un archivo desde el fs
 *
 * @param FileNamePool el nombre del archivo
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#executefile)
 */
 tapot ExecuteFile (FileNamePool)
 
@@ -24,6 +25,7 @@ END tapot
 *
 * @param FileNamePool el nombre del archivo
 * @returns FileNamePool como el contenido
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#loadfiletomem)
 */
 tapot LoadFileToMem (FileNamePool)
 

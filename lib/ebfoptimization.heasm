@@ -11,6 +11,7 @@
 *
 * @param VarToEdit la variable que edita
 * @param NewValue el nuevo valor de la parte alta
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#edithighpartvar)
 */
 tapot EditHighPartVar (_VarToEdit_,_NewValue_)
     // codigo en el que se baso:
@@ -45,6 +46,7 @@ END tapot
 *
 * @param VarToEdit la variable que edita
 * @param NewValue el nuevo valor de la parte baja
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#editlowpartvar)
 */
 tapot EditLowPartVar (_VarToEdit_,_NewValue_)
     // codigo en el que se baso:
@@ -77,6 +79,7 @@ END tapot
 *
 * @param VarToRead la variable a leer
 * @returns ReturnOn como resultado
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#readhighpartvar)
 */
 tapot ReadHighPartVar (_VarToRead_,_ReturnOn_)
 	// codigo en el que se baso:
@@ -109,6 +112,7 @@ END tapot
 *
 * @param VarToRead la variable a leer
 * @returns ReturnOn como resultado
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#readlowpartvar)
 */
 tapot ReadLowPartVar (_VarToRead_,_ReturnOn_)
 	// codigo en el que se baso:

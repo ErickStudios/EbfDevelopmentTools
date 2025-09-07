@@ -8,6 +8,7 @@
 * EfiKey
 *
 * retornado por la llamada 12
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#efikey)
 */
 swinc EfiKey
 {
@@ -21,6 +22,7 @@ swinc EfiKey
 * EfiTime
 *
 * retornado por la llamada 13, espera no no lo digas
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#efitime)
 */
 swinc EfiTime
 {
@@ -42,6 +44,7 @@ swinc EfiTime
 * ArrayAllocationMethod
 *
 * pasado como argumento por la llamada 14
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#arrayallocationmethod)
 */
 swinc ArrayAllocationMethod
 {
@@ -184,6 +187,7 @@ swinc StrToNumberOperation
 * ConsoleSize
 *
 * pasado como argumento y devuelto por la llamada 44
+* [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#consolesize)
 */
 swinc ConsoleSize
 {
