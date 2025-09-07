@@ -32,3 +32,25 @@ este proyecto viene con pruebas de uso de la libreria y de heasm en general, pue
 aqui tambien se prueban dlls y librerias que el propio KellyBootloader usa, puedes verlos en `DllsSourceCode/` aunque algunas tal vez nunca lleguen a KellyBootloader
 
 tambien puede ver en `DefaultApps/` algunas aplicaciones que podran descargarse para KellyBootloader y con uso en la terminal, como herramientas de diagnostico, algunas apps utiles y mucho mas
+
+# compilando
+
+descargue lo siguiente para desarrollar con ErickAssembly HEASM y la libreria
+
+* ErickCompiler
+    * esencial para compilar y trae el interprete de build.erc necesario para la rutina de compilacion
+    * [Windows](https://www.mediafire.com/file/jy7wlqad8nv10l6/ErickCompilerWindows.zip/file)
+    * [LinuxX64](https://www.mediafire.com/file/u4ewaq5w887o2sg/ErickCompilerLinuxX64.zip/file)
+* ErickAssembly
+    * la extension para el restaltado de ErickAssembly y HEASM, trae un bonus de resaltado para ErickCompiler
+    * [ErickAssembly](https://marketplace.visualstudio.com/items?itemName=ErickCraftStudios.ErickAssembly)
+
+y tambien lo que ya dije sobre descargar la libreria
+
+para instalar y/o actualizar KellyBootloader 
+* necesita tener instalado requests en Linux puedes usar `python -m pip install requests` en windows usa `py -m pip install requests`
+* descargar `install.py` para descargar el instalador (si no lo tienes, o si una version añade nuevas dlls descargalo otra vez)
+* mover el `install.py` a la unidad en la que vas a instalar KellyBootloader, esto no borrara nada, solo crea las carpetas del ejecutable y de las librerias, si usas qemu pon el `install.py` en tu carpeta que el emulador usa para montarla
+* abrir el `install.py` en la carpeta o unidad y listo, el instalador ya te dira que hacer
+
+el `install.py` lo puedes conseguir [aqui](./install.py) o en la raiz de este repositorio

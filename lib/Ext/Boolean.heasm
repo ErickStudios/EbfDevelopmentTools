@@ -5,6 +5,42 @@
 */
 
 /**
+* _SetToFalse_
+*
+* cambia (LET*)1 a false
+*/
+FUNCTION _SetToFalse_
+    (LET*)3 = 0
+__asm ret
+
+/**
+* Not
+*
+* lo contrario
+* @param BooleanPtr es lo que se compara
+* @returns BooleanPtr como el BooleanPtr antiguo
+*/
+tapot Not (_BooleanPtr_)
+
+    // asignar valores
+    (LET*)1 = *_BooleanPtr_
+    (LET*)2 = 0
+
+    // asegurar que sea 1
+    (LET*)3 = 1
+
+    // si es false entonces es true
+    _BooleanPtr_ = 1
+
+    // comparar si no es false
+    IF 1|!=|2 THEN _SetToFalse_
+
+    // ajustar a false
+    _BooleanPtr_ = *3
+
+END tapot
+
+/**
 * BooleanToString
 *
 * convierte un boolean a string
