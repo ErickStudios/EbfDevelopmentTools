@@ -1,7 +1,7 @@
 # bienvenido a la documentacion de construccion de DLLS coerentes
 
 Fuentes
-    * [Documentacion de uso de la libreria](./LibDoc.md) para saber sobre el uso de la libreria
+* [Documentacion de uso de la libreria](./LibDoc.md) para saber sobre el uso de la libreria
 
 # teoria
 

@@ -1,6 +1,138 @@
-# build.erc para los ejemplos de utilidades
+# build.erc de EbfDevelopmentTools
+#
+# script de compilacion para aplicaciones de EBF
+#
 
-function Main
+#
+# Compiler
+#
+# el compilador que usaremos
+#
+Compiler = "EASM_Hlvc"
+
+# llamar a la funcion principal del script
+Main()
+
+#
+# CompileApps
+#
+# compila las apps
+#
+function CompileApps
+
+    compile
+
+        [_Entry]
+            # el nombre del archivo original
+            build "DefaultApps/cat.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/cat.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+    end
+
+stopScript()
+
+#
+# CompileTests
+#
+# compila las pruebas
+#
+function CompileTests
+
+    compile
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/ErickExpTest.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ErickExpTest.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+        
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/ParamsAppStrange1.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ParamsAppStrange1.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/Carro.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Carro.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/Persona.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Persona.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/GetTime.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/GetTime.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/Gfx.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Gfx.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/OptimizationTest.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/OptimizationTest.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+    end
+
+stopScript()
+
+#
+# CompileDlls
+#
+# compila las dlls
+#
+function CompileDlls
 
     compile
 
@@ -12,84 +144,7 @@ function Main
             As "build/LibxEBF.ebf"
 
             # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "ParamsAppStrange1.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/ParamsAppStrange1.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "Tests/Carro.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/Carro.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "Tests/Persona.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/Persona.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-        
-        [_Entry]
-            # el nombre del archivo original
-            build "DefaultApps/cat.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/cat.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "GetTime.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/GetTime.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "Gfx.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/Gfx.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-
-        [_Entry]
-            # el nombre del archivo original
-            build "Tests/OptimizationTest.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/OptimizationTest.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
+            With "%Compiler%"
         [end _Entry]
 
         [_Entry]
@@ -97,35 +152,48 @@ function Main
             build "DllsSourceCode/ErickExp.heasm"
 
             # el nombre del archivo del resultado
-            As "build/kelly/ErickExp.dll"
+            As "lib/Dlls/ErickExp.dll"
 
             # compilarlo con el HLVC
-            With "EASM_Hlvc"
+            With "%Compiler%"
         [end _Entry]
 
-        [_Entry]
-            # el nombre del archivo original
-            build "ErickExpTest.heasm"
-
-            # el nombre del archivo del resultado
-            As "build/ErickExpTest.ebf"
-
-            # compilarlo con el HLVC
-            With "EASM_Hlvc"
-        [end _Entry]
-        
-        # no hablemos de EtmReader.heasm, no funciona, si alguien quiere arreglarlo pues descarga una copia y intenta arreglarlo
-
-        #[_Entry]
-        #    # el nombre del archivo original
-        #    build "EtmReader.heasm"
-        #
-        #    # el nombre del archivo del resultado
-        #    As "build/EtmReader.ebf"
-        #
-        #    # compilarlo con el HLVC
-        #    With "EASM_Hlvc"
-        #[end _Entry]
     end
+
+stopScript()
+
+#
+# HelpMessage
+#
+# muestra un mensaje de guia de comandos
+#
+function HelpMessage
+
+    echo "Bienvenido a EbfDevelopmentTools"
+    echo " "
+    echo "Una herramienta de desarrollo para desarrollar aplicaciones y bootloaders para ErickBinaryFormat"
+    echo " "
+    echo "Puede usar los siguientes comandos:"
+    echo "   --apps: para compilar aplicaciones utiles para el bootloader"
+    echo "   --dlls: para compilar librerias dinamicas utiles para el bootloader"
+    echo "   --tests: para compilar las pruebas"
+    echo "   --h: para mostrar este mensaje"
+
+stopScript()
+
+#
+# Main
+#
+# funcion principal del script
+#
+function Main
+
+    if "%ps%"=="--apps" then CompileApps
+    if "%ps%"=="--dlls" then CompileDlls
+    if "%ps%"=="--tests" then CompileTests
+    if "%ps%"=="--h" then HelpMessage
+
+    echo "parece que ingreso un comando invalido."
+    echo "Usa --h para mostrar una guia de los comandos que si son validos"
 
 stopScript()
