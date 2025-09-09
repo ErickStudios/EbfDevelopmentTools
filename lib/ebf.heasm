@@ -25,6 +25,9 @@ call __Entry__
     
 %include
     lib/ebfptrs.heasm
+    
+%include
+    lib/ebfram.heasm
 
 // --------------------------------
 //
@@ -106,3 +109,5 @@ FUNCTION __Entry__
     _Math _SystemInfo_ * 1
     (LET*)1 = 9
     _Math _SystemInfo_ + 1
+
+    _SystemInfo_ = **_SystemInfo_

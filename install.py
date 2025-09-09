@@ -60,7 +60,10 @@ def CreateDirs():
 #
 # descargar un archivo desde una url
 #
-def DownloadFile(Url: str,File: str):
+def DownloadFile(
+        Url: str,
+        File: str
+):
     
     # intentar encontrar el contenido del .efi
     response = requests.get(Url)
@@ -130,6 +133,7 @@ print("Desea descargar las dependencias (S/Y)/N: ")
 YesNo = input().strip().lower()
 
 if YesNo in ["s", "y"]:
-    DownloadDependences()
+    DownloadDependences(
+    )
 
 print("gracias por usar KellyBootloader, para acutalizar el bootloader vuelve a ejecutar el instalador")

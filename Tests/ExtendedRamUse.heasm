@@ -1,0 +1,17 @@
+/**
+* ExtendedRamUse.heasm
+*
+* usando la ram extendida
+*/
+
+%include
+    lib/ebf.heasm
+
+// bloque 2
+(LET*)6 = 1
+// ofset +10
+(LET*)7 = 10
+// valor
+(LET*)8 = 43
+
+call_tapot EditBlockValue 6 7 8

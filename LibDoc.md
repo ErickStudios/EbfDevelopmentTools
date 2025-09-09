@@ -316,9 +316,14 @@ instancia de `DllParams`
 
 Funciones/tapots:
 ## ExecuteFile
-    * ejecuta un archivo desde el fs
-    * parametros
-        * `FileNamePool` el string que contiene el nombre y direccion del archivo
+* ejecuta un archivo desde el fs
+* parametros
+    * `FileNamePool` el string que contiene el nombre y direccion del archivo
+# WriteFile
+* escribe un archivo en el fs
+* parametros
+    * `FileNamePool` el string que contiene el nombre y direccion del archivo
+    * `FileContentPool` el string que contiene el contenido que se va a escribir
 ## LoadFileToMem
 * cargar un archivo en la ram
 * parametros
@@ -353,3 +358,21 @@ Funciones/tapots:
     * `VarToEdit` la variable que leera
 * retorna
     * `ReturnOn` como resultado
+
+# manejo
+
+`ebfram.heasm` es un modulo para acceder a la ram extendidad
+
+## EditBlockValue
+* edita un valor de un bloque
+* parametros
+    * `Blk` el bloque
+    * `Offset` el offset
+    * `Val` el nuevo valor, no se permiten valores literales
+## GetBlockValue
+* obtiene un valor de un bloque
+* parametros
+    * `Blk` el bloque
+    * `Offset` el offset
+* retorna
+    * `Var` el valor

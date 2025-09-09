@@ -123,6 +123,16 @@ function CompileTests
             With "%Compiler%"
         [end _Entry]
 
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/ExtendedRamUse.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ExtendedRamUse.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
     end
 
 stopScript()

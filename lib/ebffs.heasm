@@ -19,6 +19,24 @@ tapot ExecuteFile (FileNamePool)
 END tapot
 
 /**
+* WriteFile
+*
+* escribe un contenido en un archivo
+* 
+* @param FileNamePool el puntero al nombre
+* @param FileContentPool el puntero al contenido
+*/
+tapot WriteFile (_FileNamePool_,_FileContentPool_)
+
+    (LET*)1 = *_FileNamePool_
+    (LET*)2 = *_FileContentPool_
+
+    // escribir en el archivo
+    _CallOut 54 1
+
+END tapot
+
+/**
 * LoadFileToMem
 *
 * cargar un archivo en la ram

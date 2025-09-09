@@ -1,0 +1,99 @@
+/**
+* ebfram.heasm
+*
+* muchas cosas para extender la ram
+*/
+
+/**
+* EditBlockValue
+*
+* edita un valor de un bloque
+* @param Blk el bloque
+* @param Offset el offset
+* @param Val el nuevo valor
+*/
+tapot EditBlockValue (_Blk_,_Offset_,_Val_)
+
+    // hacer 32768
+    (LET*)1 = 4
+    (LET*)2 = 32
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 7
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 6
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 7
+    _CallOut 35 1
+
+    // multiplicarlo por el numero de bloque
+    (LET*)1 = 2
+    (LET*)2 = *_Blk_
+    _CallOut 35 1
+
+    // sumarle el offset
+    (LET*)1 = 0
+    (LET*)2 = *_Offset_
+    _CallOut 35 1
+
+    _CallOut 37 _Val_
+
+END tapot
+
+/**
+* GetBlockValue
+*
+* obtiene un valor de un bloque
+* @param Blk el bloque
+* @param Offset el offset
+* @returns Var donde lo retornara
+*/
+tapot GetBlockValue (_Blk_,_Offset_,_Var_)
+
+    // hacer 32768
+    (LET*)1 = 4
+    (LET*)2 = 32
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 7
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 6
+    _CallOut 35 1
+    (LET*)1 = 2
+    (LET*)2 = 10
+    _CallOut 35 1
+    (LET*)1 = 0
+    (LET*)2 = 7
+    _CallOut 35 1
+
+    // multiplicarlo por el numero de bloque
+    (LET*)1 = 2
+    (LET*)2 = *_Blk_
+    _CallOut 35 1
+
+    // sumarle el offset
+    (LET*)1 = 0
+    (LET*)2 = *_Offset_
+    _CallOut 35 1
+
+    _CallOut 36 _Var_
+
+END tapot

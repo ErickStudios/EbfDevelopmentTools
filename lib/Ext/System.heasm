@@ -91,17 +91,29 @@ FUNCTION _IExitBS_
     // liberar el distribuidor del firmware
     (LET*)2 = _SystemInfoGet_FirmwareVendor_
     call_tapot GetArrayItem _SystemInfo_ 2 3
-    FreePool 3
+    (LET*)6 = *3
+    FreePool 6
 
     // liberar el string del lenguaje
     (LET*)2 = _SystemInfoGet_GetLanguaje_
     call_tapot GetArrayItem _SystemInfo_ 2 3
-    FreePool 3
+    (LET*)6 = *3
+    FreePool 6
+
+    // liberar todos los guid
+    (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
+    call_tapot GetArrayItem _SystemInfo_ 2 3
+    (LET*)6 = *3
+
+    (LET*)2 = 3
+    call_tapot GetArrayItem 6 2 7
+    FreePool 7
 
     // liberar el guid de la tabla de configuracion
     (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
     call_tapot GetArrayItem _SystemInfo_ 2 3
-    FreePool 3
+    (LET*)6 = *3
+    FreePool 6
 
     // liberar la tabla de servicios de arranque
     FreePool _SystemInfo_
