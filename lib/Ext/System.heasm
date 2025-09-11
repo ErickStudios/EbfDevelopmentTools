@@ -126,7 +126,9 @@ FUNCTION _IExitBS_
 * sale de los servicios de arranque
 * @param AreYouSure? si estas seguro de hacerlo
 */
-tapot ExitBootservices (_AreYouSure?_)
+tapot ExitBootservices (
+    _AreYouSure?_
+    )
 
     (LET*)1 = 1
     IF _AreYouSure?_|==|1 THEN _IExitBS_

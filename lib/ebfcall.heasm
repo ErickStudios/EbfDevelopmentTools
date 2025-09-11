@@ -12,7 +12,9 @@
 * @param PtrToCode el puntero al archivo
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#executecodefromram)
 */
-tapot ExecuteCodeFromRam (PtrToCode)
+tapot ExecuteCodeFromRam (
+    PtrToCode::Array
+    )
 
     _CallOut 43 PtrToCode
 
@@ -27,7 +29,9 @@ END tapot
 * @returns SavePtrIn como el puntero al codigo
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#savemeinram)
 */
-tapot SaveMeInRam (SavePtrIn)
+tapot SaveMeInRam (
+    SavePtrIn::Array
+    )
 
     _CallOut 42 SavePtrIn
 

@@ -1,0 +1,122 @@
+/**
+* boot.heaam
+*
+* ejemplo de un bootloader para un sistema llamado yo que se, BasOS
+* y tambien como recuperara todo, esto claro antes de que se salga de los bootservices
+*/
+
+%include
+    Tests/BasOS/Headers/BasOS.heasm
+
+%include
+    lib/ebf.heasm
+
+// no vamos a extraer nada de los servicios de arranque
+(LET*)1 = 1
+call_tapot ExitBootservices 1
+
+/**
+* _DoRunCm_
+*
+* si hace un runcm
+*/
+FUNCTION _DoRunCm_
+    _IProto()
+
+/**
+* _DoCat_
+*
+* si hace un cat
+*/
+FUNCTION _DoCat_
+    _IProto()
+
+/**
+* _DoClear_
+*
+* si hace un clear
+*/
+FUNCTION _DoClear_
+    _IProto()
+
+Array _RuncmCommand_ AllocatePool->5
+Array _CatCommand_ AllocatePool->3
+Array _ClearCommand_ AllocatePool->5
+
+_CatCommand_ [0] 'c'
+_CatCommand_ [1] 'a'
+_CatCommand_ [2] 't'
+
+_RuncmCommand_ [0] 'r'
+_RuncmCommand_ [1] 'u'
+_RuncmCommand_ [2] 'n'
+_RuncmCommand_ [3] 'c'
+_RuncmCommand_ [4] 'm'
+
+_ClearCommand_ [0] 'c'
+_ClearCommand_ [1] 'l'
+_ClearCommand_ [2] 'e'
+_ClearCommand_ [3] 'a'
+_ClearCommand_ [4] 'r'
+
+FUNCTION _Loop_
+
+    // dibujar el prompt
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "BasOS"
+    (LET*)1 = _ConsoleColor_brightblue_
+    call_tapot SetForegroundColor 1
+    Print "^"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "#\s"
+
+    // leer la linea
+    Array _Line_ ReadLine
+    Print "\n"
+
+    // comparar los comandos
+    IF BufferNCmp<_Line_,_RuncmCommand_,5> THEN _DoRunCm_
+    IF BufferNCmp<_Line_,_CatCommand_,3> THEN _DoCat_
+    IF BufferCmp<_Line_,_ClearCommand_> THEN _DoClear_
+
+    // repetir el loop
+    call_tapot CmpAndJump 0 0 3 _Loop_ 0
+
+FUNCTION _DoRunCm_
+
+    // recorrerlo 6 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 6
+
+    _CallOut 33 1
+    
+    call_tapot ExecuteFile 1
+    Print "\n"
+
+    __asm ret
+
+FUNCTION _DoCat_
+
+    // recorrerlo 6 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 4
+
+    _CallOut 33 1
+    
+    // cargar el archivo a la ram
+    call_tapot LoadFileToMem 1
+    call_tapot PrintPool 1
+
+    // liberar el pool del archivo
+    FreePool 1
+    Print "\n"
+
+    __asm ret
+
+FUNCTION _DoClear_
+
+    _CallOut 2 0
+
+    __asm ret

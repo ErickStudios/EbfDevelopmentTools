@@ -33,6 +33,18 @@ function CompileApps
             With "%Compiler%"
         [end _Entry]
 
+        [_Entry]
+            # el nombre del archivo original
+            build "DefaultApps/handle.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/handle.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+
     end
 
 stopScript()
@@ -114,6 +126,17 @@ function CompileTests
 
         [_Entry]
             # el nombre del archivo original
+            build "Tests/BasOS/boot.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/BasOS.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
             build "Tests/OptimizationTest.heasm"
 
             # el nombre del archivo del resultado
@@ -129,6 +152,17 @@ function CompileTests
 
             # el nombre del archivo del resultado
             As "build/ExtendedRamUse.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
+            build "Tests/ReallocatingArray.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ReallocatingArray.ebf"
 
             # compilarlo con el HLVC
             With "%Compiler%"

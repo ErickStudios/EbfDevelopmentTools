@@ -20,7 +20,9 @@ __asm ret
 * @param BooleanPtr es lo que se compara
 * @returns BooleanPtr como el BooleanPtr antiguo
 */
-tapot Not (_BooleanPtr_)
+tapot Not (
+    _BooleanPtr_::Boolean
+    )
 
     // asignar valores
     (LET*)1 = *_BooleanPtr_
@@ -47,7 +49,10 @@ END tapot
 * @param BooleanPtr es el puntero al boolean
 * @param Cout es el pool que retornara
 */
-tapot BooleanToString (_BooleanPtr_,_Cout_)
+tapot BooleanToString (
+    _BooleanPtr_::Boolean,
+    _Cout_::Array
+    )
 
     // crear true
     (LET*)5 = 0

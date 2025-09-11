@@ -1,0 +1,139 @@
+/**
+* handle.heasm
+*
+* manejador de entrada y salida para pruebas
+*
+* para los extras de KellyBootloader
+*
+
+KellyBootloader> ./handle.ebf --out 3B D3
+Sending 0xD3 to 0x3B
+
+KellyBootloader> ./handle.ebf --in 3B
+0x3B: D3
+*/
+
+%include
+    lib/ebf.heasm
+
+/**
+* _Action_
+*
+* la accion
+*/
+Array _Action_ _YaLeTocaraXd_
+
+/**
+* _InKeyword_
+*
+* para recivir
+*/
+Array _InKeyword_ AllocatePool->4
+
+/**
+* _OutKeyword_
+*
+* para enviar
+*/
+Array _OutKeyword_ AllocatePool->5
+
+/**
+* _Drv_
+*
+* el dispositivo
+*/
+LET _Drv_
+
+/**
+* _Data_
+*
+* el dato
+*/
+LET _Data_
+
+/**
+* _DrvOut_
+*
+* enviar
+*/
+FUNCTION _DrvOut_
+    _IProto()
+
+/**
+* _DrvIn_
+*
+* recibir
+*/
+FUNCTION _DrvIn_
+    _IProto()
+
+//
+// inicializar los comandos
+//
+
+_InKeyword_ [0] '-'
+_InKeyword_ [1] '-'
+_InKeyword_ [2] 'i'
+_InKeyword_ [3] 'n'
+
+_OutKeyword_ [0] '-'
+_OutKeyword_ [1] '-'
+_OutKeyword_ [2] 'o'
+_OutKeyword_ [3] 'u'
+_OutKeyword_ [4] 't'
+
+// obtener el comando
+call_tapot GetParam 0 _Action_
+
+// parsear el driver
+call_tapot GetParam 1 7
+call_tapot PrintPool 7
+call_tapot Xtoi 7 _Drv_
+
+// parsear el dato
+call_tapot GetParam 2 7
+call_tapot PrintPool 7
+call_tapot Xtoi 7 _Data_
+
+IF BufferCmp<_Action_,_InKeyword_> THEN _DrvIn_
+IF BufferCmp<_Action_,_OutKeyword_> THEN _DrvOut_
+
+_CallOut 0 0
+
+FUNCTION _DrvIn_
+
+    // 0xXX: 
+    Print "0x"
+    _CallOut 19 _Drv_
+    Print ":\s"
+
+    // obtener el driver
+    (LET*)1 = *_Drv_
+    _CallOut 52 1
+    _Data_ = *2
+
+    // XX
+    _CallOut 19 _Data_
+    Print "\s"
+
+    __asm ret
+
+FUNCTION _DrvOut_
+
+    // Sending 0xD3 to 0x3B
+
+    Print "Sending\s"
+    // 0xXX: 
+    Print "0x"
+    _CallOut 19 _Data_
+    Print "\sto\s0x"
+    _CallOut 19 _Drv_
+
+    (LET*)1 = *_Drv_
+    (LET*)2 = *_Data_
+
+    _CallOut 53 1
+
+    Print "\s"
+
+    __asm ret

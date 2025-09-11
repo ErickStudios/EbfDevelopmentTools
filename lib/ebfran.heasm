@@ -1,0 +1,47 @@
+/**
+* ebfran.heasm
+*
+* funciones random
+*/
+
+/**
+* RandomIn
+*
+* generar un numero random
+* @param Min el minimo
+* @param Max el maximo
+* @returns ReturnOn donde retorna el resultado
+*/
+tapot RandomIn (
+    _Min_::LET,
+    _Max_::LET,
+    _ReturnOn_::LET
+    )
+
+    // obtener el tiempo
+    call_tapot GetTime 1
+
+    // guardar el segundo
+    (LET*)7 = *1
+
+    // multiplicar por el minuto
+    _Math 7 * 2
+    // multiplicar por la hora
+    _Math 7 * 3
+
+    (LET*)3 = *_Max_
+    (LET*)4 = *_Min_
+
+    // restarle el min
+    _Math 3 - 4
+
+    // modularlo
+    __asm module 7,3
+
+    // sumarle el min
+    _Math 7 + _Min_
+
+    // retornarlo
+    _ReturnOn_ = *7
+
+END tapot

@@ -12,7 +12,11 @@
 * @param Offset el offset
 * @param Val el nuevo valor
 */
-tapot EditBlockValue (_Blk_,_Offset_,_Val_)
+tapot EditBlockValue (
+    _Blk_::LET,
+    _Offset_::LET,
+    _Val_::LET
+    )
 
     // hacer 32768
     (LET*)1 = 4

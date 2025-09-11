@@ -9,7 +9,9 @@
 *
 * funcion interna para el retorno de la dll
 */
-tapot _IDllReturn (_ReturnValue_)
+tapot _IDllReturn (
+    _ReturnValue_::LET
+    )
 
     DllIO.Return = _ReturnValue_
     _CallOut 0 0
@@ -21,7 +23,8 @@ END tapot
 *
 * sale de la DLL
 */
-tapot _IDllIOExit ()
+tapot _IDllIOExit (
+)
 
     _CallOut 0 0
 

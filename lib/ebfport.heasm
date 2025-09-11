@@ -11,7 +11,10 @@
 * @param Port es ese puerto
 * @returns ReturnOn donde retornara el dato
 */
-tapot In (_Port_,_ReturnOn_)
+tapot In (
+    _Port_::LET,
+    _ReturnOn_::LET
+    )
 
     (LET*)1 = _Port_
 
@@ -28,7 +31,10 @@ END tapot
 * @param Port es ese puerto
 * @param Data es la direccion de la variable que contiene el dato para luego copiar el valor a el parametro 2 y escribirlo
 */
-tapot Out (_Port_,_Data_)
+tapot Out (
+    _Port_::LET,
+    _Data_::LET
+    )
 
     (LET*)1 = _Port_
     (LET*)2 = *_Data_

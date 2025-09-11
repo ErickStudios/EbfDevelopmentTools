@@ -12,7 +12,9 @@
 * @param FileNamePool el nombre del archivo
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#executefile)
 */
-tapot ExecuteFile (FileNamePool)
+tapot ExecuteFile (
+    FileNamePool::Array
+    )
 
     _CallOut 21 FileNamePool
 
@@ -26,7 +28,10 @@ END tapot
 * @param FileNamePool el puntero al nombre
 * @param FileContentPool el puntero al contenido
 */
-tapot WriteFile (_FileNamePool_,_FileContentPool_)
+tapot WriteFile (
+    _FileNamePool_::Array,
+    _FileContentPool_::Array
+    )
 
     (LET*)1 = *_FileNamePool_
     (LET*)2 = *_FileContentPool_
@@ -45,7 +50,9 @@ END tapot
 * @returns FileNamePool como el contenido
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#loadfiletomem)
 */
-tapot LoadFileToMem (FileNamePool)
+tapot LoadFileToMem (
+    FileNamePool::Array
+    )
 
     _CallOut 45 FileNamePool
 

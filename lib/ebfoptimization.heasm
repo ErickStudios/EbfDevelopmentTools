@@ -13,7 +13,10 @@
 * @param NewValue el nuevo valor de la parte alta
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#edithighpartvar)
 */
-tapot EditHighPartVar (_VarToEdit_,_NewValue_)
+tapot EditHighPartVar (
+    _VarToEdit_::LET,
+    _NewValue_::LET
+    )
     // codigo en el que se baso:
 	//  return (Origin & 0x00FF) | (New << 8);
 
@@ -48,7 +51,10 @@ END tapot
 * @param NewValue el nuevo valor de la parte baja
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#editlowpartvar)
 */
-tapot EditLowPartVar (_VarToEdit_,_NewValue_)
+tapot EditLowPartVar (
+    _VarToEdit_::LET,
+    _NewValue_::LET
+    )
     // codigo en el que se baso:
 	//  return (Origin & 0xFF00) | New;
     
@@ -81,7 +87,10 @@ END tapot
 * @returns ReturnOn como resultado
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#readhighpartvar)
 */
-tapot ReadHighPartVar (_VarToRead_,_ReturnOn_)
+tapot ReadHighPartVar (
+    _VarToRead_::LET,
+    _ReturnOn_::LET
+    )
 	// codigo en el que se baso:
     //  return (Value >> 8) & 0x00FF;
 
@@ -114,7 +123,10 @@ END tapot
 * @returns ReturnOn como resultado
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#readlowpartvar)
 */
-tapot ReadLowPartVar (_VarToRead_,_ReturnOn_)
+tapot ReadLowPartVar (
+    _VarToRead_::LET,
+    _ReturnOn_::LET
+    )
 	// codigo en el que se baso:
     //  return Value & 0x00FF;
 

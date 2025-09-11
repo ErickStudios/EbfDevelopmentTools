@@ -13,7 +13,10 @@
 * @returns Cout el puntero al array
 * [lease](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getparam)
 */
-tapot GetParam (Number,Cout)
+tapot GetParam (
+    Number::LET,
+    Cout::Array
+    )
 
     SetVar 3 Number
 

@@ -236,7 +236,10 @@ FUNCTION _InitializeDll_
 * @returns _CharacterToParseValue_ el caracter a examinar
 * @returns _PatternCharacterToCheck_ el caracter que o el statment con el cual aprobaran o no a _Str_
 */
-tapot GetChPParse (_Str_,_Match_)
+tapot GetChPParse (
+    _Str_::Array,
+    _Match_::Array
+    )
     call_tapot GetArrayItem _Str_ _StringIndexParse_ _CharacterToParseValue_
     call_tapot GetArrayItem _Match_ _PatterngIndexParse_ _PatternCharacterToCheck_
 END tapot

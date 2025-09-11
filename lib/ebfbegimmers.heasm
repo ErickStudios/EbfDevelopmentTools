@@ -326,7 +326,9 @@ END ENUM
 * @param Color el color
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setforegroundcolor)
 */
-tapot SetForegroundColor (Color)
+tapot SetForegroundColor (
+    Color::LET
+    )
 
     _CallOut 3 Color
 
@@ -340,7 +342,9 @@ END tapot
 * @param Color el color
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setbackgroundcolor)
 */
-tapot SetBackgroundColor (Color)
+tapot SetBackgroundColor (
+    Color::LET
+    )
 
     _CallOut 4 Color
 
@@ -355,7 +359,10 @@ END tapot
 * @param Y la nueva posicion en y
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setcursorpos)
 */
-tapot SetCursorPos (X,Y)
+tapot SetCursorPos (
+    X::LET,
+    Y::LET
+    )
 
     SetVar 1 X
     SetVar 2 Y
@@ -372,7 +379,9 @@ END tapot
 * @param Ms los microsegundos a esperar
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#waitmicroseconds)
 */
-tapot WaitMicroseconds (Ms)
+tapot WaitMicroseconds (
+    Ms::LET
+    )
 
     SetVar 1 Ms
 
@@ -388,7 +397,9 @@ END tapot
 * @returns EfiKeyStructPtr como la tecla, lee EfiKey para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#waitkeyandread)
 */
-tapot WaitKeyAndRead (EfiKeyStructPtr)
+tapot WaitKeyAndRead (
+    EfiKeyStructPtr
+    )
 
     _CallOut 11 0
 
@@ -404,7 +415,9 @@ END tapot
 * @returns EfiTimeStructPtr como la fecha y hora, lee EfiTime para saber como estructurarla y evitar perdida de datos en variables por sobreescritura
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#gettime)
 */
-tapot GetTime (EfiTimeStructPtr)
+tapot GetTime (
+    EfiTimeStructPtr
+    )
 
     _CallOut 13 EfiTimeStructPtr
 
@@ -418,7 +431,9 @@ END tapot
 * @param Number el numero, no hay version de puntero asi que usa `_CallOut 18 {PunteroATuNumero}`
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printnumber)
 */
-tapot PrintNumber (Number)
+tapot PrintNumber (
+    Number::LET
+    )
 
     SetVar 1 Number
 
@@ -434,7 +449,9 @@ END tapot
 * @param Number el numero, no hay version de puntero asi que usa `_CallOut 19 {PunteroATuNumero}`
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printhexnumber)
 */
-tapot PrintHexNumber (Number)
+tapot PrintHexNumber (
+    Number::LET
+    )
 
     SetVar 1 Number
 
@@ -451,7 +468,10 @@ END tapot
 * @returns NumberCout como salida
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#atoi)
 */
-tapot Atoi (Str,NumberCout)
+tapot Atoi (
+    Str::Array,
+    NumberCout::LET
+    )
 
     1 = NumberCout
     2 = *Str
@@ -470,7 +490,10 @@ END tapot
 * @returns NumberCout como salida
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#xtoi)
 */
-tapot Xtoi (Str,NumberCout)
+tapot Xtoi (
+    Str::Array,
+    NumberCout::LET
+    )
 
     1 = NumberCout
     2 = *Str
@@ -487,7 +510,9 @@ END tapot
 *
 * @param DrawImageOperation como la operacion, usa la estructura ImageDrawOperation
 */
-tapot DrawImage (DrawImageOperation)
+tapot DrawImage (
+    DrawImageOperation::LET
+    )
 
     _CallOut 46 DrawImageOperation
 
@@ -523,7 +548,9 @@ __asm ret
 * imprimir un pool
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#printpool)
 */
-tapot PrintPool (_Str_)
+tapot PrintPool (
+    _Str_::Array
+    )
 
     _CallOut 22 _Str_
 
@@ -539,7 +566,10 @@ END tapot
 * @param Function la funcion
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#while)
 */
-tapot While (Var,Function)
+tapot While (
+    Var::LET,
+    Function::FUNCTION
+    )
 
     SetVarWithValue 7 Var
     SetVar 8 1
@@ -568,7 +598,15 @@ END tapot
 * @param Blue el color azul
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#drawrectangle)
 */
-tapot DrawRectangle (_PosX_,_PosY_,_SizeX_,_SizeY_,_Red_,_Green_,_Blue_)
+tapot DrawRectangle (
+    _PosX_::LET,
+    _PosY_::LET,
+    _SizeX_::LET,
+    _SizeY_::LET,
+    _Red_::LET,
+    _Green_::LET,
+    _Blue_::LET
+    )
     // rojo
     SetVarWithValue 1 _Red_
     // verde
@@ -601,7 +639,11 @@ END tapot
 * @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#splitstr)
 */
-tapot SplitStr (StrToSplitPtr,Splitter,ReturnOn)
+tapot SplitStr (
+    StrToSplitPtr::Array,
+    Splitter::Array,
+    ReturnOn::Array
+    )
 
     SetVarWithValue 1 StrToSplitPtr
     SetVarWithValue 2 Splitter
@@ -626,7 +668,12 @@ END tapot
 * @returns ReturnOn como la direccion al nuevo array con las direcciones de las separaciones
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#strreplace)
 */
-tapot StrReplace (_StrPtr,_OldStr,_NewStr,ReturnOn)
+tapot StrReplace (
+    _StrPtr::Array,
+    _OldStr::Array,
+    _NewStr::Array,
+    ReturnOn::Array
+    )
 
     SetVarWithValue 1 _StrPtr
     SetVarWithValue 2 _OldStr
@@ -650,7 +697,13 @@ END tapot
 * @param SaveProgramCounter 1 si se quiere guardar el puntero de instrucciones para usar ret para volver al mismo lugar y seguir, si es 0 no se guardara
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#cmpandjump)
 */
-tapot CmpAndJump (_Value1_,_Value2_,_JumpIf_,_JumpTo_,_SaveProgramCounter_)
+tapot CmpAndJump (
+    _Value1_::LET,
+    _Value2_::LET,
+    _JumpIf_::LET,
+    _JumpTo_::LET,
+    _SaveProgramCounter_::LET
+    )
 
     SetVarWithValue 1 _Value1_
     SetVarWithValue 2 _Value2_
@@ -674,7 +727,10 @@ END tapot
 * @param SaveProgramCounter la posibilidad de hacer ret para continuar, 0 si no, 1 si se desea
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ifmanual)
 */
-tapot IFManual (_JumpTo_,_SaveProgramCounter_)
+tapot IFManual (
+    _JumpTo_::LET,
+    _SaveProgramCounter_::LET
+    )
 
     (LET*)4 = 1
     (LET*)5 = _JumpTo_
@@ -693,7 +749,10 @@ END tapot
 *
 * @returns Variable ni yo se como funciona or de bits por dentro pero retornara en C (Variable | Value), aunque Variable se sobreescribe
 */
-tapot BitwiseOR (_Variable_,_Value_)
+tapot BitwiseOR (
+    _Variable_::LET,
+    _Value_::LET
+    )
 
     __asm or _Variable_,_Value_
 
@@ -708,7 +767,10 @@ END tapot
 *
 * @returns Variable ni yo se como funciona and de bits por dentro pero retornara en C (Variable & Value), aunque Variable se sobreescribe
 */
-tapot BitwiseNASK (_Variable_,_Value_)
+tapot BitwiseNASK (
+    _Variable_::LET,
+    _Value_::LET
+    )
 
     __asm and _Variable_,_Value_
 
@@ -723,7 +785,10 @@ END tapot
 *
 * @returns Variable ni yo se como funciona xor de bits por dentro pero retornara en C (Variable ^ Value), aunque Variable se sobreescribe
 */
-tapot BitwiseXOR (_Variable_,_Value_)
+tapot BitwiseXOR (
+    _Variable_::LET,
+    _Value_::LET
+    )
 
     __asm xor _Variable_,_Value_
 

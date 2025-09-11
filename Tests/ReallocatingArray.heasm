@@ -1,0 +1,21 @@
+/**
+* ReallocatingArray.heasm
+*
+* probar si funciona
+*/
+
+%include
+    lib/ebf.heasm
+
+Array _Ar_ AllocatePool->3
+
+_Ar_ [0] 24
+_Ar_ [1] 12
+_Ar_ [2] 56
+
+call_tapot GetArrayLength _Ar_ 2
+(LET*)3 = 4
+
+call_tapot ReallocateArray _Ar_ 2 3
+
+_Ar_ [3] 28

@@ -15,7 +15,10 @@
 * @returns GetOn como lo prometi antes
 * [[EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getarraylength)
 */
-tapot GetArrayLength (Array,GetOn)
+tapot GetArrayLength (
+    Array::Array,
+    GetOn::LET
+    )
 
     __asm set_value_with_value_of_value GetOn,Array
 
@@ -36,7 +39,11 @@ END tapot
 * @returns ReturnOn como el item extraido
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#getarrayitem)
 */
-tapot GetArrayItem (_PtrTo_,_Item_,_ReturnOn_)
+tapot GetArrayItem (
+    _PtrTo_::Array,
+    _Item_::LET,
+    _ReturnOn_::LET
+    )
     
     SetVarWithValue 1 _PtrTo_
     SetVarWithValue 2 _Item_
@@ -57,7 +64,11 @@ END tapot
 * @param NewValue el nuevo valor
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#setarrayitem)
 */
-tapot SetArrayItem (PtrTo,_Item_,_NewValue_)
+tapot SetArrayItem (
+    PtrTo::Array,
+    _Item_::LET,
+    _NewValue_::LET
+    )
     
     SetVarWithValue 1 PtrTo
     SetVar 2 _Item_
@@ -77,7 +88,11 @@ END tapot
 * @param NewValue el nuevo valor
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ptrsetarrayitem)
 */
-tapot PtrSetArrayItem (PtrTo,_Item_,_NewValue_)
+tapot PtrSetArrayItem (
+    PtrTo::Array,
+    _Item_::LET,
+    _NewValue_::LET
+    )
     
     SetVarWithValue 1 PtrTo
     SetVarWithValue 2 _Item_
@@ -98,7 +113,12 @@ END tapot
 * @param Item2 el item 2
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#coppytoarray)
 */
-tapot CoppyToArray (_PtrTo1_,_PtrTo2_,_Item1_,_Item2_)
+tapot CoppyToArray (
+    _PtrTo1_::Array,
+    _PtrTo2_::Array,
+    _Item1_::LET,
+    _Item2_::LET
+    )
 
     call_tapot GetArrayItem _PtrTo1_ _Item1_ 3
     call_tapot SetArrayItem _PtrTo2_ _Item2_ 3
@@ -116,7 +136,10 @@ END tapot
 * @returns (LET*)256 aunque ya lo maneja if_equal
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#buffercmp)
 */
-tapot BufferCmp (_Array1_,Array2_)
+tapot BufferCmp (
+    _Array1_::Array,
+    Array2_::Array
+    )
 
     (LET*)1 = *_Array1_
     (LET*)2 = *Array2_
@@ -137,7 +160,11 @@ END tapot
 * @returns (LET*)256 aunque ya lo maneja if_equal
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#bufferncmp)
 */
-tapot BufferNCmp (_Array1_,Array2_,_Len_)
+tapot BufferNCmp (
+    _Array1_::Array,
+    Array2_::Array,
+    _Len_::LET
+    )
 
     (LET*)1 = *_Array1_
     (LET*)2 = *Array2_
@@ -160,7 +187,11 @@ END tapot
 * @returns (LET*)256 aunque ya lo maneja if_equal
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#ptrlenbufferncmp)
 */
-tapot PtrLenBufferNCmp (_Array1_,Array2_,_Len_)
+tapot PtrLenBufferNCmp (
+    _Array1_::Array,
+    Array2_::Array,
+    _Len_::LET
+    )
 
     (LET*)1 = *_Array1_
     (LET*)2 = *Array2_
@@ -169,3 +200,31 @@ tapot PtrLenBufferNCmp (_Array1_,Array2_,_Len_)
     _CallOut 32 1
 
 END tapot
+
+/**
+* ReallocateArray
+*
+* cambia el tamaño del array
+* @param Array el array
+* @param OldSize el tamaño antiguo
+* @param NewSize el nuevo tamaño
+*
+* @returns Exception si troleas al sistema y no cambias el tamaño
+* @returns Array el nuevo array
+*
+* el array anterior es elminado asi que clonalo si lo necesitas despues
+*/
+tapot ReallocateArray (
+    _Array_::Array,
+    _OldSize_::LET,
+    _NewSize_::LET
+    )
+
+    (LET*)1 = *_Array_
+    (LET*)2 = *_OldSize_
+    (LET*)3 = *_NewSize_
+
+    _CallOut 55 1
+
+    _Array_ = *1
+END

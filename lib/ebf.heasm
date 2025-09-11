@@ -94,6 +94,16 @@ call __Entry__
 %include
     lib/Ext/System.heasm
 
+%include
+    lib/ebfran.heasm
+
+/**
+* __Entry__
+*
+* se que ustedes flojos no le van a poner un punto de entrada por que aunque no sea necesario
+* las funciones reales function pueden ejecutarse y como son para apagar y reiniciar no queremos que
+* se ejecuten asi que saltamos a esta funcion para saltarse todo y configurara algunas cosas
+*/
 FUNCTION __Entry__
 
     // para evitar bugs
@@ -111,3 +121,5 @@ FUNCTION __Entry__
     _Math _SystemInfo_ + 1
 
     _SystemInfo_ = **_SystemInfo_
+
+    // al unirlo con el archivo aqui continua lo demas del programa

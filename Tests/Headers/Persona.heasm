@@ -34,7 +34,9 @@ swinc Persona
 * adios
 * solo es para darle lore, que? no todo el tiempo tenemos que ser serios en nuestros proyectos
 */
-tapot KillPerson (_Persona_)
+tapot KillPerson (
+    _Persona_::Persona
+    )
 
     // naturalmente _Persona_ al no tener dinero por no tener trabajo se morira de hambre literalmente
     // por que no puede conseguir uno por que su mundo se quedo parado (el programa) asi que se va a morir de hambre
@@ -72,7 +74,9 @@ END tapot
 *
 * @param Persona la estructura de la persona
 */
-tapot PrintPersonInfo (_Persona_)
+tapot PrintPersonInfo (
+    _Persona_::Persona
+    )
 
     // imprimir el nombre
     call_tapot PrintPool _Persona_.Nombre
