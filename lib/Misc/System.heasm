@@ -4,6 +4,9 @@
 * informacion del sistema
 */
 
+%include
+    lib/Misc/lib.heasm
+
 /**
 * _SystemInfo_
 *
@@ -32,7 +35,7 @@ ENUM _SystemInfoGet_
     * el puntero al string del nombre del distribuidor de la uefi actual
     */
     _EnumMember _SystemInfoGet_FirmwareVendor_ 1
-+
+
     /**
     * _SystemInfoGet_GetMainVersion_
     *
@@ -88,32 +91,34 @@ END ENUM
 */
 FUNCTION _IExitBS_
 
+    //
+    // liberar los pools
+    //
+
     // liberar el distribuidor del firmware
-    (LET*)2 = _SystemInfoGet_FirmwareVendor_
-    call_tapot GetArrayItem _SystemInfo_ 2 3
-    (LET*)6 = *3
-    FreePool 6
+    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_FirmwareVendor_
 
     // liberar el string del lenguaje
-    (LET*)2 = _SystemInfoGet_GetLanguaje_
-    call_tapot GetArrayItem _SystemInfo_ 2 3
-    (LET*)6 = *3
-    FreePool 6
+    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_GetLanguaje_
 
     // liberar todos los guid
     (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
     call_tapot GetArrayItem _SystemInfo_ 2 3
     (LET*)6 = *3
 
-    (LET*)2 = 3
-    call_tapot GetArrayItem 6 2 7
-    FreePool 7
+    // liberar el dato 4
+    call_tapot FreeItemOfArray 6 3
 
     // liberar el guid de la tabla de configuracion
-    (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
-    call_tapot GetArrayItem _SystemInfo_ 2 3
-    (LET*)6 = *3
-    FreePool 6
+    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_GetConfigurationTableVendorGuid_
+
+    //
+    // limpiar todo antes de irse
+    //
+
+    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_FirmwareVendor_
+    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_GetLanguaje_
+    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_GetConfigurationTableVendorGuid_
 
     // liberar la tabla de servicios de arranque
     FreePool _SystemInfo_

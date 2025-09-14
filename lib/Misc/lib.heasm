@@ -1,0 +1,47 @@
+/**
+* lib.heasm
+*
+* las funciones basicas
+*/
+
+/**
+* FreeItemOfArray
+*
+* libera un subarray
+*
+* @param Pool el array principal
+* @param Item el item
+*/
+tapot FreeItemOfArray (
+    _Pool_::Array,
+    _Item_::Array
+)
+
+    // obtener el item
+    (LET*)2 = _Item_
+    // obtenerlo
+    call_tapot GetArrayItem _Pool_ 2 3
+
+    // ajustar el puntero
+    (LET*)6 = *3
+    // liberar el puntero
+    FreePool 6
+
+END tapot
+
+/**
+* ZeroArrayItem
+*
+* cambia el valor de un item de un array a 0
+* @param Pool el array
+* @param Item el item
+*/
+tapot ZeroArrayItem (
+    _Pool_::Array,
+    _Item_::LET
+)
+
+    // cambiarlo a 0
+    call_tapot SetArrayItem _Pool_ _Item_ 0
+
+END tapot

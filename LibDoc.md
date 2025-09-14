@@ -6,7 +6,7 @@ aqui te documentamos el uso de la libreria
 
 # Argumentos
 
-`ebfargs.heasm` es un modulo que permite obtener parametros de la shell con la que se llamo el programa
+`ShellApi.heasm` es un modulo que permite obtener parametros de la shell con la que se llamo el programa
 
 Funciones/tapots:
 ## GetParam
@@ -20,7 +20,7 @@ Notas: algunas veces al no llamar desde la shell puede que no pase nada al leer 
 
 # Arrays
 
-`ebfarrays.heasm` es un modulo que permite modificar arrays
+`Array.heasm` es un modulo que permite modificar arrays
 
 Funciones/tapots:
 
@@ -80,7 +80,7 @@ Funciones/tapots:
 
 # funciones que te facilitan la vida
 
-`ebfbegimmers.heasm` es un modulo que proporciona funciones rapidas
+`Helpers.heasm` es un modulo que proporciona funciones rapidas
 
 Enums/macros:
 * _EbfNullPtr_
@@ -251,7 +251,7 @@ solo se mencionaran las funciones que son basicas para no marear a los principia
 
 # llamadas
 
-`ebfcall.heasm` es un modulo para ejecutar y manejar codigo en la ram
+`RamCode.heasm` es un modulo para ejecutar y manejar codigo en la ram
 
 Funciones/tapots:
 ## ExecuteCodeFromRam
@@ -265,7 +265,7 @@ Funciones/tapots:
 
 # estructuras que facilitan todo
 
-`ebfclass.heasm` es un modulo que proporciona varias estructuras
+`Structs.heasm` es un modulo que proporciona varias estructuras
 
 Swincs (Estructuras):
 
@@ -298,7 +298,7 @@ algunas no se mencionan por que ya hay tapots en ebfbegimmers.heasm que ya lo fa
 
 # librerias dinamicas
 
-`ebfdllspc.heasm` es un modulo que contiene la definicion de una llamada a una dll
+`Dll.heasm` es un modulo que contiene la definicion de una llamada a una dll
 
 Swincs (Estructuras):
 ## DllParams
@@ -312,7 +312,7 @@ instancia de `DllParams`
 
 # manejo de archivos
 
-`ebffs.heasm` es un modulo para interactuar con el fs, lamentablemente no se puede escribir por que como en QEMU VFAT no funciona bien entonces me evito destruir el FS de alguno de ustedes por no saber si la manera en la que se escribe es correcta o no
+`File.heasm` es un modulo para interactuar con el fs, lamentablemente no se puede escribir por que como en QEMU VFAT no funciona bien entonces me evito destruir el FS de alguno de ustedes por no saber si la manera en la que se escribe es correcta o no
 
 Funciones/tapots:
 ## ExecuteFile
@@ -333,7 +333,7 @@ Funciones/tapots:
 
 # optimizacion
 
-`ebfoptimization.heasm` es un modulo que permite optimizacion
+`Optimization.heasm` es un modulo que permite optimizacion
 
 Funciones/tapots:
 ## EditHighPartVar
@@ -361,7 +361,7 @@ Funciones/tapots:
 
 # manejo
 
-`ebfram.heasm` es un modulo para acceder a la ram extendidad
+`ExtendedRam.heasm` es un modulo para acceder a la ram extendidad
 
 ## EditBlockValue
 * edita un valor de un bloque

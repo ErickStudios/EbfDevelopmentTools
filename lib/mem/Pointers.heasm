@@ -1,5 +1,5 @@
 /**
-* ebfptrs.heasm
+* Pointers.heasm
 *
 * las direcciones en las cuales POR NADA DEL MUNDO ni por un perrito todo panzon 
 * el compilador debe alojar variables en estas direcciones

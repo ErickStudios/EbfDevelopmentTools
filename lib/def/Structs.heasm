@@ -1,5 +1,5 @@
 /**
-* ebfclass.heasm
+* Structs.heasm
 *
 * define las estructuras que retornan o se pasan como argumentos a una llamada del bootloader
 */

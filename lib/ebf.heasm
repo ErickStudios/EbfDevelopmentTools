@@ -21,13 +21,13 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/ebfoptimization.heasm
+    lib/mem/Optimization.heasm
 
 %include
-    lib/ebfptrs.heasm
+    lib/mem/Pointers.heasm
     
 %include
-    lib/ebfram.heasm
+    lib/mem/ExtendedRam.heasm
 
 // --------------------------------
 //
@@ -37,13 +37,13 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/ebfport.heasm
+    lib/env/Ports.heasm
 
 %include
-    lib/ebfargs.heasm
+    lib/env/ShellApi.heasm
 
 %include
-    lib/ebffs.heasm
+    lib/env/File.heasm
 
 // --------------------------------
 //
@@ -53,10 +53,10 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/ebfarrays.heasm
+    lib/pools/Array.heasm
 
 %include
-    lib/ebfcall.heasm
+    lib/pools/RamCode.heasm
 
 // --------------------------------
 //
@@ -66,10 +66,10 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/ebfclass.heasm
+    lib/def/Structs.heasm
 
 %include
-    lib/ebfbegimmers.heasm
+    lib/def/Helpers.heasm
 
 // --------------------------------
 //
@@ -79,7 +79,7 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/ebfdllspc.heasm
+    lib/specification/Dll.heasm
 
 
 // --------------------------------
@@ -89,16 +89,16 @@ call __Entry__
 // --------------------------------
 
 %include
-    lib/Ext/io.heasm
+    lib/Misc/io.heasm
 
 %include
-    lib/Ext/Boolean.heasm
+    lib/Misc/Boolean.heasm
 
 %include
-    lib/Ext/System.heasm
+    lib/Misc/System.heasm
 
 %include
-    lib/ebfran.heasm
+    lib/Misc/Random.heasm
 
 /**
 * __Entry__
