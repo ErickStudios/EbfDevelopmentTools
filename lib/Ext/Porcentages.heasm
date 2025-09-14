@@ -1,0 +1,26 @@
+/**
+* Porcentages.heasm
+*
+* funciones para medir porcentajes
+*/
+
+/**
+* GetPorcentageOf
+*
+* obtiene porcentaje de algo
+*
+* @param Number el numero
+* @param Porcentage el porcentaje
+* @returns Number como el porcentaje
+*/
+tapot GetPorcentageOf (
+    _Number_::Number,
+    _Porcentage_::Number
+)
+
+    _Math _Number_ * _Porcentage_
+
+    (LET*)1 = 100
+    _Math _Number_ / 1
+
+END tapot

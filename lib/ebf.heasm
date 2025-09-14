@@ -22,7 +22,7 @@ call __Entry__
 
 %include
     lib/ebfoptimization.heasm
-    
+
 %include
     lib/ebfptrs.heasm
     
@@ -87,6 +87,9 @@ call __Entry__
 // librerias de alto nivel
 //
 // --------------------------------
+
+%include
+    lib/Ext/io.heasm
 
 %include
     lib/Ext/Boolean.heasm

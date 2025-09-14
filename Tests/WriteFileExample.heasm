@@ -1,0 +1,32 @@
+/**
+* WriteFileExample.heasm
+*
+* creo que ya arrgle la escritura no se con esto lo probare
+*/
+
+%include
+    lib/ebf.heasm
+
+Array _Name_ AllocatePool->8
+Array _Content_ AllocatePool->7
+
+_Name_ [0] 't'
+_Name_ [1] 'e'
+_Name_ [2] 's'
+_Name_ [3] 't'
+_Name_ [4] '.'
+_Name_ [5] 't'
+_Name_ [6] 'x'
+_Name_ [7] 't'
+
+_Content_ [0] 'f'
+_Content_ [1] 'o'
+_Content_ [2] 'o'
+_Content_ [3] '\s'
+_Content_ [4] 'b'
+_Content_ [5] 'a'
+_Content_ [6] 'r'
+
+call_tapot WriteFile _Name_ _Content_
+FreePool _Name_
+FreePool _Content_

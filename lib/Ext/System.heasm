@@ -32,7 +32,7 @@ ENUM _SystemInfoGet_
     * el puntero al string del nombre del distribuidor de la uefi actual
     */
     _EnumMember _SystemInfoGet_FirmwareVendor_ 1
-
++
     /**
     * _SystemInfoGet_GetMainVersion_
     *

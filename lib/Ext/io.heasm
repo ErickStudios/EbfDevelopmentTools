@@ -1,0 +1,37 @@
+/** stdio.heasm */
+
+%include
+    lib/Ext/types.heasm
+
+/**
+* Input
+*
+* lee una linea
+* @returns String el string
+*/
+tapot Input (
+    _String_::String
+)
+
+    // hacerlo null para evitar basura
+    _String_ = 0
+
+    // leer la linea
+    _CallOut 23 _String_
+
+END tapot
+
+/**
+* Outpud
+*
+* imprime una letra individual
+* @param Letter la letra
+*/
+tapot Outpud (
+    _Letter_::Char
+)
+
+    // imprimir en la pantalla
+    _CallOut 1 _Letter_
+
+END tapot

@@ -4,3 +4,158 @@
 * direcciones conocidad para algo
 */
 
+%include
+    lib/ebf.heasm
+
+Array _RuncmCommand_ AllocatePool->5
+Array _CatCommand_ AllocatePool->3
+Array _ClearCommand_ AllocatePool->5
+Array _GuideCommand_ AllocatePool->5
+Array _ReseCommand_ AllocatePool->4
+Array _EchoCommand_ AllocatePool->4
+Array _CommentStart_ AllocatePool->1
+Array _RebootCommand_ AllocatePool->6
+Array _ShutdownCommand_ AllocatePool->8
+Array _AllocationCommand_ AllocatePool->4
+Array _SrcCommand_ AllocatePool->3
+Array _Line_ _YaLeTocaraXd_
+
+LET _AllocationVarOffset_
+LET _AlloctedVarPos_
+
+call _Main_
+
+/**
+* AllocateVar
+*
+* localiza una variable libre y la devuelve
+*
+* @returns Cout donde retornara eso
+*/
+tapot AllocateVar (
+    _Cout_::LET
+)
+
+    // empezar por la variable 0
+    _AllocationVarOffset_ = 0
+
+    // buscar espacio para tus necesidad programa o sistema o lo que sea que use esta libreria para mi OS
+    call _AllocVarLoop_
+
+    // la posicion
+    _Cout_ = *_AlloctedVarPos_
+
+END tapot
+
+/**
+* FreeVar
+*
+* libera una variable
+*
+* @param VarPtr la variable
+*/
+tapot FreeVar (
+    _VarPtr_::LET
+)
+    (LET*)6 = 1
+    (LET*)7 = *_VarPtr_
+    (LET*)8 = 0
+
+    // liberar la variable
+    call_tapot EditBlockValue 6 7 8
+
+END tapot
+
+/**
+* SetVar
+*
+* editar una variable
+* @param VarPtr es la variable
+* @param Value es el valor a asignar
+*/
+tapot SetVar (
+    _VarPtr_::LET,
+    _Value_::Any
+)
+
+    (LET*)6 = 1
+    (LET*)7 = *_VarPtr_
+    (LET*)8 = *_Value_
+
+    // liberar la variable
+    call_tapot EditBlockValue 6 7 8
+
+END tapot
+
+/**
+* GetVar
+*
+* obtiene una variable
+* @param VarPtr es la variable
+* @returns Value es el valor
+*/
+tapot GetVar (
+    _VarPtr_::LET,
+    _Value_::Any
+)
+
+    (LET*)6 = 1
+    (LET*)7 = *_VarPtr_
+
+    // liberar la variable
+    call_tapot GetBlockValue 6 7 8
+
+    _Value_ = *8
+
+END tapot
+
+/**
+* _AllocVarLoop_
+*
+* el loop de asignacion
+*/
+FUNCTION _AllocVarLoop_
+
+    // primero verificar en el bloque 2 (osea las variables del programa)
+
+    // bloque 2
+    (LET*)6 = 1
+    (LET*)7 = *_AllocationVarOffset_
+    (LET*)8 = 1
+
+    call_tapot GetBlockValue 6 7 8
+
+    //_CallOut 18 8
+    //_CallOut 9 0
+
+    (LET*)5 = *8
+    (LET*)6 = 0
+
+    call_tapot CmpAndJump 5 6 _ComparatorType_IfEqual_ _AllocVarCompleted_ 0
+
+    // incrementar el offset
+    __asm increment _AllocationVarOffset_
+
+    // siguiente offset
+    call_tapot CmpAndJump 0 0 _ComparatorType_JumpsAnyWays_ _AllocVarLoop_ 0
+
+/**
+* _AllocVarCompleted_
+*
+* cuando se completa
+*/
+FUNCTION _AllocVarCompleted_
+
+    // bloque 2
+    (LET*)6 = 1
+    // ofset +10
+    (LET*)7 = *_AllocationVarOffset_
+    // valor
+    (LET*)8 = 1
+
+    call_tapot EditBlockValue 6 7 8
+
+    // guardar el puntero
+    _AlloctedVarPos_ = *_AllocationVarOffset_
+
+__asm ret

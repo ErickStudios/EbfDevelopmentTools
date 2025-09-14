@@ -3,17 +3,12 @@
 *
 * ejemplo de un bootloader para un sistema llamado yo que se, BasOS
 * y tambien como recuperara todo, esto claro antes de que se salga de los bootservices
+*
+* nota, no necesita nada de los bs jsjsj
 */
 
 %include
     Tests/BasOS/Headers/BasOS.heasm
-
-%include
-    lib/ebf.heasm
-
-// no vamos a extraer nada de los servicios de arranque
-(LET*)1 = 1
-call_tapot ExitBootservices 1
 
 /**
 * _DoRunCm_
@@ -39,26 +34,220 @@ FUNCTION _DoCat_
 FUNCTION _DoClear_
     _IProto()
 
-Array _RuncmCommand_ AllocatePool->5
-Array _CatCommand_ AllocatePool->3
-Array _ClearCommand_ AllocatePool->5
+/**
+* _DoEcho_
+*
+* si se hace un echo
+*/
+FUNCTION _DoEcho_
+    _IProto()
 
+/**
+* _DoGuide_
+*
+* si hace un ?
+*/
+FUNCTION _DoGuide_
+    _IProto()
+
+/**
+* _DoReset_
+*
+* si se hace un reboot
+*/
+FUNCTION _DoReset_
+    _IProto()
+
+/**
+* _DoOff_
+*
+* si se hace un shutdown
+*/
+FUNCTION _DoOff_
+    _IProto()
+
+/**
+* _DoMall_
+*
+* si se hace un mall
+*/
+FUNCTION _DoMall_
+    _IProto()
+
+/**
+* _DoSrc_
+*
+* si se hace un src
+*/
+FUNCTION _DoSrc_
+    _IProto()
+
+/**
+* ExecuteCommand
+*
+* ejecuta un comando
+* @param Line es la linea
+*/
+tapot ExecuteCommand (
+    _Linea_::String
+)
+    _Line_ = *_Linea_
+
+    call _ExCommand_
+
+END tapot
+
+FUNCTION _ExCommand_
+
+    // comparar los comandos
+
+    call_tapot GetArrayLength _Line_ 2
+
+    (LET*)1 = 0
+    call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _hlt_ 0
+
+    // runcm
+    IF BufferNCmp<_Line_,_RuncmCommand_,5> THEN _DoRunCm_
+    // cat
+    IF BufferNCmp<_Line_,_CatCommand_,3> THEN _DoCat_
+    // echo
+    IF BufferNCmp<_Line_,_EchoCommand_,4> THEN _DoEcho_
+    // clear
+    IF BufferCmp<_Line_,_ClearCommand_> THEN _DoClear_
+    // guide
+    IF BufferCmp<_Line_,_GuideCommand_> THEN _DoGuide_
+    // reboot
+    IF BufferCmp<_Line_,_RebootCommand_> THEN _DoReset_
+    // shutdown
+    IF BufferCmp<_Line_,_ShutdownCommand_> THEN _DoOff_
+    // mall
+    IF BufferNCmp<_Line_,_AllocationCommand_,4> THEN _DoMall_
+    // rese
+    IF BufferNCmp<_Line_,_ReseCommand_,4> THEN _DoRese_
+    // src
+    IF BufferNCmp<_Line_,_SrcCommand_,3> THEN _DoSrc_
+    // #comentario
+    IF BufferNCmp<_Line_,_CommentStart_,1> THEN _hlt_
+
+    __asm ret
+
+tapot ExecuteScriptFromFile (
+    _FileName_::String
+)
+
+    // cargar el archivo a la ram
+    call_tapot LoadFileToMem _FileName_
+
+    _Script_ = *_FileName_
+
+    //call_tapot PrintPool _Script_
+
+    // ejecutarlo
+    call _ExecuteScript_
+
+    // liberar el pool del archivo
+    //FreePool _FileName_
+
+END tapot
+
+FUNCTION _Main_
+
+// no vamos a extraer nada de los servicios de arranque
+(LET*)1 = 1
+call_tapot ExitBootservices 1
+
+// el script
+Array _Script_ _YaLeTocaraXd_
+
+// las lineas del script
+Array _LinesOfScript_ _YaLeTocaraXd_
+
+// el separador de lineas
+Array _ScriptLineSplit_ AllocatePool->1
+
+// lo que no queremos en el script
+Array _CarrigeReturnChar_ AllocatePool->1
+
+// la linea a ejecutar
+LET _LineToExecute_
+
+// separador de linea
+_ScriptLineSplit_ [0] '\n'
+
+// el caracter de retorno de carro
+_CarrigeReturnChar_ [0] 13
+
+// comentarios
+_CommentStart_ [0] '#'
+
+// para empezar
+_GuideCommand_ [0] 'g'
+_GuideCommand_ [1] 'u'
+_GuideCommand_ [2] 'i'
+_GuideCommand_ [3] 'd'
+_GuideCommand_ [4] 'e'
+
+// src
+_SrcCommand_ [0] 's'
+_SrcCommand_ [1] 'r'
+_SrcCommand_ [2] 'c'
+
+// cat
 _CatCommand_ [0] 'c'
 _CatCommand_ [1] 'a'
 _CatCommand_ [2] 't'
 
+// runcm
 _RuncmCommand_ [0] 'r'
 _RuncmCommand_ [1] 'u'
 _RuncmCommand_ [2] 'n'
 _RuncmCommand_ [3] 'c'
 _RuncmCommand_ [4] 'm'
 
+// clear
 _ClearCommand_ [0] 'c'
 _ClearCommand_ [1] 'l'
 _ClearCommand_ [2] 'e'
 _ClearCommand_ [3] 'a'
 _ClearCommand_ [4] 'r'
 
+// echo
+_EchoCommand_ [0] 'e'
+_EchoCommand_ [1] 'c'
+_EchoCommand_ [2] 'h'
+_EchoCommand_ [3] 'o'
+
+// reboot
+_RebootCommand_ [0] 'r'
+_RebootCommand_ [1] 'e'
+_RebootCommand_ [2] 'b'
+_RebootCommand_ [3] 'o'
+_RebootCommand_ [4] 'o'
+_RebootCommand_ [5] 't'
+
+// shutdown
+_ShutdownCommand_ [0] 's'
+_ShutdownCommand_ [1] 'h'
+_ShutdownCommand_ [2] 'u'
+_ShutdownCommand_ [3] 't'
+_ShutdownCommand_ [4] 'd'
+_ShutdownCommand_ [5] 'o'
+_ShutdownCommand_ [6] 'w'
+_ShutdownCommand_ [7] 'n'
+
+// rese
+_ReseCommand_ [0] 'r'
+_ReseCommand_ [1] 'e'
+_ReseCommand_ [2] 's'
+_ReseCommand_ [3] 'e'
+
+// mall
+_AllocationCommand_ [0] 'm'
+_AllocationCommand_ [1] 'a'
+_AllocationCommand_ [2] 'l'
+_AllocationCommand_ [3] 'l'
+
+// funcion del bucle
 FUNCTION _Loop_
 
     // dibujar el prompt
@@ -73,16 +262,33 @@ FUNCTION _Loop_
     Print "#\s"
 
     // leer la linea
-    Array _Line_ ReadLine
+    _CallOut 23 _Line_
     Print "\n"
 
-    // comparar los comandos
-    IF BufferNCmp<_Line_,_RuncmCommand_,5> THEN _DoRunCm_
-    IF BufferNCmp<_Line_,_CatCommand_,3> THEN _DoCat_
-    IF BufferCmp<_Line_,_ClearCommand_> THEN _DoClear_
+    call_tapot ExecuteCommand _Line_
+
+    FreePool _Line_
 
     // repetir el loop
     call_tapot CmpAndJump 0 0 3 _Loop_ 0
+
+    __asm ret
+
+FUNCTION _hlt_
+
+    __asm ret
+
+FUNCTION _DoOff_
+
+    _CallOut 27 0
+
+    __asm ret
+
+FUNCTION _DoReset_
+
+    _CallOut 28 0
+
+    __asm ret
 
 FUNCTION _DoRunCm_
 
@@ -93,6 +299,33 @@ FUNCTION _DoRunCm_
     _CallOut 33 1
     
     call_tapot ExecuteFile 1
+    Print "\n"
+
+    __asm ret
+
+FUNCTION _DoSrc_
+
+    // recorrerlo 6 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 4
+
+    _CallOut 33 1
+    
+    call_tapot ExecuteScriptFromFile 1
+    Print "\n"
+
+    __asm ret
+
+FUNCTION _DoEcho_
+
+    // recorrerlo 7 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 5
+
+    _CallOut 33 1
+    
+    call_tapot PrintPool 1
+
     Print "\n"
 
     __asm ret
@@ -118,5 +351,109 @@ FUNCTION _DoCat_
 FUNCTION _DoClear_
 
     _CallOut 2 0
+
+    __asm ret
+
+FUNCTION _DoRese_
+
+    // recorrerlo 6 caracteres
+    (LET*)4 = *_Line_
+    (LET*)5 = 5
+
+    _CallOut 33 4
+
+    call_tapot Atoi 4 9
+    (LET)9 = *9
+    (LET)6 = 1
+
+    call_tapot SetVar 9 6
+    
+    __asm ret
+
+FUNCTION _DoMall_
+
+    // recorrerlo 6 caracteres
+    (LET*)4 = *_Line_
+    (LET*)5 = 5
+
+    _CallOut 33 4
+
+    call_tapot Atoi 4 9
+    _CallOut 18 9
+    (LET)9 = *9
+    (LET)6 = 1
+
+    call_tapot SetVar 9 6
+    
+    call_tapot AllocateVar _AlloctedVarPos_
+    call_tapot SetVar 9 _AlloctedVarPos_
+
+    call_tapot GetVar 9 4
+
+    _CallOut 18 4
+
+    Print "\n"
+
+    __asm ret
+
+FUNCTION _DoGuide_
+
+    Print "#\s\s\s\s\s\s\s\s\s\s\s[Comment]\n"
+    Print "runcm\s\s\s\s\s\s\s[Name]\n"
+    Print "cat\s\s\s\s\s\s\s\s\s[Name]\n"
+    Print "echo\s\s\s\s\s\s\s\s[Msg]\n"
+    Print "mall\s\s\s\s\s\s\s\s[Id]\n"
+    Print "rese\s\s\s\s\s\s\s\s[Id]\n"
+    Print "src\s\s\s\s\s\s\s\s\s[Name]\n"
+    Print "reboot\n"
+    Print "shutdown\n"
+    Print "clear\n"
+    Print "guide\n"
+
+    __asm ret
+
+FUNCTION _ExecuteScript_
+
+    //FreePool _Line_
+
+    call_tapot StrReplace _Script_ _CarrigeReturnChar_ _ScriptLineSplit_ _Script_
+
+    //call_tapot PrintPool _Script_
+    _CallOut 9 0
+
+    // separar las lineas
+    call_tapot SplitStr _Script_ _ScriptLineSplit_ _LinesOfScript_
+
+    // ir a la linea 0
+    _LineToExecute_ = 0
+
+    // ejecutar las lineas
+    call _ScriptExecutionLoop_
+
+    // librerarlo
+    FreePool _LinesOfScript_
+
+    __asm ret
+
+FUNCTION _ScriptExecutionLoop_
+
+    // obtener la linea
+    call_tapot GetArrayItem _LinesOfScript_ _LineToExecute_ _Line_
+
+    //call_tapot PrintPool _Line_
+    //_CallOut 9 0
+
+    call _ExCommand_
+
+    FreePool _Line_
+
+    // incrementar la linea
+    __asm increment _LineToExecute_
+
+    // obtener la longitud del array
+    call_tapot GetArrayLength _LinesOfScript_ 2
+
+    // ver si no se acabaron las lineas
+    call_tapot CmpAndJump _LineToExecute_ 2 _ComparatorType_IfNotGreater_ _ScriptExecutionLoop_ 0
 
     __asm ret

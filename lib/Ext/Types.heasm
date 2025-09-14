@@ -1,0 +1,14 @@
+/**
+* Types.heasm
+*
+* tipos basicos
+*/
+
+// basados en arrays
+type String Array
+type List Array
+
+// basicos
+type Boolean LET
+type Number LET
+type Char LET

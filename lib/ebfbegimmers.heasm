@@ -519,24 +519,24 @@ tapot DrawImage (
 END tapot
 
 /**
-* Shutdown
+* _Shutdown_
 *
 * apaga la pc
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#shutdown)
 */
-FUNCTION Shutdown
+FUNCTION _Shutdown_
 
     _CallOut 27 0
 
 __asm ret
 
 /**
-* Reset
+* _Reset_
 *
 * reinicia la pc
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#reset)
 */
-FUNCTION Reset
+FUNCTION _Reset_
 
     _CallOut 28 0
 
@@ -669,19 +669,19 @@ END tapot
 * [EbfDevelopmentTools-Documentation](https://github.com/ErickStudios/EbfDevelopmentTools/blob/main/LibDoc.md#strreplace)
 */
 tapot StrReplace (
-    _StrPtr::Array,
-    _OldStr::Array,
-    _NewStr::Array,
-    ReturnOn::Array
+    _StrPtr_::Array,
+    _OldStr_::Array,
+    _NewStr_::Array,
+    _ReturnOn_::Array
     )
 
-    SetVarWithValue 1 _StrPtr
-    SetVarWithValue 2 _OldStr
-    SetVarWithValue 3 _NewStr
+    SetVarWithValue 1 _StrPtr_
+    SetVarWithValue 2 _OldStr_
+    SetVarWithValue 3 _NewStr_
 
     _CallOut 50 1
 
-    SetVarWithValue ReturnOn 1
+    SetVarWithValue _ReturnOn_ 1
 
 END tapot
 
