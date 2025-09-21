@@ -1,6 +1,14 @@
+<!--
+* LibDoc.md
+*
+* escrito para guias de uso de la libreria LibEbf
+-->
+
 # Bienvenido a la documentacion de EbfDevelopmentTools
 
 nos importa la facilidad de uso y la portabilidad de un compilar una vez, ejecutar donde sea y aparte sin sistema operativo
+
+aparte no queremos darte la tarea dificil de reinventar las funciones tu mismo y con el riesgo de que fallen, por eso existe esta libreria y asi todo el sufrimiendo de implementacion va para mi y no tendras que hacer nada, solo usarla
 
 aqui te documentamos el uso de la libreria
 
@@ -358,6 +366,49 @@ Funciones/tapots:
     * `VarToEdit` la variable que leera
 * retorna
     * `ReturnOn` como resultado
+
+# puertos PCi
+
+`Pci.heasm` es un modulo que permite interactuar con puertos PCi, todo lo tecnico se esconde en el codigo fuente de las llamadas asi que solo necesitaras preocuparte por el tipo de dispositivo PCi al que quieres acceder y a que registro quieres acceder de ese puerto
+
+Constantes/Enums:
+
+## PciClass
+* clases de PCis
+* elementos
+    * _PciClassDisplayCtrl_
+    * _PciClassVga_
+    * _PciClassBridge_
+    * _PciClassIsa_
+    * _PciClassIsaPositiveDecode_
+    * _PciClassNetwork_
+    * _PciClassEthernet_
+
+Funciones/tapots:
+## PciRead
+* lee un valor de un puerto PCi
+* parametros
+    * `Pci` el puerto pci, solo se permiten el formato de direcciones de PCis de UEFI divididos en un array de 4 elementos
+* retorna
+    * `ReturnOn` el valor leido
+## PciWrite
+* escribe en un puerto PCI
+* parametros
+    * `Pci` el puerto pci, solo se permiten el formato de direcciones de PCis de UEFI divididos en un array de 4 elementos
+    * `Data` el dato, no se permiten valores literales
+## _IPciFindFirstChildOf
+* encuentra una clase de PCI y la devuelve
+* parametros
+    * `Type` el tipo, no se permiten valores literales, y puedes guiarte de `PciClass`
+    * `Register` el registro, no se permiten valores literales
+* retorna
+    * `ReturnOn` el puntero al array de 4 elementos que contiene la direccion completa del registro del PCi
+
+Interfaces:
+## GlobalPciIoFncs
+* funciones globales para el manejo de I/O de Pci
+* metodos
+    * FindFirstChild: instancia de _IPciFindFirstChildOf
 
 # manejo
 

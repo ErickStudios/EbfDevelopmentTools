@@ -1,0 +1,143 @@
+/**
+* Pci.heasm
+*
+* interactua con puertos PCi
+*/
+
+/**
+* PciClass
+*
+* los tipos de clases de PCis
+*/
+ENUM PciClass
+
+    /**
+    * _PciClassDisplayCtrl_
+    *
+    * el tipo de control de pantalla
+    */
+    _EnumMember _PciClassDisplayCtrl_ 0x03
+
+    /**
+    * _PciClassVga_
+    *
+    * el tipo de la clase de vga
+    */
+    _EnumMember _PciClassVga_ 0x00
+
+    /**
+    * _PciClassBridge_
+    *
+    * el tipo de bridge (no se que es pero bueno)
+    */
+    _EnumMember _PciClassBridge_ 0x06
+
+    /**
+    * _PciClassIsa_
+    *
+    * isa? que es eso
+    */
+    _EnumMember _PciClassIsa_ 0x01
+
+    /**
+    * _PciClassIsaPositiveDecode_
+    *
+    * el tipo de un decodificador de un isa positivo?
+    */
+    _EnumMember _PciClassIsaPositiveDecode_ 0x80
+
+    /**
+    * _PciClassNetwork_
+    *
+    * el tipo de conexion network
+    */
+    _EnumMember _PciClassNetwork_ 0x02
+
+    /**
+    * _PciClassEthernet_
+    *
+    * el tipo de ethernet
+    */
+    _EnumMember _PciClassEthernet_ 0x00
+
+END ENUM
+
+/**
+* PciRead
+*
+* lee un valor de un puerto PCi
+*
+* @param Pci el puerto pci
+* @returns ReturnOn como el valor extraido
+*/
+tapot PciRead (
+    _Pci_::Int64inPartsPtr,
+    _ReturnOn_::LETPtr
+)
+    (LET*)1 = *_Pci_
+    _CallOut 56 1
+    _ReturnOn_ = *2
+END tapot
+
+/**
+* PciWrite
+*
+* escribe en un puerto PCI
+*
+* @param Pci el puerto pci
+* @param Data el dato
+*/
+tapot PciWrite (
+    _Pci_::Int64inPartsPtr,
+    _Data_::AnyPtr
+)
+    (LET*)1 = *_Pci_
+    (LET*)2 = *_Data_
+    _CallOut 57 1
+END tapot
+
+/**
+* _IPciFindFirstChildOf
+*
+* encuentra una clase de PCI
+*
+* @param Type el tipo
+* @param Register un puntero al registro
+* @returns ReturnOn como la direccion al array que contiene la direccion del PCi dividida en 4 partes por que es un UINTN y cada item de memoria ocupa 2 bytes asi que son 4 partes
+*/
+tapot _IPciFindFirstChildOf (
+    _Type_::PciClass,
+    _Register_::LET,
+    _ReturnOn_::Int64inPartsPtr
+)
+
+    // ajustarlo a null para retornal nullptr si hay errores
+    _ReturnOn_ = 0
+
+    // inicializar variables
+    (LET*)1 = *_Type_
+    (LET*)2 = *_Register_
+
+    // llamar al manejador de PCis
+    _CallOut 58 1
+
+    _ReturnOn_ = *3
+
+END tapot
+
+swinc PciBusFncs
+{
+    /**
+    * FindFirstChild
+    *
+    * encuentra el primer tipo de pci bus de un tipo
+    */
+    autv FindFirstChild::(Method)_IPciFindFirstChildOf<_Type_,_Register_,_ReturnOn_>;
+}
+
+/**
+* GlobalPciIoFncs
+*
+* funciones globales para el manejo de I/O de Pci
+*/
+autopbus GlobalPciIoFncs::swinc PciBusFncs

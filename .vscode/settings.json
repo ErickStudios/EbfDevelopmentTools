@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "errno.h": "c",
+        "ios": "cpp"
+    }
+}

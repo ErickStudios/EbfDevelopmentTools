@@ -35,6 +35,17 @@ function CompileApps
 
         [_Entry]
             # el nombre del archivo original
+            build "DefaultApps/Pci.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/Pci.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
             build "DefaultApps/handle.heasm"
 
             # el nombre del archivo del resultado

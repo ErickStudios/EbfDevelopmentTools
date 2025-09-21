@@ -5,6 +5,13 @@
 */
 
 /**
+* _YaLeTocaraXd_
+*
+* lo crearemos despues
+*/
+#define _YaLeTocaraXd_ _YaLeTocaraXd_
+
+/**
 * FreeItemOfArray
 *
 * libera un subarray

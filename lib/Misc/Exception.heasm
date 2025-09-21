@@ -1,0 +1,20 @@
+/**
+* Exception.heasm
+*
+* excepciones del sistema
+*/
+
+/**
+* _ExLoop_
+* 
+* conjela el sistema
+*/
+FUNCTION _ExLoop_
+    _IProto()
+
+FUNCTION _ExLoop_
+    // saltar y conjelar en bucle sin razon
+    call_tapot CmpAndJump 1 2 _ComparatorType_JumpsAnyWays_ _ExLoop_ 0
+
+    // devolver nunca volvio
+    __asm ret

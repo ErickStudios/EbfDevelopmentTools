@@ -37,6 +37,9 @@ call __Entry__
 // --------------------------------
 
 %include
+    lib/env/Pci.heasm
+
+%include
     lib/env/Ports.heasm
 
 %include
@@ -113,7 +116,7 @@ FUNCTION __Entry__
     _EbfNullPtr_ = 0
 
     // obtener la direccion que es 2999
-    (LET*)_SystemInfo_ = 29
+    _SystemInfo_ = 29
     (LET*)1 = 10
     _Math _SystemInfo_ * 1
     (LET*)1 = 9
@@ -124,5 +127,23 @@ FUNCTION __Entry__
     _Math _SystemInfo_ + 1
 
     _SystemInfo_ = **_SystemInfo_
+
+    // obtener la direccion al errno
+    _Errno_ = 2
+    (LET*)1 = 10
+    _Math _Errno_ * 1
+    // 20
+    (LET*)1 = 5
+    _Math _Errno_ + 1
+    // 25
+    (LET*)1 = 10
+    _Math _Errno_ * 1
+    // 250
+    (LET*)1 = 6
+    _Math _Errno_ + 1
+    // 256
+    (LET*)1 = 2
+    _Math _Errno_ * 1
+    // 512
 
     // al unirlo con el archivo aqui continua lo demas del programa

@@ -19,6 +19,21 @@ tapot _IDllReturn (
 END tapot
 
 /**
+* _IDllGetParams
+*
+* funcion interna de obtencion de parametros
+*/
+tapot _IDllGetParams (
+    _ParamNumber_::LET,
+    _ReturnOn_::LET
+)
+
+    (LET*)2 = _ParamNumber_
+    call_tapot GetArrayItem DllIO.Params 2 _ReturnOn_
+
+END tapot
+
+/**
 * _IDllIOExit
 *
 * sale de la DLL
@@ -81,6 +96,13 @@ swinc DllParams
     * salir de la dll
     */
     autv Exit::(Method)_IDllIOExit<>;
+
+    /**
+    * GetParam
+    *
+    * obtiene los parametros
+    */
+    autv GetParam::(Method)_IDllGetParams<_P_,_Ret_>;
 }
 
 /**

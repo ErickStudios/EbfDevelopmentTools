@@ -81,3 +81,14 @@ ref TemporalyVariable3 9
 * el contador de instruccion
 */
 ref ProgramCounter 10
+
+/**
+* Errno
+*
+* la direccion al ultimo error ocurrido, para acceder puedes usar
+* ```heasm
+* // si `cm123c` es para copiar el valor `cm123ccm123c` es para copiar el valor de la variable a la que apunta `_Errno_`
+* _Variable_ = cm123ccm123c_Errno_
+* ```
+*/
+LET _Errno_

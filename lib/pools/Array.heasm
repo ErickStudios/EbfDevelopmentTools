@@ -5,6 +5,27 @@
 */
 
 /**
+* ManualAllocation
+*
+* creacion manual
+* @param Array el array
+* @param Size el tamaño
+*/
+tapot ManualAllocation (
+    _Array_::Array,
+    _Size_::LET
+)
+
+    (LET*)1 = 0
+    (LET*)2 = *_Size_
+
+    _CallOut 14 1
+
+    _Array_ = *1
+
+END tapot
+
+/**
 * GetArrayLength
 *
 * obtener la longitud de un array
@@ -228,3 +249,40 @@ tapot ReallocateArray (
 
     _Array_ = *1
 END
+
+/**
+* ItoX
+*
+* convierte un numero en un string hexadecimal
+*
+* @param Number el numero
+* @param CifresCount el numero de cifras
+* @returns ReturnOn donde retorna el string
+*/
+tapot ItoX (
+    _Number_::Number,
+    _CifresCount_::Number,
+    _ReturnOn_::String
+)
+
+    (LET*)1 = *_Number_
+    (LET*)2 = *_CifresCount_
+
+    _CallOut 59 1
+    _ReturnOn_ = *3
+
+END tapot
+
+tapot ItoA (
+    _Number_::Number,
+    _Comma_::Boolean,
+    _ReturnOn_::String
+)
+
+    (LET*)1 = *_Number_
+    (LET*)2 = *_Comma_
+
+    _CallOut 60 1
+    _ReturnOn_ = *3
+
+END tapot

@@ -1,0 +1,327 @@
+/**
+* Pci.heasm
+*
+* consultador de PCis y su manejo desde la linea de comandos y con varias comodidades
+
+
+
+
+
+
+ejecutando la guia de uso de la aplicacion:
+
+
+KellyBootloader> ./Pci.ebf --?
+
+=================
+| [] [] [] [] [ ]
+| Bus PCI Mgr | |
+-O-------------O|
+
+This application can help you to find PCi buses
+and make anything, all in the Shell, enjoy ^-^
+
+syntax: Pci [Command] [Class?] [Register?]
+
+Commands:
+  --?: get this guide
+  --fch: find a PCI bus and prints the direction
+
+Classes:
+  03: PciClassDisplayCtrl
+  00: PciClassVga
+  01: PciClassIsa
+  80: PciClassIsaPositiveDecode
+  02: PciClassNetwork
+  00: PciClassEthernet
+
+KellyBootloader>
+
+
+
+
+
+
+un ejemplo obteniendo el primer pci de pantalla que encuentre
+esto puede varear en los equipos pero este es lo que me muestra
+
+
+KellyBootloader> ./Pci.ebf --fch 03 0
+0x0000001000
+
+KellyBootloader>
+
+*/
+
+%include
+    lib/ebf.heasm
+
+/**
+* _HexDirection_
+*
+* direccion en hexadecimal por partes
+*/
+Array _HexDirection_ _YaLeTocaraXd_
+
+/**
+* _GuideCommand_
+*
+* comando de guia
+*/
+Array _GuideCommand_ AllocatePool->3
+
+/**
+* _FindChild_
+*
+* comando para encontrar buses
+*/
+Array _FindChild_ AllocatePool->5
+
+/**
+* _Command_
+*
+* el comando
+*/
+Array _Command_ _YaLeTocaraXd_
+
+/**
+* _PciDirection_
+*
+* la direccion completa del PCi
+*/
+Array _PciDirection_ _YaLeTocaraXd_
+
+/**
+* _PciClassParam_
+*
+* el parametro de la clase del PCi a obtener
+*/
+LET _PciClassParam_
+
+/**
+* _PciRegister_
+*
+* el registro del PCi
+*/
+LET _PciRegister_
+
+/**
+* _Initialize_
+*
+* funcion de inicializacion
+*/
+FUNCTION _Initialize_
+    _IProto()
+
+/**
+* _Main_
+*
+* funcion del programa principal
+*/
+FUNCTION _Main_
+    _IProto()
+
+/**
+* _FindChildAction_
+*
+* encontrar un pci
+*/
+FUNCTION _FindChildAction_
+    _IProto()
+
+/**
+* _Clear_
+*
+* limpiar las variables
+*/
+FUNCTION _Clear_
+    _IProto()
+
+/**
+* _ShowGuide_
+*
+* muestra la guia
+*/
+FUNCTION _ShowGuide_
+    _IProto()
+
+//
+// inicializar las variables
+//
+
+_PciClassParam_ = 0
+_PciRegister_ = 0
+
+//
+// comenzar con la inicializacion
+//
+
+call _Initialize_
+call _Main_
+
+// limpiar todo
+call _Clear_
+
+// detener el programa
+_CallOut 0 0
+
+FUNCTION _Initialize_
+
+    // comando de busqueda de buses
+    _FindChild_ [0] '-'
+    _FindChild_ [1] '-'
+    _FindChild_ [2] 'f'
+    _FindChild_ [3] 'c'
+    _FindChild_ [4] 'h'
+
+    // comando de guia
+    _GuideCommand_ [0] '-'
+    _GuideCommand_ [1] '-'
+    _GuideCommand_ [2] '?'
+
+    // obtener el comando
+    call_tapot GetParam 0 _Command_
+
+    // obtener la clase a obtener
+    call_tapot GetParam 1 5
+    call_tapot Xtoi 5 _PciClassParam_
+    
+    // obtener el parametro del registro
+    call_tapot GetParam 2 5
+    call_tapot Xtoi 5 _PciRegister_
+
+    __asm ret
+
+FUNCTION _Main_
+
+    // comando de guia
+    IF BufferCmp<_Command_,_GuideCommand_> THEN _ShowGuide_
+    // comando de busqueda de hijos
+    IF BufferCmp<_Command_,_FindChild_> THEN _FindChildAction_
+
+    __asm ret
+
+FUNCTION _FindChildAction_
+
+    // encontrarlo
+    call_tapot _IPciFindFirstChildOf _PciClassParam_ _PciRegister_ _PciDirection_
+
+    // imprimirlo
+    Print "0x"
+
+    // primera parte
+    (LET*)2 = 0
+    // extraer el item 0
+    call_tapot GetArrayItem _PciDirection_ 2 3
+    // copiar el numero al numero
+    (LET*)1 = *3
+    // las cifras que tendra el numero hexadecimal
+    (LET*)2 = 2
+    // hacerlo string
+    call_tapot ItoX 1 2 _HexDirection_
+    // imprimirlo
+    call_tapot PrintPool _HexDirection_
+    // liberarlo
+    FreePool _HexDirection_
+
+    // segunda parte
+    (LET*)2 = 1
+    // extraer el item 1
+    call_tapot GetArrayItem _PciDirection_ 2 3
+    // copiar el numero al numero
+    (LET*)1 = *3
+    // las cifras que tendra el numero hexadecimal
+    (LET*)2 = 2
+    // hacerlo string
+    call_tapot ItoX 1 2 _HexDirection_
+    // imprimirlo
+    call_tapot PrintPool _HexDirection_
+    // liberarlo
+    FreePool _HexDirection_
+
+    // tercera parte
+    (LET*)2 = 2
+    // extraer el item 2
+    call_tapot GetArrayItem _PciDirection_ 2 3
+    // copiar el numero al numero
+    (LET*)1 = *3
+    // las cifras que tendra el numero hexadecimal
+    (LET*)2 = 2
+    // hacerlo string
+    call_tapot ItoX 1 2 _HexDirection_
+    // imprimirlo
+    call_tapot PrintPool _HexDirection_
+    // liberarlo
+    FreePool _HexDirection_
+
+    // cuarta parte
+    (LET*)2 = 3
+    // extraer el item 3
+    call_tapot GetArrayItem _PciDirection_ 2 3
+    // copiar el numero al numero
+    (LET*)1 = *3
+    // las cifras que tendra el numero hexadecimal
+    (LET*)2 = 2
+    // hacerlo string
+    call_tapot ItoX 1 2 _HexDirection_
+    // imprimirlo
+    call_tapot PrintPool _HexDirection_
+    // liberarlo
+    FreePool _HexDirection_
+
+    // actualizar la pantalla
+    _CallOut 9 0
+
+    Print "\n"
+    __asm ret
+
+FUNCTION _Clear_
+
+    FreePool _PciDirection_
+
+    __asm ret
+
+FUNCTION _ShowGuide_
+
+    Print "\n"
+
+    //
+    // imprimir el autobus, xd
+    //
+
+    Print "=================\n"
+    Print "|\s[]\s[]\s[]\s[]\s[\s]\n"
+    Print "|\sBus\sPCI\sMgr\s|\s|\n"
+    Print "-O-------------O|\n\n"
+
+    //
+    // imprimir descripcion
+    //
+
+    Print "This\sapplication\scan\shelp\syou\sto\sfind\sPCi\sbuses\n"
+    Print "and\smake\sanything,\sall\sin\sthe\sShell,\senjoy\s^-^\n\n"
+
+    //
+    // imprimir documentacion
+    //
+
+    // sintaxis
+    Print "syntax:\sPci\s[Command]\s[Class?]\s[Register?]\n"
+    Print "\n"
+
+    // comandos
+    Print "Commands:\n"
+    Print "\s\s--?:\sget\sthis\sguide\n"
+    Print "\s\s--fch:\sfind\sa\sPCI\sbus\sand\sprints\sthe\sdirection\n"
+    Print "\n"
+
+    // Clases
+    Print "Classes:\n"
+    Print "\s\s03:\sPciClassDisplayCtrl\n"
+    Print "\s\s00:\sPciClassVga\n"
+    Print "\s\s01:\sPciClassIsa\n"
+    Print "\s\s80:\sPciClassIsaPositiveDecode\n"
+    Print "\s\s02:\sPciClassNetwork\n"
+    Print "\s\s00:\sPciClassEthernet\n"
+
+    __asm ret
