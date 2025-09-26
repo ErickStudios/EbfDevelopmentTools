@@ -39,8 +39,8 @@ descargue lo siguiente para desarrollar con ErickAssembly HEASM y la libreria
 
 * ErickCompiler
     * esencial para compilar y trae el interprete de build.erc necesario para la rutina de compilacion
-    * [Windows](https://www.mediafire.com/file/lyxhdltsdc5tzp6/ErickCompilerWindows.zip/file)
-    * [LinuxX64](https://www.mediafire.com/file/33finjqhdo174l3/ErickCompilerLinuxX64.zip/file)
+    * [Windows](https://www.mediafire.com/file/mvctx8p9heltlku/ErickCompilerWindows.zip/file)
+    * [LinuxX64](https://www.mediafire.com/file/0mzfuh7ho7tuwbc/ErickCompilerLinuxX64.zip/file)
 * ErickAssembly
     * la extension para el restaltado de ErickAssembly y HEASM, trae un bonus de resaltado para ErickCompiler
     * [ErickAssembly](https://marketplace.visualstudio.com/items?itemName=ErickCraftStudios.ErickAssembly)
