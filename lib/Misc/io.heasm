@@ -1,4 +1,8 @@
-/** stdio.heasm */
+/**
+* io.heasm
+*
+* entrada y salida
+*/
 
 %include
     lib/Misc/types.heasm

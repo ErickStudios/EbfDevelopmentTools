@@ -1,0 +1,108 @@
+%include
+    lib/ebf.heasm
+swinc ScreenVector
+{
+    autv X::Number;
+    autv Y::Number;
+}
+// PlayerPos: la posicion del jugador
+autopbus PlayerPos::swinc ScreenVector
+// Key: la tecla que lera para moverse
+autopbus Key::swinc EfiKey
+
+PlayerPos.X = 0
+PlayerPos.Y = 0
+
+// ir al bucle, oh, espera, esta justo abajo, bueno xd
+call _Loop_
+// detenerlo si algo falla
+_CallOut 0 0
+
+// el loop del juego
+FUNCTION _Loop_
+
+    // limpiar la pantalla
+    _CallOut 2 0
+
+    //
+    // color
+    //
+
+    // rojo
+    (LET*)1 = 25
+    (LET*)2 = 10
+    _Math 1 * 2
+    (LET*)2 = 5
+    _Math 1 + 2
+    // verde
+    (LET*)2 = 0
+    // azul
+    (LET*)3 = 0    
+    
+    //
+    // tamaño
+    //
+
+    // en X
+    (LET*)6 = 10
+    // en Y
+    (LET*)7 = 10
+
+    // dibujar el rectangulo
+    call_tapot DrawRectangle PlayerPos.X PlayerPos.Y 6 7 1 2 3
+
+    // dibujar la pantalla
+    _CallOut 9 0
+
+    // ScanCode es donde empieza
+    call_tapot WaitKeyAndRead Key.ScanCode
+
+    //
+    // salir
+    //
+    (LET*)2 = _SCAN_ESC_
+    IF Key.ScanCode|==|2 THEN _Exit_
+
+    //
+    // controles
+    //
+
+    // arriba
+    (LET*)2 = _SCAN_UP_
+    IF Key.ScanCode|==|2 THEN _MvUp_
+    // abajo
+    (LET*)2 = _SCAN_DOWN_
+    IF Key.ScanCode|==|2 THEN _MvDown_
+    // izquierda
+    (LET*)2 = _SCAN_LEFT_
+    IF Key.ScanCode|==|2 THEN _MvLeft_
+    // derecha
+    (LET*)2 = _SCAN_RIGHT_
+    IF Key.ScanCode|==|2 THEN _MvRigth_
+
+    // saltar sin guardar el stack
+    call_tapot CmpAndJump 1 2 _ComparatorType_JumpsAnyWays_ _Loop_ 0
+
+// arriba
+FUNCTION _MvUp_
+    (LET*)1 = 10
+    _Math PlayerPos.Y - 1
+    __asm ret
+// abajo
+FUNCTION _MvDown_
+    (LET*)1 = 10
+    _Math PlayerPos.Y + 1
+    __asm ret
+// izquierda
+FUNCTION _MvLeft_
+    (LET*)1 = 10
+    _Math PlayerPos.X - 1
+    __asm ret
+// derecha
+FUNCTION _MvRigth_
+    (LET*)1 = 10
+    _Math PlayerPos.X + 1
+    __asm ret
+FUNCTION _Exit_
+    // la llamada 0 es para detener el programa
+    _CallOut 0 0

@@ -1,8 +1,15 @@
 <!--
 * LibDoc.md
 *
-* escrito para guias de uso de la libreria LibEbf
+* escrito para guias de uso de la libreria LibEbfDevelopmentTools
 -->
+# Aviso
+
+ErickBinaryFormat fue creado como una herramienta educativa para enseñar arquitectura de sistemas y programación de bajo nivel de forma accesible. Aunque es un proyecto abierto, se solicita respetar su propósito original.
+
+Por favor, evita usar ErickBinaryFormat para contenido inapropiado, ofensivo, político o culturalmente sensible. No está prohibido, pero recuerda que cualquier mal uso puede afectar la percepción del proyecto y recaer sobre sus creadores.
+
+El equipo de ErickCraftStudios, les da las gracias y les desea suerte y reconocimiento en su proyecto :)
 
 # Bienvenido a la documentacion de EbfDevelopmentTools
 

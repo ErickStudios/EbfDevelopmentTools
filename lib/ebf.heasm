@@ -12,6 +12,7 @@ _Use ASCII
 //
 
 call __Entry__
+_CallOut 0 0
 
 // --------------------------------
 //
@@ -37,6 +38,9 @@ call __Entry__
 // --------------------------------
 
 %include
+    lib/env/Errno.heasm
+
+%include
     lib/env/Pci.heasm
 
 %include
@@ -44,6 +48,9 @@ call __Entry__
 
 %include
     lib/env/ShellApi.heasm
+
+%include
+    lib/env/Arch.heasm
 
 %include
     lib/env/File.heasm
@@ -76,14 +83,16 @@ call __Entry__
 
 // --------------------------------
 //
-// librerias para la creacion de 
-// dlls
+// especificacion de ErickBinaryFormat
+// y de la libreria
 //
 // --------------------------------
 
 %include
     lib/specification/Dll.heasm
 
+%include
+    lib/specification/Stack.heasm
 
 // --------------------------------
 //
@@ -125,7 +134,7 @@ FUNCTION __Entry__
     _Math _SystemInfo_ * 1
     (LET*)1 = 9
     _Math _SystemInfo_ + 1
-
+    
     _SystemInfo_ = **_SystemInfo_
 
     // obtener la direccion al errno
@@ -145,5 +154,8 @@ FUNCTION __Entry__
     (LET*)1 = 2
     _Math _Errno_ * 1
     // 512
+
+    // obtener la arquitectura actual
+    _CallOut 61 _ActualArch_
 
     // al unirlo con el archivo aqui continua lo demas del programa

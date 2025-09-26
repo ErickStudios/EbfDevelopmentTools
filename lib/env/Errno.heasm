@@ -1,0 +1,114 @@
+/**
+* Errno.heasm
+*
+* errno para todos
+*/
+
+/**
+* _EfiErr_
+*
+* errores de efi
+*/
+ENUM _EfiErr_
+    /** completado */
+    _EnumMember _EfiSucces_ 0
+
+    /** Error de carga */
+    _EnumMember _EfiLoadError_ 1
+
+    /** parametro invalido */
+    _EnumMember _EfiInvalidParameter_ 2
+
+    /** no soportado */
+    _EnumMember _EfiUnsupported_ 3
+
+    /** buffer malo */
+    _EnumMember _EfiBadBufferSize_ 4
+
+    /** es muy pequeño */
+    _EnumMember _EfiBufferTooSmall_ 5
+
+    /* no esta listo **/
+    _EnumMember _EfiNotReady_ 6
+
+    /** error de dispositivo */
+    _EnumMember _EfiDeviceError_ 7
+
+    /** escritura protegida */
+    _EnumMember _EfiWriteProtected_ 8
+
+    /** sin presupuesto */
+    _EnumMember _EfiOutOfResources_ 9
+
+    /** corrupto!! */
+    _EnumMember _EfiVolumeCorrupted_ 10
+
+    /** lleno */
+    _EnumMember _EfiVolumeFull_ 11
+
+    /** no hay medios */
+    _EnumMember _EfiNoMedia_ 12
+
+    /** los medios han cambiado */
+    _EnumMember _EfiMediaChanged_ 13
+
+    /** no lo encontraron */
+    _EnumMember _EfiNotFound_ 14
+
+    /** acceso denegado */
+    _EnumMember _EfiAccessDenied_ 15
+
+    /** lo dejaron en visto */
+    _EnumMember _EfiNoResponse_ 16
+
+     /** se te perdio el mapa? */
+    _EnumMember _EfiNoMapping_ 17
+
+    /** se acabo el tiempo */
+    _EnumMember _EfiTimeOut_ 18
+
+    /** no inicio */
+    _EnumMember _EfiNotStarted_ 19
+
+    /** este se queja un monton, ya inicio */
+    _EnumMember _EfiAlreadyStarted_ 20
+
+    /** quien aborto*/
+    _EnumMember _EfiAborted_ 21
+
+    /** a? */
+    _EnumMember _EfiICMPError_ 22
+
+    /** a? */
+    _EnumMember _EfiTFTPError_ 23
+
+    /** error de protocolo */
+    _EnumMember _EfiProtocolError_ 24
+
+    /** version incompatible */
+    _EnumMember _EfiIncompatibleVersion_ 25
+
+    /** violacion de seguridad? */
+    _EnumMember _EfiSecurityViolation_ 26
+
+    /** ah? */
+    _EnumMember _EfiCrcError_ 27
+
+    /** termino los medios */
+    _EnumMember _EfiEndOfMedia_ 28
+
+    /** termino el archivo */
+    _EnumMember _EfiEndOfFile_ 31
+
+    /** apoco hablas un idioma extraterrestre? */
+    _EnumMember _EfiInvalidLanguaje_ 32
+
+    /** se comprometieron? se van a casar? */
+    _EnumMember _EfiCompromisedData_ 33
+
+    /** quien diria que las ips se podrian peliar */
+    _EnumMember _EfiIpAddressConflict_ 34
+
+    /** error de http */
+    _EnumMember _EfiHttpError_ 35
+END ENUM

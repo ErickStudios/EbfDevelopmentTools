@@ -1,0 +1,53 @@
+/**
+* EbfDocumentPortable.heasm
+*
+* un documento que tambien funciona en uefi
+*/
+
+%include
+    lib/ebf.heasm
+
+%include
+    lib/Web/WebApps.heasm
+
+Array _TagCurrent_ _YaLeTocaraXd_
+Array _TagTextCurrent_ _YaLeTocaraXd_
+Array _TagPci_ _YaLeTocaraXd_
+Array _TagTextPci_ _YaLeTocaraXd_
+
+// es web app
+(LET*)2 = _ArchEbfPlayer_
+IF _ActualArch_|==|2 THEN _InEmulator_
+
+// en uefi
+call _InUefi_
+
+FUNCTION _InUefi_
+
+    Print "Foo\sBar\n"
+
+    __asm ret
+
+FUNCTION _InEmulator_
+
+    (LET*)2 = _PciHtmlDocMgr_
+    
+    //
+    // inicializar los elementos
+    //
+
+    ManualAllocation _TagCurrent_ 2
+
+    _TagCurrent_ [0] 'h'
+    _TagCurrent_ [1] '1'
+
+    ManualAllocation _TagTextCurrent_ 7
+    _TagTextCurrent_ [0] 'F'
+    _TagTextCurrent_ [1] 'o'
+    _TagTextCurrent_ [2] 'o'
+    _TagTextCurrent_ [3] '\s'
+    _TagTextCurrent_ [4] 'B'
+    _TagTextCurrent_ [5] 'a'
+    _TagTextCurrent_ [6] 'r'
+
+    __asm ret

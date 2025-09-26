@@ -248,7 +248,7 @@ tapot ReallocateArray (
     _CallOut 55 1
 
     _Array_ = *1
-END
+END tapot
 
 /**
 * ItoX

@@ -2,13 +2,17 @@
 * Pci.heasm
 *
 * consultador de PCis y su manejo desde la linea de comandos y con varias comodidades
+*
+* xd creaba aplicaciones para los gringos cuando el codigo esta en español
+* jaja
+*
+*
+*
 
 
-
-
-
-
-ejecutando la guia de uso de la aplicacion:
+*
+* ejecutando la guia de uso de la aplicacion
+*
 
 
 KellyBootloader> ./Pci.ebf --?
@@ -21,33 +25,59 @@ KellyBootloader> ./Pci.ebf --?
 This application can help you to find PCi buses
 and make anything, all in the Shell, enjoy ^-^
 
-syntax: Pci [Command] [Class?] [Register?]
+syntax: Pci [Command] [Class?] [Register?] [Data?]
 
 Commands:
   --?: get this guide
   --fch: find a PCI bus and prints the direction
+  --wrt: write in the first PCi data
+  --red: read the first PCi data
 
 Classes:
-  03: PciClassDisplayCtrl
-  00: PciClassVga
-  01: PciClassIsa
-  80: PciClassIsaPositiveDecode
-  02: PciClassNetwork
-  00: PciClassEthernet
+ Display:
+   03: PciClassDisplayCtrl
+   00: PciClassVga
+ Isa:
+   01: PciClassIsa
+   80: PciClassIsaPositiveDecode
+ Net:
+   02: PciClassNetwork
+   00: PciClassEthernet
+ OnlyInEmulator:
+   15: PciHtmlDocMgr
+   16: PciHtmlDocPusher
 
 KellyBootloader>
 
 
+*
+* un ejemplo escribiendo y leyendo en un pci de networck (la clase 02)
+*
 
 
+KellyBootloader> ./Pci.ebf --wrt 02 00 10
+Status: 0xE
+* parece que OVMF no tiene ganas de ser OVMF
+* 0xE en mi funcion significa que la funcion de escritura apunta a nullptr asi que lanza EFI_NOT_FOUND
 
+KellyBootloader> ./Pci.ebf --red 02 00
+!!!! X64 Exception Type - 06(#UD - Invalid Opcode) RIP - A0000
 
-un ejemplo obteniendo el primer pci de pantalla que encuentre
-esto puede varear en los equipos pero este es lo que me muestra
+* 0xE significa EFI_NOT_FOUND por que la funcion de escritura apuntaba a nullptr, asi que para evitar crasheos
+* el portal de la funcion de escritura de ErickBinaryFormat para PCis lanzo EFI_NOT_FOUND para evitar una excepcion
+*
+* y ocurrio una excepcion por que aunque no sea nulo el puntero a la funcion de escritura no lo implementan bien en qemu
 
+*
+* un ejemplo obteniendo el primer pci de pantalla que encuentre
+* esto puede varear en los equipos pero este es lo que me muestra
+*
 
 KellyBootloader> ./Pci.ebf --fch 03 0
-0x0000001000
+
+Pci Info:
+Type = 03
+Direction = 0000001000
 
 KellyBootloader>
 
@@ -78,6 +108,20 @@ Array _GuideCommand_ AllocatePool->3
 Array _FindChild_ AllocatePool->5
 
 /**
+* _WritePci_
+*
+* comando para escribir en buses
+*/
+Array _WritePci_ AllocatePool->5
+
+/**
+* _ReadPci_
+*
+* comando para leer en buses
+*/
+Array _ReadPci_ AllocatePool->5
+
+/**
 * _Command_
 *
 * el comando
@@ -106,11 +150,34 @@ LET _PciClassParam_
 LET _PciRegister_
 
 /**
+* _PciDataWrite_
+*
+* el dato a escribir
+*/
+LET _PciDataWrite_
+
+/**
 * _Initialize_
 *
 * funcion de inicializacion
 */
 FUNCTION _Initialize_
+    _IProto()
+
+/**
+* _ReadFirstChild_
+*
+* lee el dato de lo primero que encuentre
+*/
+FUNCTION _ReadFirstChild_
+    _IProto()
+
+/**
+* _WrtieFirstChild_
+*
+* escribe el dato en el primer pci que encuentre
+*/
+FUNCTION _WrtieFirstChild_
     _IProto()
 
 /**
@@ -169,15 +236,47 @@ FUNCTION _Initialize_
 
     // comando de busqueda de buses
     _FindChild_ [0] '-'
+    /////////////// -
     _FindChild_ [1] '-'
+    /////////////// --
     _FindChild_ [2] 'f'
+    /////////////// --f
     _FindChild_ [3] 'c'
+    /////////////// --fc
     _FindChild_ [4] 'h'
+    /////////////// --fch
 
     // comando de guia
     _GuideCommand_ [0] '-'
+    /////////////// -
     _GuideCommand_ [1] '-'
+    /////////////// --
     _GuideCommand_ [2] '?'
+    /////////////// --?
+
+    // comando de escritura
+    _WritePci_ [0] '-'
+    /////////////// -
+    _WritePci_ [1] '-'
+    /////////////// --
+    _WritePci_ [2] 'w'
+    /////////////// --w
+    _WritePci_ [3] 'r'
+    /////////////// --wr
+    _WritePci_ [4] 't'
+    /////////////// --wrt
+
+    // comando de lectura
+    _ReadPci_ [0] '-'
+    /////////////// -
+    _ReadPci_ [1] '-'
+    /////////////// --
+    _ReadPci_ [2] 'r'
+    /////////////// --r
+    _ReadPci_ [3] 'e'
+    /////////////// --re
+    _ReadPci_ [4] 'd'
+    /////////////// --red
 
     // obtener el comando
     call_tapot GetParam 0 _Command_
@@ -189,6 +288,10 @@ FUNCTION _Initialize_
     // obtener el parametro del registro
     call_tapot GetParam 2 5
     call_tapot Xtoi 5 _PciRegister_
+    
+    // obtener el parametro del dato
+    call_tapot GetParam 3 5
+    call_tapot Xtoi 5 _PciDataWrite_
 
     __asm ret
 
@@ -198,16 +301,57 @@ FUNCTION _Main_
     IF BufferCmp<_Command_,_GuideCommand_> THEN _ShowGuide_
     // comando de busqueda de hijos
     IF BufferCmp<_Command_,_FindChild_> THEN _FindChildAction_
+    // comando de escritura rapida de hijos
+    IF BufferCmp<_Command_,_WritePci_> THEN _WrtieFirstChild_
+    // comando de lectura rapida de hijos
+    IF BufferCmp<_Command_,_ReadPci_> THEN _ReadFirstChild_
+
+    __asm ret
+
+FUNCTION _ReadFirstChild_
+
+    // encontrarlo
+    call_tapot _IPciFindFirstChildOf _PciClassParam_ _PciRegister_ _PciDirection_
+
+    // escribir en el
+    call_tapot PciRead _PciDirection_ _PciDataWrite_
+
+    // imprimir el dato
+    _CallOut 19 _PciDataWrite_
+
+    __asm ret
+
+FUNCTION _WrtieFirstChild_
+
+    // encontrarlo
+    call_tapot _IPciFindFirstChildOf _PciClassParam_ _PciRegister_ _PciDirection_
+
+    // escribir en el
+    call_tapot PciWrite _PciDirection_ _PciDataWrite_
+
+    Print "Status:\s0x"
+    // obtener el errno de la escritura
+    (LET*)1 = **_Errno_
+    _CallOut 19 1
+    _CallOut 9 0
 
     __asm ret
 
 FUNCTION _FindChildAction_
 
+    Print "\nPci\sInfo:\n"
+
     // encontrarlo
     call_tapot _IPciFindFirstChildOf _PciClassParam_ _PciRegister_ _PciDirection_
 
+    // el tipo
+    Print "Type\s=\s"
     // imprimirlo
-    Print "0x"
+    _CallOut 19 _PciClassParam_
+    Print "\n"
+
+    // la direccion
+    Print "Direction\s=\s"
 
     // primera parte
     (LET*)2 = 0
@@ -277,7 +421,11 @@ FUNCTION _FindChildAction_
 
 FUNCTION _Clear_
 
+    FreePool _WritePci_
+    FreePool _ReadPci_
+    FreePool _GuideCommand_
     FreePool _PciDirection_
+    FreePool _FindChild_
 
     __asm ret
 
@@ -310,18 +458,48 @@ FUNCTION _ShowGuide_
     Print "\n"
 
     // comandos
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
     Print "Commands:\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
     Print "\s\s--?:\sget\sthis\sguide\n"
     Print "\s\s--fch:\sfind\sa\sPCI\sbus\sand\sprints\sthe\sdirection\n"
+    Print "\s\s--wrt:\swrite\sin\sthe\sfirst\sPCi\sdata\n"
+    Print "\s\s--red:\sread\sthe\sfirst\sPCi\sdata\n"
     Print "\n"
 
     // Clases
+    (LET*)1 = _ConsoleColor_brightblue_
+    call_tapot SetForegroundColor 1
     Print "Classes:\n"
-    Print "\s\s03:\sPciClassDisplayCtrl\n"
-    Print "\s\s00:\sPciClassVga\n"
-    Print "\s\s01:\sPciClassIsa\n"
-    Print "\s\s80:\sPciClassIsaPositiveDecode\n"
-    Print "\s\s02:\sPciClassNetwork\n"
-    Print "\s\s00:\sPciClassEthernet\n"
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "\sDisplay:\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "\s\s\s03:\sPciClassDisplayCtrl\n"
+    Print "\s\s\s00:\sPciClassVga\n"
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "\sIsa:\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "\s\s\s01:\sPciClassIsa\n"
+    Print "\s\s\s80:\sPciClassIsaPositiveDecode\n"
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "\sNet:\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "\s\s\s02:\sPciClassNetwork\n"
+    Print "\s\s\s00:\sPciClassEthernet\n"
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "\sOnlyInEmulator:\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "\s\s\s15:\sPciHtmlDocMgr\n"
+    Print "\s\s\s16:\sPciHtmlDocPusher\n"
 
     __asm ret

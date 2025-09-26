@@ -1,0 +1,28 @@
+/**
+* WebApps.heasm
+*
+* ErickBinaryFormat se va a meter en el mundo web?
+*/
+
+/**
+* WebPcisClass
+*
+* los tipos de PCi de EBF-Web
+*/
+ENUM WebPcisClass
+
+    /**
+    * _PciHtmlDocMgr_
+    *
+    * el pci del html
+    */
+    _EnumMember _PciHtmlDocMgr_ 0x15
+
+    /**
+    * _PciHtmlDocPusher_
+    *
+    * el pci que publica los elementos puestos en 0x15
+    */
+    _EnumMember _PciHtmlDocPusher_ 0x16
+
+END ENUM

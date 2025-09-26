@@ -181,6 +181,17 @@ function CompileTests
 
         [_Entry]
             # el nombre del archivo original
+            build "Tests/SimpleMvRec.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/SimpleMvRec.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
             build "Tests/WriteFileExample.heasm"
 
             # el nombre del archivo del resultado

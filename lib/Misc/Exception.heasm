@@ -5,6 +5,13 @@
 */
 
 /**
+* _ExcMsg_
+*
+* la excepcion
+*/
+Array _ExcMsg_ _YaLeTocaraXd_
+
+/**
 * _ExLoop_
 * 
 * conjela el sistema
@@ -12,7 +19,24 @@
 FUNCTION _ExLoop_
     _IProto()
 
+/**
+* _ExLaunch_
+*
+* lanzador de excepciones
+*/
+FUNCTION _ExLaunch_
+    _IProto()
+
+
+FUNCTION _ExLaunch_
+    Print "Ocurrio\suna\sexcepcion\sno\controlada\sesa\sexcepcion\ses\s'"
+    call_tapot PrintPool _ExcMsg_
+    Print "'\n"
+
+    call _ExLoop_
+
 FUNCTION _ExLoop_
+
     // saltar y conjelar en bucle sin razon
     call_tapot CmpAndJump 1 2 _ComparatorType_JumpsAnyWays_ _ExLoop_ 0
 

@@ -1,0 +1,93 @@
+/**
+* Arch.heasm
+*
+* funciones de arquitectura
+*
+* me diran ustedes: No que EBF es portable a la arquitectura?
+* lo que pasa es que aunque ErickBinaryFormat sea portable y
+* el mismo programa se pueda ejecutar en todos lados la verdad 
+* es que algunos sistemas pueden variar por que el sistema de ram 
+* y las instrucciones no son toda la arquitectura
+*
+* por favor no bloqueen funciones que no dependan de la arquitectura si no es necesario
+* ya que la filosofia de ErickBinaryFormat es que el mismo programa sea compatible con todo
+*/
+
+/**
+* ArchType
+*
+* tipo de arquitectura
+*/
+ENUM ArchType
+
+    /**
+    * _ArchX64_
+    *
+    * arquitectura x64
+    */
+    _EnumMember _ArchX64_ 0
+    
+    /**
+    * _ArchX86_
+    *
+    * arquitectura x86
+    */
+    _EnumMember _ArchX86_ 1
+
+    /**
+    * _ArchIA64_
+    *
+    * arquitectura IA-64
+    */
+    _EnumMember _ArchIA64_ 2
+
+    /**
+    * _ArchARM64_
+    *
+    * arquitectura ARM64
+    */
+    _EnumMember _ArchARM64_ 3
+
+    /**
+    * _ArchARM_
+    *
+    * arquitectura ARM
+    */
+    _EnumMember _ArchARM_ 4
+
+    /**
+    * _ArchMIPS64_
+    *
+    * arquitectura Mips64
+    */
+    _EnumMember _ArchMIPS64_ 5
+    
+    /**
+    * _ArchRISCV_
+    *
+    * arquitectura RISC-V
+    */
+    _EnumMember _ArchRISCV_ 6
+    
+    /**
+    * _ArchLONGARCH64_
+    *
+    * arquitectura larga de 64 bits
+    */
+    _EnumMember _ArchLONGARCH64_ 7
+
+    /**
+    * _ArchEbfPlayer_
+    *
+    * la arquitectura del emulador que no es la misma y tiene sus propios puertos
+    */
+    _EnumMember _ArchEbfPlayer_ 8
+
+END ENUM
+
+/**
+* _ActualArch_
+*
+* arquitectura actual
+*/
+LET _ActualArch_
