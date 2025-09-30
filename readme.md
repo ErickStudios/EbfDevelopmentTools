@@ -1,37 +1,47 @@
-# EbfDevelopmentTools
+![Logo](./EbfDevToolsLogo.png)
 
-Bienvenido a EBFDevelopmentTools, esto contiene la libreria STD oficial de KellyBootloader para crear ciertos programas o bootloaders y tambien los sistemas operativos y programas pueden usar la libreria
+Bienvenido a EBFDevelopmentTools, "el kit de desarrollo por excelencia de ErickBinaryFormat"
 
-puedes ver la [documentacion](./LibDoc.md) de uso de la libreria
-tambien puedes ver la [especificacion de dlls](./DllSpecification.md) para crear una o saber como se manejan
+Este kit de desarrollo contiene:
+* libreria Std para ErickBinaryFormat (especificamente para su implementacion estandar de la arquitectura ErickBinaryFormat en KellyBootloader)
+* pruebas y ejemplos de codigo
+* codigo fuente de aplicaciones del bootloader
+* librerias dinamicas .dll (no son para windows si no para ErickBinaryFormat)
+* instalador de KellyBootloader
 
-no todo son librerias .heasm, tambien incluye codigo fuente de dlls, 
+todo esto con fin para que los adolesentes y niños comprendan el bajo nivel de una manera simple, y intuitiva
+
+# guia de ayuda
+
+Puede ver la documentacion de uso de la libreria [aqui](./LibDoc.md)
+
+tambien puedes ver la especificacion de librerias dinamicas [aqui](./DllSpecification.md) con fines de creacion de una o uso general
 
 ## Dependencias externas
-* para las dependencias externas cuando pruebe su proyecto para usar las dlls, puede encontrarlas en la carpeta `lib/Dlls/` y copiarlas o descargarlas a su unidad de almacenamiento donde este instalado KellyBootloader y donde pruebas tu programa 
-* asegurate de que tu programa este en la misma unidad de almacenamiento que el bootx64.efi de KellyBootloader ponga su programa en la carpeta root
-* pongalas en la carpeta `kelly` de la unidad de almacenamiento donde pruebe su proyecto compilado, asegurate de no romper las dependencias de otros programas, asi que use siempre las .dll en la carpeta `kelly` en su almacenamiento donde tenga KellyBootloader instalado para poder ejecutar su programa o su sistema y pueda vincular el programa a la dll cargando el archivo desde el codigo de su programa
+como se menciono anteriormente este kit de desarrollo tiene tambien archivos .dll mas especificamente en la carpeta [lib/Dlls/](./lib/Dlls/), pero tranquilo el codigo fuente de cada una esta en [DllsSourceCode](./DllsSourceCode/)
+
+las dependencias extermas se descargaran desde el instalador [install.py](./install.py) y puede decidir si descargarlas a su unidad o carpeta de almacenamiento de la maquina virtual, al decidir que si se descargaran a la carpeta `kelly/` (que es la carpeta estandar donde se guardan los .dll que usan los programas, si los pone en otra carpeta podria romper compatibilidad o otros programas) de su unidad o almacenamiento de la maquina virtual
 
 # Libreria
 
-EbfDevelopmentTools contiene su propia libreria STD oficial para KellyBootloader que proporciona funciones que se pueden usar en todas partes y tambien funciones que pertenecen a la etapa de arranque de un sistema operativo, es el caso de la tabla de informacion del firmware que al salir de los servicios de arranque de EBF se libera toda esa informacion por que ya no la necesitas
+EbfDevelopmentTools contiene una libreria std como se menciono anteriormente, esta libreria contiene 2 tipos de definiciones
 
-puedes descargar la libreria solamente siguiendo estos pasos
-1. asegurate de descargar la carpeta lib, si ya tienes una copia los archivos de la libreria ebf a la carpeta lib existente 
-2. una vez ya tengas los archivos alli no muevas las librerias a otra carpeta debido a que el preprocesado de HEASM solo permite rutas absolutas dentro del proyecto, en el archivo `ebf.heasm` contiene varios inclusiones a `lib/ebfx.heasm`, esto indica que si o si deben estar dentro de la carpeta
-3. en tu proyecto include `lib/ebf.heasm` para usar la libreria
+| Tipo | Descripcion |
+|---|---|
+| Servicios de aranque  | Estas definiciones son solo validas antes del arranque de un sistema operativo hecho en ErickBinaryFormat, se encuentran solo en [lib/Misc/System.heasm](./lib/Misc/System.heasm) y se invalidan tan pronto como se salte a la funcion `_IExitBS_` |
+| Servicios de ejecucion  | Estas definiciones y funciones funcionan dentro y fuera del arranque y se pueden usar en todos lados y incluso en tiempo de ejecucion del sistema |
 
-puedes ver lo que hace cada funcion en la [documentacion](./LibDoc.md) de uso de la libreria
+Para descargar y usar la libreria puedes seguir los siguientes pasos
+1. descargar la carpeta [lib](./lib/)
+2. copiarla al directorio raiz de tu proyecto, si ya hay una combinalas
+3. en su codigo incluya la instruccion 
+    ```
+    %include
+        lib/ebf.heasm
+    ```
+    para usarla
 
-# Pruebas
-
-este proyecto viene con pruebas de uso de la libreria y de heasm en general, puedes guiarte de estas pruebas para hacer tus proyectos
-
-# sabias que
-
-aqui tambien se prueban dlls y librerias que el propio KellyBootloader usa, puedes verlos en `DllsSourceCode/` aunque algunas tal vez nunca lleguen a KellyBootloader
-
-tambien puede ver en `DefaultApps/` algunas aplicaciones que podran descargarse para KellyBootloader y con uso en la terminal, como herramientas de diagnostico, algunas apps utiles y mucho mas
+la libreria incluye documentacion con un comentario en todas las funciones y variables
 
 # compilando
 
@@ -44,12 +54,22 @@ descargue lo siguiente para desarrollar con ErickAssembly HEASM y la libreria
 * ErickAssembly
     * la extension para el restaltado de ErickAssembly y HEASM, trae un bonus de resaltado para ErickCompiler
     * [ErickAssembly](https://marketplace.visualstudio.com/items?itemName=ErickCraftStudios.ErickAssembly)
+* KellyBootloader
+    * el cargador de arranque de ErickBinaryFormat
+    * puede descargarlo usando el [install.py](./install.py) que descargara tanto la version de 64 bits como la de ia32 para UEFI
 
-y tambien lo que ya dije sobre descargar la libreria
+# codigo fuente
+
+Los links al codigo fuente de las herramientas estan en esta seccion aqui abajo
+* [ErickCompiler](https://github.com/ErickStudios/ErickCompiler)
+* [ErickAssembly](https://github.com/ErickStudios/ErickAssembly)
+* [KellyBootloader](https://github.com/ErickStudios/KellyBootloader)
+
+# instalador
 
 para instalar y/o actualizar KellyBootloader 
 * necesita tener instalado requests en Linux puedes usar `python -m pip install requests` en windows usa `py -m pip install requests`
-* descargar `install.py` para descargar el instalador (si no lo tienes, o si una version añade nuevas dlls descargalo otra vez)
+* descargar `install.py` para descargar el instalador (si no lo tienes, o si una version añade nuevos archivos .dll descargalo otra vez)
 * mover el `install.py` a la unidad en la que vas a instalar KellyBootloader, esto no borrara nada, solo crea las carpetas del ejecutable y de las librerias, si usas qemu pon el `install.py` en tu carpeta que el emulador usa para montarla
 * abrir el `install.py` en la carpeta o unidad y listo, el instalador ya te dira que hacer
 

@@ -91,37 +91,8 @@ END ENUM
 */
 FUNCTION _IExitBS_
 
-    //
-    // liberar los pools
-    //
-
-    // liberar el distribuidor del firmware
-    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_FirmwareVendor_
-
-    // liberar el string del lenguaje
-    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_GetLanguaje_
-
-    // liberar todos los guid
-    (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
-    call_tapot GetArrayItem _SystemInfo_ 2 3
-    (LET*)6 = *3
-
-    // liberar el dato 4
-    call_tapot FreeItemOfArray 6 3
-
-    // liberar el guid de la tabla de configuracion
-    call_tapot FreeItemOfArray _SystemInfo_ _SystemInfoGet_GetConfigurationTableVendorGuid_
-
-    //
-    // limpiar todo antes de irse
-    //
-
-    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_FirmwareVendor_
-    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_GetLanguaje_
-    call_tapot ZeroArrayItem _SystemInfo_ _SystemInfoGet_GetConfigurationTableVendorGuid_
-
-    // liberar la tabla de servicios de arranque
-    FreePool _SystemInfo_
+    // liberar la tabla
+    call_tapot Free2DArray _SystemInfo_
 
     __asm ret
 

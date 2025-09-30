@@ -36,6 +36,20 @@
 *           Evaluador = "[0-2]D:[0-6]D:[0-6]D [0-3]D/[0-1]D/DDDD"
 *           Resultado = 0
 *           
+
+*
+* ejemplo de una implementacion
+*
+
+KellyBootloader> ./ErickExpTest.ebf 2 D
+Strs Match?: True
+
+KellyBootloader> ./ErickExpTest.ebf am D
+Strs Match?: False
+
+KellyBootloader> ./ErickExpTest.ebf 7FF [0-7][0-F][0-F]
+Strs Match?: True
+
 */
 
 _Use ASCII

@@ -125,19 +125,56 @@ tapot _IPciFindFirstChildOf (
 
 END tapot
 
-swinc PciBusFncs
-{
-    /**
-    * FindFirstChild
-    *
-    * encuentra el primer tipo de pci bus de un tipo
-    */
-    autv FindFirstChild::(Method)_IPciFindFirstChildOf<_Type_,_Register_,_ReturnOn_>;
-}
+/**
+* GetPciListIds
+*
+* obtiene la lista de los indexes de los pcis con un tipo especifico
+* @param Type el tipo a filtrar}
+* @returns ReturnOn la lista con los PCis
+*/
+tapot GetPciListIds (
+    _Type_::PciClass,
+    _ReturnOn_::ArrayOfInt64inPartsPtr
+)
+    
+    // ajustarlo a null para retornal nullptr si hay errores
+    _ReturnOn_ = 0
+
+    // inicializar variables
+    (LET*)1 = *_Type_
+
+    // llamar al manejador de PCis
+    _CallOut 64 1
+
+    _ReturnOn_ = *2
+END tapot
 
 /**
-* GlobalPciIoFncs
+* GetPciById
 *
-* funciones globales para el manejo de I/O de Pci
+* obtener un PCi por id
+* @param Id la id
+* @param Register el offset del registro
+* @returns ReturnOn retorna la direccion
 */
-autopbus GlobalPciIoFncs::swinc PciBusFncs
+tapot GetPciById (
+    _Id_::LET,
+    _Register_::LET
+    _ReturnOn_::Int64inPartsPtr
+)
+
+
+    // ajustarlo a null para retornal nullptr si hay errores
+    _ReturnOn_ = 0
+
+    // inicializar variables
+    (LET*)1 = *_Id_
+    (LET*)2 = *_Register_
+
+    // llamar al manejador de PCis
+    _CallOut 65 1
+
+    _ReturnOn_ = *3
+
+END tapot
+

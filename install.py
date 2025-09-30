@@ -30,9 +30,16 @@ efi_boot_path = os.path.join("efi", "boot")
 #
 # bootx64_path
 #
-# direccion del ejecutable uefi
+# direccion del ejecutable uefi x64
 #
 bootx64_path = os.path.join(efi_boot_path, "bootx64.efi")
+
+#
+# bootia32_path
+#
+# direccion del ejecutable uefi ia32
+#
+bootia32_path = os.path.join(efi_boot_path, "bootia32.efi")
 
 #
 # kelly_path
@@ -42,11 +49,18 @@ bootx64_path = os.path.join(efi_boot_path, "bootx64.efi")
 kelly_path = "Kelly"
 
 #
-# BootloaderUrl
+# BootloaderUrlx64
 #
-# representa la url al ejecutable
+# representa la url al ejecutable de x64
 #
-BootloaderUrl = "https://github.com/ErickStudios/KellyBootloader/raw/refs/heads/main/image/efi/boot/bootx64.efi"
+BootloaderUrlx64 = "https://github.com/ErickStudios/KellyBootloader/raw/refs/heads/main/image/efi/boot/bootx64.efi"
+
+#
+# BootloaderUrlia32
+#
+# representa la url al ejecutable de ia32
+#
+BootloaderUrlia32 = "https://github.com/ErickStudios/KellyBootloader/raw/refs/heads/main/image/efi/boot/bootia32.efi"
 
 def waitkey():
     if os.name == 'nt':  # Windows
@@ -55,7 +69,7 @@ def waitkey():
     else:  # Unix-like (Linux/macOS)
         import tty
         import termios
-
+		
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
@@ -148,7 +162,8 @@ def DownloadFile(
 # descarga el bootx64.efi
 #
 def DownloadEfi():
-    DownloadFile(BootloaderUrl, bootx64_path)
+    DownloadFile(BootloaderUrlx64, bootx64_path)
+    DownloadFile(BootloaderUrlia32, bootia32_path)
 
 #
 # DownloadDependences

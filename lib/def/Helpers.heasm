@@ -793,3 +793,16 @@ tapot BitwiseXOR (
     __asm xor _Variable_,_Value_
 
 END tapot
+
+/**
+* Free2DArray
+*
+* libera un array en 2d y sus dimensiones y el principal
+* @param Array el array
+* @returns Array como `_EbfNullPtr_`
+*/
+tapot Free2DArray (
+    _Array_::Array
+)
+    _CallOut 63 _Array_
+END tapot

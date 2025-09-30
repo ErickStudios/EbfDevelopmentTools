@@ -153,8 +153,7 @@ END tapot
 FUNCTION _Main_
 
 // no vamos a extraer nada de los servicios de arranque
-(LET*)1 = 1
-call_tapot ExitBootservices 1
+call _IExitBS_
 
 // el script
 Array _Script_ _YaLeTocaraXd_
@@ -247,6 +246,8 @@ _AllocationCommand_ [1] 'a'
 _AllocationCommand_ [2] 'l'
 _AllocationCommand_ [3] 'l'
 
+call _Loop_
+
 // funcion del bucle
 FUNCTION _Loop_
 
@@ -270,7 +271,7 @@ FUNCTION _Loop_
     FreePool _Line_
 
     // repetir el loop
-    call_tapot CmpAndJump 0 0 3 _Loop_ 0
+    call_tapot CmpAndJump 1 2 _ComparatorType_JumpsAnyWays_ _Loop_ 0
 
     __asm ret
 

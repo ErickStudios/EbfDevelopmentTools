@@ -15,6 +15,8 @@ El equipo de ErickCraftStudios, les da las gracias y les desea suerte y reconoci
 
 nos importa la facilidad de uso y la portabilidad de un compilar una vez, ejecutar donde sea y aparte sin sistema operativo
 
+tambien nos importa nuestro objetivo, hacer el bajo nivel accesible a niños y adolecentes y intuitivo
+
 aparte no queremos darte la tarea dificil de reinventar las funciones tu mismo y con el riesgo de que fallen, por eso existe esta libreria y asi todo el sufrimiendo de implementacion va para mi y no tendras que hacer nada, solo usarla
 
 aqui te documentamos el uso de la libreria

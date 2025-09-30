@@ -10,7 +10,8 @@
 * y las instrucciones no son toda la arquitectura
 *
 * por favor no bloqueen funciones que no dependan de la arquitectura si no es necesario
-* ya que la filosofia de ErickBinaryFormat es que el mismo programa sea compatible con todo
+* ya que la filosofia de ErickBinaryFormat es que el mismo programa sea compatible con todo 
+* igual que la de java
 */
 
 /**

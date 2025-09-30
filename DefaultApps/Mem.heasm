@@ -1,0 +1,239 @@
+/**
+* Mem.heasm
+*
+* programa para manejar memoria
+*
+
+*
+* para el contexto de la memoria aqui esta el mapa
+*
+
+KellyBootloader> map
+Map of the ErickBinaryFormat ram
+Size (In ram array length): 128.0 MB
+
+Tag:         Start:     End:       Size:      # Block:
+NullPtr      0000000000-0000000000-0000000000-0000000000
+Avaible      0000000001-00000007D1-00000007D0-0000000000
+BS_CTVG      00000007D1-00000007D5-0000000004-0000000000
+BS_CTVG4     00000007D6-00000007DE-0000000008-0000000000
+BS_Lang      00000007DF-00000007E2-0000000003-0000000000
+BS_FDVendor  00000007E3-00000007E9-0000000006-0000000000
+BS_Data      00000007EA-00000007F2-0000000008-0000000000
+BS_Events    00000007F3-00000007F4-0000000001-0000000000
+Avaible      00000007F5-0000000BB7-00000003C2-0000000000
+BS_Data_Ptr  0000000BB7-0000000BB7-0000000001-0000000000
+Avaible      0000000BB8-0003D09001-0003D08449-0000000000
+Space used: 76.0 B
+
+KellyBootloader>
+
+
+*
+* ejemplo mostrando el idioma
+*
+
+KellyBootloader> ./Mem.ebf --dmp 7E0 3
+eng
+
+*
+* mostrando el firmware vendor
+*
+
+KellyBootloader> ./Mem.ebf --dmp 7E4 6
+EDK II
+
+*
+* mostrando los datos de todos los pools
+*
+
+KellyBootloader> ./Mem.ebf --dmp 7D1 24
+_??????n
+?(??-?-e
+ng?EDK I
+I?-?-%?
+??--
+
+KellyBootloader>
+
+*/
+
+// incluir la libreria universal
+%include
+    lib/ebf.heasm
+
+
+/**
+* _Command_
+*
+* el comando
+*/
+Array _Command_ _YaLeTocaraXd_
+
+/**
+* _DumpCmd_
+*
+* muestra la memoria
+*/
+Array _DumpCmd_ AllocatePool->5
+
+//
+// funciones fundamentales
+//
+
+/**
+* _Initialize_
+*
+* funcion de inicializacion
+*/
+FUNCTION _Initialize_
+    _IProto()
+
+/**
+* _Main_
+*
+* funcion principal
+*/
+FUNCTION _Main_
+    _IProto()
+
+/**
+* _Clean_
+*
+* funcion de limpieza de memoria del programa
+*/
+FUNCTION _Clean_
+    _IProto()
+
+//
+// variables del comando --dmp
+//
+
+/**
+* _DmpFromMem_
+*
+* desde la direccion
+*/
+LET _DmpFromMem_
+
+/**
+* _DmpSizeOfMem_
+*
+* el tamaño de la direccion
+*/
+LET _DmpSizeOfMem_
+
+/**
+* _DmpToMem_
+*
+* hasta la direccion
+*/
+LET _DmpToMem_
+
+/**
+* _DmpIndex_
+*
+* el index
+*/
+LET _DmpIndex_
+
+/**
+* _DmpIndexLine_
+*
+* el index de 8
+*/
+LET _DmpIndexLine_
+
+//
+// ejecutar todo
+//
+
+call _Initialize_
+call _Main_
+call _Clean_
+
+// detener el programa
+_CallOut 0 0
+
+FUNCTION _Initialize_
+
+    // comando de dmp
+    _DumpCmd_ [0] '-'
+    _DumpCmd_ [1] '-'
+    _DumpCmd_ [2] 'd'
+    _DumpCmd_ [3] 'm'
+    _DumpCmd_ [4] 'p'
+
+    // obtener el comando
+    call_tapot GetParam 0 _Command_
+
+    __asm ret
+
+FUNCTION _Main_
+
+    // --dmp
+    IF BufferCmp<_Command_,_DumpCmd_> THEN _DmpCmdMake_
+
+    __asm ret
+
+FUNCTION _DmpCmdMake_
+
+    // --dmp [From] Size
+    call_tapot GetParam 1 5
+    call_tapot Xtoi 5 _DmpFromMem_
+    // --dmp From [Size]
+    call_tapot GetParam 2 5
+    call_tapot Xtoi 5 _DmpSizeOfMem_
+
+    // sumarlos
+    _DmpToMem_ = *_DmpFromMem_
+    _Math _DmpToMem_ + _DmpSizeOfMem_
+
+    // el index
+    _DmpIndex_ = *_DmpFromMem_
+    _DmpIndexLine_ = 0
+
+    call _DmpCmdMakeLoop_
+
+    __asm ret
+
+FUNCTION _DmpCmdMakeLoop_
+
+    // obtener el caracter
+    (LET*)1 = **_DmpIndex_
+
+    // imprimirlo
+    call_tapot Outpud 1
+
+    // incrementarlos
+    __asm increment _DmpIndex_
+    __asm increment _DmpIndexLine_
+
+    // si es 8
+    (LET*)2 = 8
+    IF _DmpIndexLine_|==|2 THEN _DmpMakeInsertLine_
+
+    // saltar si es menor
+    call_tapot CmpAndJump _DmpIndex_ _DmpToMem_ _ComparatorType_IfNotGreater_ _DmpCmdMakeLoop_ 0
+
+    __asm ret
+
+FUNCTION _DmpMakeInsertLine_
+
+    // nueva linea
+    Print "\n"
+
+    // de nuevo 0
+    _DmpIndexLine_ = 0
+
+    __asm ret
+
+FUNCTION _Clean_
+
+    //
+    // liberar los comandos
+    //
+
+    FreePool _DumpCmd_
+
+    __asm ret

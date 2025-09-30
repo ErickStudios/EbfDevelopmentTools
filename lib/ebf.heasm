@@ -115,9 +115,7 @@ _CallOut 0 0
 /**
 * __Entry__
 *
-* se que ustedes flojos no le van a poner un punto de entrada por que aunque no sea necesario
-* las funciones reales function pueden ejecutarse y como son para apagar y reiniciar no queremos que
-* se ejecuten asi que saltamos a esta funcion para saltarse todo y configurara algunas cosas
+* para saltarse todas las librerias y no ejecutar codigo a menos que se llame
 */
 FUNCTION __Entry__
 

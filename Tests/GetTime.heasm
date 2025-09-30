@@ -3,26 +3,32 @@
 *
 * imprime el tiempo actual
 *
-* outpud esperado:
 *
-*   parametros que tener en cuenta de este apartado
-*       - la fecha es 10 de enero del 2025
-*       - la hora es a las 20 horas con 50 minutos con 20 segundos
-*   
-*   por cierto esta no es la hora actual en la que escribo este programa , es algo inventado
 *
-* de uso:
-*   ```KellyBootloaderOutpud
+
+
+
 *
-*   KellyBootloader> ./GetTime.ebf --time
-*   The time is: 20:50:20
-*   
-*   KellyBootloader> ./GetTime.ebf --date
-*   The date is: 10/1/2025
-*   
-*   KellyBootloader>
+* ejemplo mostrando la hora
 *
-*   ```
+
+KellyBootloader> ./GetTime.ebf --time
+The time is: 20:50:20
+
+KellyBootloader>
+
+
+*
+* ejemplo mostrando la fecha
+*
+
+KellyBootloader> ./GetTime.ebf --date
+The date is: 10/1/2025
+
+KellyBootloader>
+
+
+*
 */
 
 //

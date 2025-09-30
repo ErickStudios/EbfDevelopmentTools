@@ -31,6 +31,9 @@ tapot FreeItemOfArray (
 
     // ajustar el puntero
     (LET*)6 = *3
+
+    _CallOut 18 6
+    _CallOut 9 0
     // liberar el puntero
     FreePool 6
 
