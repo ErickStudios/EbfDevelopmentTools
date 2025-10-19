@@ -111,4 +111,5 @@ ENUM _EfiErr_
 
     /** error de http */
     _EnumMember _EfiHttpError_ 35
+    
 END ENUM

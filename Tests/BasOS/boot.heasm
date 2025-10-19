@@ -1,14 +1,18 @@
 /**
 * boot.heaam
 *
-* ejemplo de un bootloader para un sistema llamado yo que se, BasOS
-* y tambien como recuperara todo, esto claro antes de que se salga de los bootservices
-*
-* nota, no necesita nada de los bs jsjsj
+* cargador de arranque para BasOS
 */
 
 %include
     Tests/BasOS/Headers/BasOS.heasm
+
+/**
+* _PutMvOn_
+*
+* donde pondra la variable
+*/
+LET _PutMvOn_
 
 /**
 * _DoRunCm_
@@ -75,6 +79,110 @@ FUNCTION _DoMall_
     _IProto()
 
 /**
+* _DoStra_
+*
+* si se hace un stra
+*/
+FUNCTION _DoStra_
+    _IProto()
+
+/**
+* _DoSetv_
+*
+* si se hace un setv
+*/
+FUNCTION _DoSetv_
+    _IProto()
+
+/**
+* _DoBegin_
+*
+* si se hace un begin
+*/
+FUNCTION _DoBegin_
+    _IProto()
+
+/**
+* _DoEnd_
+*
+* si se hace un end
+*/
+FUNCTION _DoEnd_
+    _IProto()
+
+/**
+* _DoPrint_
+*
+* si se hace un print
+*/
+FUNCTION _DoPrint_
+    _IProto()
+
+/**
+* _DoPrtxt_
+*
+* si se hace un prtxt
+*/
+FUNCTION _DoPrtxt_
+    _IProto()
+
+/**
+* _DoFrst_
+*
+* si se hace un frst
+*/
+FUNCTION _DoFrst_
+    _IProto()
+
+/**
+* _DoPoenv_
+*
+* si se hace un poenv
+*/
+FUNCTION _DoPoenv_
+    _IProto()
+
+/**
+* _DoPuenv_
+*
+* si se hace un puenv
+*/
+FUNCTION _DoPuenv_
+    _IProto()
+
+/**
+* _DoPopc_
+*
+* si se hace un popc
+*/
+FUNCTION _DoPopc_
+    _IProto()
+
+/**
+* _DoPupc_
+*
+* si se hace un pupc
+*/
+FUNCTION _DoPupc_
+    _IProto()
+
+/**
+* _DoStpf_
+*
+* si se hace un stpf
+*/
+FUNCTION _DoStpf_
+    _IProto()
+
+/**
+* _DoClpf_
+*
+* si se hace un clpf
+*/
+FUNCTION _DoClpf_
+    _IProto()
+
+/**
 * _DoSrc_
 *
 * si se hace un src
@@ -106,26 +214,75 @@ FUNCTION _ExCommand_
     (LET*)1 = 0
     call_tapot CmpAndJump 1 2 _ComparatorType_IfEqual_ _hlt_ 0
 
-    // runcm
+    // runcn
     IF BufferNCmp<_Line_,_RuncmCommand_,5> THEN _DoRunCm_
+
     // cat
     IF BufferNCmp<_Line_,_CatCommand_,3> THEN _DoCat_
+
     // echo
     IF BufferNCmp<_Line_,_EchoCommand_,4> THEN _DoEcho_
+
     // clear
     IF BufferCmp<_Line_,_ClearCommand_> THEN _DoClear_
+
     // guide
     IF BufferCmp<_Line_,_GuideCommand_> THEN _DoGuide_
+
     // reboot
     IF BufferCmp<_Line_,_RebootCommand_> THEN _DoReset_
+
     // shutdown
     IF BufferCmp<_Line_,_ShutdownCommand_> THEN _DoOff_
+
     // mall
     IF BufferNCmp<_Line_,_AllocationCommand_,4> THEN _DoMall_
+
     // rese
     IF BufferNCmp<_Line_,_ReseCommand_,4> THEN _DoRese_
+
     // src
     IF BufferNCmp<_Line_,_SrcCommand_,3> THEN _DoSrc_
+
+    // stra
+    IF BufferNCmp<_Line_,_StrAllocCommand_,4> THEN _DoStra_
+
+    // frst
+    IF BufferNCmp<_Line_,_FreeStrCommand_,4> THEN _DoFrst_
+
+    // print
+    IF BufferNCmp<_Line_,_WriteVarStrCommand_,5> THEN _DoPrint_
+
+    // prtxt
+    IF BufferNCmp<_Line_,_WriteTextCommand_,5> THEN _DoPrtxt_
+
+    // setv
+    IF BufferNCmp<_Line_,_SetVariablePushCommand_,4> THEN _DoSetv_
+
+    // begin
+    IF BufferCmp<_Line_,_BeginProgramCommand_> THEN _DoBegin_
+
+    // end
+    IF BufferCmp<_Line_,_EndProgramCommand_> THEN _DoEnd_
+
+    // popc
+    IF BufferCmp<_Line_,_PopProgramCounterCommand_> THEN _DoPopc_
+
+    // pupc
+    IF BufferCmp<_Line_,_PushProgramCounterCommand_> THEN _DoPupc_
+
+    // poenv
+    IF BufferCmp<_Line_,_PopEnviorimentCommand_> THEN _DoPoenv_
+
+    // puenv
+    IF BufferCmp<_Line_,_PushEnviorimentCommand_> THEN _DoPuenv_
+
+    // stpf
+    IF BufferCmp<_Line_,_SetPopFlagCommand_> THEN _DoStpf_
+
+    // clpf
+    IF BufferCmp<_Line_,_ClearPopFlagCommand_> THEN _DoClpf_
+
     // #comentario
     IF BufferNCmp<_Line_,_CommentStart_,1> THEN _hlt_
 
@@ -155,6 +312,9 @@ FUNCTION _Main_
 // no vamos a extraer nada de los servicios de arranque
 call _IExitBS_
 
+// ir al stack
+_StackProgram_ = 1
+
 // el script
 Array _Script_ _YaLeTocaraXd_
 
@@ -169,6 +329,9 @@ Array _CarrigeReturnChar_ AllocatePool->1
 
 // la linea a ejecutar
 LET _LineToExecute_
+
+// no se ejecuta nada
+_ScriptExecuting_ = 0
 
 // separador de linea
 _ScriptLineSplit_ [0] '\n'
@@ -246,6 +409,90 @@ _AllocationCommand_ [1] 'a'
 _AllocationCommand_ [2] 'l'
 _AllocationCommand_ [3] 'l'
 
+// stra
+_StrAllocCommand_ [0] 's'
+_StrAllocCommand_ [1] 't'
+_StrAllocCommand_ [2] 'r'
+_StrAllocCommand_ [3] 'a'
+
+// print
+_WriteVarStrCommand_ [0] 'p'
+_WriteVarStrCommand_ [1] 'r'
+_WriteVarStrCommand_ [2] 'i'
+_WriteVarStrCommand_ [3] 'n'
+_WriteVarStrCommand_ [4] 't'
+
+// prtxt
+_WriteTextCommand_ [0] 'p'
+_WriteTextCommand_ [1] 'r'
+_WriteTextCommand_ [2] 't'
+_WriteTextCommand_ [3] 'x'
+_WriteTextCommand_ [4] 't'
+
+// frst
+_FreeStrCommand_ [0] 'f'
+_FreeStrCommand_ [1] 'r'
+_FreeStrCommand_ [2] 's'
+_FreeStrCommand_ [3] 't'
+
+// setv
+_SetVariablePushCommand_ [0] 's'
+_SetVariablePushCommand_ [1] 'e'
+_SetVariablePushCommand_ [2] 't'
+_SetVariablePushCommand_ [3] 'v'
+
+// begin
+_BeginProgramCommand_ [0] 'b'
+_BeginProgramCommand_ [1] 'e'
+_BeginProgramCommand_ [2] 'g'
+_BeginProgramCommand_ [3] 'i'
+_BeginProgramCommand_ [4] 'n'
+
+// end
+_EndProgramCommand_ [0] 'e'
+_EndProgramCommand_ [1] 'n'
+_EndProgramCommand_ [2] 'd'
+
+// pupc
+_PushProgramCounterCommand_ [0] 'p'
+_PushProgramCounterCommand_ [1] 'u'
+_PushProgramCounterCommand_ [2] 'p'
+_PushProgramCounterCommand_ [3] 'c'
+
+// popc
+_PopProgramCounterCommand_ [0] 'p'
+_PopProgramCounterCommand_ [1] 'o'
+_PopProgramCounterCommand_ [2] 'p'
+_PopProgramCounterCommand_ [3] 'c'
+
+// puenv
+_PushEnviorimentCommand_ [0] 'p'
+_PushEnviorimentCommand_ [1] 'u'
+_PushEnviorimentCommand_ [2] 'e'
+_PushEnviorimentCommand_ [3] 'n'
+_PushEnviorimentCommand_ [4] 'v'
+
+// poenv
+_PopEnviorimentCommand_ [0] 'p'
+_PopEnviorimentCommand_ [1] 'o'
+_PopEnviorimentCommand_ [2] 'e'
+_PopEnviorimentCommand_ [3] 'n'
+_PopEnviorimentCommand_ [4] 'v'
+
+// stpf
+_SetPopFlagCommand_ [0] 's'
+_SetPopFlagCommand_ [1] 't'
+_SetPopFlagCommand_ [2] 'p'
+_SetPopFlagCommand_ [3] 'f'
+
+// clpf
+_ClearPopFlagCommand_ [0] 'c'
+_ClearPopFlagCommand_ [1] 'l'
+_ClearPopFlagCommand_ [2] 'p'
+_ClearPopFlagCommand_ [3] 'f'
+
+// |
+_OneLineSrcSeparator_ [0] '|'
 call _Loop_
 
 // funcion del bucle
@@ -266,9 +513,11 @@ FUNCTION _Loop_
     _CallOut 23 _Line_
     Print "\n"
 
-    call_tapot ExecuteCommand _Line_
+    _ScriptExecuting_ = 1
 
-    FreePool _Line_
+    call_tapot ExecuteCommand _Line_
+    call_tapot SafeFreeArray _Line_
+    _ScriptExecuting_ = 0
 
     // repetir el loop
     call_tapot CmpAndJump 1 2 _ComparatorType_JumpsAnyWays_ _Loop_ 0
@@ -289,6 +538,15 @@ FUNCTION _DoReset_
 
     _CallOut 28 0
 
+    __asm ret
+
+FUNCTION _DoPopc_
+    (LET*)1 = 0
+    call_tapot GetVar 1 _LineToExecute_
+    __asm ret
+FUNCTION _DoPupc_
+    (LET*)1 = 0
+    call_tapot SetVar 1 2
     __asm ret
 
 FUNCTION _DoRunCm_
@@ -312,9 +570,54 @@ FUNCTION _DoSrc_
 
     _CallOut 33 1
     
+    _LineToExecute_ = 0
+
     call_tapot ExecuteScriptFromFile 1
     Print "\n"
 
+    __asm ret
+
+FUNCTION _DoPrint_
+
+    // recorrerlo 6 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 6
+
+    _CallOut 33 1
+
+    (LET*)4 = *1
+    
+    // convertirlo a numero
+    call_tapot Atoi 4 7
+    // obtener string
+    call_tapot GetVar 7 8
+    // imrprimir el string
+    call_tapot PrintPool 8
+
+    __asm ret
+
+FUNCTION _DoPrtxt_
+
+    // recorrerlo 6 caracteres
+    (LET*)1 = *_Line_
+    (LET*)2 = 6
+
+    _CallOut 33 1
+    
+    call_tapot PrintPool 1
+
+    __asm ret
+
+FUNCTION _DoStpf_
+    (LET*)1 = 10
+    (LET*)2 = 2
+    call_tapot SetVar 1 2
+    __asm ret
+
+FUNCTION _DoClpf_
+    (LET*)1 = 10
+    (LET*)2 = 1
+    call_tapot SetVar 1 2
     __asm ret
 
 FUNCTION _DoEcho_
@@ -371,6 +674,58 @@ FUNCTION _DoRese_
     
     __asm ret
 
+FUNCTION _DoSetv_
+
+    // recorrerlo 6 caracteres
+    (LET*)4 = *_Line_
+    (LET*)5 = 5
+
+    _CallOut 33 4
+
+    // convertir a numero
+    call_tapot Atoi 4 9
+
+    // copiar la variable
+    _PutMvOn_ = *9
+
+    __asm ret
+
+FUNCTION _DoStra_
+
+    // recorrerlo 6 caracteres
+    (LET*)4 = *_Line_
+    (LET*)5 = 5
+
+    _CallOut 33 4
+
+    // clonar el string
+    call_tapot ArrayClone 4 9
+
+    // ponerlo en la variable indicada
+    call_tapot SetVar _PutMvOn_ 9
+
+    __asm ret
+
+FUNCTION _DoFrst_
+    __asm ret
+
+/*
+    // recorrerlo 6 caracteres
+    (LET*)4 = *_Line_
+    (LET*)5 = 5
+
+    _CallOut 33 4
+
+    // convertirlo a numero
+    call_tapot Atoi 4 7
+    // obtener string
+    call_tapot GetVar 7 8
+    // liberarlo
+    FreePool 8
+
+    __asm ret
+*/
+
 FUNCTION _DoMall_
 
     // recorrerlo 6 caracteres
@@ -399,25 +754,120 @@ FUNCTION _DoMall_
 
 FUNCTION _DoGuide_
 
+    // tipicos
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Typicals\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
     Print "#\s\s\s\s\s\s\s\s\s\s\s[Comment]\n"
-    Print "runcm\s\s\s\s\s\s\s[Name]\n"
-    Print "cat\s\s\s\s\s\s\s\s\s[Name]\n"
     Print "echo\s\s\s\s\s\s\s\s[Msg]\n"
     Print "mall\s\s\s\s\s\s\s\s[Id]\n"
     Print "rese\s\s\s\s\s\s\s\s[Id]\n"
+
+    // manejo de archivos
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "File\sManagment\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "cat\s\s\s\s\s\s\s\s\s[Name]\n"
     Print "src\s\s\s\s\s\s\s\s\s[Name]\n"
+    Print "runcm\s\s\s\s\s\s\s[Name]\n"
+
+    // cadenas de texto
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Strings\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "stra\s\s\s\s\s\s\s\s[String]\n"
+    Print "print\s\s\s\s\s\s\s[VariableDirection]\n"
+    Print "prtxt\s\s\s\s\s\s\s[String]\n"
+    Print "frst\s\s\s\s\s\s\s\s[Direction]\n"
+
+    // variables
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Variables\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "setv\s\s\s\s\s\s\s\s[Direction]\n"
+
+    // stack
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Stack\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "begin\n"
+    Print "end\n"
+
+    // el recuperador de entorno
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "For\sfunctions\slibrerys\saddition\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "poenv\n"
+    Print "puenv\n"
+
+    // poder
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Power\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
     Print "reboot\n"
     Print "shutdown\n"
-    Print "clear\n"
-    Print "guide\n"
 
+    // guia y otros
+    (LET*)1 = _ConsoleColor_brightgreen_
+    call_tapot SetForegroundColor 1
+    Print "Misc\n"
+    (LET*)1 = _ConsoleColor_gray_
+    call_tapot SetForegroundColor 1
+    Print "guide\n"
+    Print "clear\n"
+
+    __asm ret
+
+FUNCTION _DoPuenv_
+    // guardar el script actual
+    (LET*)7 = 12
+    call_tapot SetVar 7 _LinesOfScript_
+    // guardar la linea actual
+    (LET*)7 = 13
+    call_tapot SetVar 7 _LineToExecute_
+    // nuevo stack
+    call _DoBegin_
+    __asm ret
+FUNCTION _DoPoenv_
+    // regresar al stack anterior
+    call _DoEnd_
+    // variable de las lineas
+    (LET*)7 = 12
+    call_tapot GetVar 7 _LinesOfScript_
+    // variable de la linea actual
+    (LET*)7 = 13
+    call_tapot GetVar 7 _LineToExecute_
+    // incrementar la linea para no ejecutar y "tropesar con la misma piedra"
+    __asm increment _LineToExecute_
+    __asm ret
+
+FUNCTION _DoBegin_
+    __asm increment _StackProgram_
+    __asm ret
+FUNCTION _DoEnd_
+    __asm decrement _StackProgram_
     __asm ret
 
 FUNCTION _ExecuteScript_
 
-    //FreePool _Line_
-
     call_tapot StrReplace _Script_ _CarrigeReturnChar_ _ScriptLineSplit_ _Script_
+    //call_tapot StrReplace _Script_ _OneLineSrcSeparator_ _ScriptLineSplit_ _Script_
+
+    //call_tapot PrintPool _Script_
 
     //call_tapot PrintPool _Script_
     _CallOut 9 0
@@ -425,15 +875,24 @@ FUNCTION _ExecuteScript_
     // separar las lineas
     call_tapot SplitStr _Script_ _ScriptLineSplit_ _LinesOfScript_
 
-    // ir a la linea 0
-    _LineToExecute_ = 0
+    // ir a la linea 0?
+    (LET*)1 = 10
+    call_tapot GetVar 1 1
+    (LET*)2 = 1
+    IF 1|==|2 THEN _ResetProgramCounter_
+    IF 1|!=|2 THEN _PopPcM_
 
     // ejecutar las lineas
     call _ScriptExecutionLoop_
 
-    // librerarlo
-    FreePool _LinesOfScript_
+    __asm ret
 
+FUNCTION _PopPcM_
+
+    __asm ret
+
+FUNCTION _ResetProgramCounter_
+    _LineToExecute_ = 0
     __asm ret
 
 FUNCTION _ScriptExecutionLoop_
@@ -446,7 +905,10 @@ FUNCTION _ScriptExecutionLoop_
 
     call _ExCommand_
 
-    FreePool _Line_
+    //_CallOut 18 _LineToExecute_
+    //Print "\n"
+
+    call_tapot SafeFreeArray _Line_
 
     // incrementar la linea
     __asm increment _LineToExecute_
@@ -457,4 +919,17 @@ FUNCTION _ScriptExecutionLoop_
     // ver si no se acabaron las lineas
     call_tapot CmpAndJump _LineToExecute_ 2 _ComparatorType_IfNotGreater_ _ScriptExecutionLoop_ 0
 
+    // ver si hay un script de regreso
+    (LET*)7 = 11
+    call_tapot GetVar 7 8
+
+    // si no es nullptr ni su valor por que es siempre 0
+    IF 8|!=|0 THEN _PopScript_
+
+    __asm ret
+FUNCTION _PopScript_
+    // recuperarlo
+    _LinesOfScript_ = *8
+    // llevarla a 0
+    call_tapot SetVar 7 0
     __asm ret

@@ -13,7 +13,7 @@ Map of the ErickBinaryFormat ram
 Size (In ram array length): 128.0 MB
 
 Tag:         Start:     End:       Size:      # Block:
-NullPtr      0000000000-0000000000-0000000000-0000000000
+NullPtr     0000000000-0000000000-0000000000-0000000000
 Avaible      0000000001-00000007D1-00000007D0-0000000000
 BS_CTVG      00000007D1-00000007D5-0000000004-0000000000
 BS_CTVG4     00000007D6-00000007DE-0000000008-0000000000
@@ -21,10 +21,14 @@ BS_Lang      00000007DF-00000007E2-0000000003-0000000000
 BS_FDVendor  00000007E3-00000007E9-0000000006-0000000000
 BS_Data      00000007EA-00000007F2-0000000008-0000000000
 BS_Events    00000007F3-00000007F4-0000000001-0000000000
-Avaible      00000007F5-0000000BB7-00000003C2-0000000000
+BS_DataHdr   00000007F6-00000007F9-0000000003-0000000000
+BS_Crc32     00000007FA-00000007FE-0000000004-0000000000
+BS_HdrRev    00000007FF-0000000803-0000000004-0000000000
+BS_HdrSig    0000000804-0000000808-0000000004-0000000000
+Avaible      0000000809-0000000BB7-00000003AE-0000000000
 BS_Data_Ptr  0000000BB7-0000000BB7-0000000001-0000000000
 Avaible      0000000BB8-0003D09001-0003D08449-0000000000
-Space used: 76.0 B
+Space used: 116.0 B
 
 KellyBootloader>
 
@@ -48,11 +52,8 @@ EDK II
 *
 
 KellyBootloader> ./Mem.ebf --dmp 7D1 24
-_??????n
-?(??-?-e
-ng?EDK I
-I?-?-%?
-??--
+_??????n?(??-?-eng?EDK II?-?-%??
+?--
 
 KellyBootloader>
 
@@ -76,6 +77,13 @@ Array _Command_ _YaLeTocaraXd_
 * muestra la memoria
 */
 Array _DumpCmd_ AllocatePool->5
+
+/**
+* _DumptCmd_
+*
+* muestra la memoria a una direccion especifica
+*/
+Array _DumptCmd_ AllocatePool->6
 
 //
 // funciones fundamentales
@@ -164,6 +172,14 @@ FUNCTION _Initialize_
     _DumpCmd_ [3] 'm'
     _DumpCmd_ [4] 'p'
 
+    // comando de dmpt
+    _DumptCmd_ [0] '-'
+    _DumptCmd_ [1] '-'
+    _DumptCmd_ [2] 'd'
+    _DumptCmd_ [3] 'm'
+    _DumptCmd_ [4] 'p'
+    _DumptCmd_ [5] 't'
+
     // obtener el comando
     call_tapot GetParam 0 _Command_
 
@@ -173,6 +189,7 @@ FUNCTION _Main_
 
     // --dmp
     IF BufferCmp<_Command_,_DumpCmd_> THEN _DmpCmdMake_
+    IF BufferCmp<_Command_,_DumptCmd_> THEN _DmptCmdMake_
 
     __asm ret
 
@@ -197,7 +214,58 @@ FUNCTION _DmpCmdMake_
 
     __asm ret
 
+FUNCTION _DmptCmdMake_
+
+    // --dmp [From] To
+    call_tapot GetParam 1 5
+    call_tapot Xtoi 5 _DmpFromMem_
+    // --dmp From [To]
+    call_tapot GetParam 2 5
+    call_tapot Xtoi 5 _DmpSizeOfMem_
+
+    // sumarlos
+    _DmpToMem_ = *_DmpSizeOfMem_
+
+    // el index
+    _DmpIndex_ = *_DmpFromMem_
+    _DmpIndexLine_ = 0
+
+    call _DmpCmdMakeLoop_
+
+    __asm ret
+
 FUNCTION _DmpCmdMakeLoop_
+
+    (LET*)1 = **_DmpIndex_
+
+    (LET*)2 = 0
+    IF 1|!=|2 THEN _WriteMemChar_
+    (LET*)2 = 0
+    IF 1|==|2 THEN _WriteMemNull_
+
+    // incrementarlos
+    __asm increment _DmpIndex_
+    __asm increment _DmpIndexLine_
+
+    // si es 32
+    (LET*)2 = 32
+    IF _DmpIndexLine_|==|2 THEN _DmpMakeInsertLine_
+
+    // saltar si es menor
+    call_tapot CmpAndJump _DmpIndex_ _DmpToMem_ _ComparatorType_IfNotGreater_ _DmpCmdMakeLoop_ 0
+
+    _CallOut 9 0
+
+    __asm ret
+
+FUNCTION _WriteMemNull_
+
+    (LET*)1 = '.'
+    call_tapot Outpud 1
+
+    __asm ret
+
+FUNCTION _WriteMemChar_
 
     // obtener el caracter
     (LET*)1 = **_DmpIndex_
@@ -205,23 +273,15 @@ FUNCTION _DmpCmdMakeLoop_
     // imprimirlo
     call_tapot Outpud 1
 
-    // incrementarlos
-    __asm increment _DmpIndex_
-    __asm increment _DmpIndexLine_
-
-    // si es 8
-    (LET*)2 = 8
-    IF _DmpIndexLine_|==|2 THEN _DmpMakeInsertLine_
-
-    // saltar si es menor
-    call_tapot CmpAndJump _DmpIndex_ _DmpToMem_ _ComparatorType_IfNotGreater_ _DmpCmdMakeLoop_ 0
-
     __asm ret
 
 FUNCTION _DmpMakeInsertLine_
 
     // nueva linea
-    Print "\n"
+    (LET*)1 = '\n'
+
+    // imprimirlo
+    call_tapot Outpud 1
 
     // de nuevo 0
     _DmpIndexLine_ = 0
@@ -235,5 +295,6 @@ FUNCTION _Clean_
     //
 
     FreePool _DumpCmd_
+    FreePool _DumptCmd_
 
     __asm ret

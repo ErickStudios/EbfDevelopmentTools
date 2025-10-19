@@ -7,18 +7,64 @@
 %include
     lib/ebf.heasm
 
+// runcm
 Array _RuncmCommand_ AllocatePool->5
+// cat
 Array _CatCommand_ AllocatePool->3
+// clear
 Array _ClearCommand_ AllocatePool->5
+// guide
 Array _GuideCommand_ AllocatePool->5
+// rese
 Array _ReseCommand_ AllocatePool->4
+// echo
 Array _EchoCommand_ AllocatePool->4
+// #
 Array _CommentStart_ AllocatePool->1
+// reboot
 Array _RebootCommand_ AllocatePool->6
+// shutdown
 Array _ShutdownCommand_ AllocatePool->8
+// mall
 Array _AllocationCommand_ AllocatePool->4
+// src
 Array _SrcCommand_ AllocatePool->3
+// stra
+Array _StrAllocCommand_ AllocatePool->4
+// setv
+Array _SetVariablePushCommand_ AllocatePool->4
+// print
+Array _WriteVarStrCommand_ AllocatePool->5
+// prtxt
+Array _WriteTextCommand_ AllocatePool->5
+// frst
+Array _FreeStrCommand_ AllocatePool->4
+// begin
+Array _BeginProgramCommand_ AllocatePool->5
+// end
+Array _EndProgramCommand_ AllocatePool->3
+// popc
+Array _PopProgramCounterCommand_ AllocatePool->4
+// pupc
+Array _PushProgramCounterCommand_ AllocatePool->4
+// stpf
+Array _SetPopFlagCommand_ AllocatePool->4
+// clpf
+Array _ClearPopFlagCommand_ AllocatePool->4
+// puenv
+Array _PushEnviorimentCommand_ AllocatePool->5
+// poenv
+Array _PopEnviorimentCommand_ AllocatePool->5
+// la linea
 Array _Line_ _YaLeTocaraXd_
+// si se esta ejecutando un script
+LET _ScriptExecuting_
+
+// el separador |
+Array _OneLineSrcSeparator_ AllocatePool->1
+
+// el stack
+LET _StackProgram_
 
 LET _AllocationVarOffset_
 LET _AlloctedVarPos_
@@ -57,7 +103,7 @@ END tapot
 tapot FreeVar (
     _VarPtr_::LET
 )
-    (LET*)6 = 1
+    (LET*)6 = *_StackProgram_
     (LET*)7 = *_VarPtr_
     (LET*)8 = 0
 
@@ -78,7 +124,7 @@ tapot SetVar (
     _Value_::Any
 )
 
-    (LET*)6 = 1
+    (LET*)6 = *_StackProgram_
     (LET*)7 = *_VarPtr_
     (LET*)8 = *_Value_
 
@@ -99,7 +145,7 @@ tapot GetVar (
     _Value_::Any
 )
 
-    (LET*)6 = 1
+    (LET*)6 = *_StackProgram_
     (LET*)7 = *_VarPtr_
 
     // liberar la variable
@@ -118,8 +164,8 @@ FUNCTION _AllocVarLoop_
 
     // primero verificar en el bloque 2 (osea las variables del programa)
 
-    // bloque 2
-    (LET*)6 = 1
+    // bloque de stack
+    (LET*)6 = *_StackProgram_
     (LET*)7 = *_AllocationVarOffset_
     (LET*)8 = 1
 
@@ -146,8 +192,8 @@ FUNCTION _AllocVarLoop_
 */
 FUNCTION _AllocVarCompleted_
 
-    // bloque 2
-    (LET*)6 = 1
+    // bloque de stack
+    (LET*)6 = *_StackProgram_
     // ofset +10
     (LET*)7 = *_AllocationVarOffset_
     // valor

@@ -90,7 +90,7 @@ function CompileTests
             # compilarlo con el HLVC
             With "%Compiler%"
         [end _Entry]
-        
+    
         [_Entry]
             # el nombre del archivo original
             build "Tests/ParamsAppStrange1.heasm"
@@ -126,6 +126,17 @@ function CompileTests
 
         [_Entry]
             # el nombre del archivo original
+            build "Tests/ExitBootservices.heasm"
+
+            # el nombre del archivo del resultado
+            As "build/ExitBootservices.ebf"
+
+            # compilarlo con el HLVC
+            With "%Compiler%"
+        [end _Entry]
+
+        [_Entry]
+            # el nombre del archivo original
             build "Tests/GetTime.heasm"
 
             # el nombre del archivo del resultado
@@ -152,7 +163,7 @@ function CompileTests
 
             # el nombre del archivo del resultado
             As "build/BasOS.ebf"
-
+#--onlyTranspile
             # compilarlo con el HLVC
             With "%Compiler%"
         [end _Entry]
@@ -211,6 +222,26 @@ function CompileTests
             # compilarlo con el HLVC
             With "%Compiler%"
         [end _Entry]
+
+    end
+
+stopScript()
+
+function unbuild
+
+    compile
+
+        [_Entry]
+            # el nombre del archivo original
+            build "build/BasOS.ebf"
+
+            # el nombre del archivo del resultado
+            As "unbuild/BasOS.easm"
+
+            # compilarlo con el HLVC
+            With "EASM_decompiler"
+        [end _Entry]
+
     end
 
 stopScript()
@@ -290,6 +321,7 @@ function Main
     if ("%ps%"=="--apps") then CompileApps
     if ("%ps%"=="--dlls") then CompileDlls
     if ("%ps%"=="--tests") then CompileTests
+    if ("%ps%"=="--unbuild") then unbuild
     if ("%ps%"=="--h") then HelpMessage
 
     echo "parece que ingreso un comando invalido."

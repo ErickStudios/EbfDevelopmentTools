@@ -3,6 +3,7 @@
 *
 * escrito para guias de uso de la libreria LibEbfDevelopmentTools
 -->
+
 # Aviso
 
 ErickBinaryFormat fue creado como una herramienta educativa para enseñar arquitectura de sistemas y programación de bajo nivel de forma accesible. Aunque es un proyecto abierto, se solicita respetar su propósito original.
@@ -11,7 +12,8 @@ Por favor, evita usar ErickBinaryFormat para contenido inapropiado, ofensivo, po
 
 El equipo de ErickCraftStudios, les da las gracias y les desea suerte y reconocimiento en su proyecto :)
 
-# Bienvenido a la documentacion de EbfDevelopmentTools
+# Documentacion de EbfDevelopmentTools
+Bienvenido a la documentacion de EbfDevelopmentTools
 
 nos importa la facilidad de uso y la portabilidad de un compilar una vez, ejecutar donde sea y aparte sin sistema operativo
 
@@ -21,7 +23,7 @@ aparte no queremos darte la tarea dificil de reinventar las funciones tu mismo y
 
 aqui te documentamos el uso de la libreria
 
-# Argumentos
+# Linea de comandos
 
 `ShellApi.heasm` es un modulo que permite obtener parametros de la shell con la que se llamo el programa
 
@@ -204,17 +206,17 @@ solo se mencionaran las funciones que son basicas para no marear a los principia
 * retorna
     * `NumberCout` como salida
 ## Xtoi
-    * convierte un texto hexadecimal a numero
-    * parametros
+* convierte un texto hexadecimal a numero
+* parametros
     * `Str` el puntero al string
-    * retorna
+* retorna
     * `NumberCout` como salida
-## Shutdown
+## _Shutdown_
 * apaga la pc
-* usa `call Shutdown` por que no es un tapot
-## Reset
+* usa `call _Shutdown_` por que no es un tapot
+## _Reset_
 * reinicia la pc
-* usa `call Reset` por que no es un tapot
+* usa `call _Reset_` por que no es un tapot
 ## PrintPool
 * imprimir un pool como string
 * parametros
@@ -329,7 +331,7 @@ instancia de `DllParams`
 
 # manejo de archivos
 
-`File.heasm` es un modulo para interactuar con el fs, lamentablemente no se puede escribir por que como en QEMU VFAT no funciona bien entonces me evito destruir el FS de alguno de ustedes por no saber si la manera en la que se escribe es correcta o no
+`File.heasm` es un modulo para interactuar con el fs
 
 Funciones/tapots:
 ## ExecuteFile
@@ -412,12 +414,6 @@ Funciones/tapots:
     * `Register` el registro, no se permiten valores literales
 * retorna
     * `ReturnOn` el puntero al array de 4 elementos que contiene la direccion completa del registro del PCi
-
-Interfaces:
-## GlobalPciIoFncs
-* funciones globales para el manejo de I/O de Pci
-* metodos
-    * FindFirstChild: instancia de _IPciFindFirstChildOf
 
 # manejo
 

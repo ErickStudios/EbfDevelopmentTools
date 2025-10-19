@@ -2,6 +2,7 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "errno.h": "c",
+        "ErcProj.json": "jsonc",
         "ios": "cpp"
     }
 }

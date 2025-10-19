@@ -1,0 +1,11 @@
+/**
+* ExitBootservices.heasm
+*
+* no hagan esto sin razon
+*/
+
+%include
+    lib/ebf.heasm
+
+// salir
+call _IExitBS_

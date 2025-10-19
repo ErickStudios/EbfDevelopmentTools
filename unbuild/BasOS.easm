@@ -1,0 +1,4277 @@
+EA
+; Instruction: 3-4*
+call_function 7
+; Instruction: 5-7*
+system_call 0,0
+; Instruction: 8-9*
+function 1
+; Instruction: A-C*
+system_call 20,3
+; Instruction: D*
+ret
+; Instruction: E-F*
+function 2
+; Instruction: 10-12*
+system_call 27,0
+; Instruction: 13*
+ret
+; Instruction: 14-15*
+function 3
+; Instruction: 16-18*
+system_call 28,0
+; Instruction: 19*
+ret
+; Instruction: 1A-1B*
+function 4
+; Instruction: 1C-1E*
+move 3,0
+; Instruction: 1F*
+ret
+; Instruction: 20-21*
+function 5
+; Instruction: 22-24*
+system_call 20,5
+; Instruction: 25-27*
+move 5,0
+; Instruction: 28-2A*
+move 6,5
+; Instruction: 2B-2D*
+system_call 14,5
+; Instruction: 2E-30*
+set_value_with_value 1,5
+; Instruction: 31-33*
+move 2,0
+; Instruction: 34-36*
+move 3,70
+; Instruction: 37-39*
+system_call 16,1
+; Instruction: 3A-3C*
+set_value_with_value 1,5
+; Instruction: 3D-3F*
+move 2,1
+; Instruction: 40-42*
+move 3,65
+; Instruction: 43-45*
+move 4,32
+; Instruction: 46-48*
+add 3,4
+; Instruction: 49-4B*
+system_call 16,1
+; Instruction: 4C-4E*
+set_value_with_value 1,5
+; Instruction: 4F-51*
+move 2,2
+; Instruction: 52-54*
+move 3,76
+; Instruction: 55-57*
+move 4,32
+; Instruction: 58-5A*
+add 3,4
+; Instruction: 5B-5D*
+system_call 16,1
+; Instruction: 5E-60*
+set_value_with_value 1,5
+; Instruction: 61-63*
+move 2,3
+; Instruction: 64-66*
+move 3,83
+; Instruction: 67-69*
+move 4,32
+; Instruction: 6A-6C*
+add 3,4
+; Instruction: 6D-6F*
+system_call 16,1
+; Instruction: 70-72*
+set_value_with_value 1,5
+; Instruction: 73-75*
+move 2,4
+; Instruction: 76-78*
+move 3,69
+; Instruction: 79-7B*
+move 4,32
+; Instruction: 7C-7E*
+add 3,4
+; Instruction: 7F-81*
+system_call 16,1
+; Instruction: 82*
+ret
+; Instruction: 83-84*
+function 6
+; Instruction: 85-87*
+move 2,8
+; Instruction: 88-8A*
+set_value_with_value 1,16
+; Instruction: 8B-8D*
+set_value_with_value 2,2
+; Instruction: 8E-90*
+system_call 17,1
+; Instruction: 91-93*
+set_value_with_value 6,3
+; Instruction: 94-96*
+system_call 63,6
+; Instruction: 97-99*
+move 2,0
+; Instruction: 9A-9C*
+set_value_with_value 1,16
+; Instruction: 9D-9F*
+set_value_with_value 2,2
+; Instruction: A0-A2*
+system_call 17,1
+; Instruction: A3-A5*
+set_value_with_value 6,3
+; Instruction: A6-A8*
+move 2,3
+; Instruction: A9-AB*
+set_value_with_value 1,6
+; Instruction: AC-AE*
+set_value_with_value 2,2
+; Instruction: AF-B1*
+system_call 17,1
+; Instruction: B2-B4*
+set_value_with_value 6,3
+; Instruction: B5-B7*
+system_call 20,6
+; Instruction: B8-BA*
+system_call 63,16
+; Instruction: BB*
+ret
+; Instruction: BC-BD*
+function 7
+; Instruction: BE-C0*
+move 0,0
+; Instruction: C1-C3*
+move 16,29
+; Instruction: C4-C6*
+move 1,10
+; Instruction: C7-C9*
+multiplique 16,1
+; Instruction: CA-CC*
+move 1,9
+; Instruction: CD-CF*
+add 16,1
+; Instruction: D0-D2*
+move 1,10
+; Instruction: D3-D5*
+multiplique 16,1
+; Instruction: D6-D8*
+move 1,9
+; Instruction: D9-DB*
+add 16,1
+; Instruction: DC-DE*
+set_value_with_value_of_value 16,16
+; Instruction: DF-E1*
+move 11,2
+; Instruction: E2-E4*
+move 1,10
+; Instruction: E5-E7*
+multiplique 11,1
+; Instruction: E8-EA*
+move 1,5
+; Instruction: EB-ED*
+add 11,1
+; Instruction: EE-F0*
+move 1,10
+; Instruction: F1-F3*
+multiplique 11,1
+; Instruction: F4-F6*
+move 1,6
+; Instruction: F7-F9*
+add 11,1
+; Instruction: FA-FC*
+move 1,2
+; Instruction: FD-FF*
+multiplique 11,1
+; Instruction: 100-102*
+system_call 61,12
+; Instruction: 103-105*
+move 1,0
+; Instruction: 106-108*
+move 2,5
+; Instruction: 109-10B*
+system_call 14,1
+; Instruction: 10C-10E*
+set_value_with_value 17,1
+; Instruction: 10F-111*
+move 1,0
+; Instruction: 112-114*
+move 2,3
+; Instruction: 115-117*
+system_call 14,1
+; Instruction: 118-11A*
+set_value_with_value 18,1
+; Instruction: 11B-11D*
+move 1,0
+; Instruction: 11E-120*
+move 2,5
+; Instruction: 121-123*
+system_call 14,1
+; Instruction: 124-126*
+set_value_with_value 19,1
+; Instruction: 127-129*
+move 1,0
+; Instruction: 12A-12C*
+move 2,5
+; Instruction: 12D-12F*
+system_call 14,1
+; Instruction: 130-132*
+set_value_with_value 20,1
+; Instruction: 133-135*
+move 1,0
+; Instruction: 136-138*
+move 2,4
+; Instruction: 139-13B*
+system_call 14,1
+; Instruction: 13C-13E*
+set_value_with_value 21,1
+; Instruction: 13F-141*
+move 1,0
+; Instruction: 142-144*
+move 2,4
+; Instruction: 145-147*
+system_call 14,1
+; Instruction: 148-14A*
+set_value_with_value 22,1
+; Instruction: 14B-14D*
+move 1,0
+; Instruction: 14E-150*
+move 2,1
+; Instruction: 151-153*
+system_call 14,1
+; Instruction: 154-156*
+set_value_with_value 23,1
+; Instruction: 157-159*
+move 1,0
+; Instruction: 15A-15C*
+move 2,6
+; Instruction: 15D-15F*
+system_call 14,1
+; Instruction: 160-162*
+set_value_with_value 24,1
+; Instruction: 163-165*
+move 1,0
+; Instruction: 166-168*
+move 2,8
+; Instruction: 169-16B*
+system_call 14,1
+; Instruction: 16C-16E*
+set_value_with_value 25,1
+; Instruction: 16F-171*
+move 1,0
+; Instruction: 172-174*
+move 2,4
+; Instruction: 175-177*
+system_call 14,1
+; Instruction: 178-17A*
+set_value_with_value 26,1
+; Instruction: 17B-17D*
+move 1,0
+; Instruction: 17E-180*
+move 2,3
+; Instruction: 181-183*
+system_call 14,1
+; Instruction: 184-186*
+set_value_with_value 27,1
+; Instruction: 187-189*
+move 1,0
+; Instruction: 18A-18C*
+move 2,4
+; Instruction: 18D-18F*
+system_call 14,1
+; Instruction: 190-192*
+set_value_with_value 28,1
+; Instruction: 193-195*
+move 1,0
+; Instruction: 196-198*
+move 2,4
+; Instruction: 199-19B*
+system_call 14,1
+; Instruction: 19C-19E*
+set_value_with_value 29,1
+; Instruction: 19F-1A1*
+move 1,0
+; Instruction: 1A2-1A4*
+move 2,5
+; Instruction: 1A5-1A7*
+system_call 14,1
+; Instruction: 1A8-1AA*
+set_value_with_value 30,1
+; Instruction: 1AB-1AD*
+move 1,0
+; Instruction: 1AE-1B0*
+move 2,5
+; Instruction: 1B1-1B3*
+system_call 14,1
+; Instruction: 1B4-1B6*
+set_value_with_value 31,1
+; Instruction: 1B7-1B9*
+move 1,0
+; Instruction: 1BA-1BC*
+move 2,4
+; Instruction: 1BD-1BF*
+system_call 14,1
+; Instruction: 1C0-1C2*
+set_value_with_value 32,1
+; Instruction: 1C3-1C5*
+move 1,0
+; Instruction: 1C6-1C8*
+move 2,5
+; Instruction: 1C9-1CB*
+system_call 14,1
+; Instruction: 1CC-1CE*
+set_value_with_value 33,1
+; Instruction: 1CF-1D1*
+move 1,0
+; Instruction: 1D2-1D4*
+move 2,3
+; Instruction: 1D5-1D7*
+system_call 14,1
+; Instruction: 1D8-1DA*
+set_value_with_value 34,1
+; Instruction: 1DB-1DD*
+move 1,0
+; Instruction: 1DE-1E0*
+move 2,1
+; Instruction: 1E1-1E3*
+system_call 14,1
+; Instruction: 1E4-1E6*
+set_value_with_value 36,1
+; Instruction: 1E7-1E8*
+call_function 28
+; Instruction: 1E9-1EA*
+function 8
+; Instruction: 1EB-1ED*
+set_value_with_value 6,37
+; Instruction: 1EE-1F0*
+set_value_with_value 7,38
+; Instruction: 1F1-1F3*
+move 8,1
+; Instruction: 1F4-1F6*
+move 1,4
+; Instruction: 1F7-1F9*
+move 2,32
+; Instruction: 1FA-1FC*
+system_call 35,1
+; Instruction: 1FD-1FF*
+move 1,2
+; Instruction: 200-202*
+move 2,10
+; Instruction: 203-205*
+system_call 35,1
+; Instruction: 206-208*
+move 1,0
+; Instruction: 209-20B*
+move 2,7
+; Instruction: 20C-20E*
+system_call 35,1
+; Instruction: 20F-211*
+move 1,2
+; Instruction: 212-214*
+move 2,10
+; Instruction: 215-217*
+system_call 35,1
+; Instruction: 218-21A*
+move 1,0
+; Instruction: 21B-21D*
+move 2,6
+; Instruction: 21E-220*
+system_call 35,1
+; Instruction: 221-223*
+move 1,2
+; Instruction: 224-226*
+move 2,10
+; Instruction: 227-229*
+system_call 35,1
+; Instruction: 22A-22C*
+move 1,0
+; Instruction: 22D-22F*
+move 2,7
+; Instruction: 230-232*
+system_call 35,1
+; Instruction: 233-235*
+move 1,2
+; Instruction: 236-238*
+set_value_with_value 2,6
+; Instruction: 239-23B*
+system_call 35,1
+; Instruction: 23C-23E*
+move 1,0
+; Instruction: 23F-241*
+set_value_with_value 2,7
+; Instruction: 242-244*
+system_call 35,1
+; Instruction: 245-247*
+system_call 36,8
+; Instruction: 248-24A*
+set_value_with_value 5,8
+; Instruction: 24B-24D*
+move 6,0
+; Instruction: 24E-250*
+set_value_with_value 1,5
+; Instruction: 251-253*
+set_value_with_value 2,6
+; Instruction: 254-256*
+system_call 39,1
+; Instruction: 257-259*
+move 1,0
+; Instruction: 25A-25C*
+move 2,9
+; Instruction: 25D-25F*
+move 3,0
+; Instruction: 260-262*
+system_call 40,1
+; Instruction: 263-264*
+increment 38
+; Instruction: 265-267*
+set_value_with_value 1,0
+; Instruction: 268-26A*
+set_value_with_value 2,0
+; Instruction: 26B-26D*
+system_call 39,1
+; Instruction: 26E-270*
+move 1,3
+; Instruction: 271-273*
+move 2,8
+; Instruction: 274-276*
+move 3,0
+; Instruction: 277-279*
+system_call 40,1
+; Instruction: 27A-27B*
+function 9
+; Instruction: 27C-27E*
+set_value_with_value 6,37
+; Instruction: 27F-281*
+set_value_with_value 7,38
+; Instruction: 282-284*
+move 8,1
+; Instruction: 285-287*
+move 1,4
+; Instruction: 288-28A*
+move 2,32
+; Instruction: 28B-28D*
+system_call 35,1
+; Instruction: 28E-290*
+move 1,2
+; Instruction: 291-293*
+move 2,10
+; Instruction: 294-296*
+system_call 35,1
+; Instruction: 297-299*
+move 1,0
+; Instruction: 29A-29C*
+move 2,7
+; Instruction: 29D-29F*
+system_call 35,1
+; Instruction: 2A0-2A2*
+move 1,2
+; Instruction: 2A3-2A5*
+move 2,10
+; Instruction: 2A6-2A8*
+system_call 35,1
+; Instruction: 2A9-2AB*
+move 1,0
+; Instruction: 2AC-2AE*
+move 2,6
+; Instruction: 2AF-2B1*
+system_call 35,1
+; Instruction: 2B2-2B4*
+move 1,2
+; Instruction: 2B5-2B7*
+move 2,10
+; Instruction: 2B8-2BA*
+system_call 35,1
+; Instruction: 2BB-2BD*
+move 1,0
+; Instruction: 2BE-2C0*
+move 2,7
+; Instruction: 2C1-2C3*
+system_call 35,1
+; Instruction: 2C4-2C6*
+move 1,2
+; Instruction: 2C7-2C9*
+set_value_with_value 2,6
+; Instruction: 2CA-2CC*
+system_call 35,1
+; Instruction: 2CD-2CF*
+move 1,0
+; Instruction: 2D0-2D2*
+set_value_with_value 2,7
+; Instruction: 2D3-2D5*
+system_call 35,1
+; Instruction: 2D6-2D8*
+system_call 37,8
+; Instruction: 2D9-2DB*
+set_value_with_value 39,38
+; Instruction: 2DC*
+ret
+; Instruction: 2DD-2DE*
+function 27
+; Instruction: 2DF-2E1*
+set_value_with_value_of_value 2,35
+; Instruction: 2E2-2E4*
+move 1,0
+; Instruction: 2E5-2E7*
+set_value_with_value 1,1
+; Instruction: 2E8-2EA*
+set_value_with_value 2,2
+; Instruction: 2EB-2ED*
+system_call 39,1
+; Instruction: 2EE-2F0*
+move 1,0
+; Instruction: 2F1-2F3*
+move 2,30
+; Instruction: 2F4-2F6*
+move 3,0
+; Instruction: 2F7-2F9*
+system_call 40,1
+; Instruction: 2FA-2FC*
+set_value_with_value 1,35
+; Instruction: 2FD-2FF*
+set_value_with_value 2,17
+; Instruction: 300-302*
+move 3,5
+; Instruction: 303-305*
+system_call 32,1
+; Instruction: 306-307*
+if_equal 11
+; Instruction: 308-30A*
+set_value_with_value 1,35
+; Instruction: 30B-30D*
+set_value_with_value 2,18
+; Instruction: 30E-310*
+move 3,3
+; Instruction: 311-313*
+system_call 32,1
+; Instruction: 314-315*
+if_equal 12
+; Instruction: 316-318*
+set_value_with_value 1,35
+; Instruction: 319-31B*
+set_value_with_value 2,22
+; Instruction: 31C-31E*
+move 3,4
+; Instruction: 31F-321*
+system_call 32,1
+; Instruction: 322-323*
+if_equal 14
+; Instruction: 324-326*
+set_value_with_value 1,35
+; Instruction: 327-329*
+set_value_with_value 2,19
+; Instruction: 32A-32C*
+system_call 24,1
+; Instruction: 32D-32E*
+if_equal 13
+; Instruction: 32F-331*
+set_value_with_value 1,35
+; Instruction: 332-334*
+set_value_with_value 2,20
+; Instruction: 335-337*
+system_call 24,1
+; Instruction: 338-339*
+if_equal 15
+; Instruction: 33A-33C*
+set_value_with_value 1,35
+; Instruction: 33D-33F*
+set_value_with_value 2,24
+; Instruction: 340-342*
+system_call 24,1
+; Instruction: 343-344*
+if_equal 16
+; Instruction: 345-347*
+set_value_with_value 1,35
+; Instruction: 348-34A*
+set_value_with_value 2,25
+; Instruction: 34B-34D*
+system_call 24,1
+; Instruction: 34E-34F*
+if_equal 17
+; Instruction: 350-352*
+set_value_with_value 1,35
+; Instruction: 353-355*
+set_value_with_value 2,26
+; Instruction: 356-358*
+move 3,4
+; Instruction: 359-35B*
+system_call 32,1
+; Instruction: 35C-35D*
+if_equal 18
+; Instruction: 35E-360*
+set_value_with_value 1,35
+; Instruction: 361-363*
+set_value_with_value 2,21
+; Instruction: 364-366*
+move 3,4
+; Instruction: 367-369*
+system_call 32,1
+; Instruction: 36A-36B*
+if_equal 31
+; Instruction: 36C-36E*
+set_value_with_value 1,35
+; Instruction: 36F-371*
+set_value_with_value 2,27
+; Instruction: 372-374*
+move 3,3
+; Instruction: 375-377*
+system_call 32,1
+; Instruction: 378-379*
+if_equal 26
+; Instruction: 37A-37C*
+set_value_with_value 1,35
+; Instruction: 37D-37F*
+set_value_with_value 2,28
+; Instruction: 380-382*
+move 3,4
+; Instruction: 383-385*
+system_call 32,1
+; Instruction: 386-387*
+if_equal 19
+; Instruction: 388-38A*
+set_value_with_value 1,35
+; Instruction: 38B-38D*
+set_value_with_value 2,32
+; Instruction: 38E-390*
+move 3,4
+; Instruction: 391-393*
+system_call 32,1
+; Instruction: 394-395*
+if_equal 25
+; Instruction: 396-398*
+set_value_with_value 1,35
+; Instruction: 399-39B*
+set_value_with_value 2,30
+; Instruction: 39C-39E*
+move 3,5
+; Instruction: 39F-3A1*
+system_call 32,1
+; Instruction: 3A2-3A3*
+if_equal 23
+; Instruction: 3A4-3A6*
+set_value_with_value 1,35
+; Instruction: 3A7-3A9*
+set_value_with_value 2,31
+; Instruction: 3AA-3AC*
+move 3,5
+; Instruction: 3AD-3AF*
+system_call 32,1
+; Instruction: 3B0-3B1*
+if_equal 24
+; Instruction: 3B2-3B4*
+set_value_with_value 1,35
+; Instruction: 3B5-3B7*
+set_value_with_value 2,29
+; Instruction: 3B8-3BA*
+move 3,4
+; Instruction: 3BB-3BD*
+system_call 32,1
+; Instruction: 3BE-3BF*
+if_equal 20
+; Instruction: 3C0-3C2*
+set_value_with_value 1,35
+; Instruction: 3C3-3C5*
+set_value_with_value 2,33
+; Instruction: 3C6-3C8*
+system_call 24,1
+; Instruction: 3C9-3CA*
+if_equal 21
+; Instruction: 3CB-3CD*
+set_value_with_value 1,35
+; Instruction: 3CE-3D0*
+set_value_with_value 2,34
+; Instruction: 3D1-3D3*
+system_call 24,1
+; Instruction: 3D4-3D5*
+if_equal 22
+; Instruction: 3D6-3D8*
+set_value_with_value 1,35
+; Instruction: 3D9-3DB*
+set_value_with_value 2,23
+; Instruction: 3DC-3DE*
+move 3,1
+; Instruction: 3DF-3E1*
+system_call 32,1
+; Instruction: 3E2-3E3*
+if_equal 30
+; Instruction: 3E4*
+ret
+; Instruction: 3E5-3E6*
+function 28
+; Instruction: 3E7-3E8*
+call_function 6
+; Instruction: 3E9-3EB*
+move 37,1
+; Instruction: 3EC-3EE*
+move 1,0
+; Instruction: 3EF-3F1*
+move 2,1
+; Instruction: 3F2-3F4*
+system_call 14,1
+; Instruction: 3F5-3F7*
+set_value_with_value 43,1
+; Instruction: 3F8-3FA*
+move 1,0
+; Instruction: 3FB-3FD*
+move 2,1
+; Instruction: 3FE-400*
+system_call 14,1
+; Instruction: 401-403*
+set_value_with_value 44,1
+; Instruction: 404-406*
+set_value_with_value 1,43
+; Instruction: 407-409*
+move 2,0
+; Instruction: 40A-40C*
+move 3,10
+; Instruction: 40D-40F*
+system_call 16,1
+; Instruction: 410-412*
+set_value_with_value 1,44
+; Instruction: 413-415*
+move 2,0
+; Instruction: 416-418*
+move 3,13
+; Instruction: 419-41B*
+system_call 16,1
+; Instruction: 41C-41E*
+set_value_with_value 1,23
+; Instruction: 41F-421*
+move 2,0
+; Instruction: 422-424*
+move 3,35
+; Instruction: 425-427*
+system_call 16,1
+; Instruction: 428-42A*
+set_value_with_value 1,20
+; Instruction: 42B-42D*
+move 2,0
+; Instruction: 42E-430*
+move 3,71
+; Instruction: 431-433*
+move 4,32
+; Instruction: 434-436*
+add 3,4
+; Instruction: 437-439*
+system_call 16,1
+; Instruction: 43A-43C*
+set_value_with_value 1,20
+; Instruction: 43D-43F*
+move 2,1
+; Instruction: 440-442*
+move 3,85
+; Instruction: 443-445*
+move 4,32
+; Instruction: 446-448*
+add 3,4
+; Instruction: 449-44B*
+system_call 16,1
+; Instruction: 44C-44E*
+set_value_with_value 1,20
+; Instruction: 44F-451*
+move 2,2
+; Instruction: 452-454*
+move 3,73
+; Instruction: 455-457*
+move 4,32
+; Instruction: 458-45A*
+add 3,4
+; Instruction: 45B-45D*
+system_call 16,1
+; Instruction: 45E-460*
+set_value_with_value 1,20
+; Instruction: 461-463*
+move 2,3
+; Instruction: 464-466*
+move 3,68
+; Instruction: 467-469*
+move 4,32
+; Instruction: 46A-46C*
+add 3,4
+; Instruction: 46D-46F*
+system_call 16,1
+; Instruction: 470-472*
+set_value_with_value 1,20
+; Instruction: 473-475*
+move 2,4
+; Instruction: 476-478*
+move 3,69
+; Instruction: 479-47B*
+move 4,32
+; Instruction: 47C-47E*
+add 3,4
+; Instruction: 47F-481*
+system_call 16,1
+; Instruction: 482-484*
+set_value_with_value 1,27
+; Instruction: 485-487*
+move 2,0
+; Instruction: 488-48A*
+move 3,83
+; Instruction: 48B-48D*
+move 4,32
+; Instruction: 48E-490*
+add 3,4
+; Instruction: 491-493*
+system_call 16,1
+; Instruction: 494-496*
+set_value_with_value 1,27
+; Instruction: 497-499*
+move 2,1
+; Instruction: 49A-49C*
+move 3,82
+; Instruction: 49D-49F*
+move 4,32
+; Instruction: 4A0-4A2*
+add 3,4
+; Instruction: 4A3-4A5*
+system_call 16,1
+; Instruction: 4A6-4A8*
+set_value_with_value 1,27
+; Instruction: 4A9-4AB*
+move 2,2
+; Instruction: 4AC-4AE*
+move 3,67
+; Instruction: 4AF-4B1*
+move 4,32
+; Instruction: 4B2-4B4*
+add 3,4
+; Instruction: 4B5-4B7*
+system_call 16,1
+; Instruction: 4B8-4BA*
+set_value_with_value 1,18
+; Instruction: 4BB-4BD*
+move 2,0
+; Instruction: 4BE-4C0*
+move 3,67
+; Instruction: 4C1-4C3*
+move 4,32
+; Instruction: 4C4-4C6*
+add 3,4
+; Instruction: 4C7-4C9*
+system_call 16,1
+; Instruction: 4CA-4CC*
+set_value_with_value 1,18
+; Instruction: 4CD-4CF*
+move 2,1
+; Instruction: 4D0-4D2*
+move 3,65
+; Instruction: 4D3-4D5*
+move 4,32
+; Instruction: 4D6-4D8*
+add 3,4
+; Instruction: 4D9-4DB*
+system_call 16,1
+; Instruction: 4DC-4DE*
+set_value_with_value 1,18
+; Instruction: 4DF-4E1*
+move 2,2
+; Instruction: 4E2-4E4*
+move 3,84
+; Instruction: 4E5-4E7*
+move 4,32
+; Instruction: 4E8-4EA*
+add 3,4
+; Instruction: 4EB-4ED*
+system_call 16,1
+; Instruction: 4EE-4F0*
+set_value_with_value 1,17
+; Instruction: 4F1-4F3*
+move 2,0
+; Instruction: 4F4-4F6*
+move 3,82
+; Instruction: 4F7-4F9*
+move 4,32
+; Instruction: 4FA-4FC*
+add 3,4
+; Instruction: 4FD-4FF*
+system_call 16,1
+; Instruction: 500-502*
+set_value_with_value 1,17
+; Instruction: 503-505*
+move 2,1
+; Instruction: 506-508*
+move 3,85
+; Instruction: 509-50B*
+move 4,32
+; Instruction: 50C-50E*
+add 3,4
+; Instruction: 50F-511*
+system_call 16,1
+; Instruction: 512-514*
+set_value_with_value 1,17
+; Instruction: 515-517*
+move 2,2
+; Instruction: 518-51A*
+move 3,78
+; Instruction: 51B-51D*
+move 4,32
+; Instruction: 51E-520*
+add 3,4
+; Instruction: 521-523*
+system_call 16,1
+; Instruction: 524-526*
+set_value_with_value 1,17
+; Instruction: 527-529*
+move 2,3
+; Instruction: 52A-52C*
+move 3,67
+; Instruction: 52D-52F*
+move 4,32
+; Instruction: 530-532*
+add 3,4
+; Instruction: 533-535*
+system_call 16,1
+; Instruction: 536-538*
+set_value_with_value 1,17
+; Instruction: 539-53B*
+move 2,4
+; Instruction: 53C-53E*
+move 3,77
+; Instruction: 53F-541*
+move 4,32
+; Instruction: 542-544*
+add 3,4
+; Instruction: 545-547*
+system_call 16,1
+; Instruction: 548-54A*
+set_value_with_value 1,19
+; Instruction: 54B-54D*
+move 2,0
+; Instruction: 54E-550*
+move 3,67
+; Instruction: 551-553*
+move 4,32
+; Instruction: 554-556*
+add 3,4
+; Instruction: 557-559*
+system_call 16,1
+; Instruction: 55A-55C*
+set_value_with_value 1,19
+; Instruction: 55D-55F*
+move 2,1
+; Instruction: 560-562*
+move 3,76
+; Instruction: 563-565*
+move 4,32
+; Instruction: 566-568*
+add 3,4
+; Instruction: 569-56B*
+system_call 16,1
+; Instruction: 56C-56E*
+set_value_with_value 1,19
+; Instruction: 56F-571*
+move 2,2
+; Instruction: 572-574*
+move 3,69
+; Instruction: 575-577*
+move 4,32
+; Instruction: 578-57A*
+add 3,4
+; Instruction: 57B-57D*
+system_call 16,1
+; Instruction: 57E-580*
+set_value_with_value 1,19
+; Instruction: 581-583*
+move 2,3
+; Instruction: 584-586*
+move 3,65
+; Instruction: 587-589*
+move 4,32
+; Instruction: 58A-58C*
+add 3,4
+; Instruction: 58D-58F*
+system_call 16,1
+; Instruction: 590-592*
+set_value_with_value 1,19
+; Instruction: 593-595*
+move 2,4
+; Instruction: 596-598*
+move 3,82
+; Instruction: 599-59B*
+move 4,32
+; Instruction: 59C-59E*
+add 3,4
+; Instruction: 59F-5A1*
+system_call 16,1
+; Instruction: 5A2-5A4*
+set_value_with_value 1,22
+; Instruction: 5A5-5A7*
+move 2,0
+; Instruction: 5A8-5AA*
+move 3,69
+; Instruction: 5AB-5AD*
+move 4,32
+; Instruction: 5AE-5B0*
+add 3,4
+; Instruction: 5B1-5B3*
+system_call 16,1
+; Instruction: 5B4-5B6*
+set_value_with_value 1,22
+; Instruction: 5B7-5B9*
+move 2,1
+; Instruction: 5BA-5BC*
+move 3,67
+; Instruction: 5BD-5BF*
+move 4,32
+; Instruction: 5C0-5C2*
+add 3,4
+; Instruction: 5C3-5C5*
+system_call 16,1
+; Instruction: 5C6-5C8*
+set_value_with_value 1,22
+; Instruction: 5C9-5CB*
+move 2,2
+; Instruction: 5CC-5CE*
+move 3,72
+; Instruction: 5CF-5D1*
+move 4,32
+; Instruction: 5D2-5D4*
+add 3,4
+; Instruction: 5D5-5D7*
+system_call 16,1
+; Instruction: 5D8-5DA*
+set_value_with_value 1,22
+; Instruction: 5DB-5DD*
+move 2,3
+; Instruction: 5DE-5E0*
+move 3,79
+; Instruction: 5E1-5E3*
+move 4,32
+; Instruction: 5E4-5E6*
+add 3,4
+; Instruction: 5E7-5E9*
+system_call 16,1
+; Instruction: 5EA-5EC*
+set_value_with_value 1,24
+; Instruction: 5ED-5EF*
+move 2,0
+; Instruction: 5F0-5F2*
+move 3,82
+; Instruction: 5F3-5F5*
+move 4,32
+; Instruction: 5F6-5F8*
+add 3,4
+; Instruction: 5F9-5FB*
+system_call 16,1
+; Instruction: 5FC-5FE*
+set_value_with_value 1,24
+; Instruction: 5FF-601*
+move 2,1
+; Instruction: 602-604*
+move 3,69
+; Instruction: 605-607*
+move 4,32
+; Instruction: 608-60A*
+add 3,4
+; Instruction: 60B-60D*
+system_call 16,1
+; Instruction: 60E-610*
+set_value_with_value 1,24
+; Instruction: 611-613*
+move 2,2
+; Instruction: 614-616*
+move 3,66
+; Instruction: 617-619*
+move 4,32
+; Instruction: 61A-61C*
+add 3,4
+; Instruction: 61D-61F*
+system_call 16,1
+; Instruction: 620-622*
+set_value_with_value 1,24
+; Instruction: 623-625*
+move 2,3
+; Instruction: 626-628*
+move 3,79
+; Instruction: 629-62B*
+move 4,32
+; Instruction: 62C-62E*
+add 3,4
+; Instruction: 62F-631*
+system_call 16,1
+; Instruction: 632-634*
+set_value_with_value 1,24
+; Instruction: 635-637*
+move 2,4
+; Instruction: 638-63A*
+move 3,79
+; Instruction: 63B-63D*
+move 4,32
+; Instruction: 63E-640*
+add 3,4
+; Instruction: 641-643*
+system_call 16,1
+; Instruction: 644-646*
+set_value_with_value 1,24
+; Instruction: 647-649*
+move 2,5
+; Instruction: 64A-64C*
+move 3,84
+; Instruction: 64D-64F*
+move 4,32
+; Instruction: 650-652*
+add 3,4
+; Instruction: 653-655*
+system_call 16,1
+; Instruction: 656-658*
+set_value_with_value 1,25
+; Instruction: 659-65B*
+move 2,0
+; Instruction: 65C-65E*
+move 3,83
+; Instruction: 65F-661*
+move 4,32
+; Instruction: 662-664*
+add 3,4
+; Instruction: 665-667*
+system_call 16,1
+; Instruction: 668-66A*
+set_value_with_value 1,25
+; Instruction: 66B-66D*
+move 2,1
+; Instruction: 66E-670*
+move 3,72
+; Instruction: 671-673*
+move 4,32
+; Instruction: 674-676*
+add 3,4
+; Instruction: 677-679*
+system_call 16,1
+; Instruction: 67A-67C*
+set_value_with_value 1,25
+; Instruction: 67D-67F*
+move 2,2
+; Instruction: 680-682*
+move 3,85
+; Instruction: 683-685*
+move 4,32
+; Instruction: 686-688*
+add 3,4
+; Instruction: 689-68B*
+system_call 16,1
+; Instruction: 68C-68E*
+set_value_with_value 1,25
+; Instruction: 68F-691*
+move 2,3
+; Instruction: 692-694*
+move 3,84
+; Instruction: 695-697*
+move 4,32
+; Instruction: 698-69A*
+add 3,4
+; Instruction: 69B-69D*
+system_call 16,1
+; Instruction: 69E-6A0*
+set_value_with_value 1,25
+; Instruction: 6A1-6A3*
+move 2,4
+; Instruction: 6A4-6A6*
+move 3,68
+; Instruction: 6A7-6A9*
+move 4,32
+; Instruction: 6AA-6AC*
+add 3,4
+; Instruction: 6AD-6AF*
+system_call 16,1
+; Instruction: 6B0-6B2*
+set_value_with_value 1,25
+; Instruction: 6B3-6B5*
+move 2,5
+; Instruction: 6B6-6B8*
+move 3,79
+; Instruction: 6B9-6BB*
+move 4,32
+; Instruction: 6BC-6BE*
+add 3,4
+; Instruction: 6BF-6C1*
+system_call 16,1
+; Instruction: 6C2-6C4*
+set_value_with_value 1,25
+; Instruction: 6C5-6C7*
+move 2,6
+; Instruction: 6C8-6CA*
+move 3,87
+; Instruction: 6CB-6CD*
+move 4,32
+; Instruction: 6CE-6D0*
+add 3,4
+; Instruction: 6D1-6D3*
+system_call 16,1
+; Instruction: 6D4-6D6*
+set_value_with_value 1,25
+; Instruction: 6D7-6D9*
+move 2,7
+; Instruction: 6DA-6DC*
+move 3,78
+; Instruction: 6DD-6DF*
+move 4,32
+; Instruction: 6E0-6E2*
+add 3,4
+; Instruction: 6E3-6E5*
+system_call 16,1
+; Instruction: 6E6-6E8*
+set_value_with_value 1,21
+; Instruction: 6E9-6EB*
+move 2,0
+; Instruction: 6EC-6EE*
+move 3,82
+; Instruction: 6EF-6F1*
+move 4,32
+; Instruction: 6F2-6F4*
+add 3,4
+; Instruction: 6F5-6F7*
+system_call 16,1
+; Instruction: 6F8-6FA*
+set_value_with_value 1,21
+; Instruction: 6FB-6FD*
+move 2,1
+; Instruction: 6FE-700*
+move 3,69
+; Instruction: 701-703*
+move 4,32
+; Instruction: 704-706*
+add 3,4
+; Instruction: 707-709*
+system_call 16,1
+; Instruction: 70A-70C*
+set_value_with_value 1,21
+; Instruction: 70D-70F*
+move 2,2
+; Instruction: 710-712*
+move 3,83
+; Instruction: 713-715*
+move 4,32
+; Instruction: 716-718*
+add 3,4
+; Instruction: 719-71B*
+system_call 16,1
+; Instruction: 71C-71E*
+set_value_with_value 1,21
+; Instruction: 71F-721*
+move 2,3
+; Instruction: 722-724*
+move 3,69
+; Instruction: 725-727*
+move 4,32
+; Instruction: 728-72A*
+add 3,4
+; Instruction: 72B-72D*
+system_call 16,1
+; Instruction: 72E-730*
+set_value_with_value 1,26
+; Instruction: 731-733*
+move 2,0
+; Instruction: 734-736*
+move 3,77
+; Instruction: 737-739*
+move 4,32
+; Instruction: 73A-73C*
+add 3,4
+; Instruction: 73D-73F*
+system_call 16,1
+; Instruction: 740-742*
+set_value_with_value 1,26
+; Instruction: 743-745*
+move 2,1
+; Instruction: 746-748*
+move 3,65
+; Instruction: 749-74B*
+move 4,32
+; Instruction: 74C-74E*
+add 3,4
+; Instruction: 74F-751*
+system_call 16,1
+; Instruction: 752-754*
+set_value_with_value 1,26
+; Instruction: 755-757*
+move 2,2
+; Instruction: 758-75A*
+move 3,76
+; Instruction: 75B-75D*
+move 4,32
+; Instruction: 75E-760*
+add 3,4
+; Instruction: 761-763*
+system_call 16,1
+; Instruction: 764-766*
+set_value_with_value 1,26
+; Instruction: 767-769*
+move 2,3
+; Instruction: 76A-76C*
+move 3,76
+; Instruction: 76D-76F*
+move 4,32
+; Instruction: 770-772*
+add 3,4
+; Instruction: 773-775*
+system_call 16,1
+; Instruction: 776-778*
+set_value_with_value 1,28
+; Instruction: 779-77B*
+move 2,0
+; Instruction: 77C-77E*
+move 3,83
+; Instruction: 77F-781*
+move 4,32
+; Instruction: 782-784*
+add 3,4
+; Instruction: 785-787*
+system_call 16,1
+; Instruction: 788-78A*
+set_value_with_value 1,28
+; Instruction: 78B-78D*
+move 2,1
+; Instruction: 78E-790*
+move 3,84
+; Instruction: 791-793*
+move 4,32
+; Instruction: 794-796*
+add 3,4
+; Instruction: 797-799*
+system_call 16,1
+; Instruction: 79A-79C*
+set_value_with_value 1,28
+; Instruction: 79D-79F*
+move 2,2
+; Instruction: 7A0-7A2*
+move 3,82
+; Instruction: 7A3-7A5*
+move 4,32
+; Instruction: 7A6-7A8*
+add 3,4
+; Instruction: 7A9-7AB*
+system_call 16,1
+; Instruction: 7AC-7AE*
+set_value_with_value 1,28
+; Instruction: 7AF-7B1*
+move 2,3
+; Instruction: 7B2-7B4*
+move 3,65
+; Instruction: 7B5-7B7*
+move 4,32
+; Instruction: 7B8-7BA*
+add 3,4
+; Instruction: 7BB-7BD*
+system_call 16,1
+; Instruction: 7BE-7C0*
+set_value_with_value 1,30
+; Instruction: 7C1-7C3*
+move 2,0
+; Instruction: 7C4-7C6*
+move 3,80
+; Instruction: 7C7-7C9*
+move 4,32
+; Instruction: 7CA-7CC*
+add 3,4
+; Instruction: 7CD-7CF*
+system_call 16,1
+; Instruction: 7D0-7D2*
+set_value_with_value 1,30
+; Instruction: 7D3-7D5*
+move 2,1
+; Instruction: 7D6-7D8*
+move 3,82
+; Instruction: 7D9-7DB*
+move 4,32
+; Instruction: 7DC-7DE*
+add 3,4
+; Instruction: 7DF-7E1*
+system_call 16,1
+; Instruction: 7E2-7E4*
+set_value_with_value 1,30
+; Instruction: 7E5-7E7*
+move 2,2
+; Instruction: 7E8-7EA*
+move 3,73
+; Instruction: 7EB-7ED*
+move 4,32
+; Instruction: 7EE-7F0*
+add 3,4
+; Instruction: 7F1-7F3*
+system_call 16,1
+; Instruction: 7F4-7F6*
+set_value_with_value 1,30
+; Instruction: 7F7-7F9*
+move 2,3
+; Instruction: 7FA-7FC*
+move 3,78
+; Instruction: 7FD-7FF*
+move 4,32
+; Instruction: 800-802*
+add 3,4
+; Instruction: 803-805*
+system_call 16,1
+; Instruction: 806-808*
+set_value_with_value 1,30
+; Instruction: 809-80B*
+move 2,4
+; Instruction: 80C-80E*
+move 3,84
+; Instruction: 80F-811*
+move 4,32
+; Instruction: 812-814*
+add 3,4
+; Instruction: 815-817*
+system_call 16,1
+; Instruction: 818-81A*
+set_value_with_value 1,31
+; Instruction: 81B-81D*
+move 2,0
+; Instruction: 81E-820*
+move 3,80
+; Instruction: 821-823*
+move 4,32
+; Instruction: 824-826*
+add 3,4
+; Instruction: 827-829*
+system_call 16,1
+; Instruction: 82A-82C*
+set_value_with_value 1,31
+; Instruction: 82D-82F*
+move 2,1
+; Instruction: 830-832*
+move 3,82
+; Instruction: 833-835*
+move 4,32
+; Instruction: 836-838*
+add 3,4
+; Instruction: 839-83B*
+system_call 16,1
+; Instruction: 83C-83E*
+set_value_with_value 1,31
+; Instruction: 83F-841*
+move 2,2
+; Instruction: 842-844*
+move 3,84
+; Instruction: 845-847*
+move 4,32
+; Instruction: 848-84A*
+add 3,4
+; Instruction: 84B-84D*
+system_call 16,1
+; Instruction: 84E-850*
+set_value_with_value 1,31
+; Instruction: 851-853*
+move 2,3
+; Instruction: 854-856*
+move 3,88
+; Instruction: 857-859*
+move 4,32
+; Instruction: 85A-85C*
+add 3,4
+; Instruction: 85D-85F*
+system_call 16,1
+; Instruction: 860-862*
+set_value_with_value 1,31
+; Instruction: 863-865*
+move 2,4
+; Instruction: 866-868*
+move 3,84
+; Instruction: 869-86B*
+move 4,32
+; Instruction: 86C-86E*
+add 3,4
+; Instruction: 86F-871*
+system_call 16,1
+; Instruction: 872-874*
+set_value_with_value 1,32
+; Instruction: 875-877*
+move 2,0
+; Instruction: 878-87A*
+move 3,70
+; Instruction: 87B-87D*
+move 4,32
+; Instruction: 87E-880*
+add 3,4
+; Instruction: 881-883*
+system_call 16,1
+; Instruction: 884-886*
+set_value_with_value 1,32
+; Instruction: 887-889*
+move 2,1
+; Instruction: 88A-88C*
+move 3,82
+; Instruction: 88D-88F*
+move 4,32
+; Instruction: 890-892*
+add 3,4
+; Instruction: 893-895*
+system_call 16,1
+; Instruction: 896-898*
+set_value_with_value 1,32
+; Instruction: 899-89B*
+move 2,2
+; Instruction: 89C-89E*
+move 3,83
+; Instruction: 89F-8A1*
+move 4,32
+; Instruction: 8A2-8A4*
+add 3,4
+; Instruction: 8A5-8A7*
+system_call 16,1
+; Instruction: 8A8-8AA*
+set_value_with_value 1,32
+; Instruction: 8AB-8AD*
+move 2,3
+; Instruction: 8AE-8B0*
+move 3,84
+; Instruction: 8B1-8B3*
+move 4,32
+; Instruction: 8B4-8B6*
+add 3,4
+; Instruction: 8B7-8B9*
+system_call 16,1
+; Instruction: 8BA-8BC*
+set_value_with_value 1,29
+; Instruction: 8BD-8BF*
+move 2,0
+; Instruction: 8C0-8C2*
+move 3,83
+; Instruction: 8C3-8C5*
+move 4,32
+; Instruction: 8C6-8C8*
+add 3,4
+; Instruction: 8C9-8CB*
+system_call 16,1
+; Instruction: 8CC-8CE*
+set_value_with_value 1,29
+; Instruction: 8CF-8D1*
+move 2,1
+; Instruction: 8D2-8D4*
+move 3,69
+; Instruction: 8D5-8D7*
+move 4,32
+; Instruction: 8D8-8DA*
+add 3,4
+; Instruction: 8DB-8DD*
+system_call 16,1
+; Instruction: 8DE-8E0*
+set_value_with_value 1,29
+; Instruction: 8E1-8E3*
+move 2,2
+; Instruction: 8E4-8E6*
+move 3,84
+; Instruction: 8E7-8E9*
+move 4,32
+; Instruction: 8EA-8EC*
+add 3,4
+; Instruction: 8ED-8EF*
+system_call 16,1
+; Instruction: 8F0-8F2*
+set_value_with_value 1,29
+; Instruction: 8F3-8F5*
+move 2,3
+; Instruction: 8F6-8F8*
+move 3,86
+; Instruction: 8F9-8FB*
+move 4,32
+; Instruction: 8FC-8FE*
+add 3,4
+; Instruction: 8FF-901*
+system_call 16,1
+; Instruction: 902-904*
+set_value_with_value 1,33
+; Instruction: 905-907*
+move 2,0
+; Instruction: 908-90A*
+move 3,66
+; Instruction: 90B-90D*
+move 4,32
+; Instruction: 90E-910*
+add 3,4
+; Instruction: 911-913*
+system_call 16,1
+; Instruction: 914-916*
+set_value_with_value 1,33
+; Instruction: 917-919*
+move 2,1
+; Instruction: 91A-91C*
+move 3,69
+; Instruction: 91D-91F*
+move 4,32
+; Instruction: 920-922*
+add 3,4
+; Instruction: 923-925*
+system_call 16,1
+; Instruction: 926-928*
+set_value_with_value 1,33
+; Instruction: 929-92B*
+move 2,2
+; Instruction: 92C-92E*
+move 3,71
+; Instruction: 92F-931*
+move 4,32
+; Instruction: 932-934*
+add 3,4
+; Instruction: 935-937*
+system_call 16,1
+; Instruction: 938-93A*
+set_value_with_value 1,33
+; Instruction: 93B-93D*
+move 2,3
+; Instruction: 93E-940*
+move 3,73
+; Instruction: 941-943*
+move 4,32
+; Instruction: 944-946*
+add 3,4
+; Instruction: 947-949*
+system_call 16,1
+; Instruction: 94A-94C*
+set_value_with_value 1,33
+; Instruction: 94D-94F*
+move 2,4
+; Instruction: 950-952*
+move 3,78
+; Instruction: 953-955*
+move 4,32
+; Instruction: 956-958*
+add 3,4
+; Instruction: 959-95B*
+system_call 16,1
+; Instruction: 95C-95E*
+set_value_with_value 1,34
+; Instruction: 95F-961*
+move 2,0
+; Instruction: 962-964*
+move 3,69
+; Instruction: 965-967*
+move 4,32
+; Instruction: 968-96A*
+add 3,4
+; Instruction: 96B-96D*
+system_call 16,1
+; Instruction: 96E-970*
+set_value_with_value 1,34
+; Instruction: 971-973*
+move 2,1
+; Instruction: 974-976*
+move 3,78
+; Instruction: 977-979*
+move 4,32
+; Instruction: 97A-97C*
+add 3,4
+; Instruction: 97D-97F*
+system_call 16,1
+; Instruction: 980-982*
+set_value_with_value 1,34
+; Instruction: 983-985*
+move 2,2
+; Instruction: 986-988*
+move 3,68
+; Instruction: 989-98B*
+move 4,32
+; Instruction: 98C-98E*
+add 3,4
+; Instruction: 98F-991*
+system_call 16,1
+; Instruction: 992-994*
+set_value_with_value 1,36
+; Instruction: 995-997*
+move 2,0
+; Instruction: 998-99A*
+move 3,65511
+; Instruction: 99B-99D*
+system_call 16,1
+; Instruction: 99E-99F*
+call_function 29
+; Instruction: 9A0-9A1*
+function 29
+; Instruction: 9A2-9A4*
+move 1,18
+; Instruction: 9A5-9A7*
+system_call 3,1
+; Instruction: 9A8-9AA*
+move 1,66
+; Instruction: 9AB-9AD*
+system_call 8,1
+; Instruction: 9AE-9B0*
+move 1,65
+; Instruction: 9B1-9B3*
+move 2,32
+; Instruction: 9B4-9B6*
+add 1,2
+; Instruction: 9B7-9B9*
+system_call 8,1
+; Instruction: 9BA-9BC*
+move 1,83
+; Instruction: 9BD-9BF*
+move 2,32
+; Instruction: 9C0-9C2*
+add 1,2
+; Instruction: 9C3-9C5*
+system_call 8,1
+; Instruction: 9C6-9C8*
+move 1,79
+; Instruction: 9C9-9CB*
+system_call 8,1
+; Instruction: 9CC-9CE*
+move 1,83
+; Instruction: 9CF-9D1*
+system_call 8,1
+; Instruction: 9D2-9D4*
+system_call 9,0
+; Instruction: 9D5-9D7*
+move 1,27
+; Instruction: 9D8-9DA*
+system_call 3,1
+; Instruction: 9DB-9DD*
+move 1,94
+; Instruction: 9DE-9E0*
+system_call 8,1
+; Instruction: 9E1-9E3*
+system_call 9,0
+; Instruction: 9E4-9E6*
+move 1,4
+; Instruction: 9E7-9E9*
+system_call 3,1
+; Instruction: 9EA-9EC*
+move 1,35
+; Instruction: 9ED-9EF*
+system_call 8,1
+; Instruction: 9F0-9F2*
+move 1,32
+; Instruction: 9F3-9F5*
+system_call 8,1
+; Instruction: 9F6-9F8*
+system_call 9,0
+; Instruction: 9F9-9FB*
+system_call 23,35
+; Instruction: 9FC-9FE*
+move 1,10
+; Instruction: 9FF-A01*
+system_call 8,1
+; Instruction: A02-A04*
+system_call 9,0
+; Instruction: A05-A07*
+set_value_with_value 35,35
+; Instruction: A08-A09*
+call_function 27
+; Instruction: A0A-A0C*
+system_call 20,35
+; Instruction: A0D-A0F*
+set_value_with_value 1,1
+; Instruction: A10-A12*
+set_value_with_value 2,2
+; Instruction: A13-A15*
+system_call 39,1
+; Instruction: A16-A18*
+move 1,3
+; Instruction: A19-A1B*
+move 2,29
+; Instruction: A1C-A1E*
+move 3,0
+; Instruction: A1F-A21*
+system_call 40,1
+; Instruction: A22*
+ret
+; Instruction: A23-A24*
+function 30
+; Instruction: A25*
+ret
+; Instruction: A26-A27*
+function 17
+; Instruction: A28-A2A*
+system_call 27,0
+; Instruction: A2B*
+ret
+; Instruction: A2C-A2D*
+function 16
+; Instruction: A2E-A30*
+system_call 28,0
+; Instruction: A31*
+ret
+; Instruction: A32-A33*
+function 11
+; Instruction: A34-A36*
+set_value_with_value 1,35
+; Instruction: A37-A39*
+move 2,6
+; Instruction: A3A-A3C*
+system_call 33,1
+; Instruction: A3D-A3F*
+system_call 21,1
+; Instruction: A40-A42*
+move 1,10
+; Instruction: A43-A45*
+system_call 8,1
+; Instruction: A46-A48*
+system_call 9,0
+; Instruction: A49*
+ret
+; Instruction: A4A-A4B*
+function 26
+; Instruction: A4C-A4E*
+set_value_with_value 1,35
+; Instruction: A4F-A51*
+move 2,4
+; Instruction: A52-A54*
+system_call 33,1
+; Instruction: A55-A57*
+system_call 45,1
+; Instruction: A58-A5A*
+set_value_with_value 41,1
+; Instruction: A5B-A5C*
+call_function 32
+; Instruction: A5D-A5F*
+move 1,10
+; Instruction: A60-A62*
+system_call 8,1
+; Instruction: A63-A65*
+system_call 9,0
+; Instruction: A66*
+ret
+; Instruction: A67-A68*
+function 23
+; Instruction: A69-A6B*
+set_value_with_value 1,35
+; Instruction: A6C-A6E*
+move 2,6
+; Instruction: A6F-A71*
+system_call 33,1
+; Instruction: A72-A74*
+set_value_with_value 4,1
+; Instruction: A75-A77*
+move 1,7
+; Instruction: A78-A7A*
+set_value_with_value 2,4
+; Instruction: A7B-A7D*
+system_call 41,1
+; Instruction: A7E-A80*
+set_value_with_value 6,37
+; Instruction: A81-A83*
+set_value_with_value 7,7
+; Instruction: A84-A86*
+move 1,4
+; Instruction: A87-A89*
+move 2,32
+; Instruction: A8A-A8C*
+system_call 35,1
+; Instruction: A8D-A8F*
+move 1,2
+; Instruction: A90-A92*
+move 2,10
+; Instruction: A93-A95*
+system_call 35,1
+; Instruction: A96-A98*
+move 1,0
+; Instruction: A99-A9B*
+move 2,7
+; Instruction: A9C-A9E*
+system_call 35,1
+; Instruction: A9F-AA1*
+move 1,2
+; Instruction: AA2-AA4*
+move 2,10
+; Instruction: AA5-AA7*
+system_call 35,1
+; Instruction: AA8-AAA*
+move 1,0
+; Instruction: AAB-AAD*
+move 2,6
+; Instruction: AAE-AB0*
+system_call 35,1
+; Instruction: AB1-AB3*
+move 1,2
+; Instruction: AB4-AB6*
+move 2,10
+; Instruction: AB7-AB9*
+system_call 35,1
+; Instruction: ABA-ABC*
+move 1,0
+; Instruction: ABD-ABF*
+move 2,7
+; Instruction: AC0-AC2*
+system_call 35,1
+; Instruction: AC3-AC5*
+move 1,2
+; Instruction: AC6-AC8*
+set_value_with_value 2,6
+; Instruction: AC9-ACB*
+system_call 35,1
+; Instruction: ACC-ACE*
+move 1,0
+; Instruction: ACF-AD1*
+set_value_with_value 2,7
+; Instruction: AD2-AD4*
+system_call 35,1
+; Instruction: AD5-AD7*
+system_call 36,8
+; Instruction: AD8-ADA*
+set_value_with_value 8,8
+; Instruction: ADB-ADD*
+system_call 22,8
+; Instruction: ADE*
+ret
+; Instruction: ADF-AE0*
+function 24
+; Instruction: AE1-AE3*
+set_value_with_value 1,35
+; Instruction: AE4-AE6*
+move 2,6
+; Instruction: AE7-AE9*
+system_call 33,1
+; Instruction: AEA-AEC*
+system_call 22,1
+; Instruction: AED*
+ret
+; Instruction: AEE-AEF*
+function 14
+; Instruction: AF0-AF2*
+set_value_with_value 1,35
+; Instruction: AF3-AF5*
+move 2,5
+; Instruction: AF6-AF8*
+system_call 33,1
+; Instruction: AF9-AFB*
+system_call 22,1
+; Instruction: AFC-AFE*
+move 1,10
+; Instruction: AFF-B01*
+system_call 8,1
+; Instruction: B02-B04*
+system_call 9,0
+; Instruction: B05*
+ret
+; Instruction: B06-B07*
+function 12
+; Instruction: B08-B0A*
+set_value_with_value 1,35
+; Instruction: B0B-B0D*
+move 2,4
+; Instruction: B0E-B10*
+system_call 33,1
+; Instruction: B11-B13*
+system_call 45,1
+; Instruction: B14-B16*
+system_call 22,1
+; Instruction: B17-B19*
+system_call 20,1
+; Instruction: B1A-B1C*
+move 1,10
+; Instruction: B1D-B1F*
+system_call 8,1
+; Instruction: B20-B22*
+system_call 9,0
+; Instruction: B23*
+ret
+; Instruction: B24-B25*
+function 13
+; Instruction: B26-B28*
+system_call 2,0
+; Instruction: B29*
+ret
+; Instruction: B2A-B2B*
+function 31
+; Instruction: B2C-B2E*
+set_value_with_value 4,35
+; Instruction: B2F-B31*
+move 5,5
+; Instruction: B32-B34*
+system_call 33,4
+; Instruction: B35-B37*
+move 1,9
+; Instruction: B38-B3A*
+set_value_with_value 2,4
+; Instruction: B3B-B3D*
+system_call 41,1
+; Instruction: B3E-B40*
+set_value_with_value 0,9
+; Instruction: B41-B43*
+move 0,1
+; Instruction: B44-B46*
+set_value_with_value 6,37
+; Instruction: B47-B49*
+set_value_with_value 7,9
+; Instruction: B4A-B4C*
+set_value_with_value 8,6
+; Instruction: B4D-B4F*
+move 1,4
+; Instruction: B50-B52*
+move 2,32
+; Instruction: B53-B55*
+system_call 35,1
+; Instruction: B56-B58*
+move 1,2
+; Instruction: B59-B5B*
+move 2,10
+; Instruction: B5C-B5E*
+system_call 35,1
+; Instruction: B5F-B61*
+move 1,0
+; Instruction: B62-B64*
+move 2,7
+; Instruction: B65-B67*
+system_call 35,1
+; Instruction: B68-B6A*
+move 1,2
+; Instruction: B6B-B6D*
+move 2,10
+; Instruction: B6E-B70*
+system_call 35,1
+; Instruction: B71-B73*
+move 1,0
+; Instruction: B74-B76*
+move 2,6
+; Instruction: B77-B79*
+system_call 35,1
+; Instruction: B7A-B7C*
+move 1,2
+; Instruction: B7D-B7F*
+move 2,10
+; Instruction: B80-B82*
+system_call 35,1
+; Instruction: B83-B85*
+move 1,0
+; Instruction: B86-B88*
+move 2,7
+; Instruction: B89-B8B*
+system_call 35,1
+; Instruction: B8C-B8E*
+move 1,2
+; Instruction: B8F-B91*
+set_value_with_value 2,6
+; Instruction: B92-B94*
+system_call 35,1
+; Instruction: B95-B97*
+move 1,0
+; Instruction: B98-B9A*
+set_value_with_value 2,7
+; Instruction: B9B-B9D*
+system_call 35,1
+; Instruction: B9E-BA0*
+system_call 37,8
+; Instruction: BA1*
+ret
+; Instruction: BA2-BA3*
+function 20
+; Instruction: BA4-BA6*
+set_value_with_value 4,35
+; Instruction: BA7-BA9*
+move 5,5
+; Instruction: BAA-BAC*
+system_call 33,4
+; Instruction: BAD-BAF*
+move 1,9
+; Instruction: BB0-BB2*
+set_value_with_value 2,4
+; Instruction: BB3-BB5*
+system_call 41,1
+; Instruction: BB6-BB8*
+set_value_with_value 40,9
+; Instruction: BB9*
+ret
+; Instruction: BBA-BBB*
+function 19
+; Instruction: BBC-BBE*
+set_value_with_value 4,35
+; Instruction: BBF-BC1*
+move 5,5
+; Instruction: BC2-BC4*
+system_call 33,4
+; Instruction: BC5-BC7*
+set_value_with_value 1,4
+; Instruction: BC8-BCA*
+system_call 51,1
+; Instruction: BCB-BCD*
+set_value_with_value 9,1
+; Instruction: BCE-BD0*
+set_value_with_value 6,37
+; Instruction: BD1-BD3*
+set_value_with_value 7,40
+; Instruction: BD4-BD6*
+set_value_with_value 8,9
+; Instruction: BD7-BD9*
+move 1,4
+; Instruction: BDA-BDC*
+move 2,32
+; Instruction: BDD-BDF*
+system_call 35,1
+; Instruction: BE0-BE2*
+move 1,2
+; Instruction: BE3-BE5*
+move 2,10
+; Instruction: BE6-BE8*
+system_call 35,1
+; Instruction: BE9-BEB*
+move 1,0
+; Instruction: BEC-BEE*
+move 2,7
+; Instruction: BEF-BF1*
+system_call 35,1
+; Instruction: BF2-BF4*
+move 1,2
+; Instruction: BF5-BF7*
+move 2,10
+; Instruction: BF8-BFA*
+system_call 35,1
+; Instruction: BFB-BFD*
+move 1,0
+; Instruction: BFE-C00*
+move 2,6
+; Instruction: C01-C03*
+system_call 35,1
+; Instruction: C04-C06*
+move 1,2
+; Instruction: C07-C09*
+move 2,10
+; Instruction: C0A-C0C*
+system_call 35,1
+; Instruction: C0D-C0F*
+move 1,0
+; Instruction: C10-C12*
+move 2,7
+; Instruction: C13-C15*
+system_call 35,1
+; Instruction: C16-C18*
+move 1,2
+; Instruction: C19-C1B*
+set_value_with_value 2,6
+; Instruction: C1C-C1E*
+system_call 35,1
+; Instruction: C1F-C21*
+move 1,0
+; Instruction: C22-C24*
+set_value_with_value 2,7
+; Instruction: C25-C27*
+system_call 35,1
+; Instruction: C28-C2A*
+system_call 37,8
+; Instruction: C2B*
+ret
+; Instruction: C2C-C2D*
+function 25
+; Instruction: C2E-C30*
+set_value_with_value 4,35
+; Instruction: C31-C33*
+move 5,5
+; Instruction: C34-C36*
+system_call 33,4
+; Instruction: C37-C39*
+move 1,7
+; Instruction: C3A-C3C*
+set_value_with_value 2,4
+; Instruction: C3D-C3F*
+system_call 41,1
+; Instruction: C40-C42*
+set_value_with_value 6,37
+; Instruction: C43-C45*
+set_value_with_value 7,7
+; Instruction: C46-C48*
+move 1,4
+; Instruction: C49-C4B*
+move 2,32
+; Instruction: C4C-C4E*
+system_call 35,1
+; Instruction: C4F-C51*
+move 1,2
+; Instruction: C52-C54*
+move 2,10
+; Instruction: C55-C57*
+system_call 35,1
+; Instruction: C58-C5A*
+move 1,0
+; Instruction: C5B-C5D*
+move 2,7
+; Instruction: C5E-C60*
+system_call 35,1
+; Instruction: C61-C63*
+move 1,2
+; Instruction: C64-C66*
+move 2,10
+; Instruction: C67-C69*
+system_call 35,1
+; Instruction: C6A-C6C*
+move 1,0
+; Instruction: C6D-C6F*
+move 2,6
+; Instruction: C70-C72*
+system_call 35,1
+; Instruction: C73-C75*
+move 1,2
+; Instruction: C76-C78*
+move 2,10
+; Instruction: C79-C7B*
+system_call 35,1
+; Instruction: C7C-C7E*
+move 1,0
+; Instruction: C7F-C81*
+move 2,7
+; Instruction: C82-C84*
+system_call 35,1
+; Instruction: C85-C87*
+move 1,2
+; Instruction: C88-C8A*
+set_value_with_value 2,6
+; Instruction: C8B-C8D*
+system_call 35,1
+; Instruction: C8E-C90*
+move 1,0
+; Instruction: C91-C93*
+set_value_with_value 2,7
+; Instruction: C94-C96*
+system_call 35,1
+; Instruction: C97-C99*
+system_call 36,8
+; Instruction: C9A-C9C*
+set_value_with_value 8,8
+; Instruction: C9D-C9F*
+system_call 20,8
+; Instruction: CA0*
+ret
+; Instruction: CA1-CA2*
+function 18
+; Instruction: CA3-CA5*
+set_value_with_value 4,35
+; Instruction: CA6-CA8*
+move 5,5
+; Instruction: CA9-CAB*
+system_call 33,4
+; Instruction: CAC-CAE*
+move 1,9
+; Instruction: CAF-CB1*
+set_value_with_value 2,4
+; Instruction: CB2-CB4*
+system_call 41,1
+; Instruction: CB5-CB7*
+system_call 18,9
+; Instruction: CB8-CBA*
+set_value_with_value 0,9
+; Instruction: CBB-CBD*
+move 0,1
+; Instruction: CBE-CC0*
+set_value_with_value 6,37
+; Instruction: CC1-CC3*
+set_value_with_value 7,9
+; Instruction: CC4-CC6*
+set_value_with_value 8,6
+; Instruction: CC7-CC9*
+move 1,4
+; Instruction: CCA-CCC*
+move 2,32
+; Instruction: CCD-CCF*
+system_call 35,1
+; Instruction: CD0-CD2*
+move 1,2
+; Instruction: CD3-CD5*
+move 2,10
+; Instruction: CD6-CD8*
+system_call 35,1
+; Instruction: CD9-CDB*
+move 1,0
+; Instruction: CDC-CDE*
+move 2,7
+; Instruction: CDF-CE1*
+system_call 35,1
+; Instruction: CE2-CE4*
+move 1,2
+; Instruction: CE5-CE7*
+move 2,10
+; Instruction: CE8-CEA*
+system_call 35,1
+; Instruction: CEB-CED*
+move 1,0
+; Instruction: CEE-CF0*
+move 2,6
+; Instruction: CF1-CF3*
+system_call 35,1
+; Instruction: CF4-CF6*
+move 1,2
+; Instruction: CF7-CF9*
+move 2,10
+; Instruction: CFA-CFC*
+system_call 35,1
+; Instruction: CFD-CFF*
+move 1,0
+; Instruction: D00-D02*
+move 2,7
+; Instruction: D03-D05*
+system_call 35,1
+; Instruction: D06-D08*
+move 1,2
+; Instruction: D09-D0B*
+set_value_with_value 2,6
+; Instruction: D0C-D0E*
+system_call 35,1
+; Instruction: D0F-D11*
+move 1,0
+; Instruction: D12-D14*
+set_value_with_value 2,7
+; Instruction: D15-D17*
+system_call 35,1
+; Instruction: D18-D1A*
+system_call 37,8
+; Instruction: D1B-D1D*
+move 38,0
+; Instruction: D1E-D1F*
+call_function 8
+; Instruction: D20-D22*
+set_value_with_value 39,39
+; Instruction: D23-D25*
+set_value_with_value 6,37
+; Instruction: D26-D28*
+set_value_with_value 7,9
+; Instruction: D29-D2B*
+set_value_with_value 8,39
+; Instruction: D2C-D2E*
+move 1,4
+; Instruction: D2F-D31*
+move 2,32
+; Instruction: D32-D34*
+system_call 35,1
+; Instruction: D35-D37*
+move 1,2
+; Instruction: D38-D3A*
+move 2,10
+; Instruction: D3B-D3D*
+system_call 35,1
+; Instruction: D3E-D40*
+move 1,0
+; Instruction: D41-D43*
+move 2,7
+; Instruction: D44-D46*
+system_call 35,1
+; Instruction: D47-D49*
+move 1,2
+; Instruction: D4A-D4C*
+move 2,10
+; Instruction: D4D-D4F*
+system_call 35,1
+; Instruction: D50-D52*
+move 1,0
+; Instruction: D53-D55*
+move 2,6
+; Instruction: D56-D58*
+system_call 35,1
+; Instruction: D59-D5B*
+move 1,2
+; Instruction: D5C-D5E*
+move 2,10
+; Instruction: D5F-D61*
+system_call 35,1
+; Instruction: D62-D64*
+move 1,0
+; Instruction: D65-D67*
+move 2,7
+; Instruction: D68-D6A*
+system_call 35,1
+; Instruction: D6B-D6D*
+move 1,2
+; Instruction: D6E-D70*
+set_value_with_value 2,6
+; Instruction: D71-D73*
+system_call 35,1
+; Instruction: D74-D76*
+move 1,0
+; Instruction: D77-D79*
+set_value_with_value 2,7
+; Instruction: D7A-D7C*
+system_call 35,1
+; Instruction: D7D-D7F*
+system_call 37,8
+; Instruction: D80-D82*
+set_value_with_value 6,37
+; Instruction: D83-D85*
+set_value_with_value 7,9
+; Instruction: D86-D88*
+move 1,4
+; Instruction: D89-D8B*
+move 2,32
+; Instruction: D8C-D8E*
+system_call 35,1
+; Instruction: D8F-D91*
+move 1,2
+; Instruction: D92-D94*
+move 2,10
+; Instruction: D95-D97*
+system_call 35,1
+; Instruction: D98-D9A*
+move 1,0
+; Instruction: D9B-D9D*
+move 2,7
+; Instruction: D9E-DA0*
+system_call 35,1
+; Instruction: DA1-DA3*
+move 1,2
+; Instruction: DA4-DA6*
+move 2,10
+; Instruction: DA7-DA9*
+system_call 35,1
+; Instruction: DAA-DAC*
+move 1,0
+; Instruction: DAD-DAF*
+move 2,6
+; Instruction: DB0-DB2*
+system_call 35,1
+; Instruction: DB3-DB5*
+move 1,2
+; Instruction: DB6-DB8*
+move 2,10
+; Instruction: DB9-DBB*
+system_call 35,1
+; Instruction: DBC-DBE*
+move 1,0
+; Instruction: DBF-DC1*
+move 2,7
+; Instruction: DC2-DC4*
+system_call 35,1
+; Instruction: DC5-DC7*
+move 1,2
+; Instruction: DC8-DCA*
+set_value_with_value 2,6
+; Instruction: DCB-DCD*
+system_call 35,1
+; Instruction: DCE-DD0*
+move 1,0
+; Instruction: DD1-DD3*
+set_value_with_value 2,7
+; Instruction: DD4-DD6*
+system_call 35,1
+; Instruction: DD7-DD9*
+system_call 36,8
+; Instruction: DDA-DDC*
+set_value_with_value 4,8
+; Instruction: DDD-DDF*
+system_call 18,4
+; Instruction: DE0-DE2*
+move 1,10
+; Instruction: DE3-DE5*
+system_call 8,1
+; Instruction: DE6-DE8*
+system_call 9,0
+; Instruction: DE9*
+ret
+; Instruction: DEA-DEB*
+function 15
+; Instruction: DEC-DEE*
+move 1,35
+; Instruction: DEF-DF1*
+system_call 8,1
+; Instruction: DF2-DF4*
+move 1,32
+; Instruction: DF5-DF7*
+system_call 8,1
+; Instruction: DF8-DFA*
+move 1,32
+; Instruction: DFB-DFD*
+system_call 8,1
+; Instruction: DFE-E00*
+move 1,32
+; Instruction: E01-E03*
+system_call 8,1
+; Instruction: E04-E06*
+move 1,32
+; Instruction: E07-E09*
+system_call 8,1
+; Instruction: E0A-E0C*
+move 1,32
+; Instruction: E0D-E0F*
+system_call 8,1
+; Instruction: E10-E12*
+move 1,32
+; Instruction: E13-E15*
+system_call 8,1
+; Instruction: E16-E18*
+move 1,32
+; Instruction: E19-E1B*
+system_call 8,1
+; Instruction: E1C-E1E*
+move 1,32
+; Instruction: E1F-E21*
+system_call 8,1
+; Instruction: E22-E24*
+move 1,32
+; Instruction: E25-E27*
+system_call 8,1
+; Instruction: E28-E2A*
+move 1,32
+; Instruction: E2B-E2D*
+system_call 8,1
+; Instruction: E2E-E30*
+move 1,32
+; Instruction: E31-E33*
+system_call 8,1
+; Instruction: E34-E36*
+move 1,91
+; Instruction: E37-E39*
+system_call 8,1
+; Instruction: E3A-E3C*
+move 1,67
+; Instruction: E3D-E3F*
+system_call 8,1
+; Instruction: E40-E42*
+move 1,79
+; Instruction: E43-E45*
+move 2,32
+; Instruction: E46-E48*
+add 1,2
+; Instruction: E49-E4B*
+system_call 8,1
+; Instruction: E4C-E4E*
+move 1,77
+; Instruction: E4F-E51*
+move 2,32
+; Instruction: E52-E54*
+add 1,2
+; Instruction: E55-E57*
+system_call 8,1
+; Instruction: E58-E5A*
+move 1,77
+; Instruction: E5B-E5D*
+move 2,32
+; Instruction: E5E-E60*
+add 1,2
+; Instruction: E61-E63*
+system_call 8,1
+; Instruction: E64-E66*
+move 1,69
+; Instruction: E67-E69*
+move 2,32
+; Instruction: E6A-E6C*
+add 1,2
+; Instruction: E6D-E6F*
+system_call 8,1
+; Instruction: E70-E72*
+move 1,78
+; Instruction: E73-E75*
+move 2,32
+; Instruction: E76-E78*
+add 1,2
+; Instruction: E79-E7B*
+system_call 8,1
+; Instruction: E7C-E7E*
+move 1,84
+; Instruction: E7F-E81*
+move 2,32
+; Instruction: E82-E84*
+add 1,2
+; Instruction: E85-E87*
+system_call 8,1
+; Instruction: E88-E8A*
+move 1,93
+; Instruction: E8B-E8D*
+system_call 8,1
+; Instruction: E8E-E90*
+move 1,10
+; Instruction: E91-E93*
+system_call 8,1
+; Instruction: E94-E96*
+system_call 9,0
+; Instruction: E97-E99*
+move 1,69
+; Instruction: E9A-E9C*
+move 2,32
+; Instruction: E9D-E9F*
+add 1,2
+; Instruction: EA0-EA2*
+system_call 8,1
+; Instruction: EA3-EA5*
+move 1,67
+; Instruction: EA6-EA8*
+move 2,32
+; Instruction: EA9-EAB*
+add 1,2
+; Instruction: EAC-EAE*
+system_call 8,1
+; Instruction: EAF-EB1*
+move 1,72
+; Instruction: EB2-EB4*
+move 2,32
+; Instruction: EB5-EB7*
+add 1,2
+; Instruction: EB8-EBA*
+system_call 8,1
+; Instruction: EBB-EBD*
+move 1,79
+; Instruction: EBE-EC0*
+move 2,32
+; Instruction: EC1-EC3*
+add 1,2
+; Instruction: EC4-EC6*
+system_call 8,1
+; Instruction: EC7-EC9*
+move 1,32
+; Instruction: ECA-ECC*
+system_call 8,1
+; Instruction: ECD-ECF*
+move 1,32
+; Instruction: ED0-ED2*
+system_call 8,1
+; Instruction: ED3-ED5*
+move 1,32
+; Instruction: ED6-ED8*
+system_call 8,1
+; Instruction: ED9-EDB*
+move 1,32
+; Instruction: EDC-EDE*
+system_call 8,1
+; Instruction: EDF-EE1*
+move 1,32
+; Instruction: EE2-EE4*
+system_call 8,1
+; Instruction: EE5-EE7*
+move 1,32
+; Instruction: EE8-EEA*
+system_call 8,1
+; Instruction: EEB-EED*
+move 1,32
+; Instruction: EEE-EF0*
+system_call 8,1
+; Instruction: EF1-EF3*
+move 1,32
+; Instruction: EF4-EF6*
+system_call 8,1
+; Instruction: EF7-EF9*
+move 1,91
+; Instruction: EFA-EFC*
+system_call 8,1
+; Instruction: EFD-EFF*
+move 1,77
+; Instruction: F00-F02*
+system_call 8,1
+; Instruction: F03-F05*
+move 1,83
+; Instruction: F06-F08*
+move 2,32
+; Instruction: F09-F0B*
+add 1,2
+; Instruction: F0C-F0E*
+system_call 8,1
+; Instruction: F0F-F11*
+move 1,71
+; Instruction: F12-F14*
+move 2,32
+; Instruction: F15-F17*
+add 1,2
+; Instruction: F18-F1A*
+system_call 8,1
+; Instruction: F1B-F1D*
+move 1,93
+; Instruction: F1E-F20*
+system_call 8,1
+; Instruction: F21-F23*
+move 1,10
+; Instruction: F24-F26*
+system_call 8,1
+; Instruction: F27-F29*
+system_call 9,0
+; Instruction: F2A-F2C*
+move 1,77
+; Instruction: F2D-F2F*
+move 2,32
+; Instruction: F30-F32*
+add 1,2
+; Instruction: F33-F35*
+system_call 8,1
+; Instruction: F36-F38*
+move 1,65
+; Instruction: F39-F3B*
+move 2,32
+; Instruction: F3C-F3E*
+add 1,2
+; Instruction: F3F-F41*
+system_call 8,1
+; Instruction: F42-F44*
+move 1,76
+; Instruction: F45-F47*
+move 2,32
+; Instruction: F48-F4A*
+add 1,2
+; Instruction: F4B-F4D*
+system_call 8,1
+; Instruction: F4E-F50*
+move 1,76
+; Instruction: F51-F53*
+move 2,32
+; Instruction: F54-F56*
+add 1,2
+; Instruction: F57-F59*
+system_call 8,1
+; Instruction: F5A-F5C*
+move 1,32
+; Instruction: F5D-F5F*
+system_call 8,1
+; Instruction: F60-F62*
+move 1,32
+; Instruction: F63-F65*
+system_call 8,1
+; Instruction: F66-F68*
+move 1,32
+; Instruction: F69-F6B*
+system_call 8,1
+; Instruction: F6C-F6E*
+move 1,32
+; Instruction: F6F-F71*
+system_call 8,1
+; Instruction: F72-F74*
+move 1,32
+; Instruction: F75-F77*
+system_call 8,1
+; Instruction: F78-F7A*
+move 1,32
+; Instruction: F7B-F7D*
+system_call 8,1
+; Instruction: F7E-F80*
+move 1,32
+; Instruction: F81-F83*
+system_call 8,1
+; Instruction: F84-F86*
+move 1,32
+; Instruction: F87-F89*
+system_call 8,1
+; Instruction: F8A-F8C*
+move 1,91
+; Instruction: F8D-F8F*
+system_call 8,1
+; Instruction: F90-F92*
+move 1,73
+; Instruction: F93-F95*
+system_call 8,1
+; Instruction: F96-F98*
+move 1,68
+; Instruction: F99-F9B*
+move 2,32
+; Instruction: F9C-F9E*
+add 1,2
+; Instruction: F9F-FA1*
+system_call 8,1
+; Instruction: FA2-FA4*
+move 1,93
+; Instruction: FA5-FA7*
+system_call 8,1
+; Instruction: FA8-FAA*
+move 1,10
+; Instruction: FAB-FAD*
+system_call 8,1
+; Instruction: FAE-FB0*
+system_call 9,0
+; Instruction: FB1-FB3*
+move 1,82
+; Instruction: FB4-FB6*
+move 2,32
+; Instruction: FB7-FB9*
+add 1,2
+; Instruction: FBA-FBC*
+system_call 8,1
+; Instruction: FBD-FBF*
+move 1,69
+; Instruction: FC0-FC2*
+move 2,32
+; Instruction: FC3-FC5*
+add 1,2
+; Instruction: FC6-FC8*
+system_call 8,1
+; Instruction: FC9-FCB*
+move 1,83
+; Instruction: FCC-FCE*
+move 2,32
+; Instruction: FCF-FD1*
+add 1,2
+; Instruction: FD2-FD4*
+system_call 8,1
+; Instruction: FD5-FD7*
+move 1,69
+; Instruction: FD8-FDA*
+move 2,32
+; Instruction: FDB-FDD*
+add 1,2
+; Instruction: FDE-FE0*
+system_call 8,1
+; Instruction: FE1-FE3*
+move 1,32
+; Instruction: FE4-FE6*
+system_call 8,1
+; Instruction: FE7-FE9*
+move 1,32
+; Instruction: FEA-FEC*
+system_call 8,1
+; Instruction: FED-FEF*
+move 1,32
+; Instruction: FF0-FF2*
+system_call 8,1
+; Instruction: FF3-FF5*
+move 1,32
+; Instruction: FF6-FF8*
+system_call 8,1
+; Instruction: FF9-FFB*
+move 1,32
+; Instruction: FFC-FFE*
+system_call 8,1
+; Instruction: FFF-1001*
+move 1,32
+; Instruction: 1002-1004*
+system_call 8,1
+; Instruction: 1005-1007*
+move 1,32
+; Instruction: 1008-100A*
+system_call 8,1
+; Instruction: 100B-100D*
+move 1,32
+; Instruction: 100E-1010*
+system_call 8,1
+; Instruction: 1011-1013*
+move 1,91
+; Instruction: 1014-1016*
+system_call 8,1
+; Instruction: 1017-1019*
+move 1,73
+; Instruction: 101A-101C*
+system_call 8,1
+; Instruction: 101D-101F*
+move 1,68
+; Instruction: 1020-1022*
+move 2,32
+; Instruction: 1023-1025*
+add 1,2
+; Instruction: 1026-1028*
+system_call 8,1
+; Instruction: 1029-102B*
+move 1,93
+; Instruction: 102C-102E*
+system_call 8,1
+; Instruction: 102F-1031*
+move 1,10
+; Instruction: 1032-1034*
+system_call 8,1
+; Instruction: 1035-1037*
+system_call 9,0
+; Instruction: 1038-103A*
+move 1,67
+; Instruction: 103B-103D*
+move 2,32
+; Instruction: 103E-1040*
+add 1,2
+; Instruction: 1041-1043*
+system_call 8,1
+; Instruction: 1044-1046*
+move 1,65
+; Instruction: 1047-1049*
+move 2,32
+; Instruction: 104A-104C*
+add 1,2
+; Instruction: 104D-104F*
+system_call 8,1
+; Instruction: 1050-1052*
+move 1,84
+; Instruction: 1053-1055*
+move 2,32
+; Instruction: 1056-1058*
+add 1,2
+; Instruction: 1059-105B*
+system_call 8,1
+; Instruction: 105C-105E*
+move 1,32
+; Instruction: 105F-1061*
+system_call 8,1
+; Instruction: 1062-1064*
+move 1,32
+; Instruction: 1065-1067*
+system_call 8,1
+; Instruction: 1068-106A*
+move 1,32
+; Instruction: 106B-106D*
+system_call 8,1
+; Instruction: 106E-1070*
+move 1,32
+; Instruction: 1071-1073*
+system_call 8,1
+; Instruction: 1074-1076*
+move 1,32
+; Instruction: 1077-1079*
+system_call 8,1
+; Instruction: 107A-107C*
+move 1,32
+; Instruction: 107D-107F*
+system_call 8,1
+; Instruction: 1080-1082*
+move 1,32
+; Instruction: 1083-1085*
+system_call 8,1
+; Instruction: 1086-1088*
+move 1,32
+; Instruction: 1089-108B*
+system_call 8,1
+; Instruction: 108C-108E*
+move 1,32
+; Instruction: 108F-1091*
+system_call 8,1
+; Instruction: 1092-1094*
+move 1,91
+; Instruction: 1095-1097*
+system_call 8,1
+; Instruction: 1098-109A*
+move 1,78
+; Instruction: 109B-109D*
+system_call 8,1
+; Instruction: 109E-10A0*
+move 1,65
+; Instruction: 10A1-10A3*
+move 2,32
+; Instruction: 10A4-10A6*
+add 1,2
+; Instruction: 10A7-10A9*
+system_call 8,1
+; Instruction: 10AA-10AC*
+move 1,77
+; Instruction: 10AD-10AF*
+move 2,32
+; Instruction: 10B0-10B2*
+add 1,2
+; Instruction: 10B3-10B5*
+system_call 8,1
+; Instruction: 10B6-10B8*
+move 1,69
+; Instruction: 10B9-10BB*
+move 2,32
+; Instruction: 10BC-10BE*
+add 1,2
+; Instruction: 10BF-10C1*
+system_call 8,1
+; Instruction: 10C2-10C4*
+move 1,93
+; Instruction: 10C5-10C7*
+system_call 8,1
+; Instruction: 10C8-10CA*
+move 1,10
+; Instruction: 10CB-10CD*
+system_call 8,1
+; Instruction: 10CE-10D0*
+system_call 9,0
+; Instruction: 10D1-10D3*
+move 1,83
+; Instruction: 10D4-10D6*
+move 2,32
+; Instruction: 10D7-10D9*
+add 1,2
+; Instruction: 10DA-10DC*
+system_call 8,1
+; Instruction: 10DD-10DF*
+move 1,82
+; Instruction: 10E0-10E2*
+move 2,32
+; Instruction: 10E3-10E5*
+add 1,2
+; Instruction: 10E6-10E8*
+system_call 8,1
+; Instruction: 10E9-10EB*
+move 1,67
+; Instruction: 10EC-10EE*
+move 2,32
+; Instruction: 10EF-10F1*
+add 1,2
+; Instruction: 10F2-10F4*
+system_call 8,1
+; Instruction: 10F5-10F7*
+move 1,32
+; Instruction: 10F8-10FA*
+system_call 8,1
+; Instruction: 10FB-10FD*
+move 1,32
+; Instruction: 10FE-1100*
+system_call 8,1
+; Instruction: 1101-1103*
+move 1,32
+; Instruction: 1104-1106*
+system_call 8,1
+; Instruction: 1107-1109*
+move 1,32
+; Instruction: 110A-110C*
+system_call 8,1
+; Instruction: 110D-110F*
+move 1,32
+; Instruction: 1110-1112*
+system_call 8,1
+; Instruction: 1113-1115*
+move 1,32
+; Instruction: 1116-1118*
+system_call 8,1
+; Instruction: 1119-111B*
+move 1,32
+; Instruction: 111C-111E*
+system_call 8,1
+; Instruction: 111F-1121*
+move 1,32
+; Instruction: 1122-1124*
+system_call 8,1
+; Instruction: 1125-1127*
+move 1,32
+; Instruction: 1128-112A*
+system_call 8,1
+; Instruction: 112B-112D*
+move 1,91
+; Instruction: 112E-1130*
+system_call 8,1
+; Instruction: 1131-1133*
+move 1,78
+; Instruction: 1134-1136*
+system_call 8,1
+; Instruction: 1137-1139*
+move 1,65
+; Instruction: 113A-113C*
+move 2,32
+; Instruction: 113D-113F*
+add 1,2
+; Instruction: 1140-1142*
+system_call 8,1
+; Instruction: 1143-1145*
+move 1,77
+; Instruction: 1146-1148*
+move 2,32
+; Instruction: 1149-114B*
+add 1,2
+; Instruction: 114C-114E*
+system_call 8,1
+; Instruction: 114F-1151*
+move 1,69
+; Instruction: 1152-1154*
+move 2,32
+; Instruction: 1155-1157*
+add 1,2
+; Instruction: 1158-115A*
+system_call 8,1
+; Instruction: 115B-115D*
+move 1,93
+; Instruction: 115E-1160*
+system_call 8,1
+; Instruction: 1161-1163*
+move 1,10
+; Instruction: 1164-1166*
+system_call 8,1
+; Instruction: 1167-1169*
+system_call 9,0
+; Instruction: 116A-116C*
+move 1,82
+; Instruction: 116D-116F*
+move 2,32
+; Instruction: 1170-1172*
+add 1,2
+; Instruction: 1173-1175*
+system_call 8,1
+; Instruction: 1176-1178*
+move 1,85
+; Instruction: 1179-117B*
+move 2,32
+; Instruction: 117C-117E*
+add 1,2
+; Instruction: 117F-1181*
+system_call 8,1
+; Instruction: 1182-1184*
+move 1,78
+; Instruction: 1185-1187*
+move 2,32
+; Instruction: 1188-118A*
+add 1,2
+; Instruction: 118B-118D*
+system_call 8,1
+; Instruction: 118E-1190*
+move 1,67
+; Instruction: 1191-1193*
+move 2,32
+; Instruction: 1194-1196*
+add 1,2
+; Instruction: 1197-1199*
+system_call 8,1
+; Instruction: 119A-119C*
+move 1,77
+; Instruction: 119D-119F*
+move 2,32
+; Instruction: 11A0-11A2*
+add 1,2
+; Instruction: 11A3-11A5*
+system_call 8,1
+; Instruction: 11A6-11A8*
+move 1,32
+; Instruction: 11A9-11AB*
+system_call 8,1
+; Instruction: 11AC-11AE*
+move 1,32
+; Instruction: 11AF-11B1*
+system_call 8,1
+; Instruction: 11B2-11B4*
+move 1,32
+; Instruction: 11B5-11B7*
+system_call 8,1
+; Instruction: 11B8-11BA*
+move 1,32
+; Instruction: 11BB-11BD*
+system_call 8,1
+; Instruction: 11BE-11C0*
+move 1,32
+; Instruction: 11C1-11C3*
+system_call 8,1
+; Instruction: 11C4-11C6*
+move 1,32
+; Instruction: 11C7-11C9*
+system_call 8,1
+; Instruction: 11CA-11CC*
+move 1,32
+; Instruction: 11CD-11CF*
+system_call 8,1
+; Instruction: 11D0-11D2*
+move 1,91
+; Instruction: 11D3-11D5*
+system_call 8,1
+; Instruction: 11D6-11D8*
+move 1,78
+; Instruction: 11D9-11DB*
+system_call 8,1
+; Instruction: 11DC-11DE*
+move 1,65
+; Instruction: 11DF-11E1*
+move 2,32
+; Instruction: 11E2-11E4*
+add 1,2
+; Instruction: 11E5-11E7*
+system_call 8,1
+; Instruction: 11E8-11EA*
+move 1,77
+; Instruction: 11EB-11ED*
+move 2,32
+; Instruction: 11EE-11F0*
+add 1,2
+; Instruction: 11F1-11F3*
+system_call 8,1
+; Instruction: 11F4-11F6*
+move 1,69
+; Instruction: 11F7-11F9*
+move 2,32
+; Instruction: 11FA-11FC*
+add 1,2
+; Instruction: 11FD-11FF*
+system_call 8,1
+; Instruction: 1200-1202*
+move 1,93
+; Instruction: 1203-1205*
+system_call 8,1
+; Instruction: 1206-1208*
+move 1,10
+; Instruction: 1209-120B*
+system_call 8,1
+; Instruction: 120C-120E*
+system_call 9,0
+; Instruction: 120F-1211*
+move 1,83
+; Instruction: 1212-1214*
+move 2,32
+; Instruction: 1215-1217*
+add 1,2
+; Instruction: 1218-121A*
+system_call 8,1
+; Instruction: 121B-121D*
+move 1,84
+; Instruction: 121E-1220*
+move 2,32
+; Instruction: 1221-1223*
+add 1,2
+; Instruction: 1224-1226*
+system_call 8,1
+; Instruction: 1227-1229*
+move 1,82
+; Instruction: 122A-122C*
+move 2,32
+; Instruction: 122D-122F*
+add 1,2
+; Instruction: 1230-1232*
+system_call 8,1
+; Instruction: 1233-1235*
+move 1,65
+; Instruction: 1236-1238*
+move 2,32
+; Instruction: 1239-123B*
+add 1,2
+; Instruction: 123C-123E*
+system_call 8,1
+; Instruction: 123F-1241*
+move 1,32
+; Instruction: 1242-1244*
+system_call 8,1
+; Instruction: 1245-1247*
+move 1,32
+; Instruction: 1248-124A*
+system_call 8,1
+; Instruction: 124B-124D*
+move 1,32
+; Instruction: 124E-1250*
+system_call 8,1
+; Instruction: 1251-1253*
+move 1,32
+; Instruction: 1254-1256*
+system_call 8,1
+; Instruction: 1257-1259*
+move 1,32
+; Instruction: 125A-125C*
+system_call 8,1
+; Instruction: 125D-125F*
+move 1,32
+; Instruction: 1260-1262*
+system_call 8,1
+; Instruction: 1263-1265*
+move 1,32
+; Instruction: 1266-1268*
+system_call 8,1
+; Instruction: 1269-126B*
+move 1,32
+; Instruction: 126C-126E*
+system_call 8,1
+; Instruction: 126F-1271*
+move 1,91
+; Instruction: 1272-1274*
+system_call 8,1
+; Instruction: 1275-1277*
+move 1,83
+; Instruction: 1278-127A*
+system_call 8,1
+; Instruction: 127B-127D*
+move 1,84
+; Instruction: 127E-1280*
+move 2,32
+; Instruction: 1281-1283*
+add 1,2
+; Instruction: 1284-1286*
+system_call 8,1
+; Instruction: 1287-1289*
+move 1,82
+; Instruction: 128A-128C*
+move 2,32
+; Instruction: 128D-128F*
+add 1,2
+; Instruction: 1290-1292*
+system_call 8,1
+; Instruction: 1293-1295*
+move 1,73
+; Instruction: 1296-1298*
+move 2,32
+; Instruction: 1299-129B*
+add 1,2
+; Instruction: 129C-129E*
+system_call 8,1
+; Instruction: 129F-12A1*
+move 1,78
+; Instruction: 12A2-12A4*
+move 2,32
+; Instruction: 12A5-12A7*
+add 1,2
+; Instruction: 12A8-12AA*
+system_call 8,1
+; Instruction: 12AB-12AD*
+move 1,71
+; Instruction: 12AE-12B0*
+move 2,32
+; Instruction: 12B1-12B3*
+add 1,2
+; Instruction: 12B4-12B6*
+system_call 8,1
+; Instruction: 12B7-12B9*
+move 1,93
+; Instruction: 12BA-12BC*
+system_call 8,1
+; Instruction: 12BD-12BF*
+move 1,10
+; Instruction: 12C0-12C2*
+system_call 8,1
+; Instruction: 12C3-12C5*
+system_call 9,0
+; Instruction: 12C6-12C8*
+move 1,80
+; Instruction: 12C9-12CB*
+move 2,32
+; Instruction: 12CC-12CE*
+add 1,2
+; Instruction: 12CF-12D1*
+system_call 8,1
+; Instruction: 12D2-12D4*
+move 1,82
+; Instruction: 12D5-12D7*
+move 2,32
+; Instruction: 12D8-12DA*
+add 1,2
+; Instruction: 12DB-12DD*
+system_call 8,1
+; Instruction: 12DE-12E0*
+move 1,73
+; Instruction: 12E1-12E3*
+move 2,32
+; Instruction: 12E4-12E6*
+add 1,2
+; Instruction: 12E7-12E9*
+system_call 8,1
+; Instruction: 12EA-12EC*
+move 1,78
+; Instruction: 12ED-12EF*
+move 2,32
+; Instruction: 12F0-12F2*
+add 1,2
+; Instruction: 12F3-12F5*
+system_call 8,1
+; Instruction: 12F6-12F8*
+move 1,84
+; Instruction: 12F9-12FB*
+move 2,32
+; Instruction: 12FC-12FE*
+add 1,2
+; Instruction: 12FF-1301*
+system_call 8,1
+; Instruction: 1302-1304*
+move 1,32
+; Instruction: 1305-1307*
+system_call 8,1
+; Instruction: 1308-130A*
+move 1,32
+; Instruction: 130B-130D*
+system_call 8,1
+; Instruction: 130E-1310*
+move 1,32
+; Instruction: 1311-1313*
+system_call 8,1
+; Instruction: 1314-1316*
+move 1,32
+; Instruction: 1317-1319*
+system_call 8,1
+; Instruction: 131A-131C*
+move 1,32
+; Instruction: 131D-131F*
+system_call 8,1
+; Instruction: 1320-1322*
+move 1,32
+; Instruction: 1323-1325*
+system_call 8,1
+; Instruction: 1326-1328*
+move 1,32
+; Instruction: 1329-132B*
+system_call 8,1
+; Instruction: 132C-132E*
+move 1,91
+; Instruction: 132F-1331*
+system_call 8,1
+; Instruction: 1332-1334*
+move 1,86
+; Instruction: 1335-1337*
+system_call 8,1
+; Instruction: 1338-133A*
+move 1,65
+; Instruction: 133B-133D*
+move 2,32
+; Instruction: 133E-1340*
+add 1,2
+; Instruction: 1341-1343*
+system_call 8,1
+; Instruction: 1344-1346*
+move 1,82
+; Instruction: 1347-1349*
+move 2,32
+; Instruction: 134A-134C*
+add 1,2
+; Instruction: 134D-134F*
+system_call 8,1
+; Instruction: 1350-1352*
+move 1,73
+; Instruction: 1353-1355*
+move 2,32
+; Instruction: 1356-1358*
+add 1,2
+; Instruction: 1359-135B*
+system_call 8,1
+; Instruction: 135C-135E*
+move 1,65
+; Instruction: 135F-1361*
+move 2,32
+; Instruction: 1362-1364*
+add 1,2
+; Instruction: 1365-1367*
+system_call 8,1
+; Instruction: 1368-136A*
+move 1,66
+; Instruction: 136B-136D*
+move 2,32
+; Instruction: 136E-1370*
+add 1,2
+; Instruction: 1371-1373*
+system_call 8,1
+; Instruction: 1374-1376*
+move 1,76
+; Instruction: 1377-1379*
+move 2,32
+; Instruction: 137A-137C*
+add 1,2
+; Instruction: 137D-137F*
+system_call 8,1
+; Instruction: 1380-1382*
+move 1,69
+; Instruction: 1383-1385*
+move 2,32
+; Instruction: 1386-1388*
+add 1,2
+; Instruction: 1389-138B*
+system_call 8,1
+; Instruction: 138C-138E*
+move 1,68
+; Instruction: 138F-1391*
+system_call 8,1
+; Instruction: 1392-1394*
+move 1,73
+; Instruction: 1395-1397*
+move 2,32
+; Instruction: 1398-139A*
+add 1,2
+; Instruction: 139B-139D*
+system_call 8,1
+; Instruction: 139E-13A0*
+move 1,82
+; Instruction: 13A1-13A3*
+move 2,32
+; Instruction: 13A4-13A6*
+add 1,2
+; Instruction: 13A7-13A9*
+system_call 8,1
+; Instruction: 13AA-13AC*
+move 1,69
+; Instruction: 13AD-13AF*
+move 2,32
+; Instruction: 13B0-13B2*
+add 1,2
+; Instruction: 13B3-13B5*
+system_call 8,1
+; Instruction: 13B6-13B8*
+move 1,67
+; Instruction: 13B9-13BB*
+move 2,32
+; Instruction: 13BC-13BE*
+add 1,2
+; Instruction: 13BF-13C1*
+system_call 8,1
+; Instruction: 13C2-13C4*
+move 1,84
+; Instruction: 13C5-13C7*
+move 2,32
+; Instruction: 13C8-13CA*
+add 1,2
+; Instruction: 13CB-13CD*
+system_call 8,1
+; Instruction: 13CE-13D0*
+move 1,73
+; Instruction: 13D1-13D3*
+move 2,32
+; Instruction: 13D4-13D6*
+add 1,2
+; Instruction: 13D7-13D9*
+system_call 8,1
+; Instruction: 13DA-13DC*
+move 1,79
+; Instruction: 13DD-13DF*
+move 2,32
+; Instruction: 13E0-13E2*
+add 1,2
+; Instruction: 13E3-13E5*
+system_call 8,1
+; Instruction: 13E6-13E8*
+move 1,78
+; Instruction: 13E9-13EB*
+move 2,32
+; Instruction: 13EC-13EE*
+add 1,2
+; Instruction: 13EF-13F1*
+system_call 8,1
+; Instruction: 13F2-13F4*
+move 1,93
+; Instruction: 13F5-13F7*
+system_call 8,1
+; Instruction: 13F8-13FA*
+move 1,10
+; Instruction: 13FB-13FD*
+system_call 8,1
+; Instruction: 13FE-1400*
+system_call 9,0
+; Instruction: 1401-1403*
+move 1,80
+; Instruction: 1404-1406*
+move 2,32
+; Instruction: 1407-1409*
+add 1,2
+; Instruction: 140A-140C*
+system_call 8,1
+; Instruction: 140D-140F*
+move 1,82
+; Instruction: 1410-1412*
+move 2,32
+; Instruction: 1413-1415*
+add 1,2
+; Instruction: 1416-1418*
+system_call 8,1
+; Instruction: 1419-141B*
+move 1,84
+; Instruction: 141C-141E*
+move 2,32
+; Instruction: 141F-1421*
+add 1,2
+; Instruction: 1422-1424*
+system_call 8,1
+; Instruction: 1425-1427*
+move 1,88
+; Instruction: 1428-142A*
+move 2,32
+; Instruction: 142B-142D*
+add 1,2
+; Instruction: 142E-1430*
+system_call 8,1
+; Instruction: 1431-1433*
+move 1,84
+; Instruction: 1434-1436*
+move 2,32
+; Instruction: 1437-1439*
+add 1,2
+; Instruction: 143A-143C*
+system_call 8,1
+; Instruction: 143D-143F*
+move 1,32
+; Instruction: 1440-1442*
+system_call 8,1
+; Instruction: 1443-1445*
+move 1,32
+; Instruction: 1446-1448*
+system_call 8,1
+; Instruction: 1449-144B*
+move 1,32
+; Instruction: 144C-144E*
+system_call 8,1
+; Instruction: 144F-1451*
+move 1,32
+; Instruction: 1452-1454*
+system_call 8,1
+; Instruction: 1455-1457*
+move 1,32
+; Instruction: 1458-145A*
+system_call 8,1
+; Instruction: 145B-145D*
+move 1,32
+; Instruction: 145E-1460*
+system_call 8,1
+; Instruction: 1461-1463*
+move 1,32
+; Instruction: 1464-1466*
+system_call 8,1
+; Instruction: 1467-1469*
+move 1,91
+; Instruction: 146A-146C*
+system_call 8,1
+; Instruction: 146D-146F*
+move 1,83
+; Instruction: 1470-1472*
+system_call 8,1
+; Instruction: 1473-1475*
+move 1,84
+; Instruction: 1476-1478*
+move 2,32
+; Instruction: 1479-147B*
+add 1,2
+; Instruction: 147C-147E*
+system_call 8,1
+; Instruction: 147F-1481*
+move 1,82
+; Instruction: 1482-1484*
+move 2,32
+; Instruction: 1485-1487*
+add 1,2
+; Instruction: 1488-148A*
+system_call 8,1
+; Instruction: 148B-148D*
+move 1,73
+; Instruction: 148E-1490*
+move 2,32
+; Instruction: 1491-1493*
+add 1,2
+; Instruction: 1494-1496*
+system_call 8,1
+; Instruction: 1497-1499*
+move 1,78
+; Instruction: 149A-149C*
+move 2,32
+; Instruction: 149D-149F*
+add 1,2
+; Instruction: 14A0-14A2*
+system_call 8,1
+; Instruction: 14A3-14A5*
+move 1,71
+; Instruction: 14A6-14A8*
+move 2,32
+; Instruction: 14A9-14AB*
+add 1,2
+; Instruction: 14AC-14AE*
+system_call 8,1
+; Instruction: 14AF-14B1*
+move 1,93
+; Instruction: 14B2-14B4*
+system_call 8,1
+; Instruction: 14B5-14B7*
+move 1,10
+; Instruction: 14B8-14BA*
+system_call 8,1
+; Instruction: 14BB-14BD*
+system_call 9,0
+; Instruction: 14BE-14C0*
+move 1,70
+; Instruction: 14C1-14C3*
+move 2,32
+; Instruction: 14C4-14C6*
+add 1,2
+; Instruction: 14C7-14C9*
+system_call 8,1
+; Instruction: 14CA-14CC*
+move 1,82
+; Instruction: 14CD-14CF*
+move 2,32
+; Instruction: 14D0-14D2*
+add 1,2
+; Instruction: 14D3-14D5*
+system_call 8,1
+; Instruction: 14D6-14D8*
+move 1,83
+; Instruction: 14D9-14DB*
+move 2,32
+; Instruction: 14DC-14DE*
+add 1,2
+; Instruction: 14DF-14E1*
+system_call 8,1
+; Instruction: 14E2-14E4*
+move 1,84
+; Instruction: 14E5-14E7*
+move 2,32
+; Instruction: 14E8-14EA*
+add 1,2
+; Instruction: 14EB-14ED*
+system_call 8,1
+; Instruction: 14EE-14F0*
+move 1,32
+; Instruction: 14F1-14F3*
+system_call 8,1
+; Instruction: 14F4-14F6*
+move 1,32
+; Instruction: 14F7-14F9*
+system_call 8,1
+; Instruction: 14FA-14FC*
+move 1,32
+; Instruction: 14FD-14FF*
+system_call 8,1
+; Instruction: 1500-1502*
+move 1,32
+; Instruction: 1503-1505*
+system_call 8,1
+; Instruction: 1506-1508*
+move 1,32
+; Instruction: 1509-150B*
+system_call 8,1
+; Instruction: 150C-150E*
+move 1,32
+; Instruction: 150F-1511*
+system_call 8,1
+; Instruction: 1512-1514*
+move 1,32
+; Instruction: 1515-1517*
+system_call 8,1
+; Instruction: 1518-151A*
+move 1,32
+; Instruction: 151B-151D*
+system_call 8,1
+; Instruction: 151E-1520*
+move 1,91
+; Instruction: 1521-1523*
+system_call 8,1
+; Instruction: 1524-1526*
+move 1,68
+; Instruction: 1527-1529*
+system_call 8,1
+; Instruction: 152A-152C*
+move 1,73
+; Instruction: 152D-152F*
+move 2,32
+; Instruction: 1530-1532*
+add 1,2
+; Instruction: 1533-1535*
+system_call 8,1
+; Instruction: 1536-1538*
+move 1,82
+; Instruction: 1539-153B*
+move 2,32
+; Instruction: 153C-153E*
+add 1,2
+; Instruction: 153F-1541*
+system_call 8,1
+; Instruction: 1542-1544*
+move 1,69
+; Instruction: 1545-1547*
+move 2,32
+; Instruction: 1548-154A*
+add 1,2
+; Instruction: 154B-154D*
+system_call 8,1
+; Instruction: 154E-1550*
+move 1,67
+; Instruction: 1551-1553*
+move 2,32
+; Instruction: 1554-1556*
+add 1,2
+; Instruction: 1557-1559*
+system_call 8,1
+; Instruction: 155A-155C*
+move 1,84
+; Instruction: 155D-155F*
+move 2,32
+; Instruction: 1560-1562*
+add 1,2
+; Instruction: 1563-1565*
+system_call 8,1
+; Instruction: 1566-1568*
+move 1,73
+; Instruction: 1569-156B*
+move 2,32
+; Instruction: 156C-156E*
+add 1,2
+; Instruction: 156F-1571*
+system_call 8,1
+; Instruction: 1572-1574*
+move 1,79
+; Instruction: 1575-1577*
+move 2,32
+; Instruction: 1578-157A*
+add 1,2
+; Instruction: 157B-157D*
+system_call 8,1
+; Instruction: 157E-1580*
+move 1,78
+; Instruction: 1581-1583*
+move 2,32
+; Instruction: 1584-1586*
+add 1,2
+; Instruction: 1587-1589*
+system_call 8,1
+; Instruction: 158A-158C*
+move 1,93
+; Instruction: 158D-158F*
+system_call 8,1
+; Instruction: 1590-1592*
+move 1,10
+; Instruction: 1593-1595*
+system_call 8,1
+; Instruction: 1596-1598*
+system_call 9,0
+; Instruction: 1599-159B*
+move 1,83
+; Instruction: 159C-159E*
+move 2,32
+; Instruction: 159F-15A1*
+add 1,2
+; Instruction: 15A2-15A4*
+system_call 8,1
+; Instruction: 15A5-15A7*
+move 1,69
+; Instruction: 15A8-15AA*
+move 2,32
+; Instruction: 15AB-15AD*
+add 1,2
+; Instruction: 15AE-15B0*
+system_call 8,1
+; Instruction: 15B1-15B3*
+move 1,84
+; Instruction: 15B4-15B6*
+move 2,32
+; Instruction: 15B7-15B9*
+add 1,2
+; Instruction: 15BA-15BC*
+system_call 8,1
+; Instruction: 15BD-15BF*
+move 1,86
+; Instruction: 15C0-15C2*
+move 2,32
+; Instruction: 15C3-15C5*
+add 1,2
+; Instruction: 15C6-15C8*
+system_call 8,1
+; Instruction: 15C9-15CB*
+move 1,32
+; Instruction: 15CC-15CE*
+system_call 8,1
+; Instruction: 15CF-15D1*
+move 1,32
+; Instruction: 15D2-15D4*
+system_call 8,1
+; Instruction: 15D5-15D7*
+move 1,32
+; Instruction: 15D8-15DA*
+system_call 8,1
+; Instruction: 15DB-15DD*
+move 1,32
+; Instruction: 15DE-15E0*
+system_call 8,1
+; Instruction: 15E1-15E3*
+move 1,32
+; Instruction: 15E4-15E6*
+system_call 8,1
+; Instruction: 15E7-15E9*
+move 1,32
+; Instruction: 15EA-15EC*
+system_call 8,1
+; Instruction: 15ED-15EF*
+move 1,32
+; Instruction: 15F0-15F2*
+system_call 8,1
+; Instruction: 15F3-15F5*
+move 1,32
+; Instruction: 15F6-15F8*
+system_call 8,1
+; Instruction: 15F9-15FB*
+move 1,91
+; Instruction: 15FC-15FE*
+system_call 8,1
+; Instruction: 15FF-1601*
+move 1,68
+; Instruction: 1602-1604*
+system_call 8,1
+; Instruction: 1605-1607*
+move 1,73
+; Instruction: 1608-160A*
+move 2,32
+; Instruction: 160B-160D*
+add 1,2
+; Instruction: 160E-1610*
+system_call 8,1
+; Instruction: 1611-1613*
+move 1,82
+; Instruction: 1614-1616*
+move 2,32
+; Instruction: 1617-1619*
+add 1,2
+; Instruction: 161A-161C*
+system_call 8,1
+; Instruction: 161D-161F*
+move 1,69
+; Instruction: 1620-1622*
+move 2,32
+; Instruction: 1623-1625*
+add 1,2
+; Instruction: 1626-1628*
+system_call 8,1
+; Instruction: 1629-162B*
+move 1,67
+; Instruction: 162C-162E*
+move 2,32
+; Instruction: 162F-1631*
+add 1,2
+; Instruction: 1632-1634*
+system_call 8,1
+; Instruction: 1635-1637*
+move 1,84
+; Instruction: 1638-163A*
+move 2,32
+; Instruction: 163B-163D*
+add 1,2
+; Instruction: 163E-1640*
+system_call 8,1
+; Instruction: 1641-1643*
+move 1,73
+; Instruction: 1644-1646*
+move 2,32
+; Instruction: 1647-1649*
+add 1,2
+; Instruction: 164A-164C*
+system_call 8,1
+; Instruction: 164D-164F*
+move 1,79
+; Instruction: 1650-1652*
+move 2,32
+; Instruction: 1653-1655*
+add 1,2
+; Instruction: 1656-1658*
+system_call 8,1
+; Instruction: 1659-165B*
+move 1,78
+; Instruction: 165C-165E*
+move 2,32
+; Instruction: 165F-1661*
+add 1,2
+; Instruction: 1662-1664*
+system_call 8,1
+; Instruction: 1665-1667*
+move 1,93
+; Instruction: 1668-166A*
+system_call 8,1
+; Instruction: 166B-166D*
+move 1,10
+; Instruction: 166E-1670*
+system_call 8,1
+; Instruction: 1671-1673*
+system_call 9,0
+; Instruction: 1674-1676*
+move 1,66
+; Instruction: 1677-1679*
+move 2,32
+; Instruction: 167A-167C*
+add 1,2
+; Instruction: 167D-167F*
+system_call 8,1
+; Instruction: 1680-1682*
+move 1,69
+; Instruction: 1683-1685*
+move 2,32
+; Instruction: 1686-1688*
+add 1,2
+; Instruction: 1689-168B*
+system_call 8,1
+; Instruction: 168C-168E*
+move 1,71
+; Instruction: 168F-1691*
+move 2,32
+; Instruction: 1692-1694*
+add 1,2
+; Instruction: 1695-1697*
+system_call 8,1
+; Instruction: 1698-169A*
+move 1,73
+; Instruction: 169B-169D*
+move 2,32
+; Instruction: 169E-16A0*
+add 1,2
+; Instruction: 16A1-16A3*
+system_call 8,1
+; Instruction: 16A4-16A6*
+move 1,78
+; Instruction: 16A7-16A9*
+move 2,32
+; Instruction: 16AA-16AC*
+add 1,2
+; Instruction: 16AD-16AF*
+system_call 8,1
+; Instruction: 16B0-16B2*
+move 1,10
+; Instruction: 16B3-16B5*
+system_call 8,1
+; Instruction: 16B6-16B8*
+system_call 9,0
+; Instruction: 16B9-16BB*
+move 1,69
+; Instruction: 16BC-16BE*
+move 2,32
+; Instruction: 16BF-16C1*
+add 1,2
+; Instruction: 16C2-16C4*
+system_call 8,1
+; Instruction: 16C5-16C7*
+move 1,78
+; Instruction: 16C8-16CA*
+move 2,32
+; Instruction: 16CB-16CD*
+add 1,2
+; Instruction: 16CE-16D0*
+system_call 8,1
+; Instruction: 16D1-16D3*
+move 1,68
+; Instruction: 16D4-16D6*
+move 2,32
+; Instruction: 16D7-16D9*
+add 1,2
+; Instruction: 16DA-16DC*
+system_call 8,1
+; Instruction: 16DD-16DF*
+move 1,10
+; Instruction: 16E0-16E2*
+system_call 8,1
+; Instruction: 16E3-16E5*
+system_call 9,0
+; Instruction: 16E6-16E8*
+move 1,82
+; Instruction: 16E9-16EB*
+move 2,32
+; Instruction: 16EC-16EE*
+add 1,2
+; Instruction: 16EF-16F1*
+system_call 8,1
+; Instruction: 16F2-16F4*
+move 1,69
+; Instruction: 16F5-16F7*
+move 2,32
+; Instruction: 16F8-16FA*
+add 1,2
+; Instruction: 16FB-16FD*
+system_call 8,1
+; Instruction: 16FE-1700*
+move 1,66
+; Instruction: 1701-1703*
+move 2,32
+; Instruction: 1704-1706*
+add 1,2
+; Instruction: 1707-1709*
+system_call 8,1
+; Instruction: 170A-170C*
+move 1,79
+; Instruction: 170D-170F*
+move 2,32
+; Instruction: 1710-1712*
+add 1,2
+; Instruction: 1713-1715*
+system_call 8,1
+; Instruction: 1716-1718*
+move 1,79
+; Instruction: 1719-171B*
+move 2,32
+; Instruction: 171C-171E*
+add 1,2
+; Instruction: 171F-1721*
+system_call 8,1
+; Instruction: 1722-1724*
+move 1,84
+; Instruction: 1725-1727*
+move 2,32
+; Instruction: 1728-172A*
+add 1,2
+; Instruction: 172B-172D*
+system_call 8,1
+; Instruction: 172E-1730*
+move 1,10
+; Instruction: 1731-1733*
+system_call 8,1
+; Instruction: 1734-1736*
+system_call 9,0
+; Instruction: 1737-1739*
+move 1,83
+; Instruction: 173A-173C*
+move 2,32
+; Instruction: 173D-173F*
+add 1,2
+; Instruction: 1740-1742*
+system_call 8,1
+; Instruction: 1743-1745*
+move 1,72
+; Instruction: 1746-1748*
+move 2,32
+; Instruction: 1749-174B*
+add 1,2
+; Instruction: 174C-174E*
+system_call 8,1
+; Instruction: 174F-1751*
+move 1,85
+; Instruction: 1752-1754*
+move 2,32
+; Instruction: 1755-1757*
+add 1,2
+; Instruction: 1758-175A*
+system_call 8,1
+; Instruction: 175B-175D*
+move 1,84
+; Instruction: 175E-1760*
+move 2,32
+; Instruction: 1761-1763*
+add 1,2
+; Instruction: 1764-1766*
+system_call 8,1
+; Instruction: 1767-1769*
+move 1,68
+; Instruction: 176A-176C*
+move 2,32
+; Instruction: 176D-176F*
+add 1,2
+; Instruction: 1770-1772*
+system_call 8,1
+; Instruction: 1773-1775*
+move 1,79
+; Instruction: 1776-1778*
+move 2,32
+; Instruction: 1779-177B*
+add 1,2
+; Instruction: 177C-177E*
+system_call 8,1
+; Instruction: 177F-1781*
+move 1,87
+; Instruction: 1782-1784*
+move 2,32
+; Instruction: 1785-1787*
+add 1,2
+; Instruction: 1788-178A*
+system_call 8,1
+; Instruction: 178B-178D*
+move 1,78
+; Instruction: 178E-1790*
+move 2,32
+; Instruction: 1791-1793*
+add 1,2
+; Instruction: 1794-1796*
+system_call 8,1
+; Instruction: 1797-1799*
+move 1,10
+; Instruction: 179A-179C*
+system_call 8,1
+; Instruction: 179D-179F*
+system_call 9,0
+; Instruction: 17A0-17A2*
+move 1,71
+; Instruction: 17A3-17A5*
+move 2,32
+; Instruction: 17A6-17A8*
+add 1,2
+; Instruction: 17A9-17AB*
+system_call 8,1
+; Instruction: 17AC-17AE*
+move 1,85
+; Instruction: 17AF-17B1*
+move 2,32
+; Instruction: 17B2-17B4*
+add 1,2
+; Instruction: 17B5-17B7*
+system_call 8,1
+; Instruction: 17B8-17BA*
+move 1,73
+; Instruction: 17BB-17BD*
+move 2,32
+; Instruction: 17BE-17C0*
+add 1,2
+; Instruction: 17C1-17C3*
+system_call 8,1
+; Instruction: 17C4-17C6*
+move 1,68
+; Instruction: 17C7-17C9*
+move 2,32
+; Instruction: 17CA-17CC*
+add 1,2
+; Instruction: 17CD-17CF*
+system_call 8,1
+; Instruction: 17D0-17D2*
+move 1,69
+; Instruction: 17D3-17D5*
+move 2,32
+; Instruction: 17D6-17D8*
+add 1,2
+; Instruction: 17D9-17DB*
+system_call 8,1
+; Instruction: 17DC-17DE*
+move 1,10
+; Instruction: 17DF-17E1*
+system_call 8,1
+; Instruction: 17E2-17E4*
+system_call 9,0
+; Instruction: 17E5-17E7*
+move 1,67
+; Instruction: 17E8-17EA*
+move 2,32
+; Instruction: 17EB-17ED*
+add 1,2
+; Instruction: 17EE-17F0*
+system_call 8,1
+; Instruction: 17F1-17F3*
+move 1,76
+; Instruction: 17F4-17F6*
+move 2,32
+; Instruction: 17F7-17F9*
+add 1,2
+; Instruction: 17FA-17FC*
+system_call 8,1
+; Instruction: 17FD-17FF*
+move 1,69
+; Instruction: 1800-1802*
+move 2,32
+; Instruction: 1803-1805*
+add 1,2
+; Instruction: 1806-1808*
+system_call 8,1
+; Instruction: 1809-180B*
+move 1,65
+; Instruction: 180C-180E*
+move 2,32
+; Instruction: 180F-1811*
+add 1,2
+; Instruction: 1812-1814*
+system_call 8,1
+; Instruction: 1815-1817*
+move 1,82
+; Instruction: 1818-181A*
+move 2,32
+; Instruction: 181B-181D*
+add 1,2
+; Instruction: 181E-1820*
+system_call 8,1
+; Instruction: 1821-1823*
+move 1,10
+; Instruction: 1824-1826*
+system_call 8,1
+; Instruction: 1827-1829*
+system_call 9,0
+; Instruction: 182A*
+ret
+; Instruction: 182B-182C*
+function 21
+; Instruction: 182D-182E*
+increment 37
+; Instruction: 182F*
+ret
+; Instruction: 1830-1831*
+function 22
+; Instruction: 1832-1833*
+decrement 37
+; Instruction: 1834*
+ret
+; Instruction: 1835-1836*
+function 32
+; Instruction: 1837-1839*
+set_value_with_value 1,41
+; Instruction: 183A-183C*
+set_value_with_value 2,44
+; Instruction: 183D-183F*
+set_value_with_value 3,43
+; Instruction: 1840-1842*
+system_call 50,1
+; Instruction: 1843-1845*
+set_value_with_value 41,1
+; Instruction: 1846-1848*
+system_call 9,0
+; Instruction: 1849-184B*
+set_value_with_value 1,41
+; Instruction: 184C-184E*
+set_value_with_value 2,43
+; Instruction: 184F-1851*
+system_call 49,1
+; Instruction: 1852-1854*
+set_value_with_value 42,1
+; Instruction: 1855-1857*
+move 45,0
+; Instruction: 1858-1859*
+call_function 33
+; Instruction: 185A-185C*
+system_call 63,43
+; Instruction: 185D*
+ret
+; Instruction: 185E-185F*
+function 33
+; Instruction: 1860-1862*
+set_value_with_value 1,42
+; Instruction: 1863-1865*
+set_value_with_value 2,45
+; Instruction: 1866-1868*
+system_call 17,1
+; Instruction: 1869-186B*
+set_value_with_value 35,3
+; Instruction: 186C-186D*
+call_function 27
+; Instruction: 186E-1870*
+set_value_with_value 3,35
+; Instruction: 1871-1873*
+set_value_with_value 4,0
+; Instruction: 1874-1876*
+system_call 26,3
+; Instruction: 1877-1878*
+if_equal 1
+; Instruction: 1879-187B*
+set_value_with_value 35,3
+; Instruction: 187C-187D*
+increment 45
+; Instruction: 187E-1880*
+set_value_with_value_of_value 2,42
+; Instruction: 1881-1883*
+set_value_with_value 1,45
+; Instruction: 1884-1886*
+set_value_with_value 2,2
+; Instruction: 1887-1889*
+system_call 39,1
+; Instruction: 188A-188C*
+move 1,2
+; Instruction: 188D-188F*
+move 2,33
+; Instruction: 1890-1892*
+move 3,0
+; Instruction: 1893-1895*
+system_call 40,1
+; Instruction: 1896*
+ret

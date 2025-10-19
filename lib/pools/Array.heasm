@@ -286,3 +286,49 @@ tapot ItoA (
     _ReturnOn_ = *3
 
 END tapot
+
+/**
+* ArrayClone
+*
+* clona un array
+*
+* @param OldArray el array a clonar
+* @returns ReturnOn donde retorna la direccion al clon
+*/
+tapot ArrayClone (
+    _OldArray_::Array,
+    _ReturnOn_::Array
+)
+
+    // copiar la direccion
+    (LET*)1 = *_OldArray_
+
+    // clonarlo
+    _CallOut 51 1
+
+    _ReturnOn_ = *1
+
+END tapot
+
+/**
+* SafeFreeArray
+*
+* libera un array sin causar una excepcion en ebf
+* @param Array el array
+*/
+tapot SafeFreeArray (
+    _Array_::Array
+)
+
+    // verificar si no es nullptr
+    IF _Array_|!=|0 THEN _FrArraySafeIfFree_
+
+    // si se libero pues que bueno, es nullptr ahora, si no pues se devuele el valor anterior que ya era nullptr
+    _Array_ = *3
+
+END tapot
+
+FUNCTION _FrArraySafeIfFree_
+    // liberar lo que se pasa al primer parametro de el IF
+    FreePool 3
+__asm ret

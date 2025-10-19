@@ -18,36 +18,28 @@ tapot GetParam (
     Cout::Array
     )
 
-    SetVar 3 Number
-
-    //_CallOut 18 3
-    //Print "\n"
+    (LET*)3 = Number
 
     // llegar a 3001 donde se ubica el puntero al primer parametro
+    (LET*)5 = 30
+    (LET*)4 = 10
 
-    5 = 30
-    4 = 10
+    // 30 * 10: 300
     _Math 5 * 4
-    //_CallOut 18 5
-    //Print "\s"
-
+    // 300 * 10: 3000
     _Math 5 * 4
-    //_CallOut 18 5
-    //Print "\s"
 
+    // 3000++: 3001
     __asm increment 5
-    //_CallOut 18 5
-    //Print "\s"
 
     // sumarle el numero de parametro
-    4 = Number
+    (LET*)4 = Number
     _Math 5 + 4
-    //_CallOut 18 5
 
-    5 = **5
+    // cambiarle al valor de la direccion a la que apunta si mismo
+    (LET*)5 = **5
 
+    // devolverlo
     Cout = *5
-
-    //Print "\n"
 
 END tapot

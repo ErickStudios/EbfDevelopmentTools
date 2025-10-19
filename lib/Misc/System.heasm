@@ -79,6 +79,20 @@ ENUM _SystemInfoGet_
     */
     _EnumMember _SystemInfoGet_GetLanguaje_ 6
 
+    /**
+    * _SystemInfoGet_EventList_
+    *
+    * el elemento que contiene la direccion al los eventos
+    */
+    _EnumMember _SystemInfoGet_EventList_ 7
+
+    /**
+    * _SystemInfoGet_HdrInfo_
+    *
+    * el elemento que contiene la direccion al los gST->Hdr
+    */
+    _EnumMember _SystemInfoGet_HdrInfo_ 8
+
 END ENUM
 
 /**
@@ -91,7 +105,41 @@ END ENUM
 */
 FUNCTION _IExitBS_
 
-    // liberar la tabla
+    // tenga en cuenta que esta accion eliminara toda la tabla del sistema
+    // que contiene datos que solo se crean y existen dentro de esa tabla y
+    // no se pueden volver a obtener de ninguna forma, asi que antes de
+    // salir de los servicios de arranque haz una copia de seguridad de los datos
+    // que usara el sistema operativo
+    // si ya hicieron eso OS bueno, 'van a la segura', supongo, bienvenido OS
+
+    // obtener el header para liberarlo
+    // los arrays de liberacion en 2d solo hacen hasta
+    // el array del array
+
+    // obtener el hdr
+    (LET*)2 = _SystemInfoGet_HdrInfo_
+    call_tapot GetArrayItem _SystemInfo_ 2 6
+    // liberar el hdr
+    call_tapot Free2DArray 6
+
+    // eliminar el dato4 del guid de la tabla de configuracion
+    // por lo mismo de lo anterior dicho por el alcanze de Free2DArray
+
+    // obtener el BS_Cfg
+    (LET*)2 = _SystemInfoGet_GetConfigurationTableVendorGuid_
+    call_tapot GetArrayItem _SystemInfo_ 2 6
+
+    // obtener el dato 4
+    (LET*)2 = 3
+    call_tapot GetArrayItem 6 2 6
+    
+    // liberar el array
+    FreePool 6
+
+    // liberar la tabla de los servicios de arranque
+    // para que no ocupe mas espacio en la memoria y activar
+    // la bandera 'OnOS?'=true
+
     call_tapot Free2DArray _SystemInfo_
 
     __asm ret
